@@ -1,0 +1,23 @@
+@font-face {
+    font-family: Bilal;
+    src: url("/fonts/Bilal.otf");
+}
+
+@font-face {
+    font-family: Safira;
+    src: url("/fonts/SafiraMarchPersonalUse.otf");
+}
+
+@font-face {
+    font-family: Source;
+    src: url("/fonts/SourceSerif4-VariableFont_opsz\,wght.ttf");
+}
+
+
+@import "tailwindcss";
+
+@theme{
+    --font-bilal : Bilal, Arial, sans-serif;
+    --font-safira : Safira;
+    --font-source : Source;
+}

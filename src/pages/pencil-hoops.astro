@@ -1,0 +1,447 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../layouts/Footer.astro'
+
+import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
+---
+
+<Layout title="Welcome to Astro.">
+	<!-- nav -->
+	<header class="fixed top-0 left-0 right-0 bg-white w-full opacity-95 z-30">
+		<nav class="flex justify-between items-center pt-8 pb-2 px-20 border-b-[1px] border-b-gray-100">
+            <button><AlignLeft /></button>
+
+            <div class="w-full flex justify-center">
+                <div class="h-1 w-full max-w-[424px] flex gap-3 relative left-[5%]">  
+                    <div class="w-full h-full bg-gray-200 relative after:content-[''] after:absolute after:w-[50%] after:bottom-0 after:bg-black after:left-0 after:top-0"></div>
+                    <div class="w-full h-full bg-gray-200 relative"></div>
+                    <div class="w-full h-full bg-gray-200"></div>
+                    <div class="w-full h-full bg-gray-200"></div>
+                    <div class="w-full h-full bg-gray-200"></div>
+                    <div class="w-full h-full bg-gray-200"></div>
+                    <div class="w-full h-full bg-gray-200"></div>
+                    <div class="w-full h-full bg-gray-200"></div>
+                    <div class="w-full h-full bg-gray-200"></div>
+                    <div class="w-full h-full bg-gray-200"></div>
+                    <div class="w-full h-full bg-gray-200"></div>
+                    <div class="w-full h-full bg-gray-200"></div>
+                    <div class="w-full h-full bg-gray-200"></div>
+                    <div class="w-full h-full bg-gray-200"></div>
+                </div>
+            </div>
+
+			<div class="flex items-center gap-10">
+				<p class="font-bilal text-[32px] whitespace-nowrap">Kamil Oseni</p>
+				<div class="w-[100px] aspect-square bg-gray-500 rounded-full"></div>
+			</div>
+		</nav>
+	</header>
+
+    <!-- bottom-nav -->
+    <div class="fixed bottom-0 right-0 z-10">
+        <ul class="flex pb-6 gap-4 pr-20 text-[#afafaf] font-semibold">
+            <li class="text-black">Quick Overview</li>
+            <li>Research and Insights</li>
+            <li>Design Process</li>
+            <li>Impact and Feedback</li>
+            <li>Collaboration</li>
+            <li>Reflections and Learnings</li>
+        </ul>
+    </div>
+
+    <!-- arrow -->
+    <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-20 bottom-5"></div>
+
+	<main>
+		<!-- hero -->
+		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/60">
+            <!-- image -->
+            <div class="flex items-center">
+                <img src="/images/pencil_hoops/sections/1.jpg" alt="" class="lg:w-[60%]">
+            </div>
+
+            <!-- project description and actions -->
+            <div class="max-w-[700px] flex flex-col justify-center">
+                <h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px]">Creating an Immersive Experience with Pencil Hoops</h2>
+                <p>
+                    Pencil Hoops is an interactive, people-friendly website designed for NBA fans 
+                    who appreciate the art of pencil sketching.<br><br>
+                    It blends minimal design, accessibility, and engaging experiences, combining stunning pencil sketches with 
+                    interactive animations and dynamic sound effects to bring NBA moments to life.
+                </p>
+
+                <div class="pt-[52px]">
+                    <button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button>
+                </div>
+            </div>
+			<div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div>
+		</section>
+
+        <!-- hey there -->
+        <section class="px-20 h-screen flex items-center justify-center relative pt-[200px]">
+            <h2 class="text-5xl leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF]">Hey there! This isn’t just a case study; it’s a story of the work, the process, and the thoughts behind it. My goal is to keep things fun and straightforward, enjoy!</h2>
+			<div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div>
+            <p class="absolute right-20 bottom-40 w-[70%] text-right">“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun & easy to use.” - Tunde</p>
+        </section>
+
+        <!-- table of contents -->
+        <section class="px-20 h-screen relative pt-[200px]">
+            <h2 class="font-safira lg:text-2xl">Content</h2>
+            <div class="max-w-2xl grid grid-cols-[80%_20%] grid-rows-6 mt-20 mx-auto my-auto gap-4">
+                <p class="text-2xl">Quick Overview</p><p>01</p>
+                <p class="text-2xl">Research and Insights</p><p>02</p>
+                <p class="text-2xl">Design Process</p><p>03</p>
+                <p class="text-2xl">Impact and Feedback</p><p>04</p>
+                <p class="text-2xl">Collaboration</p><p>05</p>
+                <p class="text-2xl">Reflections and Learnings</p><p>06</p>
+            </div>
+			<div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div>
+        </section>
+
+        <!-- 01 -->
+		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/65 relative">
+            <!-- project description and actions -->
+            <div class="max-w-[700px] flex flex-col justify-center gap-4">
+                <p class="text-4xl">01</p>
+                <h2 class="font-bilal lg:text-8xl leading-[40px] lg:leading-[58.25px] whitespace-nowrap">Quick Overview</h2>
+            </div>
+
+            <!-- image -->
+            <div class="flex items-center justify-end">
+                <img src="/images/pencil_hoops/sections/2.jpg" alt="" class="lg:w-[60%]">
+            </div>
+
+			<div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div>
+		</section>
+
+        <!-- 01 - Quick overview -->
+        <section class="h-screen overflow-hidden grid pb-8 pt-[200px] px-20 grid-cols-[auto_auto_40%] grid-rows-[auto_auto_auto] gap-4 relative">
+            <h3 class="text-2xl py-4">Product Overview</h3>
+            <p class="max-w-[500px] py-4 border-gray-200">Pencil Hoops is a concept website created to give NBA fans a fresh, fun way to enjoy the game through pencil art. 
+                We used Figma and Adobe Illustrator to design a clean, simple interface with interactive features. <br><br>
+                People who tested it said it was fun, easy to use, and really cool to look at.
+            </p>
+            <div class="row-span-3 bg-gray-200 w-full rounded-lg"></div>
+
+            <h3 class="text-2xl py-4 pt-8">My Role</h3>
+            <p class="max-w-[500px] border-y-[1px] py-4 pt-8 border-gray-200">I came up with the idea for Pencil Hoops and led the design from start to finish. I designed the website, 
+                collaborated with a pencil artist for some of the sketches, 
+                and worked closely with the developer to bring everything to life.<br><br>
+                I also added creative touches like basketball swoosh sound effects on clicks and interactive illustrations that come to life on hover. 
+                Plus, I ensured a smooth and detailed handoff to the developer.
+            </p>
+
+            <h3 class="text-2xl py-4">Impact</h3>
+            <p class="max-w-[500px] py-4 border-gray-200">Test users loved it, saying it was fun, easy to use, and visually engaging. The feedback was overwhelmingly positive, 
+                with many highlighting how enjoyable and intuitive it felt.
+            </p>
+
+
+
+		</section>
+
+		<!-- 02 -->
+		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/65 relative">
+            <!-- project description and actions -->
+            <div class="max-w-[700px] flex flex-col justify-center gap-10">
+                <p class="text-4xl">02</p>
+                <h2 class="font-bilal lg:text-8xl leading-[40px] lg:leading-[58.25px] whitespace-nowrap">Research and Insights</h2>
+            </div>
+
+            <!-- image -->
+            <div class="flex items-center justify-end">
+                <img src="/images/pencil_hoops/sections/2.jpg" alt="" class="lg:w-[60%]">
+            </div>
+
+			<div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div>
+		</section>
+
+        <!-- the problem -->
+        <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 relative">
+            <!-- project description and actions -->
+            <div class="max-w-[500px] flex flex-col justify-center gap-6">
+                <h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px]">The Problem</h2>
+                <p> 
+                    NBA fans needed something fun and refreshing, something that showcased the beauty of NBA moments through a unique artistic lens. 
+                    Most NBA-related websites were cluttered, hard to navigate, and lacked the engaging experience fans really wanted.
+                </p>
+            </div>
+
+            <!-- image -->
+            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/2.jpg')] bg-center bg-no-repeat bg-cover"></div>
+
+
+		</section>
+
+        <!-- research and design insights -->
+        <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 relative">
+            <!-- project description and actions -->
+            <div class="max-w-[500px] flex flex-col justify-center gap-6">
+                <h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px]">Research and Design Insights</h2>
+                <p> 
+                    I explored other NBA websites to see what worked and what didn’t. <br><br> 
+                    Through this research, I also realized that the NBA is seen as the 'cool sport', and my design needed to reflect that vibe. 
+                    This insight drove my focus on elegance and style, influencing my choice of fonts and the overall simplicity of the design.
+                </p>
+            </div>
+
+            <!-- points -->
+            <ul class="text-2xl max-w-[500px] flex flex-col gap-8 justify-center">
+                <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">1</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
+                <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">2</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
+                <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">3</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
+            </ul>
+
+
+		</section>
+
+        <!-- 03 -->
+		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/65 relative">
+            <!-- project description and actions -->
+            <div class="max-w-[700px] flex flex-col justify-center gap-10">
+                <p class="text-4xl">03</p>
+                <h2 class="font-bilal lg:text-8xl leading-[40px] lg:leading-[58.25px] whitespace-nowrap">Design Process</h2>
+            </div>
+
+            <!-- image -->
+            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/1.jpg')] bg-center bg-no-repeat bg-cover"></div>
+
+
+		</section>
+
+        <!-- laying the foundation -->
+        <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 relative">
+            <!-- project description and actions -->
+            <div class="max-w-[500px] flex flex-col justify-center gap-6">
+                <h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px]">Laying the Foundation – Sketches and Structure</h2>
+                <p> 
+                    I kicked off the design process with paper sketches to map out the structure and focus on intuitive navigation. 
+                    My goal was to answer key questions:
+                    <ul class="list-disc list-inside px-4 leading-[40px]">
+                        <li>Where am I?</li>
+                        <li>Where can I go?</li>
+                        <li>How do I get there? </li>
+                    </ul>
+                    These sketches helped me visualize the user journey and identify potential pain points early on.
+                    Once the structure felt right, I moved into Figma and Adobe Illustrator to create digital wireframes. 
+                    During this phase, I collaborated with the team to ideate on unique elements, 
+                    like the basketball net-inspired cards for the "Did You Know" section and basketball-shaped icons for the 
+                    next and previous buttons, which were initially sketched by our pencil artist.
+                </p>
+            </div>
+
+            <!-- image -->
+            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/b.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover"></div>
+
+
+		</section>
+
+        <!-- bringing designs to life -->
+        <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 relative">
+            <!-- project description and actions -->
+            <div class="max-w-[500px] flex flex-col justify-center gap-6">
+                <h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px]">Bringing Designs to Life</h2>
+                <p> 
+                    With the wireframes in place, I focused on interactivity and user engagement. I integrated progressive disclosure to minimize clutter, 
+                    especially for mobile users, ensuring a clean and focused experience. <br><br>
+                    To make the design feel dynamic and fun, I added interactive elements 
+                    like on-hover animations that transform cards from pencil sketches into colored, animated GIFs. 
+                    <br><br>
+                    I also introduced basketball swoosh sound effects on click events, adding an unexpected but delightful touch that aligns 
+                    with the NBA’s energetic vibe. 
+                    Smooth transitions and micro-interactions tied everything together, making the interface feel seamless and responsive.
+                </p>
+            </div>
+
+            <!-- image -->
+            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/l.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover"></div>
+
+
+		</section>
+
+        <!-- visual aesthetics -->
+        <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 relative">
+            <!-- project description and actions -->
+            <div class="max-w-[500px] flex flex-col justify-center gap-6">
+                <h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px]">Visual Aesthetics and Style</h2>
+                <p> 
+                    The NBA isn’t just a sport, it’s a culture, and I wanted the design to reflect that. During my research, 
+                    I realized the NBA is often seen as the “cool sport,” and that insight drove many of my design decisions. 
+                    I focused on elegance and style, which influenced both the typography and the overall simplicity of the layout.
+                    <br><br>
+                    I chose a clean, light-themed color palette with shades of gray and charcoal black to create a modern, sophisticated feel. 
+                    Typography was carefully selected to resonate with the NBA audience, bold, sleek, and contemporary. 
+                    The navigation remained minimal and user-friendly, allowing the content to shine without distractions.
+                </p>
+            </div>
+
+            <!-- colors -->
+            <div class="w-full bg-gray-400 bg-center bg-no-repeat bg-cover flex">
+                <div class="h-full min-w-[150px] max-w-[300px] bg-gray-200 px-4 py-8 flex flex-col justify-between items-start">
+                    <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">01</p>
+                    <div class="text-black">
+                        <p class="text-lg">Primary</p>
+                        <p class="text-xs">#333333</p>
+                    </div>
+                </div>
+                <div class="h-full min-w-[150px] max-w-[300px] bg-gray-200 px-4 py-8 flex flex-col justify-between items-start">
+                    <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">02</p>
+                    <div class="text-black">
+                        <p class="text-lg">Accent</p>
+                        <p class="text-xs">#333333</p>
+                    </div>
+                </div>
+                <div class="h-full min-w-[150px] max-w-[300px] bg-gray-200 px-4 py-8 flex flex-col justify-between items-start">
+                    <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">03</p>
+                    <div class="text-black">
+                        <p class="text-lg">Complementary</p>
+                        <p class="text-xs">#333333</p>
+                    </div>
+                </div>
+                <div class="h-full min-w-[150px] max-w-[300px] bg-gray-200 px-4 py-8 flex flex-col justify-between items-start">
+                    <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">04</p>
+                    <div class="text-black">
+                        <p class="text-lg">Primary</p>
+                        <p class="text-xs">#333333</p>
+                    </div>
+                </div>
+                <div class="h-full min-w-[150px] max-w-[300px] bg-gray-200 px-4 py-8 flex flex-col justify-between items-start">
+                    <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">05</p>
+                    <div class="text-black">
+                        <p class="text-lg">Primary</p>
+                        <p class="text-xs">#333333</p>
+                    </div>
+                </div>
+                <div class="h-full min-w-[150px] max-w-[300px] bg-gray-200 px-4 py-8 flex flex-col justify-between items-start">
+                    <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">06</p>
+                    <div class="text-black">
+                        <p class="text-lg">Primary</p>
+                        <p class="text-xs">#333333</p>
+                    </div>
+                </div>
+            </div>
+		</section>
+
+        <!-- high fidelity designs -->
+        <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 relative">
+            <!-- project description and actions -->
+            <div class="max-w-[500px] flex flex-col justify-center gap-6">
+                <h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px]">High-Fidelity Designs and Final Touches</h2>
+                <p> 
+                    After refining the visual style, I transitioned from low-fidelity sketches to high-fidelity designs. The pencil artist’s sketches, 
+                    like the basketball-shaped next and previous buttons and the board-and-net concept 
+                    for the "Did You Know" section, were digitized using Adobe Illustrator to create polished SVG assets. <br><br>
+                    I also incorporated NBA-themed content, such as “Inside Kyrie’s Bag of Tricks” and “Historical Moments in the NBA,” to keep fans engaged. 
+                    Throughout the process, I maintained clear communication with the developer, 
+                    ensuring a smooth handoff with detailed documentation and well-organized design assets.
+                </p>
+            </div>
+
+            <!-- image -->
+            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover"></div>
+
+
+		</section>
+
+        <!-- 04 -->
+		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/65 relative">
+            <!-- project description and actions -->
+            <div class="max-w-[600px] flex flex-col justify-center gap-10">
+                <p class="text-4xl">04</p>
+                <h2 class="font-bilal lg:text-8xl leading-[40px] lg:leading-[58.25px] whitespace-nowrap">Impact and Feedback</h2>
+                <p>
+                    Since Pencil Hoops is a concept project, there are no concrete analytics. However, user feedback has been overwhelmingly positive, 
+                    highlighting the website’s simplicity, immersive design, and engaging user experience.
+                    <ul>
+                        <li>“You really tried in the design as a lot of things are really modular and reusable” - Ovi.</li>
+                        <li>“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun and easy to use” - Tunde</li>
+                    </ul>
+                    These insights reinforced that the design decisions—focusing on simplicity, interactivity, 
+                    and a ‘cool’ NBA vibe—resonated well with the target audience.
+                </p>
+            </div>
+
+            <!-- image -->
+            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover"></div>
+
+
+		</section>
+
+        <!-- 05 -->
+		<section class="h-screen overflow-hidden pb-8 pt-[200px] px-20 bg-gray-200/65 relative">
+            <!-- project description and actions -->
+            <div class="max-w-[600px] flex flex-col justify-center gap-10">
+                <p class="text-4xl">05</p>
+                <h2 class="font-bilal lg:text-8xl leading-[40px] lg:leading-[58.25px] whitespace-nowrap">Collabration</h2>
+                <p>
+                    Since Pencil Hoops is a concept project, there are no concrete analytics. However, user feedback has been overwhelmingly positive, 
+                    highlighting the website’s simplicity, immersive design, and engaging user experience.
+                    <ul>
+                        <li>“You really tried in the design as a lot of things are really modular and reusable” - Ovi.</li>
+                        <li>“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun and easy to use” - Tunde</li>
+                    </ul>
+                    These insights reinforced that the design decisions—focusing on simplicity, interactivity, 
+                    and a ‘cool’ NBA vibe—resonated well with the target audience.
+                </p>
+            </div>
+
+            <!-- image -->
+            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover"></div>
+
+
+		</section>
+
+		<!-- about me -->
+		<section class="h-screen px-20">
+			<div class="pt-[180px] grid grid-cols-[auto_minmax(0,40%)] gap-10">
+				<!--  contents -->
+				<div class="flex flex-col gap-3.5">
+					<div>
+						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px]">Art and Photography</h2>
+						<p class="max-w-[744px] mt-2"> 
+							I like to balance logic with instinct,  a mix of planning and going with the flow. I tend 
+							to notice trends before they take off, whether it’s in data, markets, or design. <br><br>
+							When I’m not working on numbers or building something like Prospera, I’m probably outside staying active. I enjoy playing chess, 
+							rollerblading, trying out extreme sports, or just exploring and taking pictures along the way
+						</p>
+					</div>
+		
+					<div>
+						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px]">Anime and Animals</h2>
+						<p class="max-w-[744px] mt-2"> 
+							I love to unwind with movies and anime, and right now, I’m really into Solo Leveling. 
+							Anime helps me relax, spark my imagination, and enjoy stories from different perspectives. <br><br>
+							I also have a soft spot for animals, and at the end of the day, it’s all about enjoying life, finding moments to relax, 
+							and having a good time.
+						</p>
+					</div>
+		
+					<div>
+						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px]">Faith</h2>
+						<p class="max-w-[744px] mt-2"> 
+							Above all, my faith in Jesus defines who I am. The Gospel reminds me that life isn’t just about achievements or adventures, 
+							but about loving God and loving people. Whether I’m working, exploring, or relaxing, 
+							I strive to live in a way that reflects His grace and truth, finding purpose and meaning beyond the everyday.
+						</p>
+					</div>
+				</div>
+
+				<!-- images -->
+				<div class="w-full h-full grid grid-cols-3 grid-rows-[2fr_1fr_2fr] gap-1 p-1">
+					<div class="bg-[url('/images/images1.jpg')] rounded-lg bg-cover bg-center bg-no-repeat row-span-2"></div>
+					<div class="bg-[url('/images/images2.jpg')] rounded-lg bg-cover bg-center bg-no-repeat"></div>
+					<div class="bg-[url('/images/images3.jpg')] rounded-lg bg-cover bg-center bg-no-repeat row-span-2"></div>
+					<div class="bg-[url('/images/images5.jpg')] rounded-lg bg-cover bg-center bg-no-repeat row-span-2"></div>
+					<div class="bg-[url('/images/images6.jpg')] rounded-lg bg-cover bg-center bg-no-repeat"></div>
+					<div class="bg-[url('/images/images4.jpg')] rounded-lg bg-cover bg-center bg-no-repeat"></div>
+					
+				</div>
+			</div>
+		</section>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+
+</style>

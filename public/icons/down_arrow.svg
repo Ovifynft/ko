@@ -1,0 +1,10 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="button/down_arrow1" clip-path="url(#clip0_0_843)">
+<path id="Vector" d="M16.6665 53.3333C19.1398 53.3333 22.8332 55.7767 25.9332 58.25C29.9332 61.43 33.4232 65.23 36.0865 69.5867C38.0832 72.8533 39.9998 76.8133 39.9998 80M39.9998 80C39.9998 76.8133 41.9165 72.85 43.9132 69.5867C46.5798 65.23 50.0698 61.43 54.0632 58.25C57.1665 55.7767 60.8665 53.3333 63.3332 53.3333M39.9998 80V0" stroke="#AFAFAF" stroke-width="3.33333"/>
+</g>
+<defs>
+<clipPath id="clip0_0_843">
+<rect width="80" height="80" fill="white"/>
+</clipPath>
+</defs>
+</svg>
