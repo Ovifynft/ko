@@ -31,15 +31,15 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
             </div>
 
 			<div class="flex items-center gap-10">
-				<p class="font-bilal text-[32px] whitespace-nowrap">Kamil Oseni</p>
+				<p class="font-bilal text-[32px]">Kamil Oseni</p>
 				<div class="w-[100px] aspect-square bg-gray-500 rounded-full"></div>
 			</div>
 		</nav>
 	</header>
 
     <!-- bottom-nav -->
-    <div class="fixed bottom-0 right-0 z-10">
-        <ul class="flex pb-6 gap-4 pr-20 text-[#afafaf] font-semibold text-sm">
+    <div class="fixed bottom-0 right-0 z-10 flex">
+        <ul class="flex pb-6 gap-4 lg:pr-20 pr-4 text-[#afafaf] font-semibold text-[10px] lg:text-sm">
             <li class="text-black">Quick Overview</li>
             <li>Research and Insights</li>
             <li>Design Process</li>
@@ -62,7 +62,7 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 
             <!-- project description and actions -->
             <div class="max-w-[700px] flex flex-col justify-center">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-4">Creating an Immersive Experience with Pencil Hoops</h2>
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Creating an Immersive Experience with Pencil Hoops</h2>
 
                 <p>
                     Pencil Hoops is an interactive, people-friendly website designed for NBA fans 
@@ -80,7 +80,7 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 
         <!-- hey there -->
         <section class="px-20 h-screen flex items-center justify-center relative pt-[200px]">
-            <h2 class="text-sm md:text-2xl xl:text-5xl leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF]">Hey there! This isn’t just a case study; it’s a story of the work, the process, and the thoughts behind it. My goal is to keep things fun and straightforward, enjoy!</h2>
+            <h2 class="text-sm sm:text-lg md:text-2xl xl:text-5xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF]">Hey there! This isn’t just a case study; it’s a story of the work, the process, and the thoughts behind it. My goal is to keep things fun and straightforward, enjoy!</h2>
 			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div> -->
             <p class="absolute right-20 bottom-[5%] w-[70%] text-right">“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun & easy to use.” - Tunde</p>
         </section>
@@ -100,11 +100,11 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
         </section>
 
         <!-- 01 -->
-		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/65 relative">
+		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/65 relative gap-4 xl:gap-6">
             <!-- project description and actions -->
             <div class="max-w-[700px] flex flex-col justify-center gap-4">
                 <p class="text-4xl">01</p>
-                <h2 class="font-bilal lg:text-8xl leading-[40px] xl:leading-[58.25px] my-4 whitespace-nowrap">Quick Overview</h2>
+                <h2 class="font-bilal text-5xl lg:text-8xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Quick Overview</h2>
             </div>
 
             <!-- image -->
@@ -146,7 +146,7 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
             <!-- project description and actions -->
             <div class="max-w-[700px] flex flex-col justify-center gap-10">
                 <p class="text-4xl">02</p>
-                <h2 class="font-bilal lg:text-8xl leading-[40px] xl:leading-[58.25px] my-4 whitespace-nowrap">Research and Insights</h2>
+                <h2 class="font-bilal text-5xl lg:text-8xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Research and Insights</h2>
             </div>
 
             <!-- image -->
@@ -158,13 +158,13 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
         <!-- the problem -->
         <section class="h-screen overflow-hidden grid lg:grid-cols-2 pb-8 pt-[200px] px-20 relative">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col lg:justify-center gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-4">The Problem</h2>
+            <div class="lg:max-w-[500px] flex flex-col lg:justify-center gap-4 xl:gap-6">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">The Problem</h2>
                 <p> 
                     NBA fans needed something fun and refreshing, something that showcased the beauty of NBA moments through a unique artistic lens. 
                     Most NBA-related websites were cluttered, hard to navigate, and lacked the engaging experience fans really wanted.
                 </p>
-                <div class="flex items-center justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div>
+                <div class="flex items-center justify-end p-20 w-full h-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div>
             </div>
 
             <!-- image -->
@@ -174,10 +174,10 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 		</section>
 
         <!-- research and design insights -->
-        <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 relative">
+        <section class="h-screen overflow-hidden flex flex-col gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[200px] px-20 relative">
             <!-- project description and actions -->
-            <div class="max-w-[500px] flex flex-col justify-center gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-4">Research and Design Insights</h2>
+            <div class="max-w-[500px] flex flex-col justify-center gap-2 gap-4 xl:gap-6">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Research and Design Insights</h2>
                 <p> 
                     I explored other NBA websites to see what worked and what didn’t. <br><br> 
                     Through this research, I also realized that the NBA is seen as the 'cool sport', and my design needed to reflect that vibe. 
@@ -185,8 +185,8 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
                 </p>
             </div>
 
-            <!-- points -->
-            <ul class="text-2xl max-w-[500px] flex flex-col gap-8 justify-center">
+            <!-- points --> 
+            <ul class="xl:text-2xl max-w-[500px] flex flex-col gap-8 justify-center pl-4 pt-4">
                 <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">1</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
                 <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">2</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
                 <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">3</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
@@ -196,11 +196,11 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 		</section>
 
         <!-- 03 -->
-		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/65 relative">
+		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/65 relative gap-4 xl:gap-6">
             <!-- project description and actions -->
             <div class="max-w-[700px] flex flex-col justify-center gap-10">
                 <p class="text-4xl">03</p>
-                <h2 class="font-bilal lg:text-8xl leading-[40px] xl:leading-[58.25px] my-4 whitespace-nowrap">Design Process</h2>
+                <h2 class="font-bilal text-5xl lg:text-8xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Design Process</h2>
             </div>
 
             <!-- image -->
@@ -210,10 +210,10 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 		</section>
 
         <!-- laying the foundation -->
-        <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 relative">
+        <section class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-4 lg:gap-6 pb-8 pt-[200px] px-20 relative ">
             <!-- project description and actions -->
-            <div class="max-w-[500px] flex flex-col justify-center gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-4">Laying the Foundation – Sketches and Structure</h2>
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-4 xl:gap-6">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Laying the Foundation – Sketches and Structure</h2>
                 <p> 
                     I kicked off the design process with paper sketches to map out the structure and focus on intuitive navigation. 
                     My goal was to answer key questions:
@@ -237,10 +237,10 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 		</section>
 
         <!-- bringing designs to life -->
-        <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 relative">
+        <section class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-4 lg:gap-6 pb-8 pt-[200px] px-20 relative ">
             <!-- project description and actions -->
-            <div class="max-w-[500px] flex flex-col justify-center gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-4">Bringing Designs to Life</h2>
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-4 xl:gap-6">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Bringing Designs to Life</h2>
                 <p> 
                     With the wireframes in place, I focused on interactivity and user engagement. I integrated progressive disclosure to minimize clutter, 
                     especially for mobile users, ensuring a clean and focused experience. <br><br>
@@ -260,10 +260,10 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 		</section>
 
         <!-- visual aesthetics -->
-        <section class="h-screen overflow-hidden grid grid-cols-[auto_auto] gap-8 pb-8 pt-[200px] px-20 relative @container">
+        <section class="h-screen overflow-hidden flex flex-col md:grid md:grid-cols-[40%_60%] gap-8 pb-8 pt-[200px] px-20 relative @container">
             <!-- project description and actions -->
-            <div class="max-w-[500px] flex flex-col justify-center gap-6 ">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-4">Visual Aesthetics and Style</h2>
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-4 xl:gap-6">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Visual Aesthetics and Style</h2>
                 <p> 
                     The NBA isn’t just a sport, it’s a culture, and I wanted the design to reflect that. During my research, 
                     I realized the NBA is often seen as the “cool sport,” and that insight drove many of my design decisions. 
@@ -276,43 +276,43 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
             </div>
 
             <!-- colors -->
-            <div class="w-full bg-gray-400 bg-center bg-no-repeat bg-cover flex flex-wrap">
-                <div class=" min-w-[240px] max-w-[300px] bg-gray-200 px-4 py-8 flex flex-col justify-between items-start">
+            <div class="w-full bg-center bg-no-repeat bg-cover hidden sm:grid grid-rows-2 grid-cols-4 md:grid-cols-2 md:grid-rows-3">
+                <div class="bg-gray-200 px-4 py-8 flex flex-col justify-between items-start gap-2">
                     <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">01</p>
                     <div class="text-black">
                         <p class="md:text-lg text-sm">Primary</p>
                         <p class="sm:text-xs text-[9px]">#333333</p>
                     </div>
                 </div>
-                <div class=" min-w-[240px] max-w-[300px] bg-gray-200 px-4 py-8 flex flex-col justify-between items-start">
+                <div class="bg-gray-200 px-4 py-8 flex flex-col justify-between items-start gap-2">
                     <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">02</p>
                     <div class="text-black">
                         <p class="md:text-lg text-sm">Accent</p>
                         <p class="sm:text-xs text-[9px]">#333333</p>
                     </div>
                 </div>
-                <div class=" min-w-[240px] max-w-[300px] bg-gray-200 px-4 py-8 flex flex-col justify-between items-start">
+                <div class="bg-gray-200 px-4 py-8 flex flex-col justify-between items-start gap-2">
                     <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">03</p>
                     <div class="text-black">
                         <p class="md:text-lg text-sm">Complementary</p>
                         <p class="sm:text-xs text-[9px]">#333333</p>
                     </div>
                 </div>
-                <div class=" min-w-[240px] max-w-[300px] bg-gray-200 px-4 py-8 flex flex-col justify-between items-start">
+                <div class="bg-gray-200 px-4 py-8 flex flex-col justify-between items-start gap-2">
                     <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">04</p>
                     <div class="text-black">
                         <p class="md:text-lg text-sm">Primary</p>
                         <p class="sm:text-xs text-[9px]">#333333</p>
                     </div>
                 </div>
-                <div class=" min-w-[240px] max-w-[300px] bg-gray-200 px-4 py-8 flex flex-col justify-between items-start">
+                <div class="bg-gray-200 px-4 py-8 flex flex-col justify-between items-start gap-2">
                     <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">05</p>
                     <div class="text-black">
                         <p class="md:text-lg text-sm">Primary</p>
                         <p class="sm:text-xs text-[9px]">#333333</p>
                     </div>
                 </div>
-                <div class=" min-w-[240px] max-w-[300px] bg-gray-200 px-4 py-8 flex flex-col justify-between items-start">
+                <div class="bg-gray-200 px-4 py-8 flex flex-col justify-between items-start gap-2">
                     <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">06</p>
                     <div class="text-black">
                         <p class="md:text-lg text-sm">Primary</p>
@@ -323,10 +323,10 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 		</section>
 
         <!-- high fidelity designs -->
-        <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 relative">
+        <section class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-4 lg:gap-6 pb-8 pt-[200px] px-20 relative ">
             <!-- project description and actions -->
-            <div class="max-w-[500px] flex flex-col justify-center gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-4">High-Fidelity Designs and Final Touches</h2>
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-4 xl:gap-6">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">High-Fidelity Designs and Final Touches</h2>
                 <p> 
                     After refining the visual style, I transitioned from low-fidelity sketches to high-fidelity designs. The pencil artist’s sketches, 
                     like the basketball-shaped next and previous buttons and the board-and-net concept 
@@ -344,11 +344,11 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 		</section>
 
         <!-- 04 -->
-		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/65 relative">
+		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/65 relative gap-4 xl:gap-6">
             <!-- project description and actions -->
             <div class="max-w-[600px] flex flex-col justify-center gap-10">
                 <p class="text-4xl">04</p>
-                <h2 class="font-bilal lg:text-8xl leading-[40px] xl:leading-[58.25px] my-4 whitespace-nowrap">Impact and Feedback</h2>
+                <h2 class="font-bilal text-5xl lg:text-8xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Impact and Feedback</h2>
                 <p>
                     Since Pencil Hoops is a concept project, there are no concrete analytics. However, user feedback has been overwhelmingly positive, 
                     highlighting the website’s simplicity, immersive design, and engaging user experience.
@@ -372,7 +372,7 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
             <!-- project description and actions -->
             <div class="max-w-[600px] flex flex-col justify-center gap-10">
                 <p class="text-4xl">05</p>
-                <h2 class="font-bilal lg:text-8xl leading-[40px] xl:leading-[58.25px] my-4 whitespace-nowrap">Collabration</h2>
+                <h2 class="font-bilal text-5xl lg:text-8xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Collabration</h2>
                 <p>
                     Since Pencil Hoops is a concept project, there are no concrete analytics. However, user feedback has been overwhelmingly positive, 
                     highlighting the website’s simplicity, immersive design, and engaging user experience.
@@ -397,7 +397,7 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 				<!--  contents -->
 				<div class="flex flex-col gap-3.5">
 					<div>
-						<h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-4">Art and Photography</h2>
+						<h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Art and Photography</h2>
 						<p class="max-w-[744px] mt-2"> 
 							I like to balance logic with instinct,  a mix of planning and going with the flow. I tend 
 							to notice trends before they take off, whether it’s in data, markets, or design. <br><br>
@@ -407,7 +407,7 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 					</div>
 		
 					<div>
-						<h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-4">Anime and Animals</h2>
+						<h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Anime and Animals</h2>
 						<p class="max-w-[744px] mt-2"> 
 							I love to unwind with movies and anime, and right now, I’m really into Solo Leveling. 
 							Anime helps me relax, spark my imagination, and enjoy stories from different perspectives. <br><br>
@@ -417,7 +417,7 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 					</div>
 		
 					<div>
-						<h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-4">Faith</h2>
+						<h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Faith</h2>
 						<p class="max-w-[744px] mt-2"> 
 							Above all, my faith in Jesus defines who I am. The Gospel reminds me that life isn’t just about achievements or adventures, 
 							but about loving God and loving people. Whether I’m working, exploring, or relaxing, 
