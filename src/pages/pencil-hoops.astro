@@ -3,49 +3,59 @@ import Layout from '../layouts/Layout.astro';
 import Footer from '../layouts/Footer.astro'
 
 import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
+let links = ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'problem', 'research-and-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'closing']
+let data = JSON.stringify({active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'research-and-insights', 'problem', 'design-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'learnings', 'closing']})
 ---
 
 <Layout title="Welcome to Astro.">
 	<!-- nav -->
-	<header class="fixed top-0 left-0 right-0 bg-white w-full opacity-95 z-30">
-		<nav class="flex justify-between items-center pt-8 pb-2 px-20 border-b-[1px] border-b-gray-100">
+    <div  x-data={data}>
+	<header class="fixed top-0 left-0 right-0 bg-white w-full z-30">
+		<nav class="flex justify-between items-center pt-4 lg:pt-8 pb-2 px-8 gap-4 lg:px-20 border-b-[1px] border-b-gray-100">
             <button><AlignLeft /></button>
+            <!-- <p x-text="active"></p> -->
 
             <div class="w-full flex justify-center">
-                <div class="h-1 w-full max-w-[424px] flex gap-3 relative left-[5%]">  
-                    <div class="w-full h-full bg-gray-200 relative after:content-[''] after:absolute after:w-[50%] after:bottom-0 after:bg-black after:left-0 after:top-0"></div>
-                    <div class="w-full h-full bg-gray-200 relative"></div>
-                    <div class="w-full h-full bg-gray-200"></div>
-                    <div class="w-full h-full bg-gray-200"></div>
-                    <div class="w-full h-full bg-gray-200"></div>
-                    <div class="w-full h-full bg-gray-200"></div>
-                    <div class="w-full h-full bg-gray-200"></div>
-                    <div class="w-full h-full bg-gray-200"></div>
-                    <div class="w-full h-full bg-gray-200"></div>
-                    <div class="w-full h-full bg-gray-200"></div>
-                    <div class="w-full h-full bg-gray-200"></div>
-                    <div class="w-full h-full bg-gray-200"></div>
-                    <div class="w-full h-full bg-gray-200"></div>
-                    <div class="w-full h-full bg-gray-200"></div>
+                <div class="h-2 w-full max-w-[600px] flex gap-3 relative lg:left-[5%]">  
+                    <template x-for='(link, index) in links'>
+                        <a :href="'#' + link" href="link" class="w-full h-full transition-all duration-200"
+                            @click="active = link"
+                            :class="{'bg-black' : links.indexOf(link) <= links.indexOf(active), 'bg-gray-200 hover:bg-gray-400' : links.indexOf(link) > links.indexOf(active)}"
+                        ></a>
+                    </template>
+                    <!-- <a class="w-full h-full bg-gray-200 relative after:content-[''] after:absolute after:w-[40%] lg:after:w-[50%] after:bottom-0 after:bg-black after:left-0 after:top-0"></a>
+                    <a class="w-full h-full bg-gray-200 relative"></a>
+                    <a class="w-full h-full bg-gray-200"></a>
+                    <a class="w-full h-full bg-gray-200"></a>
+                    <a class="w-full h-full bg-gray-200"></a>
+                    <a class="w-full h-full bg-gray-200"></a>
+                    <a class="w-full h-full bg-gray-200"></a>
+                    <a class="w-full h-full bg-gray-200"></a>
+                    <a class="w-full h-full bg-gray-200"></a>
+                    <a class="w-full h-full bg-gray-200"></a>
+                    <a class="w-full h-full bg-gray-200"></a>
+                    <a class="w-full h-full bg-gray-200"></a>
+                    <a class="w-full h-full bg-gray-200"></a>
+                    <a class="w-full h-full bg-gray-200"></a> -->
                 </div>
             </div>
 
-			<div class="flex items-center gap-10">
-				<p class="font-bilal text-[32px]">Kamil Oseni</p>
-				<div class="w-[100px] aspect-square bg-gray-500 rounded-full"></div>
+			<div class="flex items-center gap-5">
+				<p class="font-bilal hidden lg:block lg:text-[32px] whitespace-nowrap">Kamil Oseni</p>
+				<div class="lg:w-[100px] md:w-[70px] w-[50px] aspect-square bg-gray-500 rounded-full"></div>
 			</div>
 		</nav>
 	</header>
 
     <!-- bottom-nav -->
-    <div class="fixed bottom-0 right-0 z-10 flex">
-        <ul class="flex pb-6 gap-4 lg:pr-20 pr-4 text-[#afafaf] font-semibold text-[10px] lg:text-sm">
-            <li class="text-black">Quick Overview</li>
-            <li>Research and Insights</li>
-            <li>Design Process</li>
-            <li>Impact and Feedback</li>
-            <li>Collaboration</li>
-            <li>Reflections and Learnings</li>
+    <div class="fixed bottom-0 right-0 z-10 flex bg-white pt-4 pl-4 xl:px-10 lg:pl-10 py-6 xl:py-10 border-l-[2px] border-l-gray-200/50 border-t-[2px] border-t-gray-200/50">
+        <ul class="flex gap-4 text-[#afafaf] font-semibold text-[10px] lg:text-sm">
+            <li class="active:bg-black"><a href="#quick-overview">Quick Overview</a></li>
+            <li><a href="#research-and-insights"> Research and Insights</a></li>
+            <li><a href="#design-process"> Design Process</a></li>
+            <li><a href="#impact-and-feedback"> Impact and Feedback</a></li>
+            <li><a href="#collaboration"> Collaboration</a></li>
+            <li><a href="#reflections"> Reflections and Learnings</a></li>
         </ul>
     </div>
 
@@ -54,69 +64,80 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 
 	<main>
 		<!-- hero -->
-		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/60">
-            <!-- image -->
-            <div class="flex items-center">
-                <img src="/images/pencil_hoops/sections/1.jpg" alt="" class="lg:w-[60%]">
-            </div>
-
-            <!-- project description and actions -->
-            <div class="max-w-[700px] flex flex-col justify-center">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Creating an Immersive Experience with Pencil Hoops</h2>
-
-                <p>
-                    Pencil Hoops is an interactive, people-friendly website designed for NBA fans 
-                    who appreciate the art of pencil sketching.<br><br>
-                    It blends minimal design, accessibility, and engaging experiences, combining stunning pencil sketches with 
-                    interactive animations and dynamic sound effects to bring NBA moments to life.
-                </p>
-
-                <div class="pt-[52px]">
-                    <button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button>
+        <div id="hero" class="bg-gray-100">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 max-w-[1700px] mx-auto">
+                <!-- image -->
+                <div class="flex opacity-0 hero-img items-center slide justify-end overflow-hidden p-20 w-full bg-[url('/images/pencil_hoops/sections/1.jpg')] bg-blend-color-burn bg-gray-200/5 bg-center bg-no-repeat bg-cover h-full relative">
+                    <!-- {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-gray-100 left-0 right-0 absolute h-[20%] slide-2 box"></div>)
+                    } -->
+                    <!-- <div class="bg-gray-100 top-0 left-0 right-0 absolute h-[20%] slide-1 box"></div>
+                    <div class="bg-gray-100 top-[20%] left-0 right-0 absolute h-[20%] slide-2 box"></div>
+                    <div class="bg-gray-100 top-[40%] left-0 right-0 absolute h-[20%] slide-3 box"></div>
+                    <div class="bg-gray-100 top-[60%] left-0 right-0 absolute h-[20%] slide-4 box"></div>
+                    <div class="bg-gray-100 top-[80%] left-0 right-0 absolute h-[20%] slide-5 box"></div> -->
                 </div>
-            </div>
-			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
-		</section>
+    
+                <!-- project description and actions -->
+                <div class="max-w-[700px] flex flex-col justify-center">
+                    <h2 class="heading-up font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4  opacity-0 translate-y-[50%] up">Creating an Immersive Experience with Pencil Hoops</h2>
+    
+                    <p class="heading-up opacity-0">
+                        Pencil Hoops is an interactive, people-friendly website designed for NBA fans 
+                        who appreciate the art of pencil sketching.<br><br>
+                        It blends minimal design, accessibility, and engaging experiences, combining stunning pencil sketches with 
+                        interactive animations and dynamic sound effects to bring NBA moments to life.
+                    </p>
+    
+                    <div class="pt-[52px] heading-up opacity-0">
+                        <button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button>
+                    </div>
+                </div>
+                <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
+            </section> 
+        </div>
+		
 
         <!-- hey there -->
-        <section class="px-20 h-screen flex items-center justify-center relative pt-[200px]">
+        <section id="hey-there" class="lg:px-20 px-10 h-screen flex items-center justify-center relative pt-[100px] md:pt-[120px] lg:pt-[200px] max-w-[1700px] mx-auto">
             <h2 class="text-sm sm:text-lg md:text-2xl xl:text-5xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF]">Hey there! This isn’t just a case study; it’s a story of the work, the process, and the thoughts behind it. My goal is to keep things fun and straightforward, enjoy!</h2>
 			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div> -->
             <p class="absolute right-20 bottom-[5%] w-[70%] text-right">“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun & easy to use.” - Tunde</p>
         </section>
 
         <!-- table of contents -->
-        <section class="px-20 h-screen relative pt-[200px]">
-            <h2 class="font-safira lg:text-sm xl:text-2xl">Content</h2>
+        <section id="table" class="lg:px-20 px-10 h-screen relative pt-[100px] md:pt-[120px] lg:pt-[200px] max-w-[1700px] mx-auto">
+            <h2 class="font-safira lg:text-sm xl:text-2xl heading-up">Content</h2>
             <div class="max-w-2xl grid grid-cols-[80%_20%] grid-rows-6 mt-20 mx-auto my-auto gap-4 lg:text-xl xl:text-2xl">
-                <p>Quick Overview</p><p>01</p>
-                <p>Research and Insights</p><p>02</p>
-                <p>Design Process</p><p>03</p>
-                <p>Impact and Feedback</p><p>04</p>
-                <p>Collaboration</p><p>05</p>
-                <p>Reflections and Learnings</p><p>06</p>
+                <p class="quick-right opacity-0">Quick Overview</p><p class="quick-up opacity-0 translate-y-[50%]">01</p>
+                <p class="quick-right opacity-0">Research and Insights</p><p class="quick-up opacity-0 translate-y-[50%]">02</p>
+                <p class="quick-right opacity-0">Design Process</p><p class="quick-up opacity-0 translate-y-[50%]">03</p>
+                <p class="quick-right opacity-0">Impact and Feedback</p><p class="quick-up opacity-0 translate-y-[50%]">04</p>
+                <p class="quick-right opacity-0">Collaboration</p><p class="quick-up opacity-0 translate-y-[50%]">05</p>
+                <p class="quick-right opacity-0">Reflections and Learnings</p><p class="quick-up opacity-0 translate-y-[50%]">06</p>
             </div>
 			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div> -->
         </section>
 
         <!-- 01 -->
-		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/65 relative gap-4 xl:gap-6">
-            <!-- project description and actions -->
-            <div class="max-w-[700px] flex flex-col justify-center gap-4">
-                <p class="text-4xl">01</p>
-                <h2 class="font-bilal text-5xl lg:text-8xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Quick Overview</h2>
-            </div>
-
-            <!-- image -->
-            <div class="flex items-center justify-end">
-                <img src="/images/pencil_hoops/sections/2.jpg" alt="" class="lg:w-[60%]">
-            </div>
-
-			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
-		</section>
+        <div id="quick-overview" class="bg-gray-100">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] max-w-[1700px] mx-auto lg:px-20 px-10 relative gap-4 xl:gap-6">
+                <!-- project description and actions -->
+                <div class="max-w-[700px] flex flex-col justify-center gap-4">
+                    <p class="text-4xl font-cookie">01</p>
+                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4">Quick Overview</h2>
+                </div>
+    
+                <!-- image -->
+                <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/2.jpg')] bg-blend-color-burn bg-gray-200/5 bg-center bg-no-repeat bg-cover h-full"></div>
+    
+                <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
+            </section>
+        </div>
+		
 
         <!-- 01 - Quick overview -->
-        <section class="h-screen overflow-hidden flex flex-col lg:grid pb-8 pt-[200px] px-20 xl:grid-cols-[auto_auto_40%] lg:grid-cols-[auto_auto_10%]  grid-rows-[auto_auto_auto] lg:gap-4 relative">
+        <section id="quick-overview-2" class="h-screen overflow-hidden flex flex-col lg:grid pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 xl:grid-cols-[auto_auto_40%] lg:grid-cols-[auto_auto_10%]  grid-rows-[auto_auto_auto] lg:gap-4 relative max-w-[1700px] mx-auto">
             <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xltext-2xl pb-2 xl:py-4">Product Overview</h3>
             <p class="md:w-full xl:max-w-[500px] pb-2 xl:py-4 border-gray-200">Pencil Hoops is a concept website created to give NBA fans a fresh, fun way to enjoy the game through pencil art. 
                 We used Figma and Adobe Illustrator to design a clean, simple interface with interactive features. <br><br>
@@ -142,42 +163,51 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 		</section>
 
 		<!-- 02 -->
-		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/20 relative">
-            <!-- project description and actions -->
-            <div class="max-w-[700px] flex flex-col justify-center gap-10">
-                <p class="text-4xl">02</p>
-                <h2 class="font-bilal text-5xl lg:text-8xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Research and Insights</h2>
-            </div>
-
-            <!-- image -->
-            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/gif1.gif')] bg-gray-200 bg-center bg-no-repeat bg-cover"></div>
-
-			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
-		</section>
+        <div id="research-and-insights" class="bg-gray-100">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10  relative max-w-[1700px] mx-auto">
+                <!-- project description and actions -->
+                <div class="max-w-[700px] flex flex-col justify-center gap-10">
+                    <p class="text-4xl font-cookie">02</p>
+                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4">Research and Insights</h2>
+                </div>
+    
+                <!-- image -->
+                <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/gif1.gif')] bg-gray-200/60 bg-center bg-no-repeat bg-cover bg-blend-color-burn"></div>
+    
+                <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
+            </section>
+        </div>
 
         <!-- the problem -->
-        <section class="h-screen overflow-hidden grid lg:grid-cols-2 pb-8 pt-[200px] px-20 relative">
+        <section id='problem' class="h-screen overflow-hidden grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col lg:justify-center gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">The Problem</h2>
-                <p> 
+            <div class="lg:max-w-[500px] flex flex-col lg:justify-center gap-4 xl:gap-6 relative box-parent">
+                
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">The Problem</h2>
+                <p class="quick-up"> 
                     NBA fans needed something fun and refreshing, something that showcased the beauty of NBA moments through a unique artistic lens. 
                     Most NBA-related websites were cluttered, hard to navigate, and lacked the engaging experience fans really wanted.
                 </p>
                 <div class="flex items-center justify-end p-20 w-full h-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div>
+
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
             </div>
 
             <!-- image -->
-            <div class="flex items-center justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden lg:block"></div>
-
-
+            <div class="lg:flex items-center justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
 		</section>
 
         <!-- research and design insights -->
-        <section class="h-screen overflow-hidden flex flex-col gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[200px] px-20 relative">
+        <section id="design-insights" class="h-screen overflow-hidden flex flex-col gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Research and Design Insights</h2>
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Research and Design Insights</h2>
                 <p> 
                     I explored other NBA websites to see what worked and what didn’t. <br><br> 
                     Through this research, I also realized that the NBA is seen as the 'cool sport', and my design needed to reflect that vibe. 
@@ -186,7 +216,7 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
             </div>
 
             <!-- points --> 
-            <ul class="xl:text-2xl max-w-[500px] flex flex-col gap-8 justify-center pl-4 pt-4">
+            <ul class="xl:text-2xl lg:max-w-[500px] flex flex-col gap-8 justify-center pl-4 pt-4">
                 <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">1</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
                 <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">2</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
                 <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">3</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
@@ -196,24 +226,27 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 		</section>
 
         <!-- 03 -->
-		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/65 relative gap-4 xl:gap-6">
-            <!-- project description and actions -->
-            <div class="max-w-[700px] flex flex-col justify-center gap-10">
-                <p class="text-4xl">03</p>
-                <h2 class="font-bilal text-5xl lg:text-8xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Design Process</h2>
-            </div>
-
-            <!-- image -->
-            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover"></div>
-
-
-		</section>
+        <div id="design-process" class="bg-gray-100">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+                <!-- project description and actions -->
+                <div class="max-w-[700px] flex flex-col justify-center gap-10">
+                    <p class="text-4xl font-cookie">03</p>
+                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4">Design Process</h2>
+                </div>
+    
+                <!-- image -->
+                <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
+    
+    
+            </section>
+        </div>
+	
 
         <!-- laying the foundation -->
-        <section class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-4 lg:gap-6 pb-8 pt-[200px] px-20 relative ">
+        <section id="foundation" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Laying the Foundation – Sketches and Structure</h2>
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Laying the Foundation – Sketches and Structure</h2>
                 <p> 
                     I kicked off the design process with paper sketches to map out the structure and focus on intuitive navigation. 
                     My goal was to answer key questions:
@@ -230,17 +263,17 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
                 </p>
             </div>
 
-            <!-- image -->
-            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/b.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover"></div>
+           <!-- image -->
+           <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
 
 
 		</section>
 
         <!-- bringing designs to life -->
-        <section class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-4 lg:gap-6 pb-8 pt-[200px] px-20 relative ">
+        <section id="life" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Bringing Designs to Life</h2>
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Bringing Designs to Life</h2>
                 <p> 
                     With the wireframes in place, I focused on interactivity and user engagement. I integrated progressive disclosure to minimize clutter, 
                     especially for mobile users, ensuring a clean and focused experience. <br><br>
@@ -254,16 +287,16 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
             </div>
 
             <!-- image -->
-            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/l.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover"></div>
+            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
 
 
 		</section>
 
         <!-- visual aesthetics -->
-        <section class="h-screen overflow-hidden flex flex-col md:grid md:grid-cols-[40%_60%] gap-8 pb-8 pt-[200px] px-20 relative @container">
+        <section id="visual" class="h-screen overflow-hidden flex flex-col md:grid md:grid-cols-[40%_60%] gap-8 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative @container max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Visual Aesthetics and Style</h2>
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Visual Aesthetics and Style</h2>
                 <p> 
                     The NBA isn’t just a sport, it’s a culture, and I wanted the design to reflect that. During my research, 
                     I realized the NBA is often seen as the “cool sport,” and that insight drove many of my design decisions. 
@@ -323,10 +356,10 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 		</section>
 
         <!-- high fidelity designs -->
-        <section class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-4 lg:gap-6 pb-8 pt-[200px] px-20 relative ">
+        <section id="fidelity" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">High-Fidelity Designs and Final Touches</h2>
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">High-Fidelity Designs and Final Touches</h2>
                 <p> 
                     After refining the visual style, I transitioned from low-fidelity sketches to high-fidelity designs. The pencil artist’s sketches, 
                     like the basketball-shaped next and previous buttons and the board-and-net concept 
@@ -338,102 +371,109 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
             </div>
 
             <!-- image -->
-            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover"></div>
+            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
 
 
 		</section>
 
         <!-- 04 -->
-		<section class="h-screen overflow-hidden flex flex-col lg:grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/65 relative gap-4 xl:gap-6">
-            <!-- project description and actions -->
-            <div class="max-w-[600px] flex flex-col justify-center gap-10">
-                <p class="text-4xl">04</p>
-                <h2 class="font-bilal text-5xl lg:text-8xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Impact and Feedback</h2>
-                <p>
-                    Since Pencil Hoops is a concept project, there are no concrete analytics. However, user feedback has been overwhelmingly positive, 
-                    highlighting the website’s simplicity, immersive design, and engaging user experience.
-                    <ul>
-                        <li>“You really tried in the design as a lot of things are really modular and reusable” - Ovi.</li>
-                        <li>“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun and easy to use” - Tunde</li>
-                    </ul>
-                    These insights reinforced that the design decisions—focusing on simplicity, interactivity, 
-                    and a ‘cool’ NBA vibe—resonated well with the target audience.
-                </p>
-            </div>
-
-            <!-- image -->
-            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover"></div>
-
-
-		</section>
+        <div id="impact-and-feedback" class="bg-gray-100">
+            <section class="h-screen overflow-hidden flex flex-col lg:grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+                <!-- project description and actions -->
+                <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
+                    <p class="text-4xl font-cookie">04</p>
+                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 xl:whitespace-nowrap">Impact and Feedback</h2>
+                    <p>
+                        Since Pencil Hoops is a concept project, there are no concrete analytics. However, user feedback has been overwhelmingly positive, 
+                        highlighting the website’s simplicity, immersive design, and engaging user experience.
+                        <ul>
+                            <li>“You really tried in the design as a lot of things are really modular and reusable” - Ovi.</li>
+                            <li>“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun and easy to use” - Tunde</li>
+                        </ul>
+                        These insights reinforced that the design decisions—focusing on simplicity, interactivity, 
+                        and a ‘cool’ NBA vibe—resonated well with the target audience.
+                    </p>
+                </div>
+    
+                <!-- image -->
+                <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
+    
+    
+            </section>
+        </div>
 
         <!-- 05 Collabrations-->
-		<section class="h-screen overflow-hidden pb-8 pt-[200px] px-20 bg-gray-200/65 relative">
-            <!-- project description and actions -->
-            <div class="max-w-[600px] flex flex-col justify-center gap-10">
-                <p class="text-4xl">05</p>
-                <h2 class="font-bilal text-5xl lg:text-8xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Collabration</h2>
-            </div>
-
-            <!-- image -->
-            <div class="flex items-start justify-between p-20 w-full">
-                <div class="flex flex-col gap-4">
-                    <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Animations and illustrations by</h2>
-                    <div class="flex justify-between">
-                        <ul class="list-disc list-inside flex flex-col gap-2">
-                            <li>Walker TKL</li>
-                            <li>Robertino Zambrano</li>
-                            <li>Patrick Truby</li>
-                            <li>Keshizumi_k</li>
-                        </ul>
-
-                        <ul class="list-disc list-inside flex flex-col gap-2">
-                            <li>Dave Merrell</li>
-                            <li>Seung Eun Kim</li>
-                            <li>Brit Sigh</li>
-                        </ul>
-
-                        <ul class="list-disc list-inside flex flex-col gap-2">
-                            <li>Oluwaseun Adimi</li>
-                            <li>Kamil Oseni</li>
-                            <li>Takehiko Inoue</li>
-                        </ul>
+        <div id="collaboration" class="bg-gray-100">
+            <section class="h-screen overflow-hidden pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+                <!-- project description and actions -->
+                <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
+                    <p class="text-4xl font-cookie">05</p>
+                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4">Collabration</h2>
+                </div>
+    
+                <!-- image -->
+                <div class="flex flex-col lg:flex-row items-start justify-between lg:gap-12 gap-6 lg:p-20 p-10 w-full">
+                    <div class="flex flex-col gap-4">
+                        <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Animations and illustrations by</h2>
+                        <div class="flex flex-wrap gap-4">
+                            <ul class="list-disc list-inside flex flex-col gap-2">
+                                <li>Walker TKL</li>
+                                <li>Robertino Zambrano</li>
+                                <li>Patrick Truby</li>
+                                <li>Keshizumi_k</li>
+                            </ul>
+    
+                            <ul class="list-disc list-inside flex flex-col gap-2">
+                                <li>Dave Merrell</li>
+                                <li>Seung Eun Kim</li>
+                                <li>Brit Sigh</li>
+                            </ul>
+    
+                            <ul class="list-disc list-inside flex flex-col gap-2">
+                                <li>Oluwaseun Adimi</li>
+                                <li>Kamil Oseni</li>
+                                <li>Takehiko Inoue</li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="flex flex-col gap-4">
+                        <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Developed and Designed by</h2>
+                        <div class="flex flex-wrap">
+                            <ul class="list-disc list-inside flex flex-col gap-2">
+                                <li>Walker TKL</li>
+                                <li>Robertino Zambrano</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-
-                <div class="flex flex-col gap-4">
-                    <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Developed and Designed by</h2>
-                    <div class="flex justify-between">
-                        <ul class="list-disc list-inside flex flex-col gap-2">
-                            <li>Walker TKL</li>
-                            <li>Robertino Zambrano</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-
-		</section>
+    
+    
+            </section>
+        </div>
 
         <!-- 06 reflections and learnings -->
-		<section class="h-screen overflow-hidden flex flex-col lg:grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/65 relative gap-4 xl:gap-6">
-            <!-- project description and actions -->
-            <div class="max-w-[600px] flex flex-col justify-center gap-10">
-                <p class="text-4xl">06</p>
-                <h2 class="font-bilal text-5xl lg:text-8xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Reflections and Learnings</h2>
-            </div>
-
-            <!-- image -->
-            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover"></div>
-
-
-		</section>
+        <div id="reflections" class="bg-gray-100">
+            <section class="h-screen overflow-hidden flex flex-col lg:grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+                <!-- project description and actions -->
+                <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
+                    <p class="text-4xl font-cookie">06</p>
+                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4">Reflections and Learnings</h2>
+                </div>
+    
+                <!-- image -->
+                <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
+    
+    
+            </section>
+        </div>
+		
 
         <!-- Reflections and learnings -->
-        <section class="h-screen overflow-hidden flex flex-col gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[200px] px-20 relative">
+        <section id="learnings" class="h-screen overflow-hidden flex flex-col gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Reflections and Learnings</h2>
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Reflections and Learnings</h2>
                 <p class="flex flex-col gap-6"> 
                     <span>
                     <b class="mb-1 block">What worked well</b>
@@ -455,7 +495,7 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 
             <!-- points --> 
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Personal Story</h2>
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Personal Story</h2>
                 <p class="flex flex-col gap-6"> 
                     One of the biggest challenges I faced was figuring out how to make the website creative, simple, and unique. 
                     After experimenting with a few ideas, I ended up with the concept of pencil sketches that come to life, animated and colored, when users hover over them. 
@@ -470,29 +510,185 @@ import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 		</section>
 
 		<!-- closing statement -->
-		<section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[200px] px-20 bg-gray-200/60">
-            <!-- project description and actions -->
-            <div class="max-w-[700px] flex flex-col justify-center">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Closing Statement</h2>
-
-                <p>
-                    I'm proud of how Pencil Hoops transformed a simple idea into an immersive experience for NBA fans. <br><br>
-                    This project pushed my creativity and strengthened my skills in UI/UX design, user research, and accessibility. Most importantly, 
-                    it showed me how thoughtful design can turn even the simplest concepts into meaningful, engaging digital experiences.
-                </p>
-
-                <div class="pt-[52px]">
-                    <button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button>
+        <div id='closing' class="bg-gray-100">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 max-w-[1700px] mx-auto">
+                <!-- project description and actions -->
+                <div class="max-w-[700px] flex flex-col justify-center">
+                    <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Closing Statement</h2>
+    
+                    <p>
+                        I'm proud of how Pencil Hoops transformed a simple idea into an immersive experience for NBA fans. <br><br>
+                        This project pushed my creativity and strengthened my skills in UI/UX design, user research, and accessibility. Most importantly, 
+                        it showed me how thoughtful design can turn even the simplest concepts into meaningful, engaging digital experiences.
+                    </p>
+    
+                    <div class="pt-[52px]">
+                        <button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button>
+                    </div>
                 </div>
-            </div>
-
-            <!-- image -->
-            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/1.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover"></div>
-		</section>
+    
+                <!-- image -->
+                <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/1.jpg')] bg-blend-color-burn bg-gray-100/70 bg-center bg-no-repeat bg-cover h-full"></div>
+            </section>
+        </div>
+		
 	</main>
+    </div>
 	<Footer />
 </Layout>
 
 <style>
 
 </style>
+
+<script>
+    import gsap from "gsap";
+    import Lenis from "lenis";
+    import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+
+    gsap.config({
+        nullTargetWarn: false,
+    })
+
+    // initialise lenis
+    const lenis = new Lenis({
+        autoRaf: true,
+    });
+
+    let previousScroll = 0;
+    // Listen for the scroll event and log the event data
+    // lenis.on('scroll', (e) => {
+    //     // console.log(e);
+    // });
+
+    // lenis.on('scroll', ScrollTrigger.update);
+    // gsap.ticker.lagSmoothing(0);
+
+
+    document.addEventListener("click", function (e) {
+        const currentScroll = window.scrollY;
+
+        let Etarget = e.target as HTMLElement
+        const anchor = Etarget.closest("a[href^='#']");
+        if (!anchor) return;
+
+        e.preventDefault();
+        const targetId = anchor.getAttribute("href");
+        const target = document.querySelector(targetId) as HTMLElement;
+
+        if (target) {
+            let targetPos = target.offsetTop;
+
+            console.log('current => ', currentScroll, 'target => ', targetPos);
+ 
+            if(targetPos < currentScroll) //scroll up
+                lenis.scrollTo(target, {duration: 0});
+            else // scroll down
+                lenis.scrollTo(target, {duration: 2.5, 
+                easing : (x) => x < 0.5
+  ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2
+  : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2
+            });
+
+            history.pushState(null, "", targetId);
+        }
+    });
+
+    
+
+
+    gsap.fromTo(".hero-img",{
+        translateX : '-50%'
+    }, {
+        translateX : '0%',
+        opacity : 1,
+        duration : 2,
+        scrollTrigger: {
+            trigger: '.hero-img',  // Each element triggers individually
+            // start: "top 80%",  // Animation starts when the element is 80% in view
+            end: "bottom 92%",
+            toggleActions: "play reverse play reset",  // Only plays once
+            // markers : true,
+        },
+    })
+
+    
+
+    document.querySelectorAll('section').forEach((section) => {
+        gsap.fromTo(section.querySelectorAll('.heading-up'),{translateY : '50%', opacity : 0}, {
+            translateY: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+            stagger: 0.4,
+            scrollTrigger: {
+                trigger: section,  // Each element triggers individually
+                // start: "top 80%",  // Animation starts when the element is 80% in view
+                end: "bottom 96%",
+                toggleActions: "play reverse play reset", // Only plays once
+                // markers : true,
+            },
+        });
+
+        gsap.fromTo(section.querySelectorAll('.quick-right'),{translateX : '50%', opacity : 0}, {
+            translateX: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: section,  // Each element triggers individually
+                start: "top 80%",  // Animation starts when the element is 80% in view
+                end: "bottom 95%",
+                toggleActions: "play reverse play reset",  // Only plays once
+                // markers : true,
+            },
+        });
+
+        gsap.fromTo(section.querySelectorAll('.quick-up'), {opacity : 0, translateY : '50%'}, {
+            translateY: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: section,  // Each element triggers individually
+                start: "top 80%",  // Animation starts when the element is 80% in view
+                end: "bottom 95%",
+                // scrub : true,
+                toggleActions: "play reverse play reset",  // Only plays once
+                // markers : true,
+            },
+        });
+
+    })
+
+
+
+    document.querySelectorAll('.box-parent').forEach((boxParent) => {
+        gsap.fromTo(boxParent.querySelectorAll('.box'),{
+            xPercent : 0
+        }, { 
+            xPercent : 100,
+            duration : 0.8,
+            ease : "power1.out",
+            stagger : 0.08,
+            scrollTrigger: {
+                trigger: boxParent,  // Each element triggers individually
+                start: "top 30%",  // Animation starts when the element is 80% in view
+                end: "bottom 92%",
+                // scrub : true,
+                toggleActions: "play reverse play reset",  // Only plays once
+                // markers : true,
+            },
+        });
+    })
+
+   
+
+
+
+    // gsap.to(window, { duration: 1, scrollTo: "#hey-there", ease: "bounce.out" });
+
+</script>

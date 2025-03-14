@@ -13,6 +13,11 @@
     src: url("/fonts/SourceSerif4-VariableFont_opsz\,wght.ttf");
 }
 
+@font-face {
+    font-family: Cookie;
+    src: url("/fonts/Cookie-Regular.ttf");
+}
+
 
 @import "tailwindcss";
 
@@ -20,4 +25,5 @@
     --font-bilal : Bilal, Arial, sans-serif;
     --font-safira : Safira;
     --font-source : Source;
+    --font-cookie : Cookie;
 }

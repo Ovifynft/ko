@@ -8,9 +8,11 @@ import tailwindcss from '@tailwindcss/vite';
 
 import vercel from '@astrojs/vercel';
 
+import alpinejs from '@astrojs/alpinejs';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [svelte(), react()],
+  integrations: [svelte(), react(), alpinejs()],
 
   vite: {
     plugins: [tailwindcss()]
