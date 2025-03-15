@@ -2,14 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../layouts/Footer.astro'
 
+// console.log('here ', Astro.url)
 import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 let links = ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'problem', 'research-and-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'closing']
-let data = JSON.stringify({active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'research-and-insights', 'problem', 'design-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'learnings', 'closing']})
+let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'research-and-insights', 'problem', 'design-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'learnings', 'closing', 'contact']}
 ---
 
 <Layout title="Welcome to Astro.">
 	<!-- nav -->
-    <div  x-data={data}>
+    <div  x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1,window.location.hash?.length || quick-overview)">
 	<header class="fixed top-0 left-0 right-0 bg-white w-full z-30">
 		<nav class="flex justify-between items-center pt-4 lg:pt-8 pb-2 px-8 gap-4 lg:px-20 border-b-[1px] border-b-gray-100">
             <button><AlignLeft /></button>
@@ -48,14 +49,14 @@ let data = JSON.stringify({active: 'Home', links: ['hero', 'hey-there', 'table',
 	</header>
 
     <!-- bottom-nav -->
-    <div class="fixed bottom-0 right-0 z-10 flex bg-white pt-4 pl-4 xl:px-10 lg:pl-10 py-6 xl:py-10 border-l-[2px] border-l-gray-200/50 border-t-[2px] border-t-gray-200/50">
+    <div class="fixed bottom-0 right-0 z-10 flex bg-white pt-4 pl-4 xl:px-10 lg:pl-10 py-6 xl:py-10 border-l-[2px] border-l-gray-200/50 border-t-[2px] border-t-gray-200/50 bottom-nav">
         <ul class="flex gap-4 text-[#afafaf] font-semibold text-[10px] lg:text-sm">
-            <li class="active:bg-black"><a href="#quick-overview">Quick Overview</a></li>
-            <li><a href="#research-and-insights"> Research and Insights</a></li>
-            <li><a href="#design-process"> Design Process</a></li>
-            <li><a href="#impact-and-feedback"> Impact and Feedback</a></li>
-            <li><a href="#collaboration"> Collaboration</a></li>
-            <li><a href="#reflections"> Reflections and Learnings</a></li>
+            <li @click="active = 'quick-overview'" :class="{'text-black' : active == 'quick-overview'}"><a href="#quick-overview">Quick Overview</a></li>
+            <li @click="active = 'research-and-insights'" :class="{'text-black' : active == 'research-and-insights'}"><a href="#research-and-insights"> Research and Insights</a></li>
+            <li @click="active = 'design-process'" :class="{'text-black' : active == 'design-process'}"><a href="#design-process"> Design Process</a></li>
+            <li @click="active = 'impact-and-feedback'" :class="{'text-black' : active == 'impact-and-feedback'}"><a href="#impact-and-feedback"> Impact and Feedback</a></li>
+            <li @click="active = 'collaboration'" :class="{'text-black' : active == 'collaboration'}"><a href="#collaboration"> Collaboration</a></li>
+            <li @click="active = 'reflections'" :class="{'text-black' : active == 'reflections'}"><a href="#reflections"> Reflections and Learnings</a></li>
         </ul>
     </div>
 
@@ -95,6 +96,7 @@ let data = JSON.stringify({active: 'Home', links: ['hero', 'hey-there', 'table',
                 </div>
                 <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
             </section> 
+            <!-- <h2 x-data="{test : window.location.hash?.slice(1,window.location.hash?.length)}" x-text="active"></h2> -->
         </div>
 		
 
@@ -102,11 +104,11 @@ let data = JSON.stringify({active: 'Home', links: ['hero', 'hey-there', 'table',
         <section id="hey-there" class="lg:px-20 px-10 h-screen flex items-center justify-center relative pt-[100px] md:pt-[120px] lg:pt-[200px] max-w-[1700px] mx-auto">
             <h2 class="text-sm sm:text-lg md:text-2xl xl:text-5xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF]">Hey there! This isn’t just a case study; it’s a story of the work, the process, and the thoughts behind it. My goal is to keep things fun and straightforward, enjoy!</h2>
 			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div> -->
-            <p class="absolute right-20 bottom-[5%] w-[70%] text-right">“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun & easy to use.” - Tunde</p>
+            <p class="absolute right-20 bottom-[20%] w-[70%] text-right">“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun & easy to use.” - Tunde</p>
         </section>
 
         <!-- table of contents -->
-        <section id="table" class="lg:px-20 px-10 h-screen relative pt-[100px] md:pt-[120px] lg:pt-[200px] max-w-[1700px] mx-auto">
+        <section id="table" class="lg:px-20 px-10 h-screen relative pt-[100px] md:pt-[120px] lg:pt-[200px] max-w-[1700px] mx-auto overflow-hidden">
             <h2 class="font-safira lg:text-sm xl:text-2xl heading-up">Content</h2>
             <div class="max-w-2xl grid grid-cols-[80%_20%] grid-rows-6 mt-20 mx-auto my-auto gap-4 lg:text-xl xl:text-2xl">
                 <p class="quick-right opacity-0">Quick Overview</p><p class="quick-up opacity-0 translate-y-[50%]">01</p>
@@ -181,7 +183,7 @@ let data = JSON.stringify({active: 'Home', links: ['hero', 'hey-there', 'table',
         <!-- the problem -->
         <section id='problem' class="h-screen overflow-hidden grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col lg:justify-center gap-4 xl:gap-6 relative box-parent">
+            <div class="lg:max-w-[500px] flex flex-col lg:justify-center gap-4 xl:gap-6 relative box-parent overflow-hidden">
                 
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">The Problem</h2>
                 <p class="quick-up"> 
@@ -196,7 +198,7 @@ let data = JSON.stringify({active: 'Home', links: ['hero', 'hey-there', 'table',
             </div>
 
             <!-- image -->
-            <div class="lg:flex items-center justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
@@ -565,7 +567,6 @@ let data = JSON.stringify({active: 'Home', links: ['hero', 'hey-there', 'table',
     // lenis.on('scroll', ScrollTrigger.update);
     // gsap.ticker.lagSmoothing(0);
 
-
     document.addEventListener("click", function (e) {
         const currentScroll = window.scrollY;
 
@@ -579,16 +580,12 @@ let data = JSON.stringify({active: 'Home', links: ['hero', 'hey-there', 'table',
 
         if (target) {
             let targetPos = target.offsetTop;
-
-            console.log('current => ', currentScroll, 'target => ', targetPos);
  
             if(targetPos < currentScroll) //scroll up
                 lenis.scrollTo(target, {duration: 0});
             else // scroll down
                 lenis.scrollTo(target, {duration: 2.5, 
-                easing : (x) => x < 0.5
-  ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2
-  : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2
+                easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2
             });
 
             history.pushState(null, "", targetId);
@@ -624,7 +621,7 @@ let data = JSON.stringify({active: 'Home', links: ['hero', 'hey-there', 'table',
             stagger: 0.4,
             scrollTrigger: {
                 trigger: section,  // Each element triggers individually
-                // start: "top 80%",  // Animation starts when the element is 80% in view
+                start: "top 20%",  // Animation starts when the element is 80% in view
                 end: "bottom 96%",
                 toggleActions: "play reverse play reset", // Only plays once
                 // markers : true,
@@ -639,7 +636,7 @@ let data = JSON.stringify({active: 'Home', links: ['hero', 'hey-there', 'table',
             stagger: 0.2,
             scrollTrigger: {
                 trigger: section,  // Each element triggers individually
-                start: "top 80%",  // Animation starts when the element is 80% in view
+                start: "top 20%",  // Animation starts when the element is 80% in view
                 end: "bottom 95%",
                 toggleActions: "play reverse play reset",  // Only plays once
                 // markers : true,
@@ -654,7 +651,7 @@ let data = JSON.stringify({active: 'Home', links: ['hero', 'hey-there', 'table',
             stagger: 0.2,
             scrollTrigger: {
                 trigger: section,  // Each element triggers individually
-                start: "top 80%",  // Animation starts when the element is 80% in view
+                start: "top 20%",  // Animation starts when the element is 80% in view
                 end: "bottom 95%",
                 // scrub : true,
                 toggleActions: "play reverse play reset",  // Only plays once
@@ -671,12 +668,12 @@ let data = JSON.stringify({active: 'Home', links: ['hero', 'hey-there', 'table',
             xPercent : 0
         }, { 
             xPercent : 100,
-            duration : 0.8,
+            duration : 0.6,
             ease : "power1.out",
             stagger : 0.08,
             scrollTrigger: {
                 trigger: boxParent,  // Each element triggers individually
-                start: "top 30%",  // Animation starts when the element is 80% in view
+                start: "top 50%",  // Animation starts when the element is 80% in view
                 end: "bottom 92%",
                 // scrub : true,
                 toggleActions: "play reverse play reset",  // Only plays once
@@ -684,6 +681,42 @@ let data = JSON.stringify({active: 'Home', links: ['hero', 'hey-there', 'table',
             },
         });
     })
+
+
+    // for the footer
+    let footer = document.querySelector('#contact') as HTMLElement
+    let footerAnim = gsap.fromTo('.bottom-nav', { bottom : 0}, {
+        bottom : footer.clientHeight,
+        duration: 2,
+        paused : true,
+        ease: "circ.inOut",
+        // scrollTrigger: {
+        //     // trigger: '#contact',  // Each element triggers individually
+        //     // start: "top 20%",  // Animation starts when the element is 80% in view
+        //     // end: "bottom 95%",
+        //     // scrub : true,
+        //     // toggleActions: "play reverse play reverse",  // Only plays once
+        //     // markers : true,
+        // },
+    });
+
+    ScrollTrigger.create({
+        trigger: '#contact',
+        // start: 'top top',
+        // endTrigger: '#otherID',
+        end: 'bottom 50%+=100px',
+        onToggle: (self) => console.log('toggled, isActive:', self.isActive),
+        onUpdate: (self) => {
+
+            if(self.direction == 1){
+                footerAnim.duration(2)
+                footerAnim.play();
+            }else{
+                footerAnim.duration(0)
+                footerAnim.reverse()
+            }
+        }
+    });
 
    
 

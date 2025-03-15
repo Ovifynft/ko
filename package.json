@@ -28,6 +28,7 @@
     "react-dom": "^19.0.0",
     "svelte": "^5.20.5",
     "tailwindcss": "^4.0.9",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "zwitch": "^2.0.4"
   }
 }
