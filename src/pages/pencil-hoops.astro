@@ -5,7 +5,7 @@ import Footer from '../layouts/Footer.astro'
 // console.log('here ', Astro.url)
 import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 let links = ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'problem', 'research-and-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'closing']
-let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'research-and-insights', 'problem', 'design-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'learnings', 'closing', 'contact']}
+let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'research-and-insights', 'problem', 'design-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'learnings', 'closing', 'contact']}
 ---
 
 <Layout title="Welcome to Astro.">
@@ -61,7 +61,7 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
     </div>
 
     <!-- arrow -->
-    <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-20 bottom-5"></div>
+    <a :href="'#' + (links[links.indexOf(active) + 1] || 'contact')" @click="setTimeout(()=> {active = (links[links.indexOf(active) + 1] || 'contact')}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-20 bottom-5 z-[1]"></a>
 
 	<main>
 		<!-- hero -->
@@ -102,9 +102,9 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
         <!-- hey there -->
         <section id="hey-there" class="lg:px-20 px-10 h-screen flex items-center justify-center relative pt-[100px] md:pt-[120px] lg:pt-[200px] max-w-[1700px] mx-auto">
-            <h2 class="text-sm sm:text-lg md:text-2xl xl:text-5xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF]">Hey there! This isn’t just a case study; it’s a story of the work, the process, and the thoughts behind it. My goal is to keep things fun and straightforward, enjoy!</h2>
+            <h2 class="text-sm sm:text-lg md:text-2xl xl:text-5xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">Hey there! This isn’t just a case study; it’s a story of the work, the process, and the thoughts behind it. My goal is to keep things fun and straightforward, enjoy!</h2>
 			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div> -->
-            <p class="absolute right-20 bottom-[20%] w-[70%] text-right">“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun & easy to use.” - Tunde</p>
+            <p class="absolute right-20 bottom-[20%] w-[70%] text-right quick-appear">“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun & easy to use.” - Tunde</p>
         </section>
 
         <!-- table of contents -->
@@ -126,12 +126,12 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
             <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] max-w-[1700px] mx-auto lg:px-20 px-10 relative gap-4 xl:gap-6">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-4">
-                    <p class="text-4xl font-cookie">01</p>
-                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4">Quick Overview</h2>
+                    <p class="text-4xl font-cookie quick-down">01</p>
+                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Quick Overview</h2>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/2.jpg')] bg-blend-color-burn bg-gray-200/5 bg-center bg-no-repeat bg-cover h-full"></div>
+                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/2.jpg')] bg-blend-color-burn bg-gray-200/5 bg-center bg-no-repeat bg-cover h-full"></div>
     
                 <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
             </section>
@@ -169,12 +169,12 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
             <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10  relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-10">
-                    <p class="text-4xl font-cookie">02</p>
-                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4">Research and Insights</h2>
+                    <p class="text-4xl font-cookie quick-down">02</p>
+                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Research and Insights</h2>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/gif1.gif')] bg-gray-200/60 bg-center bg-no-repeat bg-cover bg-blend-color-burn"></div>
+                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/gif1.gif')] bg-gray-200/60 bg-center bg-no-repeat bg-cover bg-blend-color-burn"></div>
     
                 <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
             </section>
@@ -190,7 +190,7 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     NBA fans needed something fun and refreshing, something that showcased the beauty of NBA moments through a unique artistic lens. 
                     Most NBA-related websites were cluttered, hard to navigate, and lacked the engaging experience fans really wanted.
                 </p>
-                <div class="flex items-center justify-end p-20 w-full h-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div>
+                <div class="flex items-center justify-end p-20 w-full quick-up h-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div>
 
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
@@ -232,12 +232,12 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
             <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-10">
-                    <p class="text-4xl font-cookie">03</p>
-                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4">Design Process</h2>
+                    <p class="text-4xl font-cookie quick-down">03</p>
+                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Design Process</h2>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
+                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
     
     
             </section>
@@ -247,9 +247,9 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
         <!-- laying the foundation -->
         <section id="foundation" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Laying the Foundation – Sketches and Structure</h2>
-                <p> 
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 relative box-parent">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Laying the Foundation – Sketches and Structure</h2>
+                <p class="quick-up"> 
                     I kicked off the design process with paper sketches to map out the structure and focus on intuitive navigation. 
                     My goal was to answer key questions:
                     <ul class="list-disc list-inside px-4 leading-[40px]">
@@ -263,10 +263,17 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     like the basketball net-inspired cards for the "Did You Know" section and basketball-shaped icons for the 
                     next and previous buttons, which were initially sketched by our pencil artist.
                 </p>
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
             </div>
 
            <!-- image -->
-           <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
+            <div class="flex relative items-center justify-end p-20 w-full box-parent bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white hidden lg:block left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
 
 
 		</section>
@@ -274,9 +281,9 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
         <!-- bringing designs to life -->
         <section id="life" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Bringing Designs to Life</h2>
-                <p> 
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 box-parent relative">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Bringing Designs to Life</h2>
+                <p class="quick-up"> 
                     With the wireframes in place, I focused on interactivity and user engagement. I integrated progressive disclosure to minimize clutter, 
                     especially for mobile users, ensuring a clean and focused experience. <br><br>
                     To make the design feel dynamic and fun, I added interactive elements 
@@ -286,10 +293,17 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     with the NBA’s energetic vibe. 
                     Smooth transitions and micro-interactions tied everything together, making the interface feel seamless and responsive.
                 </p>
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
             </div>
 
             <!-- image -->
-            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
+            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full box-parent relative">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
 
 
 		</section>
@@ -297,9 +311,9 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
         <!-- visual aesthetics -->
         <section id="visual" class="h-screen overflow-hidden flex flex-col md:grid md:grid-cols-[40%_60%] gap-8 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative @container max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Visual Aesthetics and Style</h2>
-                <p> 
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 box-parent relative overflow-hidden">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Visual Aesthetics and Style</h2>
+                <p class="quick-up"> 
                     The NBA isn’t just a sport, it’s a culture, and I wanted the design to reflect that. During my research, 
                     I realized the NBA is often seen as the “cool sport,” and that insight drove many of my design decisions. 
                     I focused on elegance and style, which influenced both the typography and the overall simplicity of the layout.
@@ -308,10 +322,13 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     Typography was carefully selected to resonate with the NBA audience, bold, sleek, and contemporary. 
                     The navigation remained minimal and user-friendly, allowing the content to shine without distractions.
                 </p>
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
             </div>
 
             <!-- colors -->
-            <div class="w-full bg-center bg-no-repeat bg-cover hidden sm:grid grid-rows-2 grid-cols-4 md:grid-cols-2 md:grid-rows-3 xl:flex xl:items-center">
+            <div class="w-full bg-center bg-no-repeat bg-cover hidden sm:grid grid-rows-2 grid-cols-4 md:grid-cols-2 md:grid-rows-3 xl:flex xl:items-center quick-up">
                 <div class="bg-gray-200 px-4 py-8 flex flex-col justify-between items-start gap-2 lg:w-full xl:min-h-[400px]">
                     <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">01</p>
                     <div class="text-black">
@@ -360,9 +377,9 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
         <!-- high fidelity designs -->
         <section id="fidelity" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">High-Fidelity Designs and Final Touches</h2>
-                <p> 
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 box-parent relative">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">High-Fidelity Designs and Final Touches</h2>
+                <p class="quick-up"> 
                     After refining the visual style, I transitioned from low-fidelity sketches to high-fidelity designs. The pencil artist’s sketches, 
                     like the basketball-shaped next and previous buttons and the board-and-net concept 
                     for the "Did You Know" section, were digitized using Adobe Illustrator to create polished SVG assets. <br><br>
@@ -370,10 +387,17 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     Throughout the process, I maintained clear communication with the developer, 
                     ensuring a smooth handoff with detailed documentation and well-organized design assets.
                 </p>
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
             </div>
 
             <!-- image -->
-            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
+            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full box-parent relative">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
 
 
 		</section>
@@ -383,7 +407,7 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
             <section class="h-screen overflow-hidden flex flex-col lg:grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
-                    <p class="text-4xl font-cookie">04</p>
+                    <p class="text-4xl font-cookie quick-down">04</p>
                     <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 xl:whitespace-nowrap">Impact and Feedback</h2>
                     <p>
                         Since Pencil Hoops is a concept project, there are no concrete analytics. However, user feedback has been overwhelmingly positive, 
@@ -398,7 +422,7 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
+                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
     
     
             </section>
@@ -409,8 +433,8 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
             <section class="h-screen overflow-hidden pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
-                    <p class="text-4xl font-cookie">05</p>
-                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4">Collabration</h2>
+                    <p class="text-4xl font-cookie quick-down">05</p>
+                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Collabration</h2>
                 </div>
     
                 <!-- image -->
@@ -459,12 +483,12 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
             <section class="h-screen overflow-hidden flex flex-col lg:grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
-                    <p class="text-4xl font-cookie">06</p>
-                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4">Reflections and Learnings</h2>
+                    <p class="text-4xl font-cookie quick-down">06</p>
+                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Reflections and Learnings</h2>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
+                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
     
     
             </section>
@@ -516,21 +540,21 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
             <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center">
-                    <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Closing Statement</h2>
+                    <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 heading-up-footer">Closing Statement</h2>
     
-                    <p>
+                    <p class="heading-up-footer">
                         I'm proud of how Pencil Hoops transformed a simple idea into an immersive experience for NBA fans. <br><br>
                         This project pushed my creativity and strengthened my skills in UI/UX design, user research, and accessibility. Most importantly, 
                         it showed me how thoughtful design can turn even the simplest concepts into meaningful, engaging digital experiences.
                     </p>
     
-                    <div class="pt-[52px]">
+                    <div class="pt-[52px] heading-up-footer">
                         <button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button>
                     </div>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/1.jpg')] bg-blend-color-burn bg-gray-100/70 bg-center bg-no-repeat bg-cover h-full"></div>
+                <div class="flex items-center justify-end p-20 w-full closing-img bg-[url('/images/pencil_hoops/sections/1.jpg')] bg-blend-color-burn bg-gray-100/70 bg-center bg-no-repeat bg-cover h-full"></div>
             </section>
         </div>
 		
@@ -610,6 +634,22 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
         },
     })
 
+    gsap.fromTo(".closing-img",{
+        translateY : '20%',
+        opacity : 0
+    }, {
+        translateY : '0%',
+        opacity : 1,
+        duration : 2,
+        scrollTrigger: {
+            trigger: '.closing-img',  // Each element triggers individually
+            // start: "top 80%",  // Animation starts when the element is 80% in view
+            end: "bottom 50%",
+            toggleActions: "play reverse play reset",  // Only plays once
+            // markers : true,
+        },
+    })
+
     
 
     document.querySelectorAll('section').forEach((section) => {
@@ -623,6 +663,21 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 trigger: section,  // Each element triggers individually
                 start: "top 20%",  // Animation starts when the element is 80% in view
                 end: "bottom 96%",
+                toggleActions: "play reverse play reset", // Only plays once
+                // markers : true,
+            },
+        });
+
+        gsap.fromTo(section.querySelectorAll('.heading-up-footer'),{translateY : '50%', opacity : 0}, {
+            translateY: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+            stagger: 0.4,
+            scrollTrigger: {
+                trigger: section,  // Each element triggers individually
+                start: "top 20%",  // Animation starts when the element is 80% in view
+                end: "bottom 50%",
                 toggleActions: "play reverse play reset", // Only plays once
                 // markers : true,
             },
@@ -653,6 +708,37 @@ let data = {active: 'Home', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 trigger: section,  // Each element triggers individually
                 start: "top 20%",  // Animation starts when the element is 80% in view
                 end: "bottom 95%",
+                // scrub : true,
+                toggleActions: "play reverse play reset",  // Only plays once
+                // markers : true,
+            },
+        });
+
+        gsap.fromTo(section.querySelectorAll('.quick-down'), {opacity : 0, translateY : '-50%'}, {
+            translateY: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: section,  // Each element triggers individually
+                start: "top 20%",  // Animation starts when the element is 80% in view
+                end: "bottom 95%",
+                // scrub : true,
+                toggleActions: "play reverse play reset",  // Only plays once
+                // markers : true,
+            },
+        });
+
+        gsap.fromTo(section.querySelectorAll('.quick-appear'), {opacity : 0}, {
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: section,  // Each element triggers individually
+                start: "top 20%",  // Animation starts when the element is 80% in view
+                end: "bottom 99%",
                 // scrub : true,
                 toggleActions: "play reverse play reset",  // Only plays once
                 // markers : true,
