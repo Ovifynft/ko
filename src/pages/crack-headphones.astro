@@ -5,12 +5,12 @@ import Footer from '../layouts/Footer.astro'
 // console.log('here ', Astro.url)
 import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 let links = ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'problem', 'research-and-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'closing']
-let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'research-and-insights', 'problem', 'design-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'learnings', 'closing', 'contact']}
+let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'research-and-insights', 'problem', 'design-insights', 'competitive', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'learnings', 'closing', 'contact']}
 ---
 
 <Layout title="Welcome to Astro.">
 	<!-- nav -->
-    <div  x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail"}>
+    <div  x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail">
 	<header class="fixed top-0 left-0 right-0 bg-white w-full z-30">
 		<nav class="flex justify-between items-center pt-4 lg:pt-8 pb-2 px-8 gap-4 lg:px-20 border-b-[1px] border-b-gray-100">
             <button><AlignLeft /></button>
@@ -21,7 +21,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     <template x-for='(link, index) in links'>
                         <a :href="'#' + link" href="link" class="w-[100px] h-full transition-all duration-200 rounded-lg"
                             @click="active = link"
-                            :class="{'bg-black' : links.indexOf(link) <= links.indexOf(active), 'bg-gray-200 hover:bg-gray-400' : links.indexOf(link) > links.indexOf(active)}"
+                            :class="{'bg-[#9C784B] ' : links.indexOf(link) <= links.indexOf(active), 'bg-gray-200 hover:bg-[#F2EBE2]' : links.indexOf(link) > links.indexOf(active)}"
                         ></a>
                     </template>
                     <!-- <a class="w-full h-full bg-gray-200 relative after:content-[''] after:absolute after:w-[40%] lg:after:w-[50%] after:bottom-0 after:bg-black after:left-0 after:top-0"></a>
@@ -51,12 +51,12 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
     <!-- bottom-nav -->
     <div class="fixed bottom-0 right-0 z-10 flex bg-white pt-4 pl-4 xl:px-10 lg:pl-10 py-6 xl:py-10 bottom-nav">
         <ul class="flex gap-4 text-[#afafaf] font-semibold text-[10px] lg:text-sm">
-            <li @click="active = 'quick-overview'" :class="{'text-black' : active == 'quick-overview'}"><a href="#quick-overview">Quick Overview</a></li>
-            <li @click="active = 'research-and-insights'" :class="{'text-black' : active == 'research-and-insights'}"><a href="#research-and-insights"> Research and Insights</a></li>
-            <li @click="active = 'design-process'" :class="{'text-black' : active == 'design-process'}"><a href="#design-process"> Design Process</a></li>
-            <li @click="active = 'impact-and-feedback'" :class="{'text-black' : active == 'impact-and-feedback'}"><a href="#impact-and-feedback"> Impact and Feedback</a></li>
-            <li @click="active = 'collaboration'" :class="{'text-black' : active == 'collaboration'}"><a href="#collaboration"> Collaboration</a></li>
-            <li @click="active = 'reflections'" :class="{'text-black' : active == 'reflections'}"><a href="#reflections"> Reflections and Learnings</a></li>
+            <li @click="active = 'quick-overview'" :class="{'text-[#9C784B]' : active == 'quick-overview'}"><a href="#quick-overview">Quick Overview</a></li>
+            <li @click="active = 'research-and-insights'" :class="{'text-[#9C784B]' : active == 'research-and-insights'}"><a href="#research-and-insights"> Research and Insights</a></li>
+            <li @click="active = 'design-process'" :class="{'text-[#9C784B]' : active == 'design-process'}"><a href="#design-process"> Design Process</a></li>
+            <li @click="active = 'impact-and-feedback'" :class="{'text-[#9C784B]' : active == 'impact-and-feedback'}"><a href="#impact-and-feedback"> Impact and Feedback</a></li>
+            <li @click="active = 'collaboration'" :class="{'text-[#9C784B]' : active == 'collaboration'}"><a href="#collaboration"> Collaboration</a></li>
+            <li @click="active = 'reflections'" :class="{'text-[#9C784B]' : active == 'reflections'}"><a href="#reflections"> Reflections and Learnings</a></li>
         </ul>
     </div>
 
@@ -67,10 +67,10 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
 	<main>
 		<!-- hero -->
-        <div id="hero" class="bg-[#ececec]">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 max-w-[1700px] mx-auto">
+        <div id="hero" class="bg-[#f2ebe2]">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 max-w-[1700px] mx-auto gap-4 xl:gap-10">
                 <!-- image -->
-                <div class="flex  opacity-0 hero-img items-center slide justify-end overflow-hidden p-20 w-full bg-[url('/images/pencil_hoops/sections/1.jpg')] bg-blend-darken bg-[#ececec] bg-no-repeat bg-contain bg-left h-full relative">
+                <div class="flex  opacity-0 hero-img items-center slide justify-end overflow-hidden p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-white bg-no-repeat bg-contain bg-left h-full relative">
                     <!-- {
                         [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-gray-100 left-0 right-0 absolute h-[20%] slide-2 box"></div>)
                     } -->
@@ -83,18 +83,19 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
     
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center">
-                    <h2 class="heading-up font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4  opacity-0 translate-y-[50%] up">Creating an Immersive Experience with Pencil Hoops</h2>
+                    <h2 class="heading-up font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4  opacity-0 translate-y-[50%] up">Crack HeadPhones<span class="font-bilal text-[60px]">,</span> Where Style Meets Sound</h2>
     
                     <p class="heading-up opacity-0">
-                        Pencil Hoops is an interactive, people-friendly website designed for NBA fans 
-                        who appreciate the art of pencil sketching.<br><br>
-                        It blends minimal design, accessibility, and engaging experiences, combining stunning pencil sketches with 
-                        interactive animations and dynamic sound effects to bring NBA moments to life.
+                        Crack Headphones are a bold fusion of retro-modern design and everyday sophistication. I first sketched the concept in 2015, 
+                        which evolved into 3D wireframes and a prototype. 
+                        <br><br>
+                        Key features include Link Up buttons for shared listening, a triangular ear cup design 
+                        for comfort and style, and an LED battery gauge that spells "CRACK.
                     </p>
     
-                    <div class="pt-[52px] heading-up opacity-0">
+                    <!-- <div class="pt-[52px] heading-up opacity-0">
                         <button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
             </section> 
@@ -103,37 +104,40 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- hey there -->
-        <section id="hey-there" class="lg:px-20 px-10 h-screen flex items-center justify-center relative pt-[100px] md:pt-[120px] lg:pt-[200px] max-w-[1700px] mx-auto">
-            <h2 class="text-sm sm:text-lg md:text-2xl xl:text-5xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">Hey there! This isn’t just a case study; it’s a story of the work, the process, and the thoughts behind it. My goal is to keep things fun and straightforward, enjoy!</h2>
+        <section id="hey-there" class="lg:px-20 px-10 h-screen flex items-center justify-center relative pt-[100px] max-w-[1700px] mx-auto">
+            <h2 class="text-sm sm:text-lg md:text-2xl xl:text-5xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">
+                Case studies don’t have to be a chore. This one’s designed to highlight the work done, <span class="text-[#9C784B]">respect your time</span>, 
+                and discuss what made <span class="text-[#9C784B]">Crack Headphones</span> come to life.
+            </h2>
 			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div> -->
-            <p class="absolute right-20 bottom-[20%] w-[70%] text-right quick-appear">“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun & easy to use.” - Tunde</p>
+            <!-- <p class="absolute right-20 bottom-[20%] w-[70%] text-right quick-appear">“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun & easy to use.” - Tunde</p> -->
         </section>
 
         <!-- table of contents -->
-        <section id="table" class="lg:px-20 px-10 h-screen relative pt-[100px] md:pt-[120px] lg:pt-[200px] max-w-[1700px] mx-auto overflow-hidden">
+        <section id="table" class="lg:px-20 px-10 h-screen relative pt-[100px] md:pt-[120px] lg:pt-[150px] max-w-[1700px] mx-auto overflow-hidden">
             <h2 class="font-safira lg:text-sm xl:text-2xl heading-up">Content</h2>
             <div class="max-w-2xl grid grid-cols-[80%_20%] grid-rows-6 mt-20 mx-auto my-auto gap-4 lg:text-xl xl:text-2xl">
                 <p class="quick-right opacity-0">Quick Overview</p><p class="quick-up opacity-0 translate-y-[50%]">01</p>
                 <p class="quick-right opacity-0">Research and Insights</p><p class="quick-up opacity-0 translate-y-[50%]">02</p>
                 <p class="quick-right opacity-0">Design Process</p><p class="quick-up opacity-0 translate-y-[50%]">03</p>
-                <p class="quick-right opacity-0">Impact and Feedback</p><p class="quick-up opacity-0 translate-y-[50%]">04</p>
-                <p class="quick-right opacity-0">Collaboration</p><p class="quick-up opacity-0 translate-y-[50%]">05</p>
-                <p class="quick-right opacity-0">Reflections and Learnings</p><p class="quick-up opacity-0 translate-y-[50%]">06</p>
+                <!-- <p class="quick-right opacity-0">Impact and Feedback</p><p class="quick-up opacity-0 translate-y-[50%]">04</p> -->
+                <p class="quick-right opacity-0">Collaboration</p><p class="quick-up opacity-0 translate-y-[50%]">04</p>
+                <p class="quick-right opacity-0">Next Steps</p><p class="quick-up opacity-0 translate-y-[50%]">05</p>
             </div>
 			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div> -->
         </section>
 
         <!-- 01 -->
-        <div id="quick-overview" class="bg-gray-100">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] max-w-[1700px] mx-auto lg:px-20 px-10 relative gap-4 xl:gap-6">
+        <div id="quick-overview" class="bg-[#F2EBE2]">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] max-w-[1700px] mx-auto lg:px-20 px-10 relative gap-4 xl:gap-6">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-4">
                     <p class="text-4xl font-cookie quick-down">01</p>
-                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Quick Overview</h2>
+                    <h2 class="font-safira text-5xl 2xl:text-5xl leading-[80px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Quick Overview</h2>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/2.jpg')] bg-blend-color-burn bg-gray-200/5 bg-center bg-no-repeat bg-cover h-full"></div>
+                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k')] bg-blend-color-burn bg-white bg-center bg-no-repeat bg-cover h-full"></div>
     
                 <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
             </section>
@@ -141,56 +145,58 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- 01 - Quick overview -->
-        <section id="quick-overview-2" class="h-screen overflow-hidden flex flex-col lg:grid pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 xl:grid-cols-[auto_auto_40%] lg:grid-cols-[auto_auto_10%]  grid-rows-[auto_auto_auto] lg:gap-4 relative max-w-[1700px] mx-auto">
+        <section id="quick-overview-2" class="h-screen overflow-hidden flex flex-col lg:grid pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 xl:grid-cols-[auto_auto_40%] lg:grid-cols-[auto_auto_10%]  grid-rows-[auto_auto_auto] lg:gap-4 relative max-w-[1700px] mx-auto">
             <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xltext-2xl pb-2 xl:py-4">Product Overview</h3>
-            <p class="md:w-full xl:max-w-[500px] pb-2 xl:py-4 border-gray-200">Pencil Hoops is a concept website created to give NBA fans a fresh, fun way to enjoy the game through pencil art. 
-                We used Figma and Adobe Illustrator to design a clean, simple interface with interactive features. <br><br>
-                People who tested it said it was fun, easy to use, and really cool to look at.
+            <p class="md:w-full xl:max-w-[500px] pb-2 xl:py-4 border-gray-200">CRACK Headphones is designed to offer a high-end, luxurious listening experience. The goal was to create headphones that are not just functional but also fashionable,
+                catering to users who value both style and performance.  <br><br>
+                Using user-centered research, we identified key needs and crafted a product that addresses real pain points while standing out in the market.
             </p>
             <div class="row-span-3 bg-gray-200 w-full rounded-lg"></div>
 
             <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xltext-2xl pb-2 xl:py-4 lg:pt-8">My Role</h3>
             <p class="md:w-full xl:max-w-[500px] lg:border-y-[1px] pb-2 xl:py-4 lg:pt-8 border-gray-200">I came up with the idea for Pencil Hoops and led the design from start to finish. I designed the website, 
-                collaborated with a pencil artist for some of the sketches, 
-                and worked closely with the developer to bring everything to life.<br><br>
-                I also added creative touches like basketball swoosh sound effects on clicks and interactive illustrations that come to life on hover. 
-                Plus, I ensured a smooth and detailed handoff to the developer.
+                I led the product design process, from research to ideation, sketching, and final 3D modeling. <br><br>
+                I collaborated with 3D artists, graphic designers, and developers to ensure that the 
+                design aligned with both user needs and the brand's aesthetic.  <br><br>
+                I also worked on creating the CRACK branding, including the logo and marketing materials.
             </p>
 
-            <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xltext-2xl pb-2 xl:py-4">Impact</h3>
+            <!-- <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xltext-2xl pb-2 xl:py-4">Impact</h3>
             <p class="md:w-full xl:max-w-[500px] pb-2 xl:py-4 border-gray-200">Test users loved it, saying it was fun, easy to use, and visually engaging. The feedback was overwhelmingly positive, 
                 with many highlighting how enjoyable and intuitive it felt.
             </p>
 
-            <div class="row-span-3 bg-gray-200 w-full rounded-lg h-full lg:hidden"></div>
+            <div class="row-span-3 bg-gray-200 w-full rounded-lg h-full lg:hidden"></div> -->
 
 		</section>
 
 		<!-- 02 -->
-        <div id="research-and-insights" class="bg-gray-100">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10  relative max-w-[1700px] mx-auto">
+        <div id="research-and-insights" class="bg-[#F2EBE2]">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10  relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-10">
                     <p class="text-4xl font-cookie quick-down">02</p>
-                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Research and Insights</h2>
+                    <h2 class="font-safira text-5xl 2xl:text-5xl leading-[80px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Research and Insights</h2>
+                    <p>Our design process was anchored in extensive user research, employing both primary and secondary research methodologies and incorporating qualitative and quantitative data to capture a wide range of consumer insights.</p>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/gif1.gif')] bg-gray-200/60 bg-center bg-no-repeat bg-cover bg-blend-color-burn"></div>
+                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k')] bg-white bg-center bg-no-repeat bg-cover bg-blend-color-burn"></div>
     
                 <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
             </section>
         </div>
 
         <!-- the problem -->
-        <section id='problem' class="h-screen overflow-hidden grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id='problem' class="h-screen overflow-hidden xl:gap-20 flex justify-center pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto box-parent">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col lg:justify-center gap-4 xl:gap-6 relative box-parent overflow-hidden">
+            <div class="lg:max-w-[500px] flex flex-col lg:justify-start gap-4 xl:gap-6 relative overflow-hidden">
                 
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">The Problem</h2>
                 <p class="quick-up"> 
-                    NBA fans needed something fun and refreshing, something that showcased the beauty of NBA moments through a unique artistic lens. 
-                    Most NBA-related websites were cluttered, hard to navigate, and lacked the engaging experience fans really wanted.
+                    At the time, most headphones in the market focused heavily on sound quality but neglected usability, 
+                    design flexibility, and user-friendly features. Users often struggled with issues like difficult earpad replacements, 
+                    unclear battery levels, and the inability to easily share music with others.
                 </p>
                 <div class="flex items-center justify-end p-20 w-full quick-up h-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div>
 
@@ -200,7 +206,15 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             </div>
 
             <!-- image -->
-            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+            <div class="lg:max-w-[500px] flex flex-col lg:justify-start gap-4 xl:gap-6 relative overflow-hidden">
+                
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Methods</h2>
+                <ul class="flex flex-col gap-6">
+                    <li><b>User Interviews and Surveys:</b> Direct engagements provided us with valuable feedback on common pain points and preferences.</li>
+                    <li><b>Market Analysis:</b> Secondary research helped us understand competitive offerings and identify opportunities for innovation.</li>
+                </ul>
+                <div class="flex items-center justify-end p-20 w-full quick-up h-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div>
+
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
@@ -208,34 +222,82 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		</section>
 
         <!-- research and design insights -->
-        <section id="design-insights" class="h-screen overflow-hidden flex flex-col gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="design-insights" class="h-screen overflow-hidden flex flex-col gap-4 lg:gap-8 xl:gap-16 lg:grid lg:grid-cols-[auto_auto] pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Research and Design Insights</h2>
-                <p> 
-                    I explored other NBA websites to see what worked and what didn’t. <br><br> 
-                    Through this research, I also realized that the NBA is seen as the 'cool sport', and my design needed to reflect that vibe. 
-                    This insight drove my focus on elegance and style, influencing my choice of fonts and the overall simplicity of the design.
-                </p>
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Understanding People</h2>
+                <ul class="flex flex-col gap-6"> 
+                    <li> We conducted interviews, surveys, and competitive analysis to identify key user pain points: </li>
+                    <li> <strong>Music Sharing:</strong> Users wanted an easier way to share what they’re listening to. </li>
+                    <li> <strong>Battery Monitoring:</strong> Frustration with headphones dying unexpectedly. </li>
+                    <li> <strong>Earpad Replacement:</strong> Difficulty replacing worn-out pads. </li>
+                    <li> <strong>Quick Controls:</strong> The need for simple, accessible music controls. </li>
+                </ul>
             </div>
 
             <!-- points --> 
-            <ul class="xl:text-2xl lg:max-w-[500px] flex flex-col gap-8 justify-center pl-4 pt-4">
-                <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">1</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
-                <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">2</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
-                <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">3</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
+            <ul class="flex gap-8 justify-center items-center">
+                <li class="flex flex-col items-start"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] xl:w-[100px] xl:text-4xl text-bold aspect-square text-white font-bold ">1</span> <strong class="text-base self-start mt-6 mb-2 font-bold">Music Sharing</strong> <span>I need to be able to share a song I’m listening to with someone else easily.</span></li>
+                <li class="flex flex-col items-start"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] xl:w-[100px] xl:text-4xl text-bold aspect-square text-white font-bold ">2</span> <strong class="text-base self-start mt-6 mb-2 font-bold">Easy Pause</strong> <span>I need an easy way to pause and play music while using my headphones.</span></li>
+                <li class="flex flex-col items-start"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] xl:w-[100px] xl:text-4xl text-bold aspect-square text-white font-bold ">3</span> <strong class="text-base self-start mt-6 mb-2 font-bold">EarPad Replacement</strong> <span>It’s too much work replacing the ear pads of my headphone when they need to be replaced</span></li>
+                <li class="flex flex-col items-start"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] xl:w-[100px] xl:text-4xl text-bold aspect-square text-white font-bold ">4</span> <strong class="text-base self-start mt-6 mb-2 font-bold">Battery Level</strong> <span>My headphone sometimes die at odd times or when i’m enjoying a song.</span></li>
             </ul>
+		</section>
 
+        <!-- competitive analysis -->
+        <section id="competitive" class="h-screen overflow-hidden flex flex-col gap-4 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <!-- project description and actions -->
+            <div class="flex flex-col gap-2 md:gap-4 xl:gap-6">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] my-2">Understanding People</h2>
+                <ul class="flex flex-col gap-6 list-inside list-disc"> 
+                    <li> Who are our key competitors? </li>
+                    <li> What is the best headphone on the market, and what are its qualities? </li>
+                    <li> We conducted interviews, surveys, and competitive analysis to identify key user pain points: </li>
+                </ul>
+            </div>
 
+            <table class="">
+                <thead class="">
+                    <tr class="text-left">
+                        <th class="bg-gray-100 py-4 pl-8"><div class="bg-gray-200 py-4 pl-10"> Competitors </div></th>
+                        <th class="bg-gray-100 py-4 "><div class="bg-gray-200 py-4 "> Top Products </div></th>
+                        <th class="bg-gray-100 py-4 "><div class="bg-gray-200 py-4 "> Product Strength </div></th>
+                        <th class="bg-gray-100 py-4 pr-8"><div class="bg-gray-200 py-4 pr-10"> Product Weaknesses </div></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bg-gray-100 w-[15%] pl-8"><div class="py-4 pl-10">Bose</div></td>
+                        <td class="bg-gray-100 w-[15%]"><div class="py-4">Bose<br>QuietComfort<br>45/QC45</div></td>
+                        <td class="bg-gray-100 w-[35%]">
+                            <div class="py-4">
+                                <ul class="list-disc flex flex-col pl-4 gap-4">
+                                    <li>Very comfortable and great for commute and travel.</li>
+                                    <li>Good build quality.</li>
+                                    <li>Excellent noise isolation performance.</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="bg-gray-100 w-[25%] pr-8">
+                            <div class="py-4 pr-10">
+                                <ul class="list-disc flex flex-col pl-4 gap-4">
+                                    <li>Bulky and can fall off your head with more intense movement.</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
 		</section>
 
         <!-- 03 -->
-        <div id="design-process" class="bg-gray-100">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+        <div id="design-process" class="bg-[#F2EBE2]">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-10">
                     <p class="text-4xl font-cookie quick-down">03</p>
-                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Design Process</h2>
+                    <h2 class="font-safira text-5xl 2xl:text-5xl leading-[80px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Design Process</h2>
                 </div>
     
                 <!-- image -->
@@ -247,7 +309,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 	
 
         <!-- laying the foundation -->
-        <section id="foundation" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="foundation" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 relative box-parent">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Laying the Foundation – Sketches and Structure</h2>
@@ -281,7 +343,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		</section>
 
         <!-- bringing designs to life -->
-        <section id="life" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="life" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 box-parent relative">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Bringing Designs to Life</h2>
@@ -311,7 +373,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		</section>
 
         <!-- visual aesthetics -->
-        <section id="visual" class="h-screen overflow-hidden flex flex-col md:grid md:grid-cols-[40%_60%] gap-8 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative @container max-w-[1700px] mx-auto">
+        <section id="visual" class="h-screen overflow-hidden flex flex-col md:grid md:grid-cols-[40%_60%] gap-8 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative @container max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 box-parent relative overflow-hidden">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Visual Aesthetics and Style</h2>
@@ -377,7 +439,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		</section>
 
         <!-- high fidelity designs -->
-        <section id="fidelity" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="fidelity" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 box-parent relative">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">High-Fidelity Designs and Final Touches</h2>
@@ -405,8 +467,8 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		</section>
 
         <!-- 04 -->
-        <div id="impact-and-feedback" class="bg-gray-100">
-            <section class="h-screen overflow-hidden flex flex-col lg:grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+        <div id="impact-and-feedback" class="bg-[#F2EBE2]">
+            <section class="h-screen overflow-hidden flex flex-col lg:grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
                     <p class="text-4xl font-cookie quick-down">04</p>
@@ -431,12 +493,12 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </div>
 
         <!-- 05 Collabrations-->
-        <div id="collaboration" class="bg-gray-100">
-            <section class="h-screen overflow-hidden pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <div id="collaboration" class="bg-[#F2EBE2]">
+            <section class="h-screen overflow-hidden pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
                     <p class="text-4xl font-cookie quick-down">05</p>
-                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Collabration</h2>
+                    <h2 class="font-safira text-5xl 2xl:text-5xl leading-[80px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Collabration</h2>
                 </div>
     
                 <!-- image -->
@@ -481,12 +543,12 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </div>
 
         <!-- 06 reflections and learnings -->
-        <div id="reflections" class="bg-gray-100">
-            <section class="h-screen overflow-hidden flex flex-col lg:grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+        <div id="reflections" class="bg-[#F2EBE2]">
+            <section class="h-screen overflow-hidden flex flex-col lg:grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
                     <p class="text-4xl font-cookie quick-down">06</p>
-                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Reflections and Learnings</h2>
+                    <h2 class="font-safira text-5xl 2xl:text-5xl leading-[80px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Reflections and Learnings</h2>
                 </div>
     
                 <!-- image -->
@@ -498,7 +560,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- Reflections and learnings -->
-        <section id="learnings" class="h-screen overflow-hidden flex flex-col gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="learnings" class="h-screen overflow-hidden flex flex-col gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Reflections and Learnings</h2>
@@ -538,8 +600,8 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		</section>
 
 		<!-- closing statement -->
-        <div id='closing' class="bg-gray-100">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 max-w-[1700px] mx-auto">
+        <div id='closing' class="bg-[#F2EBE2]">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 max-w-[1700px] mx-auto gap-4 xl:gap-10">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center">
                     <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 heading-up-footer">Closing Statement</h2>
@@ -570,7 +632,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 </style>
 
 <script>
-    import Alpine from 'alpinejs';
+import Alpine from 'alpinejs';
     import gsap from "gsap";
     import Lenis from "lenis";
     import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
@@ -848,6 +910,22 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         // },
     });
 
+    let dissappearBottomNav = gsap.fromTo('.bottom-nav', { opacity : 1}, {
+        opacity : 0,
+        duration: 2,
+        paused : true,
+        ease: "circ.inOut",
+        // scrollTrigger: {
+        //     // trigger: '#contact',  // Each element triggers individually
+        //     // start: "top 20%",  // Animation starts when the element is 80% in view
+        //     // end: "bottom 95%",
+        //     // scrub : true,
+        //     // toggleActions: "play reverse play reverse",  // Only plays once
+        //     // markers : true,
+        // },
+    });
+
+    // move bottom nav when footer shows
     ScrollTrigger.create({
         trigger: '#contact',
         // start: 'top top',
@@ -863,6 +941,28 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 footerAnim.duration(0)
                 footerAnim.reverse()
             }
+        }
+    });
+
+    // dissappear footer on certain pages
+    ScrollTrigger.create({
+        trigger: ['#quick-overview', '#research-and-insights'],
+        // start: 'top top',
+        // endTrigger: '#otherID',
+        // end: 'bottom 50%+=100px',
+        onToggle: (self) => {
+            if(self.isActive) dissappearBottomNav.play()
+            else dissappearBottomNav.reverse()
+        },
+        onUpdate: (self) => {
+            console.log('here2')
+            // if(self.direction == 1){
+            //     footerAnim.duration(2)
+            //     footerAnim.play();
+            // }else{
+            //     footerAnim.duration(0)
+            //     footerAnim.reverse()
+            // }
         }
     });
 
