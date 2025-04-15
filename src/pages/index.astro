@@ -3,17 +3,20 @@ import Layout from '../layouts/Layout.astro';
 import Footer from '../layouts/Footer.astro'
 
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+let data = {active: 'hero', links: ['works', 'timeline', 'about-me', 'contact']}
+
 ---
 
 <Layout title="Welcome to Astro.">
+	<div x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail"> 
 	<!-- nav -->
 	<header class="fixed top-0 left-0 right-0 bg-white opacity-95">
 		<nav class="flex justify-between pt-8 pb-2 px-20 border-b-[1px] border-b-gray-100">
 			<ul class="flex items-center gap-16">
-				<li class="font-safira text-gray-300">Selected Works</li>
-				<li class="font-safira text-gray-300">My Journey</li>
-				<li class="font-safira text-gray-300">About Me</li>
-				<li class="font-safira text-gray-300">Get In Touch</li>
+				<li class="font-safira text-gray-300"><a href="#works">Selected Works</a></li>
+				<li class="font-safira text-gray-300" @click="active = 'timeline'" :class="{'text-black' : ['timeline', 'quick-overview-2'].includes(active)}"><a href="#timeline">My Journey</a></li>
+				<li class="font-safira text-gray-300"><a href="#about-me">About Me</a></li>
+				<li class="font-safira text-gray-300"><a href="#contact">Get In Touch</a></li>
 			</ul>
 			<div class="flex items-center gap-10">
 				<p class="font-bilal text-[32px]">Kamil Oseni</p>
@@ -22,9 +25,13 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 		</nav>
 	</header>
 
+	<!-- arrows -->
+	<a :href="'#' + (links[links.indexOf(active) + 1] || links[links.length])" @click="setTimeout(()=> {active = (links[links.indexOf(active) + 1] || links[links.length])}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-20 bottom-5 z-[1] down-arrow"></a>
+	<a :href="'#' + (links[links.indexOf(active) - 1] || links[0])" @click="setTimeout(()=> {active = (links[links.indexOf(active) - 1] || links[0])}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-20 bottom-5 z-[1] up-arrow hidden"></a>
+
 	<main>
 		<!-- works -->
-		<section class="h-screen overflow-hidden grid grid-rows-[minmax(auto,1fr)_1fr]">
+		<section id="works" class="h-screen overflow-hidden grid grid-rows-[minmax(auto,1fr)_1fr]">
 			<!-- top-side -->
 			<div class="pt-[200px] px-20 pb-8 flex justify-between items-center pt-auto">
 				<!-- project title, tags and date -->
@@ -64,7 +71,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 		</section>
 
 		<!-- timeline -->
-		<section class="h-screen grid grid-rows-[80%_minmax(auto)]  px-20 gap-6">
+		<section id="timeline" class="h-screen grid grid-rows-[80%_minmax(auto)]  px-20 gap-6">
 			<!-- center box -->
 			<div class="pt-[200px] pb-8 flex justify-between items-center gap-8">
 				<!-- project title, tags and date -->
@@ -118,7 +125,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 		</section>
 
 		<!-- about me -->
-		<section class="h-screen px-20">
+		<section id="about-me" class="h-screen px-20">
 			<div class="pt-[180px] grid grid-cols-[auto_minmax(0,40%)] gap-10">
 				<!--  contents -->
 				<div class="flex flex-col gap-3.5">
@@ -166,8 +173,356 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 		</section>
 	</main>
 	<Footer />
+	</div>
 </Layout>
 
 <style>
 
 </style>
+
+<script>
+		import Alpine from 'alpinejs';
+		import gsap from "gsap";
+		import Lenis from "lenis";
+		import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
+		gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+	
+		gsap.config({
+			nullTargetWarn: false,
+		})
+	
+		// initialise lenis
+		const lenis = new Lenis({
+			autoRaf: true,
+		});
+	
+		let previousScroll = 0;
+		// Listen for the scroll event and log the event data
+		// lenis.on('scroll', (e) => {
+		//     // console.log(e);
+		// });
+	
+		// lenis.on('scroll', ScrollTrigger.update);
+		// gsap.ticker.lagSmoothing(0);
+	
+		document.addEventListener("click", function (e) {
+			const currentScroll = window.scrollY;
+	
+			let Etarget = e.target as HTMLElement
+			const anchor = Etarget.closest("a[href^='#']");
+			if (!anchor) return;
+	
+			e.preventDefault();
+			const targetId = anchor.getAttribute("href");
+			const target = document.querySelector(targetId) as HTMLElement;
+	
+			if (target) {
+				let targetPos = target.offsetTop;
+	 
+				if(targetPos < currentScroll) //scroll up
+					lenis.scrollTo(target, {duration: 0});
+				else // scroll down
+					lenis.scrollTo(target, {duration: 2.5, 
+					easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2
+				});
+	
+				history.pushState(null, "", targetId);
+			}
+		});
+	
+		const downArrow = document.querySelector('a.down-arrow') as HTMLAnchorElement;
+		const upArrow = document.querySelector('a.up-arrow') as HTMLAnchorElement;
+	
+	
+		// document.addEventListener('alpine:init', () => {
+		//     Alpine.data('active', () => ({
+		//         open: false,
+	 
+		//         toggle() {
+		//             this.open = ! this.open
+		//         }
+		//     }))
+		// })
+		function scrollUp(){
+			lenis.scrollTo(downArrow.getAttribute('href'), {duration: 2.5, 
+				easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2
+			});
+			window.dispatchEvent(new CustomEvent('hash-update', { detail: downArrow.getAttribute('href').slice(1) }));
+		}
+	
+		function scrollDown(){
+			lenis.scrollTo(upArrow.getAttribute('href'), {duration: 0});
+			window.dispatchEvent(new CustomEvent('hash-update', { detail: upArrow.getAttribute('href').slice(1) }));
+		}
+	
+		document.addEventListener('keydown', function(event) {
+			if (event.key === 'ArrowDown') {
+				scrollUp()
+			}
+		});
+	
+		document.addEventListener('keydown', function(event) {
+			if (event.key === 'ArrowUp') {
+				scrollDown()
+			}
+		});
+	
+		let intervalId = null;
+		window.addEventListener('wheel', (e) => {
+			e.preventDefault(); // stop actual scrolling
+			const direction = e.deltaY > 0 ? 'down' : 'up';
+			lenis.stop()
+	
+			// clearTimeout
+			console.log('here')
+			clearTimeout(intervalId)
+			intervalId = setTimeout(() => {
+				lenis.start()
+				if(direction == 'up') scrollUp()
+				else scrollDown()
+	
+				console.log('inside', lenis)
+			}, 50);
+	
+	
+			// if(direction == 'up') scrollUp()
+			// else scrollDown()
+		}, { passive: false });
+	
+		
+	
+	
+		gsap.fromTo(".hero-img",{
+			translateX : '-50%'
+		}, {
+			translateX : '0%',
+			opacity : 1,
+			duration : 2,
+			scrollTrigger: {
+				trigger: '.hero-img',  // Each element triggers individually
+				// start: "top 80%",  // Animation starts when the element is 80% in view
+				end: "bottom 92%",
+				toggleActions: "play reverse play reset",  // Only plays once
+				// markers : true,
+			},
+		})
+	
+		gsap.fromTo(".closing-img",{
+			translateY : '20%',
+			opacity : 0
+		}, {
+			translateY : '0%',
+			opacity : 1,
+			duration : 2,
+			scrollTrigger: {
+				trigger: '.closing-img',  // Each element triggers individually
+				// start: "top 80%",  // Animation starts when the element is 80% in view
+				end: "bottom 50%",
+				toggleActions: "play reverse play reset",  // Only plays once
+				// markers : true,
+			},
+		})
+	
+		
+	
+		document.querySelectorAll('section').forEach((section) => {
+			gsap.fromTo(section.querySelectorAll('.heading-up'),{translateY : '50%', opacity : 0}, {
+				translateY: 0,
+				opacity: 1,
+				duration: 1,
+				ease: "power2.out",
+				stagger: 0.4,
+				scrollTrigger: {
+					trigger: section,  // Each element triggers individually
+					start: "top 20%",  // Animation starts when the element is 80% in view
+					end: "bottom 96%",
+					toggleActions: "play reverse play reset", // Only plays once
+					// markers : true,
+				},
+			});
+	
+			gsap.fromTo(section.querySelectorAll('.heading-up-footer'),{translateY : '50%', opacity : 0}, {
+				translateY: 0,
+				opacity: 1,
+				duration: 1,
+				ease: "power2.out",
+				stagger: 0.4,
+				scrollTrigger: {
+					trigger: section,  // Each element triggers individually
+					start: "top 20%",  // Animation starts when the element is 80% in view
+					end: "bottom 50%",
+					toggleActions: "play reverse play reset", // Only plays once
+					// markers : true,
+				},
+			});
+	
+			gsap.fromTo(section.querySelectorAll('.quick-right'),{translateX : '50%', opacity : 0}, {
+				translateX: 0,
+				opacity: 1,
+				duration: 0.8,
+				ease: "power2.out",
+				stagger: 0.2,
+				scrollTrigger: {
+					trigger: section,  // Each element triggers individually
+					start: "top 20%",  // Animation starts when the element is 80% in view
+					end: "bottom 95%",
+					toggleActions: "play reverse play reset",  // Only plays once
+					// markers : true,
+				},
+			});
+	
+			gsap.fromTo(section.querySelectorAll('.quick-up'), {opacity : 0, translateY : '50%'}, {
+				translateY: 0,
+				opacity: 1,
+				duration: 0.8,
+				ease: "power2.out",
+				stagger: 0.2,
+				scrollTrigger: {
+					trigger: section,  // Each element triggers individually
+					start: "top 20%",  // Animation starts when the element is 80% in view
+					end: "bottom 95%",
+					// scrub : true,
+					toggleActions: "play reverse play reset",  // Only plays once
+					// markers : true,
+				},
+			});
+	
+			gsap.fromTo(section.querySelectorAll('.quick-down'), {opacity : 0, translateY : '-50%'}, {
+				translateY: 0,
+				opacity: 1,
+				duration: 0.8,
+				ease: "power2.out",
+				stagger: 0.2,
+				scrollTrigger: {
+					trigger: section,  // Each element triggers individually
+					start: "top 20%",  // Animation starts when the element is 80% in view
+					end: "bottom 95%",
+					// scrub : true,
+					toggleActions: "play reverse play reset",  // Only plays once
+					// markers : true,
+				},
+			});
+	
+			gsap.fromTo(section.querySelectorAll('.quick-appear'), {opacity : 0}, {
+				opacity: 1,
+				duration: 0.8,
+				ease: "power2.out",
+				stagger: 0.2,
+				scrollTrigger: {
+					trigger: section,  // Each element triggers individually
+					start: "top 20%",  // Animation starts when the element is 80% in view
+					end: "bottom 99%",
+					// scrub : true,
+					toggleActions: "play reverse play reset",  // Only plays once
+					// markers : true,
+				},
+			});
+	
+		})
+	
+	
+	
+		document.querySelectorAll('.box-parent').forEach((boxParent) => {
+			gsap.fromTo(boxParent.querySelectorAll('.box'),{
+				xPercent : 0
+			}, { 
+				xPercent : 100,
+				duration : 0.6,
+				ease : "power1.out",
+				stagger : 0.08,
+				scrollTrigger: {
+					trigger: boxParent,  // Each element triggers individually
+					start: "top 50%",  // Animation starts when the element is 80% in view
+					end: "bottom 92%",
+					// scrub : true,
+					toggleActions: "play reverse play reset",  // Only plays once
+					// markers : true,
+				},
+			});
+		})
+	
+	
+		// for the footer
+		let footer = document.querySelector('#contact') as HTMLElement
+		let footerAnim = gsap.fromTo('.bottom-nav', { bottom : 0}, {
+			bottom : footer.clientHeight,
+			duration: 2,
+			paused : true,
+			ease: "circ.inOut",
+			// scrollTrigger: {
+			//     // trigger: '#contact',  // Each element triggers individually
+			//     // start: "top 20%",  // Animation starts when the element is 80% in view
+			//     // end: "bottom 95%",
+			//     // scrub : true,
+			//     // toggleActions: "play reverse play reverse",  // Only plays once
+			//     // markers : true,
+			// },
+		});
+	
+		let dissappearBottomNav = gsap.fromTo('.bottom-nav', { opacity : 1}, {
+			opacity : 0,
+			duration: 2,
+			paused : true,
+			ease: "circ.inOut",
+			// scrollTrigger: {
+			//     // trigger: '#contact',  // Each element triggers individually
+			//     // start: "top 20%",  // Animation starts when the element is 80% in view
+			//     // end: "bottom 95%",
+			//     // scrub : true,
+			//     // toggleActions: "play reverse play reverse",  // Only plays once
+			//     // markers : true,
+			// },
+		});
+	
+		// move bottom nav when footer shows
+		ScrollTrigger.create({
+			trigger: '#contact',
+			// start: 'top top',
+			// endTrigger: '#otherID',
+			end: 'bottom 50%+=100px',
+			onToggle: (self) => console.log('toggled, isActive:', self.isActive),
+			onUpdate: (self) => {
+	
+				if(self.direction == 1){
+					footerAnim.duration(2)
+					footerAnim.play();
+				}else{
+					footerAnim.duration(0)
+					footerAnim.reverse()
+				}
+			}
+		});
+	
+		// dissappear footer on certain pages
+		['#quick-overview', '#research-and-insights', '#design-process', '#collaboration', '#next-steps', '#closing', '#key-features', '#market-strategy', '#conclusion'].forEach(section => {
+			ScrollTrigger.create({
+				trigger: section,
+				// start: 'top top',
+				// endTrigger: '#otherID',
+				// end: 'bottom 50%+=100px',
+				onToggle: (self) => {
+					if(self.isActive) dissappearBottomNav.play()
+					else dissappearBottomNav.reverse()
+				},
+				onUpdate: (self) => {
+					console.log('here2')
+					// if(self.direction == 1){
+					//     footerAnim.duration(2)
+					//     footerAnim.play();
+					// }else{
+					//     footerAnim.duration(0)
+					//     footerAnim.reverse()
+					// }
+				}
+			});
+		})
+	   
+	
+	   
+	
+	
+	
+		// gsap.to(window, { duration: 1, scrollTo: "#hey-there", ease: "bounce.out" });
+	
+</script>
+	

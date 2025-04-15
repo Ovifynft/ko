@@ -1,0 +1,1348 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../layouts/Footer.astro'
+
+// console.log('here ', Astro.url)
+import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
+let links = ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'problem', 'research-and-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'closing']
+let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'research-and-insights', 'problem', 'user-research', 'market-research', 'competitive', 'design-process', 'the-brand', 'navigation', 'ui-systems', 'no-scrolling', 'bento', 'dynamic-island', 'soft-color', 'calender', 'image', 'key-features', 'features-list', 'market-strategy', 'market-focus', 'product-roadmap', 'conclusion', 'conclusion-2', 'contact']}
+---
+
+<Layout title="Welcome to Astro.">
+	<!-- nav -->
+    <div  x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail">
+	<header class="fixed top-0 left-0 right-0 bg-white w-full z-30">
+		<nav class="flex justify-between items-center pt-4 lg:pt-8 pb-2 px-8 gap-4 lg:px-20 border-b-[1px] border-b-gray-100">
+            <button><AlignLeft /></button>
+            <!-- <p x-text="active"></p> -->
+
+            <div class="w-full flex justify-center">
+                <div class="h-2 w-full max-w-[600px] flex gap-3 relative lg:left-[5%]">  
+                    <template x-for='(link, index) in links'>
+                        <a :href="'#' + link" href="link" class="w-[100px] h-full transition-all duration-200 rounded-lg"
+                            @click="active = link"
+                            :class="{'bg-black ' : links.indexOf(link) <= links.indexOf(active), ' hover:hide-bottom-nav bg-gray-200 text-white' : links.indexOf(link) > links.indexOf(active)}"
+                        ></a>
+                    </template>
+                </div>
+            </div>
+
+			<div class="flex items-center gap-5">
+				<p class="font-bilal hidden lg:block lg:text-[24px] whitespace-nowrap">Kamil Oseni</p>
+				<div class="lg:w-[70px] md:w-[70px] w-[50px] aspect-square bg-gray-500 rounded-full"></div>
+			</div>
+		</nav>
+	</header>
+
+    <!-- bottom-nav -->
+    <div class="fixed bottom-0 right-0 z-10 flex bg-white pt-4 pl-4 xl:px-10 lg:pl-10 py-6 xl:py-10 bottom-nav">
+        <ul class="flex gap-4 text-[#afafaf] font-semibold text-[10px] lg:text-sm">
+            <li @click="active = 'quick-overview'" :class="{'text-black' : ['quick-overview', 'quick-overview-2'].includes(active)}"><a href="#quick-overview">Quick Overview</a></li>
+            <li @click="active = 'research-and-insights'" :class="{'text-black' : ['research-and-insights', 'problem', 'design-insights', 'competitive', 'user-research', 'market-research'].includes(active)}"><a href="#research-and-insights"> Research and Insights</a></li>
+            <li @click="active = 'design-process'" :class="{'text-black' : ['design-process', 'the-brand', 'navigation', 'ui-systems', 'no-scrolling', 'bento', 'dynamic-island', 'soft-color', 'calender', 'image'].includes(active)}"><a href="#design-process"> Design and Product Decisions</a></li>
+            <li @click="active = 'key-features'" :class="{'text-black' : ['key-features', 'features-list'].includes(active)}"><a href="#key-features">Key Features</a></li>
+            <li @click="active = 'market-strategy'" :class="{'text-black' : ['market-strategy', 'market-focus', 'product-roadmap'].includes(active)}"><a href="#market-strategy">Markey Strategy</a></li>
+            <li @click="active = 'conclusion'" :class="{'text-black' : ['conclusion', 'conclusion-2'].includes(active)}"><a href="#conclusion">Conclusion</a></li>
+
+        </ul>
+    </div>
+
+    <!-- arrow -->
+    <a :href="'#' + (links[links.indexOf(active) + 1] || links[links.length])" @click="setTimeout(()=> {active = (links[links.indexOf(active) + 1] || links[links.length])}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-20 bottom-5 z-[1] down-arrow"></a>
+    <a :href="'#' + (links[links.indexOf(active) - 1] || links[0])" @click="setTimeout(()=> {active = (links[links.indexOf(active) - 1] || links[0])}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-20 bottom-5 z-[1] up-arrow hidden"></a>
+
+
+	<main>
+		<!-- hero -->
+        <div id="hero" class="hide-bottom-nav">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 max-w-[1700px] mx-auto gap-4 xl:gap-10">
+                <div class="max-w-[700px] flex flex-col justify-center">
+                    <h2 class="heading-up font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4  opacity-0 translate-y-[50%] up">
+                        Eden <span class="text-gray-200">*</span></h2>
+
+                    <p class="heading-up opacity-0">
+                        Eden gives you clarity and confidence with your money. It helps you
+                        stay on top of your spending, understand your finances, and grow
+                        your wealth without the stress or confusion.
+                    </p>
+
+                    <div class="pt-[52px] heading-up opacity-0">
+                        <button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Request Access <img src="/icons/multi-arrows.svg" alt="" srcset=""></button>
+                    </div>
+                </div>
+
+                <div class="flex  opacity-0 hero-img items-center slide justify-end overflow-hidden p-20 w-full bg-[url('dummy_image_link.png')] bg-gray-100 bg-no-repeat bg-contain bg-center h-full relative">
+                </div>
+            </section>
+        </div>
+		
+
+        <!-- hey there -->
+        <section id="hey-there" class="lg:px-20 px-10 h-screen flex items-center justify-center relative pt-[100px] max-w-[1700px] mx-auto">
+            <h2 class="text-sm sm:text-lg md:text-2xl xl:text-5xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">
+                This document is going to be mostly about the <span class="text-black ">design</span>
+                <span class="text-black ">decisions</span> behind some of the <span class="text-black ">features</span> included in <span class="text-black ">Eden</span>
+                along with the <span class="text-black ">market strategy</span> guiding how it was built
+                to <span class="text-black ">grow</span>.
+            </h2>
+			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div> -->
+            <!-- <p class="absolute right-20 bottom-[20%] w-[70%] text-right quick-appear">“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun & easy to use.” - Tunde</p> -->
+        </section>
+
+        <!-- table of contents -->
+        <section id="table" class="lg:px-20 px-10 h-screen relative pt-[100px] md:pt-[120px] lg:pt-[150px] max-w-[1700px] mx-auto overflow-hidden">
+            <h2 class="font-safira lg:text-sm xl:text-2xl heading-up">Content</h2>
+            {/* Updated grid-rows to match the 6 content items */}
+            <div class="max-w-2xl grid grid-cols-[80%_20%] grid-rows-6 mt-20 mx-auto my-auto gap-4 lg:text-xl xl:text-2xl">
+                {/* Item 1 - Matches image */}
+                <p class="quick-right opacity-0">Quick Overview</p><p class="quick-up opacity-0 translate-y-[50%]">01</p>
+                {/* Item 2 - Matches image */}
+                <p class="quick-right opacity-0">Research and Insights</p><p class="quick-up opacity-0 translate-y-[50%]">02</p>
+                {/* Item 3 - Text updated to match image */}
+                <p class="quick-right opacity-0">Design and Product Decisions</p><p class="quick-up opacity-0 translate-y-[50%]">03</p>
+                {/* Item 4 - Text updated to match image */}
+                <p class="quick-right opacity-0">Key Features</p><p class="quick-up opacity-0 translate-y-[50%]">04</p>
+                {/* Item 5 - Added from image */}
+                <p class="quick-right opacity-0">Market Strategy</p><p class="quick-up opacity-0 translate-y-[50%]">05</p>
+                {/* Item 6 - Added from image */}
+                <p class="quick-right opacity-0">Conclusion</p><p class="quick-up opacity-0 translate-y-[50%]">06</p>
+            </div>
+            </section>
+
+        <!-- 01 -->
+        <div id="quick-overview" class="hide-bottom-nav bg-black text-white">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] max-w-[1700px] mx-auto lg:px-20 px-10 relative gap-4 xl:gap-6">
+                <!-- project description and actions -->
+                <div class="max-w-[700px] flex flex-col justify-center gap-4">
+                    <p class="text-4xl font-cookie quick-down">01</p>
+                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Quick Overview</h2>
+                </div>
+    
+                <!-- image -->
+                <!-- <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k')] bg-blend-color-burn bg-white bg-center bg-no-repeat bg-cover h-full"></div> -->
+    
+                <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
+            </section>
+        </div>
+		
+
+        <!-- 01 - Quick overview -->
+        <section id="quick-overview-2" class="h-auto lg:min-h-screen overflow-hidden flex flex-col lg:grid pb-16 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 xl:grid-cols-[auto_auto_auto] lg:grid-cols-[auto_auto_10%] grid-rows-[auto_auto_auto] lg:gap-4 xl:gap-10 relative max-w-[1700px] mx-auto">
+            <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xl:text-2xl pb-2 xl:py-4">Product Overview</h3>
+             {/* Updated parent <p> with flex for spacing, removed <br> tags */}
+            <p class="md:w-full max-w-[900px] border-gray-200 col-span-2 text-base  flex flex-col gap-4">
+                {/* Paragraph 1 wrapped in span */}
+                <span>
+                    Eden is a simple, thoughtful Al-powered financial assistant. It's designed to be a calm space where money grows steadily, clearly, and without pressure.
+                </span>
+                 {/* Paragraph 2 wrapped in span */}
+                <span>
+                    Unlike most financial tools that <strong>overwhelm with data and dashboards</strong>, Eden helps people manage spending, track investments, and understand their finances in a way that <strong>feels natural and empowering</strong>.
+                </span>
+                 {/* Paragraph 3 wrapped in span */}
+                <span>
+                    The idea came from my time working at the Royal Bank of Canada, where I saw firsthand how <strong>stressed and unsure many clients felt</strong> when dealing with their money. I wanted to create something that <strong>felt more human, less noisy, and built on real trust</strong>.
+                </span>
+            </p>
+            <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xl:text-2xl pb-2 xl:py-4 lg:pt-8">My Role</h3>
+            {/* My Role section remains unchanged from previous correct version */}
+            <div class="md:w-full max-w-[900px] lg:border-y-[1px] py-4 lg:py-8 border-gray-200 col-span-2 flex flex-col gap-4 text-base ">
+                <p>
+                    I led the design work for Eden and was involved in everything, from early ideas to the final screens. My work included:
+                </p>
+                <ul class="list-disc pl-5 flex flex-col gap-4">
+                    <li>
+                        <strong>Designing the product:</strong> I created the full experience for desktop and mobile, keeping it simple and easy to use.
+                    </li>
+                    <li>
+                        <strong>Building the design system:</strong> I made reusable components and clean layouts that work in both light and dark mode.
+                    </li>
+                    <li>
+                        <strong>Creating the brand:</strong> I came up with the name, logo, and look of Eden so it feels calm and trustworthy.
+                    </li>
+                    <li>
+                        <strong>Doing the research:</strong> I looked into what users needed, studied other finance tools, and found what was missing.
+                    </li>
+                    <li>
+                        <strong>Exploring funding:</strong> I researched grants and programs in Canada and the U.S. that could support Eden's future and I built a roadmap for that.
+                    </li>
+                </ul>
+                <p>
+                    This project gave me the chance to design, research, and think about the big picture, all with the goal of <strong>building something people can trust with their money</strong>.
+                </p>
+            </div>
+        </section>
+
+		<!-- 02 -->
+        <div id="research-and-insights" class="hide-bottom-nav bg-black text-white">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10  relative max-w-[1700px] mx-auto">
+                <!-- project description and actions -->
+                <div class="max-w-[700px] flex flex-col justify-center gap-10">
+                    <p class="text-4xl font-cookie quick-down">02</p>
+                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Research and Insights</h2>
+                    <!-- <p>Our design process was anchored in extensive user research, employing both primary and secondary research methodologies and incorporating qualitative and quantitative data to capture a wide range of consumer insights.</p> -->
+                </div>
+    
+                <!-- image -->
+                <!-- <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k')] bg-white bg-center bg-no-repeat bg-cover bg-blend-color-burn"></div> -->
+    
+                <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
+            </section>
+        </div>
+
+        <!-- the problem -->
+        <section id="problem" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
+                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">The Problem</h2>
+                <p class="flex flex-col gap-4 text-base ">
+                    {/* Content updated from image with bold tags */}
+                    <span>
+                        Eden wasn't always going to be what it is now. It started as a simple plan for a component library that developers could use in <strong>financial dashboards</strong>. But as I reflected on my year at the Royal Bank of Canada, the direction shifted.
+                    </span>
+                    <span>
+                        I spoke to people every day about their money, I saw how <strong>overwhelmed they felt</strong>. Even the tools meant to help often left them more <strong>confused</strong> than before. On top of that, financial advisors at Scotiabank pointed out that even banks needed a <strong>better way to manage and track external investments</strong>. These conversations added to what I already knew from <strong>five years of working in finance</strong>.
+                    </span>
+                     <span>
+                        Eden wasn't just going to be a set of building blocks for developers. It became something much bigger.
+                    </span>
+                </p>
+            </div>
+        
+            <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
+                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">The Goal</h2>
+                <div class="flex flex-col gap-4 text-base ">
+                     {/* Content updated from image with bold tags */}
+                    <p>
+                        My goal was to create something that flips the typical approach to financial apps. Most are designed for speed, attention, and short-term engagement. Eden is built for <strong>peace, trust, and long-term growth</strong>.
+                    </p>
+                    <p>
+                         I wanted to design a tool that helps people feel <strong>confident and in control</strong>, not anxious or rushed. Eden adapts to you. It makes space for your goals, your pace, and your journey with money.
+                    </p>
+                    <div class="flex flex-col gap-4">
+                        <p>Here's the issue I set out to solve:</p>
+                        <ul class="list-disc pl-5 space-y-1 font-semibold flex flex-col gap-4">
+                            <li>
+                                Finance tools often feel loud, cluttered, or impersonal.
+                            </li>
+                            <li>
+                                People don't just need charts and numbers, they need clarity, comfort, and a sense of control.
+                            </li>
+                             <li>
+                                Most apps right now are built for quick engagement, not long-term support. I wanted to flip that idea.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+        </section>
+
+         <!-- user research -->
+         <section id="user-research" class="h-auto lg:min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-16 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+
+            <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
+                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">User Research</h2>
+                 {/* Container div for spacing paragraphs and lists */}
+                <div class="flex flex-col gap-4 text-base ">
+                    <p>
+                        During my time at RBC, I listened to people talk about money every day. I noticed patterns—recurring frustrations that weren't being addressed:
+                    </p>
+                     {/* List with internal spacing AND entire items bolded */}
+                    <ul class="list-disc pl-5 flex flex-col gap-4">
+                        <li>
+                            <strong>Users missed payments not because they didn't have money, but because the funds were in the wrong account.</strong>
+                        </li>
+                        <li>
+                            <strong>People were frustrated by late alerts or no alerts at all when it came to bills, loans, or suspicious transactions.</strong>
+                        </li>
+                        <li>
+                            <strong>Payday changes often led to missed loan payments and NSF charges.</strong>
+                        </li>
+                        <li>
+                            <strong>Users wanted to know when their card was used in a different country, or when someone tried logging in from an unusual IP address.</strong>
+                        </li>
+                    </ul>
+                    <p>
+                        Beyond the bank, I launched an ongoing <strong>survey</strong> to better understand what features people actually want in a financial tool. I also wanted to learn how expectations and habits change across age groups and income levels. This research continues as Eden grows, helping us shape the right features through feedback.
+                    </p>
+                    <p>
+                        Through conversations with advisors at other financial institutions and smaller accounting firms, many firms wanted a <strong>SaaS product</strong> that could handle external investments <strong>securely, intelligently</strong>, and in <strong>compliance with government regulations like KYC</strong>.
+                    </p>
+                    <p>
+                        These were the people I was designing for. And these are the voices that helped shape Eden into what it is now.
+                    </p>
+                </div>
+            </div>
+        
+            <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
+                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Funding Research</h2>
+                 {/* Container div for spacing paragraphs and lists */}
+                <div class="flex flex-col gap-4 text-base ">
+                    <p>
+                        This part was new for me. I wanted to see how a tool like Eden could realistically be funded, so I looked into Canadian and U.S. grant programs.
+                    </p>
+                    <p>
+                        We discovered that Eden could access over <strong>$1.5 million in non-dilutive funding</strong> through a combination of:
+                    </p>
+                    {/* List 1 with internal spacing AND entire items bolded */}
+                    <ul class="list-disc pl-5 flex flex-col gap-4">
+                        <li>
+                            <strong>Canada's NRC IRAP (Industrial Research Assistance Program)</strong>
+                        </li>
+                        <li>
+                            <strong>Innovative Solutions Canada (early-stage funding and pilot support)</strong>
+                        </li>
+                        <li>
+                            <strong>U.S. SBIR/STTR programs (grants for AI, fintech, and emerging tech)</strong>
+                        </li>
+                    </ul>
+                    <p>
+                        These programs fund R&D, product development, and market entry. They're ideal for Eden's mission to <strong>build an AI-powered financial tool</strong> that supports both consumers and institutions.
+                    </p>
+                    <p>
+                        Beyond grants, we also identified:
+                    </p>
+                    {/* List 2 with internal spacing AND entire items bolded */}
+                     <ul class="list-disc pl-5 flex flex-col gap-4">
+                        <li>
+                            <strong>Accelerators and pitch competitions like Visa Everywhere, MassChallenge, and Elevate Canada that offer cash, mentorship, and investor access.</strong>
+                        </li>
+                        <li>
+                            <strong>University and AI lab partnerships for pilot testing and technical validation.</strong>
+                        </li>
+                        <li>
+                           <strong>Revenue-based financing and forgivable loans from regional agencies as match funding or scaling support.</strong>
+                        </li>
+                    </ul>
+                     <p>
+                        The smartest path is to <strong>stack grants and public funds early</strong>, before pursuing equity-based capital. This preserves Eden's independence and gives us time to build real traction.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- market research -->
+        <section id="market-research" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4  pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            {/* Main Title */}
+            <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Market Research</h2>
+
+            {/* Introductory Paragraph */}
+            <p class="mx-auto lg:mx-0">
+                We conducted an <strong>in-depth analysis</strong> of leading personal finance platforms in <strong>2024-2025</strong>, combining <strong>user experience reviews, pricing models, product focus, and target demographics</strong>. Our analysis included tools like <strong>Fey, Monarch Money, Mint, and Perplexity Finance</strong>, as well as emerging or niche apps such as <strong>Cleo, Rocket Money, Empower (formerly Personal Capital), YNAB, and Finary</strong>.
+            </p>
+
+            {/* Industry Trends Section */}
+            <div class="flex flex-col gap-2 mt-8">
+                <h3 class="text-lg font-bold mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xl:text-2xl">Industry Trends</h3>
+
+
+                {/* Two-Column Grid for Trends */}
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 xl:gap-x-12 gap-y-6 lg:gap-y-8 text-base ">
+
+                    {/* Left Column Trends */}
+                    <ul class="flex flex-col gap-6 lg:gap-8 list-disc list-outide pl-4">
+                        <li><strong>AI Financial Assistants:</strong> Platforms like <strong>Fey and Perplexity</strong> are leading the way in AI-driven tools. They simplify research by allowing users to ask financial questions in <strong>plain English</strong> and receive <strong>personalized summaries and updates</strong>. Yet, they <strong>lack full lifecycle support for personal finance</strong>.
+                        </li>
+                        <li>
+                            <strong>Comprehensive Ecosystems:</strong>
+                            Tools like <strong>Monarch and Empower</strong> aim to unify <strong>budgeting, goal tracking, and investment analysis</strong>. Monarch even supports <strong>professional advisor collaboration</strong>. However, pricing and complexity limit their accessibility for casual users.
+                        </li>
+                        <li>
+                            <strong>Decline of Free Tools:</strong>
+                            With <strong>Mint shutting down in 2024</strong>, the market has shifted away from ad-supported free models. Most visible apps now charge <strong>$5-15/month</strong>. This raises the bar on design, UX, and long-term value.
+                        </li>
+                    </ul>
+
+                    {/* Right Column Trends */}
+                    <ul class="flex flex-col gap-6 lg:gap-8 list-disc list-outside pl-4">
+                        <li>
+                            <strong>UX & Emotional Engagement:</strong>
+                            <strong>Cleo</strong> shows how <strong>tone and emotion</strong> can drive daily usage, while <strong>YNAB</strong> focus on <strong>structure and planning</strong>. Still, few tools truly guide or comfort users emotionally. Most <strong>remain purely functional</strong>.
+                        </li>
+                        <li>
+                            <strong>Gap in Accessibility:</strong>
+                            There's a <strong>growing gap for older adults, newcomers to finance, and those with irregular incomes</strong>. Most tools presume financial literacy and tech comfort. <strong>Gig workers, freelancers, and international users</strong> remain underserved.
+                        </li>
+                        <li>
+                            <strong>Fragmentation & Privacy Concerns:</strong>
+                            Users often juggle multiple apps for budgeting, investing, and bill tracking. There's still no <strong>widely adopted, seamless all-in-one platform</strong>. In addition, people increasingly want <strong>transparency and control over how their data is used or shared</strong>.
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        
+        </section>
+
+        <!-- competitive analysis -->
+        <section id="competitive" class="h-auto min-h-screen flex flex-col gap-6 lg:gap-8 pb-16 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="bg-gray-100 px-4 sm:px-6 lg:px-10 py-6 pt-8 text-sm lg:text-base overflow-x-auto">
+                <p class="py-6">Competitive Analysis</p>
+                {/* Added overflow-x-auto for smaller screens */}
+                <table class="w-full border-collapse">
+                    <thead>
+                        <tr class="text-left">
+                            {/* Updated table headers */}
+                            <th class="bg-gray-100 py-4 px-4 max-w-[40px] font-semibold">Platform</th> {/* Made first column sticky */}
+                            <th class="bg-gray-100 py-4 px-4 max-w-[40px] font-semibold">Core Focus</th>
+                            <th class="bg-gray-100 py-4 px-4 max-w-[40px] font-semibold">Strengths</th>
+                            <th class="bg-gray-100 py-4 px-4 max-w-[40px] font-semibold">Gaps/Challenges</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {/* Updated table rows with data from the image */}
+                        <tr class="bg-white"> {/* Use white/gray-100 for alternating */}
+                            <td class="py-4 px-4 max-w-[40px] bg-white z-10">Fey</td> {/* Match sticky bg */}
+                            <td class="py-4 px-4 max-w-[40px]">AI-driven investment research</td>
+                            <td class="py-4 px-4 max-w-[40px]">Real-time stock data, AI summaries, sleek design</td>
+                            <td class="py-4 px-4 max-w-[40px]">No budgeting tools, assumes financial literacy, desktop-first</td>
+                        </tr>
+                        <tr class="bg-gray-100">
+                            <td class="py-4 px-4 max-w-[40px] bg-gray-100 z-10">Monarch Money</td> {/* Match sticky bg */}
+                            <td class="py-4 px-4 max-w-[40px]">Budgeting, planning, advisor collaboration</td>
+                            <td class="py-4 px-4 max-w-[40px]">All-in-one dashboard, customizable views, professional use supported</td>
+                            <td class="py-4 px-4 max-w-[40px]">High subscription cost (~$99/year), may feel overwhelming to casual users</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="py-4 px-4 max-w-[40px] bg-white z-10">Perplexity Finance</td> {/* Match sticky bg */}
+                            <td class="py-4 px-4 max-w-[40px]">Conversational finance research</td>
+                            <td class="py-4 px-4 max-w-[40px]">Natural language Q&A, live stock data, helpful explanations</td>
+                            <td class="py-4 px-4 max-w-[40px]">No portfolio management, desktop-only, early-stage product</td>
+                        </tr>
+                        <tr class="bg-gray-100">
+                            <td class="py-4 px-4 max-w-[40px] bg-gray-100 z-10">Mint (Closed)</td> {/* Match sticky bg */}
+                            <td class="py-4 px-4 max-w-[40px]">Budget tracking & aggregation</td>
+                            <td class="py-4 px-4 max-w-[40px]">Longtime free tool, simple UI, popular among general users</td>
+                            <td class="py-4 px-4 max-w-[40px]">Shut down in March 2024 due to low engagement, lack of innovation</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="py-4 px-4 max-w-[40px] bg-white z-10">Cleo</td> {/* Match sticky bg */}
+                            <td class="py-4 px-4 max-w-[40px]">Budgeting via AI chatbot</td>
+                            <td class="py-4 px-4 max-w-[40px]">Fun, conversational UX for Gen Z, behavioral nudges</td>
+                            <td class="py-4 px-4 max-w-[40px]">Limited planning features, lacks depth, not suited for older users</td>
+                        </tr>
+                        <tr class="bg-gray-100">
+                            <td class="py-4 px-4 max-w-[40px] bg-gray-100 z-10">Empower</td> {/* Match sticky bg */}
+                            <td class="py-4 px-4 max-w-[40px]">Retirement/investment planning</td>
+                            <td class="py-4 px-4 max-w-[40px]">Net worth tracking, retirement simulators, wealth dashboards</td>
+                            <td class="py-4 px-4 max-w-[40px]">Budgeting is weak, appeals mostly to higher-net-worth users</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 03 -->
+        <div id="design-process" class="hide-bottom-nav bg-black text-white">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+                <!-- project description and actions -->
+                <div class="max-w-[700px] flex flex-col justify-center gap-10">
+                    <p class="text-4xl font-cookie quick-down">03</p>
+                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Design and Product Decisions</h2>
+                </div>
+    
+                <!-- image -->
+                <!-- <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-white bg-center bg-no-repeat bg-cover h-full"></div> -->
+            </section>
+        </div>
+
+        <!-- the brand -->
+        <section id="the-brand" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
+                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">The Brand</h2>
+                <div class="flex flex-col gap-4 text-base ">
+                    <p class="quick-up">
+                        <strong>Empowering Users</strong>
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 font-semibold flex flex-col gap-4 quick-up">
+                        <li>
+                            <strong>Name:</strong> Eden – a peaceful place where money grows.
+                        </li>
+                        <li>
+                            <strong>Tone:</strong> Calm, clear, and helpful
+                        </li>
+                        <li>
+                            <strong>Visual Style:</strong> Soft edges, quiet colors, no clutter
+                        </li>
+                        <li>
+                            <strong>Logo:</strong> A clean wordmark paired with a growing stem rising from the letter “d,” symbolizing peace, <strong>steady growth with the help of AI</strong>, and financial clarity.
+                        </li>
+                    </ul>
+
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
+            </div>
+
+            <!-- image -->
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+        </section>
+
+        <!-- navigation -->
+        <section id="navigation" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
+                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Navigation and Structure</h2>
+                <div class="flex flex-col gap-4 text-base ">
+                    <p class="quick-up">
+                        The app is built around five main areas:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 font-semibold flex flex-col gap-4 quick-up">
+                        <li>
+                            <strong>Home</strong> (dashboard)
+                        </li>
+                        <li>
+                            <strong>Wallet</strong>
+                        </li>
+                        <li>
+                            <strong>Portfolio &amp; Investments</strong>
+                        </li>
+                        <li>
+                            <strong>Workspace</strong> (For collaborating with AI on tasks)
+                        </li>
+                    </ul>
+                    <p class="quick-up">
+                        Underneath that are tools like Bills, Budget, Investments, Notifications, Settings, and more.
+                    </p>
+
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
+            </div>
+
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+        </section>
+
+        <!-- ui systems -->
+        <section id="ui-systems" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
+                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">UI System</h2>
+                <div class="flex flex-col gap-4 text-base ">
+                    <p class="quick-up">
+                        I built a modular design system using a <strong>4-point grid</strong>, focusing on <strong>clarity and flexibility</strong>. Every component, from buttons to charts to cards—was created to scale well across desktop and tablet without <strong>overwhelming the user</strong>.
+                    </p>
+                    <p class="quick-up">
+                        <strong>Widgets</strong> were chosen to be the core unit of interaction. <strong>Why?</strong> Because some sense of customizability makes people <strong>feel in control</strong>. Users can drag and rearrange widgets, and they remain responsive. The layout adapts, the experience stays smooth.
+                    </p>
+                    <p class="quick-up">
+                        The color system was carefully chosen to avoid harsh contrast, making both light and dark modes <strong>feel soft and balanced</strong>.
+                    </p>
+                    <p class="quick-up">
+                        Interactions and motion were shaped to <strong>mimic natural, human-like gestures</strong>, helping the product feel smooth and familiar.
+                    </p>
+                    <p class="quick-up">
+                        Throughout the design process, I followed key principles like:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 font-semibold flex flex-col gap-4 quick-up">
+                        <li>
+                            <strong>Progressive Disclosure:</strong> Show only what’s needed. Reveal more as the user explores.
+                        </li>
+                        <li>
+                            <strong>Accessibility:</strong> Adhered to WCAG contrast rules. Text is always legible. Layouts adjust.
+                        </li>
+                        <li>
+                            <strong>Modularity:</strong> Widgets can grow or shrink depending on need, always snapping back into harmony.
+                        </li>
+                    </ul>
+                    <p class="quick-up">
+                        Eden is not loud. It’s <strong>clear, quiet, and personal</strong>.
+                    </p>
+
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
+            </div>
+
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+        </section>
+
+        <!-- no scrolling -->
+        <section id="no-scrolling" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
+                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">No Scrolling</h2>
+                <div class="flex flex-col gap-4 text-base ">
+                    <p class="quick-up">
+                        <strong>The Glanceable Principle</strong>
+                    </p>
+                    <p class="quick-up">
+                        <strong>Design Decision:</strong> Eden does not allow vertical scrolling on almost all screens on its large screen dashboard.
+                    </p>
+                    <p class="quick-up">
+                        <strong>Reason:</strong>
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 flex flex-col gap-4 quick-up">
+                        <li>
+                            Most financial apps bombard users with complex, <strong>never-ending data streams</strong>.
+                        </li>
+                        <li>
+                            Scrolling leads to <strong>fragmented cognition</strong>, users must remember what they’ve seen and re-contextualize as they go.
+                        </li>
+                    </ul>
+                    <p class="quick-up">
+                        <strong>Value:</strong>
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 flex flex-col gap-4 quick-up">
+                        <li>
+                            By limiting the dashboard to a single, glanceable screen, Eden ensures users get the most essential insights instantly.
+                        </li>
+                        <li>
+                            Encourages users to check in briefly and stay in control without distraction.
+                        </li>
+                    </ul>
+
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
+            </div>
+
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+        </section>
+
+        <!-- bento -->
+        <section id="bento" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
+                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Bento Grid for Widgets</h2>
+                <div class="flex flex-col gap-4 text-base ">
+                    <p class="quick-up">
+                        <strong>Design Decision:</strong> We chose a bento grid layout for displaying content modules.
+                    </p>
+                    <p class="quick-up">
+                        <strong>Reason:</strong>
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 flex flex-col gap-4 quick-up">
+                        <li>
+                            The bento grid offers <strong>visual hierarchy, modular structure, and balance</strong>.
+                        </li>
+                        <li>
+                            Inspired by the aesthetics of Japanese bento boxes, <strong>compact, organized, and pleasing to the eye</strong>.
+                        </li>
+                    </ul>
+                    <p class="quick-up">
+                        <strong>Value:</strong>
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 flex flex-col gap-4 quick-up">
+                        <li>
+                            Enables different widget types (charts, goals, AI cards, news) to sit together without competing for attention.
+                        </li>
+                        <li>
+                            Allows both users and institutions to customize their layout intuitively, based on their priorities.
+                        </li>
+                        <li>
+                            Maintains scalability across devices (desktop/tablet/kiosk) <strong>without clutter</strong>.
+                        </li>
+                    </ul>
+
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
+            </div>
+
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+        </section>
+
+        <!-- dynamic island -->
+        <section id="dynamic-island" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
+                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">AI Dynamic Island</h2>
+                <div class="flex flex-col gap-4 text-base ">
+                    <p class="quick-up">
+                        <strong>Design Decision:</strong> Inspired by Apple’s dynamic island, An AI-powered floating insight center.
+                    </p>
+                    <p class="quick-up">
+                        <strong>Reason:</strong>
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 flex flex-col gap-4 quick-up">
+                        <li>
+                            Users often need real-time guidance without navigating away from the dashboard.
+                        </li>
+                        <li>
+                            AI can offer suggestions, summaries, alerts, or even reassurance based on current behavior.
+                        </li>
+                    </ul>
+                    <p class="quick-up">
+                        <strong>Value:</strong>
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 flex flex-col gap-4 quick-up">
+                        <li>
+                            Enhances user experience by reducing friction, users get help without leaving their workflow.
+                        </li>
+                        <li>
+                            Adapts based on user &amp; AI behavior.
+                        </li>
+                        <li>
+                            Supports both retail users and advisors by serving up context-relevant insights and actions.
+                        </li>
+                    </ul>
+        
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
+            </div>
+        
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+        </section>
+
+        <!-- soft color -->
+        <section id="soft-color" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
+                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Soft Color Palette and Typography</h2>
+                <div class="flex flex-col gap-4 text-base ">
+                    <p class="quick-up">
+                        <strong>Design Decision:</strong> Use of muted blues, warm neutrals, and soft gradients.
+                    </p>
+                    <p class="quick-up">
+                        <strong>Reason:</strong>
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 flex flex-col gap-4 quick-up">
+                        <li>
+                            Finance can induce stress, aggressive reds, blacks, and neon greens <strong>amplify anxiety</strong>.
+                        </li>
+                    </ul>
+                    <p class="quick-up">
+                        <strong>Value:</strong>
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 flex flex-col gap-4 quick-up">
+                        <li>
+                            Eden’s color scheme promotes calmness and trust.
+                        </li>
+                        <li>
+                            Typography is highly legible and softly weighted, improving scan-ability without harshness.
+                        </li>
+                    </ul>
+
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
+            </div>
+
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+        </section>
+
+        <!-- calender -->
+        <section id="calender" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
+                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Calendar-Linked Financial Planning</h2>
+                <div class="flex flex-col gap-4 text-base ">
+                    <p class="quick-up">
+                        <strong>Design Decision:</strong> Financial goals and budgets are visually integrated with a monthly view calendar.
+                    </p>
+                    <p class="quick-up">
+                        <strong>Reason:</strong>
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 flex flex-col gap-4 quick-up">
+                        <li>
+                            Time is a natural context for money, and yet most financial tools ignore it.
+                        </li>
+                    </ul>
+                    <p class="quick-up">
+                        <strong>Value:</strong>
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 flex flex-col gap-4 quick-up">
+                        <li>
+                            Gives users a <strong>temporal sense of control</strong>, helping them plan proactively.
+                        </li>
+                    </ul>
+
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
+            </div>
+
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+        </section>
+
+        <!-- image -->
+        <section id="image" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="lg:flex items-center col-span-2 overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+        </section>
+
+        <!-- 4 - key features -->
+        <div id="key-features" class="hide-bottom-nav bg-black text-white">
+            <section class="h-screen overflow-hidden flex items-center pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+                <!-- project description and actions -->
+                <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
+                    <p class="text-4xl font-cookie quick-down">04</p>
+                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Key Features</h2>
+                </div>
+            </section>
+        </div>
+
+        <!-- features list -->
+        <section id="features-list" class="h-screen overflow-hidden flex flex-col pb-20 gap-4 lg:gap-8 xl:gap-16  pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 text-center w-full">Key Features</h2>
+            
+
+            <ul class="grid grid-cols-2 grid-rows-2 gap-8 justify-center items-start">
+                <li class="flex flex-col items-start">
+                    <span class="bg-black text-center flex justify-center items-center rounded-full w-[44px] xl:w-[44px] overflow-clip text-bold aspect-square text-white font-bold">1</span>
+                    <strong class="text-base self-start mt-6 mb-2 font-bold">AI-Powered Financial Assistant with Voice Support</strong>
+                    <span>The AI acts like a calm and smart chat companion. Users can ask it things like "How much did I spend on food last month?" or "Am I on track with my savings?" It explains everything in plain English, highlights patterns, and even works in voice mode for hands-free interaction. <strong>Alerts and summaries are personalized, not generic.</strong></span>
+                </li>
+                <li class="flex flex-col items-start">
+                    <span class="bg-black text-center flex justify-center items-center rounded-full w-[44px] xl:w-[44px] overflow-clip text-bold aspect-square text-white font-bold">2</span>
+                    <strong class="text-base self-start mt-6 mb-2 font-bold">Bills Management and Budgeting</strong>
+                    <span>Bills are shown in one simple place with labels like "Paid," "Due in 4 days," or "Past Due." At the top of the page, users get a total summary of upcoming bills this month. It's visual, filterable, and straightforward.</span>
+                </li>
+                <li class="flex flex-col items-start">
+                    <span class="bg-black text-center flex justify-center items-center rounded-full w-[44px] xl:w-[44px] overflow-clip text-bold aspect-square text-white font-bold">3</span>
+                    <strong class="text-base self-start mt-6 mb-2 font-bold">Wallet View and Spending Trends</strong>
+                    <span>The Wallet page shows a clean history of transactions broken down by category. It highlights patterns like rising subscription costs or grocery spikes. Users can see habits forming and take action.</span>
+                </li>
+                <li class="flex flex-col items-start">
+                    <span class="bg-black text-center flex justify-center items-center rounded-full w-[44px] xl:w-[44px] overflow-clip text-bold aspect-square text-white font-bold">4</span>
+                    <strong class="text-base self-start mt-6 mb-2 font-bold">Investment and Portfolio Tracking</strong>
+                    <span><strong>For individuals,</strong> it shows how their assets are performing—stocks, funds, crypto, etc.—in a layout that avoids overload.</span>
+                    <span class="mt-2"><strong>For institutions,</strong> it focuses on managing client portfolios, tracking external assets, and staying compliant with regulations.</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 4 - market strategy -->
+        <div id="market-strategy" class="hide-bottom-nav bg-black text-white">
+            <section class="h-screen overflow-hidden flex items-center pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+                <!-- project description and actions -->
+                <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
+                    <p class="text-4xl font-cookie quick-down">04</p>
+                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Market Strategy</h2>
+                </div>
+            </section>
+        </div>
+
+        <!-- market focus -->
+        <section id="market-focus" class="h-auto lg:h-screen overflow-hidden flex items-center gap-8 lg:gap-4 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="grid grid-cols-2 w-full">
+                <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
+                    <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Initial Market Focus</h2>
+                    <p class="flex flex-col gap-4 text-base ">
+                        <span>
+                            Eden is built for <strong>steady, meaningful growth, not short-term hype.</strong> The focus is on earning user trust through secure, responsible AI tools and growing the product gradually. It starts with strong foundations like <strong>privacy, transparency, and user-friendly design.</strong> Over time, Eden expands its features, partnerships, and compliance efforts to serve <strong>both individuals and institutions.</strong>
+                        </span>
+                        <span>
+                            Eden will first target <strong>B2B clients, accounting firms, banks, and financial service companies,</strong> who need secure, AI-powered tools to support their operations. These businesses will benefit from Eden's financial tracking, automation, and compliance-ready features. Starting with enterprise-level users allows the product to grow in a <strong>controlled, stable environment with feedback from real clients who manage large-scale financial data.</strong>
+                        </span>
+                         <span>
+                            Once the B2B foundation is solid and the product has been validated at scale, Eden will expand to serve everyday users, offering a calm, easy-to-use personal financial assistant <strong>built on the same secure and intelligent infrastructure.</strong> This phased approach ensures trust and credibility before moving into broader markets.
+                        </span>
+                    </p>
+                </div>
+    
+                <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
+                    <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Core Long-Term Goals</h2>
+                    <div class="flex flex-col gap-4 text-base ">
+                         <ul class="list-disc pl-5 space-y-1 font-semibold flex flex-col gap-4">
+                                <li>
+                                    <strong>Trust & Security First</strong> - Eden will always lead with clarity and user control. Data privacy and regulatory compliance aren't optional; they're part of the product.
+                                </li>
+                                <li>
+                                    <strong>Consistent, Incremental Innovation</strong> - No buzzwords, no feature bloat. Eden will evolve gradually with real user needs, not pressure from trends.
+                                </li>
+                                 <li>
+                                    <strong>User-Centered Growth</strong> - Eden grows with the user, whether that's an individual building savings, or a financial advisor managing client portfolios.
+                                </li>
+                                <li>
+                                    <strong>Longevity Over Hype</strong> - Our brand will be known for reliability. We want people to stick with Eden for years, not months.
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- product roadmap -->
+        <section id="product-roadmap" class="h-auto lg:h-screen overflow-hidden flex flex-col justify-center gap-8 lg:gap-4 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Product Roadmap</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 grid-rows-[auto] w-full gap-8">
+                <div class="flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
+                    <h3 class="font-semibold">Phase 1 (0-12 Months): Foundation & Trust Building</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-base">
+                        <li>Secure initial funding through grants & partnerships.</li>
+                        <li>Build core AI-driven insights & financial tracking tools.</li>
+                        <li>Implement strong security, compliance, and data privacy measures.</li>
+                        <li>Launch beta version with real-world testing & user feedback cycles.</li>
+                    </ul>
+                </div>
+        
+                <div class="flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
+                    <h3 class="font-semibold">Phase 2 (1-3 Years): Expansion & Market Positioning</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-base">
+                        <li>Scale AI capabilities to provide more personalized insights.</li>
+                        <li>Expand API integrations with banks & financial institutions.</li>
+                        <li>Establish Eden as a leading AI fintech partner in compliance & security.</li>
+                        <li>Roll out premium AI-powered features for paid users.</li>
+                        <li>Begin partnerships with regional fintech regulators & financial advisors.</li>
+                    </ul>
+                </div>
+        
+                <div class="flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
+                    <h3 class="font-semibold">Phase 3 (3-5 Years): Enterprise Adoption & Global Recognition</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-base">
+                        <li>Scale B2B fintech partnerships for broader financial industry adoption.</li>
+                        <li>Achieve full compliance with ISO, SOC 2, and regulatory fintech standards.</li>
+                        <li>Expand into institutional AI-driven risk management solutions.</li>
+                        <li>Build a financial AI ecosystem, offering services beyond tracking & insights.</li>
+                        <li>Begin international expansion into new fintech markets.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- conclusion -->
+        <div id="conclusion" class="hide-bottom-nav bg-black text-white">
+            <section class="h-screen overflow-hidden flex items-center pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+                <!-- project description and actions -->
+                <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
+                    <p class="text-4xl font-cookie quick-down">05</p>
+                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Conclusion</h2>
+                </div>
+            </section>
+        </div>
+
+        <!-- conclusion 2 -->
+        <section id="conclusion-2" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
+                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">What Came Out of It</h2>
+                <p class="flex flex-col gap-4 text-base ">
+                    <span>
+                        Eden is <strong>still in its design stage,</strong> but what’s been built already sets a strong foundation for the future. I designed a full product experience that feels calm, modern, and genuinely useful. The design system is complete, modular, and easy to scale or hand off to developers. From thoughtful UX to a detailed brand, Eden brings together visual design, research, and systems thinking in one clear product.
+                    </span>
+                    <span>
+                        Beyond the screens, I also mapped out a funding and growth strategy—showing exactly how Eden can evolve without giving up ownership or chasing hype. This wasn’t just a design sprint, it was a full product vision.
+                    </span>
+                </p>
+            </div>
+
+            <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-10">
+                <div class="flex flex-col gap-4">
+                    <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">What I Learned</h2>
+                    <div class="flex flex-col gap-4 text-base ">
+                         <p>
+                            Working on Eden reminded me that <strong>money is emotional.</strong> At the bank, <strong>I saw how overwhelmed people felt</strong> and how much they just wanted something that felt safe and clear. That’s what Eden tries to offer.
+                        </p>
+                        <p>
+                             I also learned how important it is to zoom out: design isn’t just about pixels. It’s also about <strong>positioning, long-term growth, funding, and brand.</strong> Eden helped me connect all those pieces.
+                        </p>
+                       
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">What’s Next</h2>
+                    <ul class="list-disc pl-5 space-y-1 flex flex-col gap-4">
+                        <li>
+                            Build a working prototype to test how users feel using Eden in real life
+                        </li>
+                        <li>
+                            Start applying for grants and reaching out to fintech accelerators
+                        </li>
+                         <li>
+                            Expand features to support shared accounts, coaching, and community tools
+                        </li>
+                    </ul>
+                    <p class="mt-4">Eden is still just getting started—but it’s built with the long game in mind.</p>
+                </div>
+            </div>
+
+        </section>
+
+     
+
+       
+
+		
+		
+	</main>
+    </div>
+	<Footer />
+</Layout>
+
+<style>
+
+</style>
+
+<script>
+import Alpine from 'alpinejs';
+    import gsap from "gsap";
+    import Lenis from "lenis";
+    import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+
+    gsap.config({
+        nullTargetWarn: false,
+    })
+
+    // initialise lenis
+    const lenis = new Lenis({
+        autoRaf: true,
+    });
+
+    let previousScroll = 0;
+    // Listen for the scroll event and log the event data
+    // lenis.on('scroll', (e) => {
+    //     // console.log(e);
+    // });
+
+    // lenis.on('scroll', ScrollTrigger.update);
+    // gsap.ticker.lagSmoothing(0);
+
+    document.addEventListener("click", function (e) {
+        const currentScroll = window.scrollY;
+
+        let Etarget = e.target as HTMLElement
+        const anchor = Etarget.closest("a[href^='#']");
+        if (!anchor) return;
+
+        e.preventDefault();
+        const targetId = anchor.getAttribute("href");
+        const target = document.querySelector(targetId) as HTMLElement;
+
+        if (target) {
+            let targetPos = target.offsetTop;
+ 
+            if(targetPos < currentScroll) //scroll up
+                lenis.scrollTo(target, {duration: 0});
+            else // scroll down
+                lenis.scrollTo(target, {duration: 2.5, 
+                easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2
+            });
+
+            history.pushState(null, "", targetId);
+        }
+    });
+
+    const downArrow = document.querySelector('a.down-arrow') as HTMLAnchorElement;
+    const upArrow = document.querySelector('a.up-arrow') as HTMLAnchorElement;
+
+
+    // document.addEventListener('alpine:init', () => {
+    //     Alpine.data('active', () => ({
+    //         open: false,
+ 
+    //         toggle() {
+    //             this.open = ! this.open
+    //         }
+    //     }))
+    // })
+    function scrollUp(){
+        lenis.scrollTo(downArrow.getAttribute('href'), {duration: 2.5, 
+            easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2
+        });
+        window.dispatchEvent(new CustomEvent('hash-update', { detail: downArrow.getAttribute('href').slice(1) }));
+    }
+
+    function scrollDown(){
+        lenis.scrollTo(upArrow.getAttribute('href'), {duration: 0});
+        window.dispatchEvent(new CustomEvent('hash-update', { detail: upArrow.getAttribute('href').slice(1) }));
+    }
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowDown') {
+            scrollUp()
+        }
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowUp') {
+            scrollDown()
+        }
+    });
+
+    let intervalId = null;
+    window.addEventListener('wheel', (e) => {
+        e.preventDefault(); // stop actual scrolling
+        const direction = e.deltaY > 0 ? 'down' : 'up';
+        lenis.stop()
+
+        // clearTimeout
+        console.log('here')
+        clearTimeout(intervalId)
+        intervalId = setTimeout(() => {
+            lenis.start()
+            if(direction == 'up') scrollUp()
+            else scrollDown()
+
+            console.log('inside', lenis)
+        }, 50);
+
+
+        // if(direction == 'up') scrollUp()
+        // else scrollDown()
+    }, { passive: false });
+
+    
+
+
+    gsap.fromTo(".hero-img",{
+        translateX : '-50%'
+    }, {
+        translateX : '0%',
+        opacity : 1,
+        duration : 2,
+        scrollTrigger: {
+            trigger: '.hero-img',  // Each element triggers individually
+            // start: "top 80%",  // Animation starts when the element is 80% in view
+            end: "bottom 92%",
+            toggleActions: "play reverse play reset",  // Only plays once
+            // markers : true,
+        },
+    })
+
+    gsap.fromTo(".closing-img",{
+        translateY : '20%',
+        opacity : 0
+    }, {
+        translateY : '0%',
+        opacity : 1,
+        duration : 2,
+        scrollTrigger: {
+            trigger: '.closing-img',  // Each element triggers individually
+            // start: "top 80%",  // Animation starts when the element is 80% in view
+            end: "bottom 50%",
+            toggleActions: "play reverse play reset",  // Only plays once
+            // markers : true,
+        },
+    })
+
+    
+
+    document.querySelectorAll('section').forEach((section) => {
+        gsap.fromTo(section.querySelectorAll('.heading-up'),{translateY : '50%', opacity : 0}, {
+            translateY: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+            stagger: 0.4,
+            scrollTrigger: {
+                trigger: section,  // Each element triggers individually
+                start: "top 20%",  // Animation starts when the element is 80% in view
+                end: "bottom 96%",
+                toggleActions: "play reverse play reset", // Only plays once
+                // markers : true,
+            },
+        });
+
+        gsap.fromTo(section.querySelectorAll('.heading-up-footer'),{translateY : '50%', opacity : 0}, {
+            translateY: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+            stagger: 0.4,
+            scrollTrigger: {
+                trigger: section,  // Each element triggers individually
+                start: "top 20%",  // Animation starts when the element is 80% in view
+                end: "bottom 50%",
+                toggleActions: "play reverse play reset", // Only plays once
+                // markers : true,
+            },
+        });
+
+        gsap.fromTo(section.querySelectorAll('.quick-right'),{translateX : '50%', opacity : 0}, {
+            translateX: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: section,  // Each element triggers individually
+                start: "top 20%",  // Animation starts when the element is 80% in view
+                end: "bottom 95%",
+                toggleActions: "play reverse play reset",  // Only plays once
+                // markers : true,
+            },
+        });
+
+        gsap.fromTo(section.querySelectorAll('.quick-up'), {opacity : 0, translateY : '50%'}, {
+            translateY: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: section,  // Each element triggers individually
+                start: "top 20%",  // Animation starts when the element is 80% in view
+                end: "bottom 95%",
+                // scrub : true,
+                toggleActions: "play reverse play reset",  // Only plays once
+                // markers : true,
+            },
+        });
+
+        gsap.fromTo(section.querySelectorAll('.quick-down'), {opacity : 0, translateY : '-50%'}, {
+            translateY: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: section,  // Each element triggers individually
+                start: "top 20%",  // Animation starts when the element is 80% in view
+                end: "bottom 95%",
+                // scrub : true,
+                toggleActions: "play reverse play reset",  // Only plays once
+                // markers : true,
+            },
+        });
+
+        gsap.fromTo(section.querySelectorAll('.quick-appear'), {opacity : 0}, {
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: section,  // Each element triggers individually
+                start: "top 20%",  // Animation starts when the element is 80% in view
+                end: "bottom 99%",
+                // scrub : true,
+                toggleActions: "play reverse play reset",  // Only plays once
+                // markers : true,
+            },
+        });
+
+    })
+
+
+
+    document.querySelectorAll('.box-parent').forEach((boxParent) => {
+        gsap.fromTo(boxParent.querySelectorAll('.box'),{
+            xPercent : 0
+        }, { 
+            xPercent : 100,
+            duration : 0.6,
+            ease : "power1.out",
+            stagger : 0.08,
+            scrollTrigger: {
+                trigger: boxParent,  // Each element triggers individually
+                start: "top 50%",  // Animation starts when the element is 80% in view
+                end: "bottom 92%",
+                // scrub : true,
+                toggleActions: "play reverse play reset",  // Only plays once
+                // markers : true,
+            },
+        });
+    })
+
+
+    // for the footer
+    let footer = document.querySelector('#contact') as HTMLElement
+    let footerAnim = gsap.fromTo('.bottom-nav', { bottom : 0}, {
+        bottom : footer.clientHeight,
+        duration: 2,
+        paused : true,
+        ease: "circ.inOut",
+        // scrollTrigger: {
+        //     // trigger: '#contact',  // Each element triggers individually
+        //     // start: "top 20%",  // Animation starts when the element is 80% in view
+        //     // end: "bottom 95%",
+        //     // scrub : true,
+        //     // toggleActions: "play reverse play reverse",  // Only plays once
+        //     // markers : true,
+        // },
+    });
+
+    let dissappearBottomNav = gsap.fromTo('.bottom-nav', { opacity : 1}, {
+        opacity : 0,
+        duration: 2,
+        paused : true,
+        ease: "circ.inOut",
+        // scrollTrigger: {
+        //     // trigger: '#contact',  // Each element triggers individually
+        //     // start: "top 20%",  // Animation starts when the element is 80% in view
+        //     // end: "bottom 95%",
+        //     // scrub : true,
+        //     // toggleActions: "play reverse play reverse",  // Only plays once
+        //     // markers : true,
+        // },
+    });
+
+    // move bottom nav when footer shows
+    ScrollTrigger.create({
+        trigger: '#contact',
+        // start: 'top top',
+        // endTrigger: '#otherID',
+        end: 'bottom 50%+=100px',
+        onToggle: (self) => console.log('toggled, isActive:', self.isActive),
+        onUpdate: (self) => {
+
+            if(self.direction == 1){
+                footerAnim.duration(2)
+                footerAnim.play();
+            }else{
+                footerAnim.duration(0)
+                footerAnim.reverse()
+            }
+        }
+    });
+
+    // dissappear footer on certain pages
+    ['#quick-overview', '#research-and-insights', '#design-process', '#collaboration', '#next-steps', '#closing', '#key-features', '#market-strategy', '#conclusion'].forEach(section => {
+        ScrollTrigger.create({
+            trigger: section,
+            // start: 'top top',
+            // endTrigger: '#otherID',
+            // end: 'bottom 50%+=100px',
+            onToggle: (self) => {
+                if(self.isActive) dissappearBottomNav.play()
+                else dissappearBottomNav.reverse()
+            },
+            onUpdate: (self) => {
+                console.log('here2')
+                // if(self.direction == 1){
+                //     footerAnim.duration(2)
+                //     footerAnim.play();
+                // }else{
+                //     footerAnim.duration(0)
+                //     footerAnim.reverse()
+                // }
+            }
+        });
+    })
+   
+
+   
+
+
+
+    // gsap.to(window, { duration: 1, scrollTo: "#hey-there", ease: "bounce.out" });
+
+</script>

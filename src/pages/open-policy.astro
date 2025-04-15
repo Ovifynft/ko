@@ -5,7 +5,7 @@ import Footer from '../layouts/Footer.astro'
 // console.log('here ', Astro.url)
 import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 let links = ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'problem', 'research-and-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'closing']
-let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'research-and-insights', 'problem', 'design-insights', 'competitive', 'design-process', 'sketching', 'wireframes', 'feature-selection', 'branding', 'collaboration', 'next-steps', 'current-status', 'closing', 'contact']}
+let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'research-and-insights', 'problem', 'design-insights', 'challenges', 'design-process', 'key-features', 're-structure', 'sketching', 'wireframes', 'feature-selection', 'next-steps', 'branding', 'closing', 'contact']}
 ---
 
 <Layout title="Welcome to Astro.">
@@ -21,7 +21,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     <template x-for='(link, index) in links'>
                         <a :href="'#' + link" href="link" class="w-[100px] h-full transition-all duration-200 rounded-lg"
                             @click="active = link"
-                            :class="{'bg-[#9C784B] ' : links.indexOf(link) <= links.indexOf(active), 'bg-gray-200 hover:bg-[#F2EBE2] hide-bottom-nav' : links.indexOf(link) > links.indexOf(active)}"
+                            :class="{'bg-black ' : links.indexOf(link) <= links.indexOf(active), ' hover:hide-bottom-nav bg-gray-200 text-white' : links.indexOf(link) > links.indexOf(active)}"
                         ></a>
                     </template>
                     <!-- <a class="w-full h-full bg-gray-200 relative after:content-[''] after:absolute after:w-[40%] lg:after:w-[50%] after:bottom-0 after:bg-black after:left-0 after:top-0"></a>
@@ -51,13 +51,13 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
     <!-- bottom-nav -->
     <div class="fixed bottom-0 right-0 z-10 flex bg-white pt-4 pl-4 xl:px-10 lg:pl-10 py-6 xl:py-10 bottom-nav">
         <ul class="flex gap-4 text-[#afafaf] font-semibold text-[10px] lg:text-sm">
-            <li @click="active = 'quick-overview'" :class="{'text-[#9C784B]' : ['quick-overview', 'quick-overview-2'].includes(active)}"><a href="#quick-overview">Quick Overview</a></li>
-            <li @click="active = 'research-and-insights'" :class="{'text-[#9C784B]' : ['research-and-insights', 'problem', 'design-insights', 'competitive', ''].includes(active)}"><a href="#research-and-insights"> Research and Insights</a></li>
-            <li @click="active = 'design-process'" :class="{'text-[#9C784B]' : ['design-process', 'sketching', 'wireframes', 'feature-selection', 'branding', ''].includes(active)}"><a href="#design-process"> Design Process</a></li>
-            <!-- <li @click="active = 'impact-and-feedback'" :class="{'text-[#9C784B]' : active == 'impact-and-feedback'}"><a href="#impact-and-feedback"> Impact and Feedback</a></li> -->
-            <li @click="active = 'collaboration'" :class="{'text-[#9C784B]' : active == 'collaboration'}"><a href="#collaboration"> Collaboration</a></li>
-            <li @click="active = 'next-steps'" :class="{'text-[#9C784B]' : ['next-steps', 'current-status'].includes(active) }"><a href="#next-steps"> Next Steps</a></li>
-            <!-- <li @click="active = 'reflections'" :class="{'text-[#9C784B]' : active == 'reflections'}"><a href="#reflections"> Reflections and Learnings</a></li> -->
+            <li @click="active = 'quick-overview'" :class="{'text-black' : ['quick-overview', 'quick-overview-2'].includes(active)}"><a href="#quick-overview">Quick Overview</a></li>
+            <li @click="active = 'research-and-insights'" :class="{'text-black' : ['research-and-insights', 'problem', 'design-insights', 'competitive', 'challenges'].includes(active)}"><a href="#research-and-insights"> Research and Insights</a></li>
+            <li @click="active = 'design-process'" :class="{'text-black' : ['design-process', 'sketching', 'wireframes', 'feature-selection', 'key-features', 're-structure'].includes(active)}"><a href="#design-process"> Design Process</a></li>
+            <!-- <li @click="active = 'impact-and-feedback'" :class="{'text-black' : active == 'impact-and-feedback'}"><a href="#impact-and-feedback"> Impact and Feedback</a></li> -->
+            <!-- <li @click="active = 'collaboration'" :class="{'text-black' : active == 'collaboration'}"><a href="#collaboration"> Collaboration</a></li> -->
+            <li @click="active = 'next-steps'" :class="{'text-black' : ['next-steps', 'current-status', 'branding',].includes(active) }"><a href="#next-steps"> Next Steps</a></li>
+            <!-- <li @click="active = 'reflections'" :class="{'text-black' : active == 'reflections'}"><a href="#reflections"> Reflections and Learnings</a></li> -->
         </ul>
     </div>
 
@@ -68,47 +68,38 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
 	<main>
 		<!-- hero -->
-        <div id="hero" class="bg-[#f2ebe2] hide-bottom-nav">
+        <div id="hero" class="hide-bottom-nav">
             <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 max-w-[1700px] mx-auto gap-4 xl:gap-10">
-                <!-- image -->
-                <div class="flex  opacity-0 hero-img items-center slide justify-end overflow-hidden p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-white bg-no-repeat bg-contain bg-left h-full relative">
-                    <!-- {
-                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-gray-100 left-0 right-0 absolute h-[20%] slide-2 box"></div>)
-                    } -->
-                    <!-- <div class="bg-gray-100 top-0 left-0 right-0 absolute h-[20%] slide-1 box"></div>
-                    <div class="bg-gray-100 top-[20%] left-0 right-0 absolute h-[20%] slide-2 box"></div>
-                    <div class="bg-gray-100 top-[40%] left-0 right-0 absolute h-[20%] slide-3 box"></div>
-                    <div class="bg-gray-100 top-[60%] left-0 right-0 absolute h-[20%] slide-4 box"></div>
-                    <div class="bg-gray-100 top-[80%] left-0 right-0 absolute h-[20%] slide-5 box"></div> -->
-                </div>
-    
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center">
-                    <h2 class="heading-up font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4  opacity-0 translate-y-[50%] up">Crack HeadPhones<span class="font-bilal text-[60px]">,</span> Where Style Meets Sound</h2>
+                    <h2 class="heading-up font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4  opacity-0 translate-y-[50%] up">
+                        OpenPolicy <br>
+                        App Design  <span class="text-gray-200">( MVP )</span></h2>
     
                     <p class="heading-up opacity-0">
-                        Crack Headphones are a bold fusion of retro-modern design and everyday sophistication. I first sketched the concept in 2015, 
-                        which evolved into 3D wireframes and a prototype. 
+                        OpenPolicy is a platform designed to connect citizens with their government like never before. It allows users to track bills, vote on policies, 
+                        and directly engage with representatives, all in one place.  
                         <br><br>
-                        Key features include Link Up buttons for shared listening, a triangular ear cup design 
-                        for comfort and style, and an LED battery gauge that spells "CRACK.
+                        As the Product Lead, I redesigned the app from the ground up, transforming a cluttered, unusable experience into a seamless and intuitive platform. 
+                        Now, with the MVP launching soon, OpenPolicy is set to revolutionize civic engagement.
                     </p>
     
-                    <!-- <div class="pt-[52px] heading-up opacity-0">
-                        <button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button>
-                    </div> -->
+                    <div class="pt-[52px] heading-up opacity-0">
+                        <button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Get it on The Appstore <img src="/icons/ic_baseline-apple.svg" alt="" srcset=""></button>
+                    </div>
                 </div>
-                <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
+
+                <!-- image -->
+                <div class="flex  opacity-0 hero-img items-center slide justify-end overflow-hidden p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-100 bg-no-repeat bg-contain bg-left h-full relative">
+                </div>
             </section> 
-            <!-- <h2 x-data="{test : window.location.hash?.slice(1,window.location.hash?.length)}" x-text="active"></h2> -->
         </div>
 		
 
         <!-- hey there -->
         <section id="hey-there" class="lg:px-20 px-10 h-screen flex items-center justify-center relative pt-[100px] max-w-[1700px] mx-auto">
             <h2 class="text-sm sm:text-lg md:text-2xl xl:text-5xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">
-                Case studies don’t have to be a chore. This one’s designed to highlight the work done, <span class="text-[#9C784B]">respect your time</span>, 
-                and discuss what made <span class="text-[#9C784B]">Crack Headphones</span> come to life.
+                This is the story of how we took OpenPolicy from a <span class="text-black">messy, unusable app</span> to a <span class="text-black">clean, powerful</span> platform that puts people closer to their government.
             </h2>
 			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div> -->
             <!-- <p class="absolute right-20 bottom-[20%] w-[70%] text-right quick-appear">“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun & easy to use.” - Tunde</p> -->
@@ -120,16 +111,16 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             <div class="max-w-2xl grid grid-cols-[80%_20%] grid-rows-6 mt-20 mx-auto my-auto gap-4 lg:text-xl xl:text-2xl">
                 <p class="quick-right opacity-0">Quick Overview</p><p class="quick-up opacity-0 translate-y-[50%]">01</p>
                 <p class="quick-right opacity-0">Research and Insights</p><p class="quick-up opacity-0 translate-y-[50%]">02</p>
-                <p class="quick-right opacity-0">Design Process</p><p class="quick-up opacity-0 translate-y-[50%]">03</p>
+                <p class="quick-right opacity-0">Design and Features</p><p class="quick-up opacity-0 translate-y-[50%]">03</p>
                 <!-- <p class="quick-right opacity-0">Impact and Feedback</p><p class="quick-up opacity-0 translate-y-[50%]">04</p> -->
-                <p class="quick-right opacity-0">Collaboration</p><p class="quick-up opacity-0 translate-y-[50%]">04</p>
-                <p class="quick-right opacity-0">Next Steps</p><p class="quick-up opacity-0 translate-y-[50%]">05</p>
+                <!-- <p class="quick-right opacity-0">Collaboration</p><p class="quick-up opacity-0 translate-y-[50%]">04</p> -->
+                <p class="quick-right opacity-0">Next Steps</p><p class="quick-up opacity-0 translate-y-[50%]">04</p>
             </div>
 			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div> -->
         </section>
 
         <!-- 01 -->
-        <div id="quick-overview" class="bg-[#F2EBE2] hide-bottom-nav">
+        <div id="quick-overview" class="hide-bottom-nav bg-black text-white">
             <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] max-w-[1700px] mx-auto lg:px-20 px-10 relative gap-4 xl:gap-6">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-4">
@@ -138,7 +129,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k')] bg-blend-color-burn bg-white bg-center bg-no-repeat bg-cover h-full"></div>
+                <!-- <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k')] bg-blend-color-burn bg-white bg-center bg-no-repeat bg-cover h-full"></div> -->
     
                 <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
             </section>
@@ -146,16 +137,16 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- 01 - Quick overview -->
-        <section id="quick-overview-2" class="h-screen overflow-hidden flex flex-col lg:grid pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 xl:grid-cols-[auto_auto_40%] lg:grid-cols-[auto_auto_10%]  grid-rows-[auto_auto_auto] lg:gap-4 relative max-w-[1700px] mx-auto">
+        <section id="quick-overview-2" class="h-screen overflow-hidden flex flex-col lg:grid pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 xl:grid-cols-[auto_auto_auto] lg:grid-cols-[auto_auto_10%]  grid-rows-[auto_auto_auto] lg:gap-4 xl:gap-10 relative max-w-[1700px] mx-auto">
             <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xltext-2xl pb-2 xl:py-4">Product Overview</h3>
-            <p class="md:w-full xl:max-w-[500px] pb-2 xl:py-4 border-gray-200">CRACK Headphones is designed to offer a high-end, luxurious listening experience. The goal was to create headphones that are not just functional but also fashionable,
-                catering to users who value both style and performance.  <br><br>
-                Using user-centered research, we identified key needs and crafted a product that addresses real pain points while standing out in the market.
+            <p class="md:w-full max-w-[900px] pb-2 xl:py-4 border-gray-200 col-span-2">OpenPolicy was designed to bridge the gap between the people and the government. Currently, there isn't an official platform that allows citizens to voice their concerns, 
+                vote, or engage with bills being passed. OpenPolicy changes that.   <br><br>
+                The app provides a way for people to stay updated on government policies, track bills, and connect with representatives, all in one place.
             </p>
-            <div class="row-span-3 bg-gray-200 w-full rounded-lg"></div>
+            <!-- <div class="row-span-3 bg-gray-200 w-full rounded-lg"></div> -->
 
             <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xltext-2xl pb-2 xl:py-4 lg:pt-8">My Role</h3>
-            <p class="md:w-full xl:max-w-[500px] lg:border-y-[1px] pb-2 xl:py-4 lg:pt-8 border-gray-200">I came up with the idea for Pencil Hoops and led the design from start to finish. I designed the website, 
+            <p class="md:w-full max-w-[900px] lg:border-y-[1px] pb-2 xl:py-4 lg:pt-8 border-gray-200 col-span-2">I came up with the idea for Pencil Hoops and led the design from start to finish. I designed the website, 
                 I led the product design process, from research to ideation, sketching, and final 3D modeling. <br><br>
                 I collaborated with 3D artists, graphic designers, and developers to ensure that the 
                 design aligned with both user needs and the brand's aesthetic.  <br><br>
@@ -172,34 +163,36 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		</section>
 
 		<!-- 02 -->
-        <div id="research-and-insights" class="bg-[#F2EBE2] hide-bottom-nav">
+        <div id="research-and-insights" class="hide-bottom-nav bg-black text-white">
             <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10  relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-10">
                     <p class="text-4xl font-cookie quick-down">02</p>
                     <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Research and Insights</h2>
-                    <p>Our design process was anchored in extensive user research, employing both primary and secondary research methodologies and incorporating qualitative and quantitative data to capture a wide range of consumer insights.</p>
+                    <!-- <p>Our design process was anchored in extensive user research, employing both primary and secondary research methodologies and incorporating qualitative and quantitative data to capture a wide range of consumer insights.</p> -->
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k')] bg-white bg-center bg-no-repeat bg-cover bg-blend-color-burn"></div>
+                <!-- <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k')] bg-white bg-center bg-no-repeat bg-cover bg-blend-color-burn"></div> -->
     
                 <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
             </section>
         </div>
 
         <!-- the problem -->
-        <section id='problem' class="h-screen overflow-hidden xl:gap-20 flex flex-col lg:flex-row justify-center pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto box-parent">
+        <section id='problem' class="h-screen overflow-hidden grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col lg:justify-start gap-4 xl:gap-6 relative overflow-hidden">
+            <div class="lg:max-w-[600px] flex flex-col lg:justify-center gap-4 xl:gap-6 relative box-parent overflow-hidden">
                 
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">The Problem</h2>
                 <p class="quick-up"> 
-                    At the time, most headphones in the market focused heavily on sound quality but neglected usability, 
-                    design flexibility, and user-friendly features. Users often struggled with issues like difficult earpad replacements, 
-                    unclear battery levels, and the inability to easily share music with others.
+                    The idea for OpenPolicy came from recognizing a major gap: there was no structured, official platform for public participation in governance. 
+                    The goal was simple: give people a way to follow <strong>what’s happening in Parliament</strong> and <strong>have a say</strong> in the process. <br><br>
+                    There was an existing app when I joined the project, but it had major usability issues. The design was cluttered, confusing, 
+                    and didn’t fully support the app’s mission. My task was to <strong>completely redesign the experience</strong>
+                    while keeping the core functionalities intact, making it more intuitive and accessible for users.
                 </p>
-                <!-- <div class="flex items-center justify-end p-20 w-full quick-up h-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div> -->
+                <div class="flex items-center justify-end p-20 w-full quick-up h-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div>
 
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
@@ -207,15 +200,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             </div>
 
             <!-- image -->
-            <div class="lg:max-w-[500px] flex flex-col lg:justify-start gap-4 xl:gap-6 relative overflow-hidden">
-                
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Methods</h2>
-                <ul class="flex flex-col gap-6">
-                    <li><b>User Interviews and Surveys:</b> Direct engagements provided us with valuable feedback on common pain points and preferences.</li>
-                    <li><b>Market Analysis:</b> Secondary research helped us understand competitive offerings and identify opportunities for innovation.</li>
-                </ul>
-                <!-- <div class="flex items-center justify-end p-20 w-full quick-up h-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div> -->
-
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 bg-[url('/images/pencil_hoops/sections/k.jpg')] rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
@@ -223,31 +208,62 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		</section>
 
         <!-- research and design insights -->
-        <section id="design-insights" class="h-screen overflow-hidden flex flex-col gap-4 lg:gap-8 xl:gap-16 lg:grid lg:grid-cols-[auto_auto] pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="design-insights" class="h-screen overflow-hidden flex flex-col justify-end pb-20 gap-4 lg:gap-8 xl:gap-16 lg:grid lg:grid-rows-[minmax(auto,10%)_auto] lg:grid-cols-[auto_minmax(auto,70%)] lg:items-start pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="bg-white w-full h-full col-span-2 lg:block hidden"></div>
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Understanding People</h2>
-                <ul class="flex flex-col gap-6"> 
+            <div class="lg:max-w-[400px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Challenges and Key Decisions</h2>
+                <!-- <ul class="flex flex-col gap-6"> 
                     <li> We conducted interviews, surveys, and competitive analysis to identify key user pain points: </li>
                     <li> <strong>Music Sharing:</strong> Users wanted an easier way to share what they’re listening to. </li>
                     <li> <strong>Battery Monitoring:</strong> Frustration with headphones dying unexpectedly. </li>
                     <li> <strong>Earpad Replacement:</strong> Difficulty replacing worn-out pads. </li>
                     <li> <strong>Quick Controls:</strong> The need for simple, accessible music controls. </li>
+                </ul> -->
+            </div>
+
+            <!-- points --> 
+            <ul class="flex flex-col gap-8 justify-center items-start lg:max-w-[600px]">
+                <li class="flex flex-col items-start">
+                    <span class="bg-black text-center flex justify-center items-center rounded-full w-[44px] xl:w-[44px] overflow-clip text-bold aspect-square text-white font-bold">1</span>
+                    <strong class="text-base self-start mt-6 mb-2 font-bold">Redesigning Without a PRD</strong>
+                    <span>When I stepped in, there was no Product Requirements Document (PRD), making it difficult to understand the full scope of the project. I had to reverse-engineer the previous app, speak with stakeholders, and map out the entire system myself.</span>
+                </li>
+                <li class="flex flex-col items-start">
+                    <span class="bg-black text-center flex justify-center items-center rounded-full w-[44px] xl:w-[44px] overflow-clip text-bold aspect-square text-white font-bold">2</span>
+                    <strong class="text-base self-start mt-6 mb-2 font-bold">Navigating an App Store Rejection</strong>
+                    <span>One of the biggest hurdles was that the original app had been rejected by iOS. A key reason? <strong>Comment moderation.</strong></span>
+                    <span>Allowing users to comment freely on political issues could lead to toxicity, misinformation, and even legal concerns. I made a major design decision to <strong>remove the comment section entirely.</strong> This would prevent unregulated debates while keeping the platform professional and constructive.</span>
+                </li>
+            </ul>
+		</section>
+
+         <!-- challenges -->
+         <section id="challenges" class="h-screen overflow-hidden flex flex-col justify-end pb-20 gap-4 lg:gap-8 xl:gap-16 lg:grid  lg:grid-cols-[auto_minmax(auto,70%)] lg:items-start pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <!-- <div class="bg-white w-full h-full col-span-2 lg:block hidden"></div> -->
+            <!-- project description and actions -->
+            <div class="lg:max-w-[400px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Challenges and Key Decisions</h2>
+                <ul class="flex flex-col gap-8 justify-center items-start lg:max-w-[600px]">
+                    <li class="flex flex-col items-start">
+                        <span class="bg-black text-center flex justify-center items-center rounded-full w-[44px] xl:w-[44px] overflow-clip text-bold aspect-square text-white font-bold">3</span>
+                        <strong class="text-base self-start mt-6 mb-2 font-bold">Creating a More Engaging Interface</strong>
+                        <span>The old app lacked structure and visual clarity, making it difficult for users to navigate. I focused on three key areas to improve usability:</span>
+                        <ul class="list-disc pl-6 mt-2 flex flex-col gap-4 mt-4">
+                            <li><strong>Simplifying Navigation:</strong> Ensuring key sections (Bills, Debates, Committees) were easily accessible.</li>
+                            <li><strong>Clear Information Hierarchy:</strong> Using typography and spacing to highlight key actions.</li>
+                            <li><strong>Aesthetics & Accessibility:</strong> A minimal, readable design with high-contrast elements for better usability.</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
 
             <!-- points --> 
-            <ul class="flex gap-8 justify-center items-center">
-                <li class="flex flex-col items-start"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] xl:w-[100px] xl:text-4xl text-bold aspect-square text-white font-bold ">1</span> <strong class="text-base self-start mt-6 mb-2 font-bold">Music Sharing</strong> <span>I need to be able to share a song I’m listening to with someone else easily.</span></li>
-                <li class="flex flex-col items-start"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] xl:w-[100px] xl:text-4xl text-bold aspect-square text-white font-bold ">2</span> <strong class="text-base self-start mt-6 mb-2 font-bold">Easy Pause</strong> <span>I need an easy way to pause and play music while using my headphones.</span></li>
-                <li class="flex flex-col items-start"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] xl:w-[100px] xl:text-4xl text-bold aspect-square text-white font-bold ">3</span> <strong class="text-base self-start mt-6 mb-2 font-bold">EarPad Replacement</strong> <span>It’s too much work replacing the ear pads of my headphone when they need to be replaced</span></li>
-                <li class="flex flex-col items-start"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] xl:w-[100px] xl:text-4xl text-bold aspect-square text-white font-bold ">4</span> <strong class="text-base self-start mt-6 mb-2 font-bold">Battery Level</strong> <span>My headphone sometimes die at odd times or when i’m enjoying a song.</span></li>
-            </ul>
+            <div class="bg-gray-200 w-full h-full"></div>
 		</section>
 
         <!-- competitive analysis -->
-        <section id="competitive" class="h-screen overflow-hidden flex flex-col gap-4 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
-            <!-- project description and actions -->
+        <!-- <section id="competitive" class="h-screen overflow-hidden flex flex-col gap-4 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <div class="flex flex-col gap-2 md:gap-4 xl:gap-6">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] my-2">Competitive Analysis</h2>
                 <ul class="flex flex-col gap-6 list-inside list-disc"> 
@@ -320,100 +336,59 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </tbody>
             </table>
             </div>
-		</section>
+		</section> -->
 
         <!-- 03 -->
-        <div id="design-process" class="bg-[#F2EBE2] hide-bottom-nav">
+        <div id="design-process" class="hide-bottom-nav bg-black text-white">
             <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-10">
                     <p class="text-4xl font-cookie quick-down">03</p>
-                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Design Process</h2>
+                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Design and Features</h2>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-white bg-center bg-no-repeat bg-cover h-full"></div>
-    
-    
+                <!-- <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-white bg-center bg-no-repeat bg-cover h-full"></div> -->
             </section>
         </div>
 
-        <!-- sketching the concept -->
-        <section id="sketching" class="h-screen overflow-hidden flex flex-col gap-4 lg:gap-8 xl:gap-16 lg:grid lg:grid-cols-[auto_minmax(auto,70%)] pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <!-- key features -->
+        <section id='key-features' class="h-screen overflow-hidden xl:gap-20 flex flex-col justify-center pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto box-parent">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Sketching The Concept</h2>
-                <p> began by sketching ideas based on user feedback. The goal was to balance aesthetics with functionalitycreating something stylish yet highly practical. Early sketches explored shapes, button placements, and material textures.</p>
-            </div>
-
-            <!-- pics --> 
-            <div class="grid-cols-3 grid grid-rows-2 gap-2 w-full h-full">
-                <div class="bg-gray-100 col-span-3 h-full"></div>
-                <div class="bg-gray-100 w-full h-full"></div>
-                <div class="bg-gray-100 w-full h-full"></div>
-                <div class="bg-gray-100 w-full h-full"></div>
-
-            </div>
-		</section>
-
-        <!-- wireframes-->
-        <section id="wireframes" class="h-screen overflow-hidden flex flex-col gap-4 lg:gap-8 xl:gap-16 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
-            <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">WireFrames</h2>
-            </div>
-
-            <!-- pics --> 
-            <div class="grid-cols-4 grid gap-2 w-full h-full">
-                <div class="bg-gray-100 w-full h-full"></div>
-                <div class="bg-gray-100 w-full h-full"></div>
-                <div class="bg-gray-100 w-full h-full"></div>
-                <div class="bg-gray-100 w-full h-full"></div>
-            </div>
-		</section>
-
-        <!-- feature selection-->
-        <section id="feature-selection" class="h-screen overflow-hidden flex flex-col gap-4 lg:gap-8 xl:gap-16 lg:grid lg:grid-cols-[auto_minmax(auto,70%)] pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-5 sm:px-10 relative max-w-[1700px] mx-auto">
-            <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                <div class="flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                    <h2 class="font-safira text-base sm:text-lg lg:text-sm xl:text-2xl leading-[28px] sm:leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Feature Selection</h2>
-                    <ul class="flex flex-col gap-4 sm:gap-6">
-                        <li>Based on user research, we prioritized features that enhance usability:</li>
-                        <li><strong>Music Sharing (Link-Up):</strong> Seamless sharing with friends.</li>
-                        <li><strong>Smart Pause:</strong> Auto-pause when headphones are removed.</li>
-                        <li><strong>Ergonomic Comfort:</strong> Triangular cups for a unique, comfortable fit.</li>
+            <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Key Features and Innovations</h2>
+            <div class="flex justify-between">
+                <div class="lg:max-w-[600px] flex flex-col lg:justify-start gap-4 xl:gap-6 relative overflow-hidden">
+                    <span class="font-bold">Empowering Users</span>
+                    <ul class="flex flex-col gap-4 sm:gap-6 quick-up list-inside list-disc pl-4">
+                        <li><strong>Vote on Bills:</strong> Users can actively express their stance on proposed laws.</li>
+                        <li><strong>Contact Representatives:</strong> Direct communication with MPs for feedback and concerns.</li>
+                        <li><strong>MP Engagement:</strong> Future updates will allow MPs to have verified accounts to interact with the public.</li>
+                        <li><strong>Issue Raising:</strong> MPs will be able to post public issues to gauge citizen reactions before submitting them to Parliament.</li>
                     </ul>
                 </div>
-        
-                <div class="flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                    <h2 class="font-safira text-base sm:text-lg lg:text-sm xl:text-2xl leading-[28px] sm:leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Aesthetic and Functional Refinement</h2>
-                    <ul class="flex flex-col gap-4 sm:gap-6">
-                        <li><strong>Triangular Cups:</strong> Designed for style and customizable fit.</li>
-                        <li><strong>Telescopic Arms:</strong> Effortlessly adjustable for a secure, comfortable hold.</li>
-                        <li><strong>Stainless Steel Frame:</strong> Combines strength, flexibility, and durability with a premium tactile finish.</li>
-                        <li><strong>Rotating Cups:</strong> Independent rotation for balanced pressure and fit.</li>
+
+                <!-- Right Section -->
+                <div class="lg:max-w-[600px] flex flex-col lg:justify-start gap-4 xl:gap-6 relative overflow-hidden">
+                    <span class="font-bold">Smart Design Choices</span>
+                    <ul class="flex flex-col gap-4 sm:gap-6 quick-up list-inside list-disc pl-4">
+                        <li><strong>No Comment Section:</strong> To avoid political toxicity, we removed unmoderated discussions.</li>
+                        <li><strong>MVP Focus:</strong> Instead of launching with all planned features, we are starting with core functions for Canada, then expanding based on feedback.</li>
                     </ul>
+                    <span>These decisions ensure OpenPolicy remains structured, impactful, and adaptable for long-term success.</span>
                 </div>
-            </div>
-        
-            <!-- pics -->
-            <div class="grid grid-cols-2 grid-rows-2 gap-2 w-full h-full">
-                <div class="bg-gray-100 w-full h-full"></div>
-                <div class="bg-gray-100 w-full h-full"></div>
-                <div class="bg-gray-100 w-full h-full"></div>
-                <div class="bg-gray-100 w-full h-full"></div>
             </div>
         </section>
 
-        <!-- Branding and logo design -->
-        <section id='branding' class="h-screen overflow-hidden grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <!-- restructure -->
+        <section id='re-structure' class="h-screen overflow-hidden grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[600px] flex flex-col lg:justify-center gap-4 xl:gap-6 relative box-parent overflow-hidden">
+            <div class="lg:max-w-[700px] flex flex-col lg:justify-center gap-4 xl:gap-6 relative box-parent overflow-hidden">
                 
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Branding and Logo Design</h2>
-                <p class="quick-up"> 
-                    The name "CRACK" came from a spontaneous moment of inspiration, symbolizing boldness and breaking design norms. The logo features an embossed, cracked effect, with a clean, mobile-friendly version for digital platforms.
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Restructuring the Foundation</h2>
+                <p class="quick-up flex flex-col gap-4"> 
+                    <span>When I took over the design of OpenPolicy, the existing app was in rough shape. The user experience was <strong>cluttered, unintuitive, and ultimately rejected by iOS</strong> for multiple reasons. My first challenge was to untangle the chaos and bring clarity to the experience.</span>
+                    <span>Since there was no PRD (Product Requirements Document), I had to reverse-engineer the app’s core functionalities, understanding what worked, what didn’t, and what needed a complete overhaul. Rather than start from scratch, I focused on <strong>refining the navigation, improving hierarchy, and eliminating friction points.</strong></span>
+                    <span>I began by mapping out the new user flow, ensuring that every interaction felt logical and purposeful. The goal was simple: <strong>Make it effortless for users to stay informed, vote on policies, and contact representatives.</strong></span>
                 </p>
                 <div class="flex items-center justify-end p-20 w-full quick-up h-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div>
 
@@ -423,33 +398,92 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             </div>
 
             <!-- image -->
-            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 bg-[url('/images/pencil_hoops/sections/k.jpg')] rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
             </div>
 		</section>
 
-        <!-- 04 Collabrations-->
-        <div id="collaboration" class="bg-[#F2EBE2] hide-bottom-nav">
-            <section class="h-screen overflow-hidden flex items-center pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
-                <!-- project description and actions -->
-                <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
-                    <p class="text-4xl font-cookie quick-down">04</p>
-                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Collabration</h2>
-                    <ul class="flex flex-col gap-4 sm:gap-6">
-                        <li>This project was a collaborative effort. I guided a talented team, including:</li>
-                        <li><strong>UX Researchers:</strong> Synthesizing user insights.</li>
-                        <li><strong>3D Modelers:</strong> Ria Kunti and Kasali Abimbola, who brought the designs to life.</li>
-                        <li><strong>Graphic Design:</strong> Led by Ayo "Crixx," who shaped the visual identity.</li>
-                        <li>My role was to integrate research findings with creative design principles, ensuring the final product reflects user-centric innovation.</li>
-                    </ul>
-                </div>
-            </section>
-        </div>
+        <!-- sketching the concept -->
+        <section id="sketching" class="h-screen overflow-hidden flex flex-col gap-4 lg:gap-8 xl:gap-16 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <!-- project description and actions -->
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6 box-parent">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Wireframing and UX Improvements</h2>
+                <p class="quick-up">With the user flow defined, I sketched out low-fidelity wireframes to visualize how users would navigate through the app. Some of the key UX improvements included:</p>
+                <ul class="list-disc pl-5 quick-up">
+                    <li>A cleaner home dashboard that summarizes key updates at a glance.</li>
+                    <li>Simplified navigation with clear categories (Bills, Debates, Committees) to avoid information overload.</li>
+                    <li>A seamless voting system that allows users to express their stance on bills without unnecessary steps.</li>
+                </ul>
+                <p class="quick-up">After validating the wireframes, I transitioned into high-fidelity designs in Figma, refining typography, spacing, and accessibility to create a layout that feels modern yet authoritative.</p>
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
 
+            <!-- pics --> 
+            <div class="grid-cols-3 grid grid-rows-2 gap-2 w-full h-full bg-gray-200 box-parent">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+		</section>
+
+        <!-- visual aesthetics -->
+        <section id="wireframes" class="h-screen overflow-hidden flex flex-col gap-4 lg:gap-8 xl:gap-16 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <!-- project description and actions -->
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-4 md:gap-6 xl:gap-8 box-parent">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Visual Aesthetics and Interaction Design</h2>
+                <p class="quick-up">Since OpenPolicy is a government-related platform, the design needed to feel professional yet approachable. To achieve this, I focused on:</p>
+                <ul class="list-disc pl-5 flex flex-col gap-4 quick-up">
+                    <li>
+                        <p><b>A neutral, minimal color palette</b> to keep the interface clean and distraction-free.</p>
+                    </li>
+                    <li>
+                        <p><b>Bold, easy-to-read typography</b> for quick scanning of policies and bills.</p>
+                    </li>
+                    <li>
+                        <p><b>Microinteractions and smooth transitions</b> to make interactions feel intuitive and engaging.</p>
+                    </li>
+                </ul>
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+
+            <!-- pics --> 
+            <div class="grid-cols-3 grid grid-rows-2 gap-2 w-full h-full bg-gray-200 box-parent">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+		</section>
+
+        <!-- High Fidelity Design -->
+        <section id="feature-selection" class="h-screen overflow-hidden flex flex-col gap-4 lg:gap-8 xl:gap-16 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <!-- project description and actions -->
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-4 md:gap-6 xl:gap-8 box-parent">
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">High-Fidelity Designs and Final Touches</h2>
+                <p class="flex flex-col gap-4">
+                    <span>Once the UI was polished, I worked closely with developers to ensure pixel-perfect implementation. I provided <b>detailed annotations, interactive prototypes, and component-based designs</b>, making the handoff smooth and efficient.</span>
+                    <span>As the MVP rolls out to beta testers, I'll be <b>monitoring feedback and iterating</b> based on real-world usage. This first phase will shape the next version, ensuring that OpenPolicy isn't just functional, but a game-changer in how people engage with their government.</span>
+                </p>
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+
+            <!-- pics --> 
+            <div class="grid-cols-3 grid grid-rows-2 gap-2 w-full h-full bg-gray-200 box-parent">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+		</section>
+        
         <!-- 05 Next Steps-->
-        <div id="next-steps" class="bg-[#F2EBE2] hide-bottom-nav">
+        <div id="next-steps" class="hide-bottom-nav bg-black text-white">
             <section class="h-screen overflow-hidden flex items-center pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
@@ -459,38 +493,24 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             </section>
         </div>
 
-        <!-- current status -->
-        <section id='current-status' class="h-screen overflow-hidden xl:gap-20 flex flex-col lg:flex-row justify-center pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto box-parent">
+        <!-- current steps -->
+        <section id='branding' class="h-screen overflow-hidden grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[600px] flex flex-col lg:justify-start gap-4 xl:gap-6 relative overflow-hidden">
+            <div class="lg:max-w-[600px] flex flex-col lg:justify-center gap-4 xl:gap-6 relative box-parent overflow-hidden">
                 
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Current Status and Next Steps</h2>
-                <ul class="flex flex-col gap-4 sm:gap-6 quick-up list-inside">
-                    <li>Having completed the design phase, CRACK Headphones are ready for the next stages:</li>
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Current Status and Next Steps</h2>
+                <p>With the MVP set to launch, the next steps focus on refining and expanding the platform:</p>
+                <ul class="list-disc pl-5 flex flex-col gap-4">
                     <li>
-                        <ul class="flex flex-col gap-4 sm:gap-6 quick-up list-inside list-decimal pl-4">
-                            <li><strong>Prototyping:</strong> Developing functional prototypes to test design practicality and user interaction.</li>
-                            <li><strong>User Testing:</strong> Rigorous testing to refine features, enhance performance, and ensure the product meets our high standards.</li>
-                        </ul>
+                        <p><b>Beta Testing</b>: Releasing the app to a small group of users to gather feedback.</p>
                     </li>
-                    <li>These steps will help us validate design decisions and prepare the headphones for potential mass production.</li>
+                    <li>
+                        <p><b>Iterating Based on Feedback</b>: Using real-world insights to improve the experience.</p>
+                    </li>
+                    <li>
+                        <p><b>Government Adoption</b>: Engaging with multiple government bodies to establish OpenPolicy as an official platform.</p>
+                    </li>
                 </ul>
-                <!-- <div class="flex items-center justify-end p-20 w-full quick-up h-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div> -->
-
-                {
-                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
-                }
-            </div>
-
-            <!-- image -->
-            <div class="lg:max-w-[600px] flex flex-col lg:justify-start gap-4 xl:gap-6 relative overflow-hidden">
-                
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Personal Story</h2>
-                <p>
-                    Naming the headphones "CRACK" was a fun moment. After struggling to find the right name, inspiration struck when I noticed a <strong>crack on the wall.</strong> It felt bold, edgy, and perfect. That spontaneous idea shaped the entire brand identity, from the logo to the design language.
-                </p>
-                <!-- <div class="flex items-center justify-end p-20 w-full quick-up h-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div> -->
-
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
@@ -498,20 +518,17 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		</section>
 
 		<!-- closing statement -->
-        <div id='closing' class="bg-[#F2EBE2] hide-bottom-nav">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 max-w-[1700px] mx-auto gap-4 xl:gap-10">
+        <div id='closing' class="hide-bottom-nav">
+            <section class="h-screen overflow-hidden flex items-center pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 max-w-[1700px] mx-auto gap-4 xl:gap-10">
                 <!-- project description and actions -->
-                <div class="max-w-[500px] flex flex-col justify-center">
+                <div class="flex flex-col justify-center">
                     <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 heading-up-footer">Closing Statement</h2>
     
                     <p class="heading-up-footer">
-                        The design phase of CRACK Headphones has set a <strong>new standard</strong> for what users can expect from high-end audio equipment. <br><br>
-                        As we move forward, the insights and foundations laid during this phase will guide our efforts to realize a product that not only meets but <strong>exceeds user expectations</strong>.
+                        OpenPolicy is an ambitious project designed to reshape how people engage with their government. With a clean design, structured functionality, and a clear vision, it’s built to empower citizens like never before.
+                        But the journey isn’t over. The MVP launch and feedback loop will be key in refining and shaping the platform’s future, turning OpenPolicy into a truly impactful tool for civic engagement.
                     </p>
                 </div>
-    
-                <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full closing-img bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-blend-color-burn bg-white bg-center bg-no-repeat bg-cover h-full"></div>
             </section>
         </div>
 		
