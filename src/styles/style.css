@@ -1,0 +1,40 @@
+/* For screens with a minimum height of 600px */
+@media (min-height: 500px) {
+    .heading-1{
+        font-size: 1em; /* Example style */
+        line-height: 2; /* Example style */
+    }
+
+    .body-cont p{
+        font-size: 0.8em; /* Example style */
+        line-height: 2; /* Example style */
+    }
+
+    .body-cont li{
+        font-size: 0.8em; /* Example style */
+        line-height: 2; /* Example style */
+    }
+
+    .body-cont button{
+        font-size: 0.8em; /* Example style */
+        line-height: 2; /* Example style */
+        padding: 8px 18px; /* Example style */
+        display: flex; /* Example style */
+        justify-content: center; /* Example style */
+        align-items: center; /* Example style */
+        gap: 10px; /* Example style */
+    }
+
+    .icon{
+        width: 10px; /* Example style */
+        height: 10px; /* Example style */
+        display: inline-block; /* Example style */
+    }
+}
+
+/* For screens with a maximum height of 480px */
+@media (max-height: 480px) {
+    .short {
+        background-color: red; /* Example style */
+    }
+}

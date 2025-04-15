@@ -4,24 +4,26 @@ import Footer from '../layouts/Footer.astro'
 
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 let data = {active: 'hero', links: ['works', 'timeline', 'about-me', 'contact']}
-
+import '../styles/style.css'
 ---
-
 <Layout title="Welcome to Astro.">
-	<div x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail"> 
+	<div class="body-cont" x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail"> 
 	<!-- nav -->
-	<header class="fixed top-0 left-0 right-0 bg-white opacity-95">
+	<header class="fixed top-0 left-0 right-0 bg-white top-nav">
 		<nav class="flex justify-between pt-8 pb-2 px-20 border-b-[1px] border-b-gray-100">
-			<ul class="flex items-center gap-16">
-				<li class="font-safira text-gray-300"><a href="#works">Selected Works</a></li>
-				<li class="font-safira text-gray-300" @click="active = 'timeline'" :class="{'text-black' : ['timeline', 'quick-overview-2'].includes(active)}"><a href="#timeline">My Journey</a></li>
-				<li class="font-safira text-gray-300"><a href="#about-me">About Me</a></li>
-				<li class="font-safira text-gray-300"><a href="#contact">Get In Touch</a></li>
-			</ul>
-			<div class="flex items-center gap-10">
-				<p class="font-bilal text-[32px]">Kamil Oseni</p>
-				<div class="w-[100px] aspect-square bg-gray-500 rounded-full"></div>
+			<div class="flex items-center gap-4">
+				<div class="w-[78px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat"></div>
+				<p class="font-bilal text-[16px]">Kamil Oseni</p>
 			</div>
+
+			<ul class="flex items-center gap-16 text-[12px]">
+				<li><a href="#works">works</a></li>
+				<li @click="active = 'timeline'" :class="{'text-black' : ['timeline', 'quick-overview-2'].includes(active)}"><a href="#timeline">Journey</a></li>
+				<li><a href="#about-me">About</a></li>
+				<li><a href="#contact">Get In Touch</a></li>
+			</ul>
+
+			<div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/mdi_basketball.svg')]"></div>
 		</nav>
 	</header>
 
@@ -31,22 +33,22 @@ let data = {active: 'hero', links: ['works', 'timeline', 'about-me', 'contact']}
 
 	<main>
 		<!-- works -->
-		<section id="works" class="h-screen overflow-hidden grid grid-rows-[minmax(auto,1fr)_1fr]">
+		<section id="works" class="h-screen overflow-hidden grid grid-rows-[minmax(auto,1fr)_1fr] tall short">
 			<!-- top-side -->
-			<div class="pt-[200px] px-20 pb-8 flex justify-between items-center pt-auto">
+			<div class="pt-4 px-20 pb-8 flex justify-between items-center pt-auto">
 				<!-- project title, tags and date -->
 				<div>
-					<ul class="list-disc list-inside flex gap-9">
+					<ul class="list-disc list-inside text-xs flex gap-4">
 						<li>[ Sports ]</li>
 						<li>[ Interaction Design ]</li>
 						<li>[ Creative Website ]</li>
 					</ul>
-					<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-14">Pencil <span class="text text-[#336633]">Hoops <br> Website Design</span></h2>
+					<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">Pencil <span class="text text-[#336633]">Hoops <br> Website Design</span></h2>
 					<p class="mt-4">2023</p>
 				</div>
 
 				<!-- project description and actions -->
-				<div class="w-[510px]">
+				<div class="w-[510px] text-xs">
 					<p class="w-[444px]">
 						Pencil Hoops is an interactive, people-friendly website designed for 
 						NBA fans who appreciate the art of pencil sketching.<br><br>
@@ -55,9 +57,9 @@ let data = {active: 'hero', links: ['works', 'timeline', 'about-me', 'contact']}
 						animations and dynamic sound effects to bring NBA moments to life.
 					</p>
 
-					<div class="pt-[52px]">
-						<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Tour on the Website</button>
-						<button class="px-4 py-3 rounded-lg">Read the Story</button>
+					<div class="pt-4 flex gap-2">
+						<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Tour on the Website <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/mdi_basketball.svg')]"></div></button>
+						<button class="px-4 py-3 rounded-lg border-[1px] border-black">Read the Story</button>
 					</div>
 				</div>
 			</div>
@@ -71,7 +73,7 @@ let data = {active: 'hero', links: ['works', 'timeline', 'about-me', 'contact']}
 		</section>
 
 		<!-- timeline -->
-		<section id="timeline" class="h-screen grid grid-rows-[80%_minmax(auto)]  px-20 gap-6">
+		<section id="timeline" class="h-screen grid grid-rows-[80%_minmax(auto)]  px-20 gap-6 tall:bg-green-200 short:bg-red-200">
 			<!-- center box -->
 			<div class="pt-[200px] pb-8 flex justify-between items-center gap-8">
 				<!-- project title, tags and date -->
@@ -197,13 +199,6 @@ let data = {active: 'hero', links: ['works', 'timeline', 'about-me', 'contact']}
 		});
 	
 		let previousScroll = 0;
-		// Listen for the scroll event and log the event data
-		// lenis.on('scroll', (e) => {
-		//     // console.log(e);
-		// });
-	
-		// lenis.on('scroll', ScrollTrigger.update);
-		// gsap.ticker.lagSmoothing(0);
 	
 		document.addEventListener("click", function (e) {
 			const currentScroll = window.scrollY;
@@ -516,7 +511,43 @@ let data = {active: 'hero', links: ['works', 'timeline', 'about-me', 'contact']}
 				}
 			});
 		})
+
+		// hide the top nav
+		// gsap.to('.top-nav', {
+		// 	translateY: "-100%",
+		// 	opacity: 1,
+		// 	duration: 1,
+		// 	ease: "power2.out",
+		// });
 	   
+		let hideNavTimeout: ReturnType<typeof setTimeout>;
+
+			
+
+				
+		
+
+		window.addEventListener('mousemove', (event) => {
+			// Check if the mouse is within the top 100px of the window
+			console.log(event.clientY)
+			if (event.clientY <=100) {
+				// Show the navigation bar
+				gsap.to('.top-nav', {
+					translateY: "0%",
+					duration: 1,
+					ease: "power2.out",
+				});
+
+				// Clear the previous timeout to reset the timer
+				// clearTimeout(hideNavTimeout);
+			}else{
+				gsap.to('.top-nav', {
+					translateY: "-100%",
+					duration: 1,
+					ease: "power2.out",
+				});
+			}
+		});
 	
 	   
 	
