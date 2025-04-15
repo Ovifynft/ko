@@ -25,10 +25,20 @@
         gap: 10px; /* Example style */
     }
 
-    .icon{
+    button .icon{
         width: 10px; /* Example style */
         height: 10px; /* Example style */
         display: inline-block; /* Example style */
+    }
+
+    .icon{
+        width: 15px; /* Example style */
+        height: 15px; /* Example style */
+        display: inline-block; /* Example style */
+    }
+
+    .nav-text{
+        font-size: 0.8em; /* Example style */
     }
 }
 
