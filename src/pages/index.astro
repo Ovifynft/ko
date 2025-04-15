@@ -38,7 +38,7 @@ import '../styles/style.css'
 		<!-- works -->
 		<section id="works" class="h-screen overflow-hidden grid grid-rows-[minmax(auto,1fr)_1fr] tall short">
 			<!-- top-side -->
-			<div class="pt-4 px-20 pb-8 flex justify-between items-center pt-auto">
+			<div class="pt-4 px-20 pb-8 flex justify-between items-center pt-auto top-side">
 				<!-- project title, tags and date -->
 				<div>
 					<ul class="list-disc list-inside text-xs flex gap-4">
@@ -47,6 +47,35 @@ import '../styles/style.css'
 						<li>[ Creative Website ]</li>
 					</ul>
 					<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">Pencil <span class="text text-[#336633]">Hoops <br> Website Design</span></h2>
+					<p class="mt-4">2023</p>
+				</div>
+
+				<!-- project description and actions -->
+				<div class="w-[40%] text-xs">
+					<p class="">
+						Pencil Hoops is an interactive, people-friendly website designed for 
+						NBA fans who appreciate the art of pencil sketching.<br><br>
+						It blends minimal design, accessibility, and engaging experiences, 
+						combining stunning pencil sketches with interactive 
+						animations and dynamic sound effects to bring NBA moments to life.
+					</p>
+
+					<div class="pt-4 flex gap-2">
+						<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Tour on the Website <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/mdi_basketball.svg')]"></div></button>
+						<button class="px-4 py-3 rounded-lg border-[1px] border-black">Read the Story</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="pt-4 px-20 pb-8 justify-between items-center pt-auto top-side absolute opacity-0">
+				<!-- project title, tags and date -->
+				<div>
+					<ul class="list-disc list-inside text-xs flex gap-4">
+						<li>[ Sports ]</li>
+						<li>[ Interaction Design ]</li>
+						<li>[ Creative Website ]</li>
+					</ul>
+					<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">OpenPolicy App Design (MVP)</h2>
 					<p class="mt-4">2023</p>
 				</div>
 
@@ -77,10 +106,10 @@ import '../styles/style.css'
 			<div class="flex items-center justify-center gap-2 py-4">
 				<ArrowLeft className="p-2 rounded-full bg-gray-100" size={28}/>
 				<ul class="flex gap-2">
-					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-400"></li>
-					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-400"></li>
-					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-400"></li>
-					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-400"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-100 bottom-slide-indicator"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-30 bottom-slide-indicator"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-30 bottom-slide-indicator"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-30 bottom-slide-indicator"></li>
 				</ul>
 				<ArrowRight className="p-2 rounded-full bg-gray-100" size={28}/>
 			</div>
@@ -563,25 +592,61 @@ import '../styles/style.css'
 			}
 		});
 
-		document.querySelectorAll('.bottom-slide').forEach((element) => {
+		let bottomSlideIndicators = Array.from(document.querySelectorAll('.bottom-slide-indicator'))
+		let topSides = Array.from(document.querySelectorAll('.top-side'))
+
+		document.querySelectorAll('.bottom-slide').forEach((element, i) => {
 			element.addEventListener('click', () => {
 				// first we wana collapse the rest thats not this guy
-				Array.from(document.querySelectorAll('.bottom-slide')).filter((el) => el != element).forEach((el) => {
+
+				Array.from(document.querySelectorAll('.bottom-slide')).filter((el) => el != element).forEach((el, i) => {
 					gsap.to(el, {
 						width: "20%",
 						duration: 1,
 						ease: "power2.out",
 					});
+
 				})
 
-
 				// then we wana expand this guy
-				gsap.fromTo(element, {width : '20%'}, {
+				gsap.to(element, {
 					width: "40%",
 					duration: 1,
 					ease: "power2.out",
 				});
-				console.log('clicked');
+
+				// darken this indicator 
+				gsap.to(bottomSlideIndicators[i], {
+					opacity: 1,
+					duration: 1,
+					ease: "power2.out",
+				});
+
+				// and lighten the rest
+				bottomSlideIndicators.filter((el, j) => j != i).forEach((el, j) => {
+					gsap.to(el, {
+						opacity: 0.3,
+						duration: 1,
+						ease: "power2.out",
+					});
+				})
+
+				// change top side from hidden to visible and fade in
+				gsap.to(topSides[i], {
+					opacity: 1,
+					display: "flex",
+					duration: 1,
+					ease: "power2.out",
+				});
+				// and fade out the rest
+				topSides.filter((el, j) => j != i).forEach((el, j) => {
+					gsap.to(el, {
+						opacity: 0,
+						display: "none",
+						duration: 1,
+						ease: "power2.out",
+					});
+				})
 			});
 		});
 	
