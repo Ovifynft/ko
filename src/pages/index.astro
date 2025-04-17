@@ -5,6 +5,81 @@ import Footer from '../layouts/Footer.astro'
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 let data = {active: 'hero', links: ['works', 'timeline', 'about-me', 'contact']}
 import '../styles/style.css'
+
+const timeline = [
+	{
+		date : "October 2016",
+		title : "BSc Medical Physiology",
+		heading : "Exploring How the Human Mind and Body Work",
+		description : "I focused on research methods and real-world applications, which helped me develop a deeper understanding of how psychology shapes our day-to-day experiences.<br><br> This foundation has been invaluable in my design process, allowing me to create user-centered solutions that resonate with people on both cognitive and emotional levels.",
+		year : "2016",
+		url : ""
+	},
+	{
+		date : "October 2019 - June 2022",
+		title : "Product Design Internship at Clutch Labs",
+		heading : "Introduction to User Research and Design Basics",
+		description : "I got my first experience of user research and design through hands-on projects. I designed a pair of headphones and even pitched a VR concert idea to Chelsea FC.<br><br> One standout experience was using principles of human psychology to boost Waftop Couture’s lip balm sales where I scaled down the product sizes to reduce costs and make them more appealing to buyers.<br><br> These early projects sparked my passion for creating user-centered designs that are both practical and impactful.",
+		year : "2019",
+		url : ""
+	},
+	{
+		date : "March 2020",
+		title : "Foundation in Finance & Forex Trading",
+		heading : "Gaining Comprehensive Knowledge of Finance",
+		description : "I developed a solid understanding of finance, focusing on both fundamental and technical analysis for Forex trading. This experience sharpened my analytical thinking and decision-making skills.<br><br> I also gained practical effective risk and money management strategies, which taught me the importance of discipline and strategic planning—skills that have been invaluable in both trading and design.",
+		year : "2020",
+		url : ""
+	},
+	{
+		date : "October 2022 - December 2022",
+		title : "Google & Coursera",
+		heading : "Mastering UX Design Principles",
+		description : "I earned the Google UX Design Certificate, which deepened my understanding of user-centered design principles. I tackled real-world design challenges and learned how to create clean, user-focused apps. <br><br> This journey also allowed me to practice advanced prototyping techniques, helping me bring design concepts to life with greater precision and attention to detail.",
+		year : "2022",
+		url : ""
+	},
+	{
+        date : "May 2022 - December 2022",
+        title : "Programming & Data Analysis at Seneca Polytechnic",
+        heading : "Honors Graduate with a Focus on Python<span class='font-source'>,</span> Data Analysis<span class='font-source'>,</span> <span class='font-source nd'>&</span> Software Development",
+        description : "Graduating with honors, I specialized in Python, data analysis, and software development. I gained hands-on experience in advanced data manipulation and explored the fundamentals of machine learning.<br><br> Throughout this journey, I collaborated on various design, software, and data analytics projects, which strengthened my problem-solving skills and ability to work effectively in cross-functional teams.",
+        year : "2022",
+        url : ""
+    },
+    {
+        date : "January 2024",
+        title : "UX & Data Analysis Instructor",
+        heading : "Mastery through Teaching",
+        description : "I deepened my expertise by teaching others about data; how to interpret it and seamlessly combine it with design for impactful solutions. <br><br> I guided intern analysts and designers, developed course materials, and led final projects. This experience not only strengthened my knowledge but also improved my leadership and mentoring skills, reinforcing the idea that teaching is one of the most powerful ways to master a subject.",
+        year : "2024",
+        url : ""
+    },
+	{
+		date : "January 2024",
+		title : "Built Prospera: A Financial Market Automation Tool",
+		heading : "Building Prospera: A Financial Market Automation Tool",
+		description : "Built Prospera, a financial market automation tool using Python and SQL. It achieved 99.9% accuracy across various currency pairs, significantly enhancing trading efficiency. <br><br> Prospera streamlined daily trading tasks, automated risk management processes, and provided data-driven insights, making complex trading decisions faster and more reliable.<br><br> This project sharpened my skills in algorithm development, automation, and financial analytics.",
+		year : "2024",
+		url : ""
+	},
+	{
+		date : "Feb 2023 - Present",
+		title : "Banking Advisor at the Royal Bank of Canada",
+		heading : "Enhancing Banking Efficiency Through User Research",
+		description : "I conduct user research with over 15,000 Royal Bank clients, gaining valuable insights into everyday banking and future aspirations.<br><br> Using these insights, I created a design proposal that significantly improved customer onboarding efficiency, enhancing data visualization and decision-making processes.<br><br> This experience deepened my understanding of user behavior in the financial sector and highlighted the power of data-driven solutions in enhancing operational performance.",
+		year : "2023",
+		url : ""
+	},
+	{
+		date : "Launch March 2025",
+		title : "Product Design Lead for OpenPolicy",
+		heading : "Designing OpenPolicy for the Canadian Government",
+		description : "I designed OpenPolicy, an application developed for the Canadian government.<br><br> My role focused on preparing the app for deployment, ensuring it was scalable and adaptable for global legislative bodies, including the UK’s House of Lords, the Indian Parliament, and the German Bundestag.<br><br> This project strengthened my skills in designing for large-scale, diverse user bases while addressing complex policy and governance needs.",
+		year : "2025",
+		url : ""
+	}
+]
 ---
 <Layout title="Welcome to Astro.">
 	<div class="body-cont" x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail"> 
@@ -38,7 +113,7 @@ import '../styles/style.css'
 		<!-- works -->
 		<section id="works" class="h-screen overflow-hidden grid grid-rows-[1fr_1fr] tall short">
 			<!-- top-side -->
-			<div class="pt-4 px-20 pb-8 flex items-center">
+			<div class="pt-4 px-6 lg:px-20 pb-8 flex items-center">
 				<!-- pencil hoops -->
 				<div class="flex justify-between items-center top-side w-full">
 					<!-- project title, tags and date -->
@@ -173,55 +248,52 @@ import '../styles/style.css'
 		</section>
 
 		<!-- timeline -->
-		<section id="timeline" class="h-screen grid grid-rows-[80%_minmax(auto)]  px-20 gap-6 tall:bg-green-200 short:bg-red-200">
-			<!-- center box -->"
-			<div class="pt-[200px] pb-8 flex justify-between items-center gap-8">
-				<!-- project title, tags and date -->
-				<div>
-					<p class="mt-4">October 2016</p>
-					<p class="mt-4 font-bold">BSc Medical Physiology</p>
-					<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-10">Exploring How the Human Mind <br>and Body Work</h2>
-					<p class="max-w-[677px] mt-6"> 
-						I focused on research methods and real-world applications, 
-						which helped me develop a deeper understanding of how psychology shapes our day-to-day experiences. <br><br>
-						This foundation has been invaluable in my design process, allowing me to create user-centered solutions 
-						that resonate with people on both cognitive and emotional levels.
-					</p>
-				</div>
+		<section id="timeline" class="h-screen grid grid-rows-[minmax(auto,100%)_auto]  px-20 gap-6 tall:bg-green-200 short:bg-red-200">
+			<!-- center box -->
+			<div class="pt-[200px] overflow-auto">
+			{
+				timeline.map(timeline =>
+					<div class="pb-8 justify-between items-center gap-8 hidden opacity-0 timeline-slide">
+						{/* project title, tags and date */}
+						<div>
+							<p class="mt-4">{timeline.date}</p>
+							<p class="mt-4 font-bold">{timeline.title}</p>
+							<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-10 heading-1" set:html={timeline.heading}></h2>
+							<p class="max-w-[677px] mt-6" set:html={timeline.description}></p>
+						</div>
 
-				<!-- project description and actions -->
-				<div class="w-[45%] aspect-video bg-gray-200 rounded-lg"></div>
+						{/* project description and actions */}
+						<div class="w-[45%] aspect-video bg-gray-200 rounded-lg"></div>
+					</div>
+				)
+			}
 			</div>
+			
 
 			<!-- progress -->
 			<div>
 				<div class="h-1 flex gap-3">  
-					<div class="w-full h-full bg-gray-200 relative after:content-[''] after:absolute after:w-[50%] after:bottom-0 after:bg-black after:left-0 after:top-0">
-						<div class="absolute right-0 left-0 bottom-[100%] lg:h-20 h-12 flex flex-col items-center">
-							<p class="py-1 lg:px-6 lg:text-sm text-xs px-3 bg-gray-200 rounded-full inline-block">2016</p>
-							<div data-svg-wrapper>
-								<svg class="lg:h-12 h-6 lg:w-[12px]" viewBox="0 0 12 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M6 11.3333C8.94552 11.3333 11.3333 8.94552 11.3333 6C11.3333 3.05448 8.94552 0.666668 6 0.666668C3.05448 0.666668 0.666667 3.05448 0.666667 6C0.666667 8.94552 3.05448 11.3333 6 11.3333ZM7 46V44H5V46H7ZM7 40L7 36H5V40H7ZM7 32V28H5V32H7ZM7 24L7 20H5L5 24H7ZM7 16L7 12H5L5 16H7ZM7 8L7 6H5L5 8H7Z" fill="#222222"/>
-								</svg>
+					{
+						timeline.map(timeline =>
+							<div class="w-full h-full bg-gray-200 relative timeline-indicator hover:cursor-pointer">
+								<div class="absolute w-0 h-full bg-black left-0 top-0 timeline-indicator-progress"></div>
+								<div class="absolute right-0 left-0 bottom-[100%] lg:h-20 h-12 flex flex-col items-center translate-y-[100%] timeline-year">
+									<p class="py-1 lg:px-6 lg:text-sm text-xs px-3 bg-gray-200 rounded-full inline-block timeline-year-pill opacity-0">{timeline.year}</p>
+									<div data-svg-wrapper>
+										<svg class="lg:h-12 h-6 lg:w-[12px]" viewBox="0 0 12 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M6 11.3333C8.94552 11.3333 11.3333 8.94552 11.3333 6C11.3333 3.05448 8.94552 0.666668 6 0.666668C3.05448 0.666668 0.666667 3.05448 0.666667 6C0.666667 8.94552 3.05448 11.3333 6 11.3333ZM7 46V44H5V46H7ZM7 40L7 36H5V40H7ZM7 32V28H5V32H7ZM7 24L7 20H5L5 24H7ZM7 16L7 12H5L5 16H7ZM7 8L7 6H5L5 8H7Z" fill="#222222"/>
+										</svg>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-					<div class="w-full h-full bg-gray-200 relative"></div>
-					<div class="w-full h-full bg-gray-200"></div>
-					<div class="w-full h-full bg-gray-200"></div>
-					<div class="w-full h-full bg-gray-200"></div>
-					<div class="w-full h-full bg-gray-200"></div>
-					<div class="w-full h-full bg-gray-200"></div>
-					<div class="w-full h-full bg-gray-200"></div>
-					<div class="w-full h-full bg-gray-200"></div>
-		
-				
+						)
+					}		
 				</div>
 				<!-- arrows -->
-				<dir class="flex gap-4 mt-5 relative">
-					<button class="p-2 hover:cursor-pointer"><ArrowLeft /></button>
-					<button class="p-2 hover:cursor-pointer"><ArrowRight /></button>
-					<div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-0"></div>
+				<dir class="flex gap-4 pt-5 pb-6 relative bg-white">
+					<ArrowLeft className="p-2 rounded-full bg-gray-100 timeline-left-btn" size={28}/>
+					<ArrowRight className="p-2 rounded-full bg-gray-100 timeline-right-btn" size={28}/>
+					<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-0"></div> -->
 				</dir>
 			</div>
 		</section>
@@ -287,6 +359,7 @@ import '../styles/style.css'
 		import gsap from "gsap";
 		import Lenis from "lenis";
 		import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
+import { CurlyBraces } from 'lucide-react';
 		gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 	
 		gsap.config({
@@ -657,7 +730,7 @@ import '../styles/style.css'
 		let leftSlideBtn = document.querySelector('.slide-left-btn')
 
 		// checking if timelines will fix that glitching shit
-		var tl = gsap.timeline({repeat: 2, repeatDelay: 1});
+		var tl = gsap.timeline();
 
 		function activeSlideByIndex(i){
 			tl.kill();
@@ -728,6 +801,108 @@ import '../styles/style.css'
 		leftSlideBtn?.addEventListener('click', ()=>{
 			currentSlide = currentSlide == 0 ? bottomSlideIndicators.length - 1 : currentSlide - 1
 			activeSlideByIndex(currentSlide)
+		})
+
+		var timelineTl = gsap.timeline();
+		var timelineProgressTl = gsap.timeline();
+		// var timeLineYrTl = 
+		let timelineSlides = Array.from(document.querySelectorAll('.timeline-slide'))
+		let timelineYears = Array.from(document.querySelectorAll('.timeline-year'))
+		let timelineYearPills = Array.from(document.querySelectorAll('.timeline-year-pill'))
+		let timelineProgress = Array.from(document.querySelectorAll('.timeline-indicator-progress'))
+		let currentTimelineIndex = 0
+		setActiveTimelineByIndex(currentTimelineIndex)
+
+		function setActiveTimelineByIndex(i){
+			currentTimelineIndex = i
+			timelineTl.kill();
+			timelineTl = gsap.timeline();
+			timelineProgressTl.kill();
+			timelineProgressTl = gsap.timeline();
+
+
+			timelineTl.to(timelineSlides, {
+				duration : 0.2,
+				display : 'none',
+				opacity : 0,
+				ease: "power2.out",
+			})
+
+			timelineTl.to(timelineSlides[i], {
+				duration : 0.5,
+				display : 'flex',
+				opacity : 1,
+				ease: "power2.out",
+			})
+
+			gsap.to(timelineYears, {
+				duration : 0.5,
+				translateY : '120%',
+				ease: "ease.out",
+			})
+
+			gsap.to(timelineYears[i], {
+				duration : 0.5,
+				translateY : "0",
+				ease: "ease.out",
+			})
+
+			gsap.to(timelineYearPills, {
+				duration : 0.5,
+				opacity : '0',
+				ease: "ease.out",
+			})
+
+			gsap.to(timelineYearPills[i], {
+				duration : 0.5,
+				delay : 0.4,
+				opacity : "1",
+				ease: "ease.out",
+			})
+
+			// full all indicatore before, empty all indicators after
+			timelineProgressTl.to(timelineProgress.filter((prog, j) => j < i), {
+				duration : 0.1,
+				width : "100%",
+				ease: "ease.out",
+			})
+
+			timelineProgressTl.to(timelineProgress.filter((prog, j) => j > i), {
+				duration : 0.1,
+				width : "0%",
+				ease: "ease.out",
+			})
+
+			timelineProgressTl.fromTo(timelineProgress[i], {width : "0%"}, {
+				duration : 20,
+				width : "100%",
+				ease: "ease.out",
+				onComplete : () => nxtTimeline()
+			})
+		}
+
+		function nxtTimeline(){
+			currentTimelineIndex = currentTimelineIndex == timelineSlides.length - 1 ? 0 : currentTimelineIndex + 1
+			setActiveTimelineByIndex(currentTimelineIndex)
+		}
+
+		function prevTimeline(){
+			currentTimelineIndex = currentTimelineIndex == 0 ? timelineSlides.length - 1 : currentTimelineIndex - 1
+			setActiveTimelineByIndex(currentTimelineIndex)
+		}
+
+		document.querySelector('.timeline-left-btn')?.addEventListener('click', ()=>{
+			prevTimeline()
+		})
+
+		document.querySelector('.timeline-right-btn')?.addEventListener('click', ()=>{
+			nxtTimeline()
+		})
+
+		document.querySelectorAll('.timeline-indicator').forEach((el, i)=>{
+			el.addEventListener('click', () => {
+				setActiveTimelineByIndex(i)
+			})
 		})
 	
 	   

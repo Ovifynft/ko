@@ -40,6 +40,10 @@
     .nav-text{
         font-size: 0.8em; /* Example style */
     }
+
+    .nd{
+        font-size: 38px;
+    }
 }
 
 /* For screens with a maximum height of 480px */
