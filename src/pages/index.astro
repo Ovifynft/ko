@@ -36,65 +36,122 @@ import '../styles/style.css'
 
 	<main>
 		<!-- works -->
-		<section id="works" class="h-screen overflow-hidden grid grid-rows-[minmax(auto,1fr)_1fr] tall short">
+		<section id="works" class="h-screen overflow-hidden grid grid-rows-[1fr_1fr] tall short">
 			<!-- top-side -->
-			<div class="pt-4 px-20 pb-8 flex justify-between items-center pt-auto top-side">
-				<!-- project title, tags and date -->
-				<div>
-					<ul class="list-disc list-inside text-xs flex gap-4">
-						<li>[ Sports ]</li>
-						<li>[ Interaction Design ]</li>
-						<li>[ Creative Website ]</li>
-					</ul>
-					<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">Pencil <span class="text text-[#336633]">Hoops <br> Website Design</span></h2>
-					<p class="mt-4">2023</p>
+			<div class="pt-4 px-20 pb-8 flex items-center">
+				<!-- pencil hoops -->
+				<div class="flex justify-between items-center top-side w-full">
+					<!-- project title, tags and date -->
+					<div>
+						<ul class="list-disc list-inside text-xs flex gap-4">
+							<li>[ Sports ]</li>
+							<li>[ Interaction Design ]</li>
+							<li>[ Creative Website ]</li>
+						</ul>
+						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">Pencil <span class="text text-[#336633]">Hoops <br> Website Design</span></h2>
+						<p class="mt-4">2023</p>
+					</div>
+	
+					<!-- project description and actions -->
+					<div class="w-[40%] text-xs">
+						<p class="">
+							Pencil Hoops is an interactive, people-friendly website designed for 
+							NBA fans who appreciate the art of pencil sketching.<br><br>
+							It blends minimal design, accessibility, and engaging experiences, 
+							combining stunning pencil sketches with interactive 
+							animations and dynamic sound effects to bring NBA moments to life.
+						</p>
+	
+						<div class="pt-4 flex gap-2">
+							<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Tour on the Website <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/mdi_basketball.svg')]"></div></button>
+							<button class="px-4 py-3 rounded-lg border-[1px] border-black">Read the Story <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>
+						</div>
+					</div>
+				</div>
+	
+				<!-- open policy -->
+				<div class="justify-between items-center top-side w-full opacity-0 hidden">
+					<!-- project title, tags and date -->
+					<div>
+						<ul class="list-disc list-inside text-xs flex gap-4">
+							<li>[ User Experience ]</li>
+							<li>[ Government ]</li>
+							<li>[ Mobile App Design ]</li>
+						</ul>
+						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">Open<span class="text-gray-200">Policy</span><br>App Design<span class="text-gray-200"> (MVP)</span></h2>
+						<p class="mt-4">2024</p>
+					</div>
+	
+					<!-- project description and actions -->
+					<div class="w-[40%] text-xs">
+						<p class="">
+							OpenPolicy is a platform designed to connect citizens with their government like never before. It allows users to track bills, vote on policies, and directly engage with representatives, all in one place. <br><br>
+							As the Product Lead, I redesigned the app from the ground up, transforming a cluttered, unusable experience into a seamless and intuitive platform. 
+						</p>
+	
+						<div class="pt-4 flex gap-2">
+							<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Get it on the Appstore <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/ic_baseline-apple.svg')]"></div></button>
+							<button class="px-4 py-3 rounded-lg border-[1px] border-black">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>
+							
+						</div>
+					</div>
 				</div>
 
-				<!-- project description and actions -->
-				<div class="w-[40%] text-xs">
-					<p class="">
-						Pencil Hoops is an interactive, people-friendly website designed for 
-						NBA fans who appreciate the art of pencil sketching.<br><br>
-						It blends minimal design, accessibility, and engaging experiences, 
-						combining stunning pencil sketches with interactive 
-						animations and dynamic sound effects to bring NBA moments to life.
-					</p>
+				<!-- eden -->
+				<div class="justify-between items-center top-side w-full opacity-0 hidden">
+					<!-- project title, tags and date -->
+					<div>
+						<ul class="list-disc list-inside text-xs flex gap-4">
+							<li>[ Artificial Intelligence ]</li>
+							<li>[ Finance ]</li>
+							<li>[ Dashboard Design ]</li>
+						</ul>
+						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">Eden</h2>
+						<p class="mt-4">Smart, <span class="text-red-500">Stable</span>, Simple</p>
+						<p class="mt-4">2025</p>
+					</div>
+	
+					<!-- project description and actions -->
+					<div class="w-[40%] text-xs">
+						<p class="">
+							Eden gives you clarity and confidence with your money. It helps you stay on top of your spending, understand your finances, and grow your wealth without the stress or confusion.
+						</p>
+	
+						<div class="pt-4 flex gap-2">
+							<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Request Access <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/multi-arrows.svg')]"></div></button>
+							<button class="px-4 py-3 rounded-lg border-[1px] border-black">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>
+							
+						</div>
+					</div>
+				</div>
 
-					<div class="pt-4 flex gap-2">
-						<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Tour on the Website <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/mdi_basketball.svg')]"></div></button>
-						<button class="px-4 py-3 rounded-lg border-[1px] border-black">Read the Story</button>
+				<!-- crack headphones -->
+				<div class="justify-between items-center top-side w-full opacity-0 hidden">
+					<!-- project title, tags and date -->
+					<div>
+						<ul class="list-disc list-inside text-xs flex gap-4">
+							<li>[ Product Design ]</li>
+							<li>[ Technology ]</li>
+							<li>[ User Experience ]</li>
+						</ul>
+						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">Crack <span class="text-[#CFB46A]">Headphones</span></h2>
+						<p class="mt-4">2015</p>
+					</div>
+	
+					<!-- project description and actions -->
+					<div class="w-[40%] text-xs">
+						<p class="">
+							Crack Headphones are a bold fusion of retro-modern design and everyday sophistication. I first sketched the concept in 2015, which evolved into 3D wireframes and a prototype. <br><br>
+							Key features include Link Up buttons for shared listening, a triangular ear cup design for comfort and style, and an LED battery gauge that spells "CRACK.
+						</p>
+	
+						<div class="pt-4 flex gap-2">
+							<button class="px-4 py-3 rounded-lg text-white bg-black">Blueprint & Specs <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/solar_music-note-2-bold.svg')]"></div></button>
+						</div>
 					</div>
 				</div>
 			</div>
-
-			<div class="pt-4 px-20 pb-8 justify-between items-center pt-auto top-side absolute opacity-0">
-				<!-- project title, tags and date -->
-				<div>
-					<ul class="list-disc list-inside text-xs flex gap-4">
-						<li>[ Sports ]</li>
-						<li>[ Interaction Design ]</li>
-						<li>[ Creative Website ]</li>
-					</ul>
-					<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">OpenPolicy App Design (MVP)</h2>
-					<p class="mt-4">2023</p>
-				</div>
-
-				<!-- project description and actions -->
-				<div class="w-[40%] text-xs">
-					<p class="">
-						Pencil Hoops is an interactive, people-friendly website designed for 
-						NBA fans who appreciate the art of pencil sketching.<br><br>
-						It blends minimal design, accessibility, and engaging experiences, 
-						combining stunning pencil sketches with interactive 
-						animations and dynamic sound effects to bring NBA moments to life.
-					</p>
-
-					<div class="pt-4 flex gap-2">
-						<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Tour on the Website <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/mdi_basketball.svg')]"></div></button>
-						<button class="px-4 py-3 rounded-lg border-[1px] border-black">Read the Story</button>
-					</div>
-				</div>
-			</div>
+			
 			<!-- bottom side - project slider -->
 			<div class="flex gap-2 p-2 items-end justify-end">
 				<div class="h-full bg-gray-200 max-h-[400px] rounded-md w-[40%] bottom-slide"></div>
@@ -636,6 +693,7 @@ import '../styles/style.css'
 					opacity: 1,
 					display: "flex",
 					duration: 1,
+					delay : 0.5,
 					ease: "power2.out",
 				});
 				// and fade out the rest
@@ -643,7 +701,7 @@ import '../styles/style.css'
 					gsap.to(el, {
 						opacity: 0,
 						display: "none",
-						duration: 1,
+						duration: 0.5,
 						ease: "power2.out",
 					});
 				})
