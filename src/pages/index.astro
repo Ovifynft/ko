@@ -154,21 +154,21 @@ import '../styles/style.css'
 			
 			<!-- bottom side - project slider -->
 			<div class="flex gap-2 p-2 items-end justify-end">
-				<div class="h-full bg-gray-200 max-h-[400px] rounded-md w-[40%] bottom-slide"></div>
-				<div class="h-full bg-gray-200 max-h-[400px] rounded-md w-[20%] bottom-slide"></div>
-				<div class="h-full bg-gray-200 max-h-[400px] rounded-md w-[20%] bottom-slide"></div>
-				<div class="h-full bg-gray-200 max-h-[400px] rounded-md w-[20%] bottom-slide"></div>
+				<div class="h-full bg-gray-200 max-h-[400px] rounded-md w-[40%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center bg-[url('/images/slides/basketball.png')]"></div>
+				<div class="h-full bg-gray-200 max-h-[400px] rounded-md w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center bg-[url('/images/slides/open-policy.png')]"></div>
+				<div class="h-full bg-gray-200 max-h-[400px] rounded-md w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center bg-[url('/images/slides/eden.png')]"></div>
+				<div class="h-full bg-gray-200 max-h-[400px] rounded-md w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center bg-[url('/images/slides/crack-headphones.png')]"></div>
 			</div>
 
 			<div class="flex items-center justify-center gap-2 py-4">
-				<ArrowLeft className="p-2 rounded-full bg-gray-100" size={28}/>
+				<ArrowLeft className="p-2 rounded-full bg-gray-100 slide-left-btn" size={28}/>
 				<ul class="flex gap-2">
-					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-100 bottom-slide-indicator"></li>
-					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-30 bottom-slide-indicator"></li>
-					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-30 bottom-slide-indicator"></li>
-					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-30 bottom-slide-indicator"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-100 bottom-slide-indicator hover:cursor-pointer"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-30 bottom-slide-indicator hover:cursor-pointer"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-30 bottom-slide-indicator hover:cursor-pointer"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-30 bottom-slide-indicator hover:cursor-pointer"></li>
 				</ul>
-				<ArrowRight className="p-2 rounded-full bg-gray-100" size={28}/>
+				<ArrowRight className="p-2 rounded-full bg-gray-100 slide-right-btn" size={28}/>
 			</div>
 		</section>
 
@@ -651,62 +651,84 @@ import '../styles/style.css'
 
 		let bottomSlideIndicators = Array.from(document.querySelectorAll('.bottom-slide-indicator'))
 		let topSides = Array.from(document.querySelectorAll('.top-side'))
+		let bottomSlides = Array.from(document.querySelectorAll('.bottom-slide'))
+		let currentSlide = 0
+		let righSlideBtn = document.querySelector('.slide-right-btn')
+		let leftSlideBtn = document.querySelector('.slide-left-btn')
 
-		document.querySelectorAll('.bottom-slide').forEach((element, i) => {
+		// checking if timelines will fix that glitching shit
+		var tl = gsap.timeline({repeat: 2, repeatDelay: 1});
+
+		function activeSlideByIndex(i){
+			tl.kill();
+			tl = gsap.timeline();
+			// first we wana collapse everybody thats not element
+			gsap.to(bottomSlides.filter((el) => el != bottomSlides[i]), {
+				width: "20%",
+				duration: 1,
+				ease: "power2.out",
+			});
+
+			// then we wana expand this guy
+			gsap.to(bottomSlides[i], {
+				width: "40%",
+				duration: 1,
+				ease: "power2.out",
+			});
+
+			// darken this indicator 
+			gsap.to(bottomSlideIndicators[i], {
+				opacity: 1,
+				duration: 1,
+				ease: "power2.out",
+			});
+
+			// and lighten the rest
+			gsap.to(bottomSlideIndicators.filter((el, j) => j != i), {
+				opacity: 0.3,
+				duration: 1,
+				ease: "power2.out",
+			});
+
+			// and fade out the rest
+			tl.to(topSides.filter((el, j) => j != i), {
+				opacity: 0,
+				display: "none",
+				duration: 0.5,
+				ease: "power2.out",
+			});
+
+			// change top side from hidden to visible and fade in
+			tl.to(topSides[i], {
+				opacity: 1,
+				display: "flex",
+				duration: 1,
+				ease: "power2.out",
+			});
+			currentSlide = i
+		}
+
+		bottomSlides.forEach((element, i) => {
 			element.addEventListener('click', () => {
-				// first we wana collapse the rest thats not this guy
-
-				Array.from(document.querySelectorAll('.bottom-slide')).filter((el) => el != element).forEach((el, i) => {
-					gsap.to(el, {
-						width: "20%",
-						duration: 1,
-						ease: "power2.out",
-					});
-
-				})
-
-				// then we wana expand this guy
-				gsap.to(element, {
-					width: "40%",
-					duration: 1,
-					ease: "power2.out",
-				});
-
-				// darken this indicator 
-				gsap.to(bottomSlideIndicators[i], {
-					opacity: 1,
-					duration: 1,
-					ease: "power2.out",
-				});
-
-				// and lighten the rest
-				bottomSlideIndicators.filter((el, j) => j != i).forEach((el, j) => {
-					gsap.to(el, {
-						opacity: 0.3,
-						duration: 1,
-						ease: "power2.out",
-					});
-				})
-
-				// change top side from hidden to visible and fade in
-				gsap.to(topSides[i], {
-					opacity: 1,
-					display: "flex",
-					duration: 1,
-					delay : 0.5,
-					ease: "power2.out",
-				});
-				// and fade out the rest
-				topSides.filter((el, j) => j != i).forEach((el, j) => {
-					gsap.to(el, {
-						opacity: 0,
-						display: "none",
-						duration: 0.5,
-						ease: "power2.out",
-					});
-				})
+				activeSlideByIndex(i)
 			});
 		});
+
+		bottomSlideIndicators.forEach((element, i) => {
+			element.addEventListener('click', () => {
+				activeSlideByIndex(i)
+			});
+		});
+
+		righSlideBtn?.addEventListener('click', ()=>{
+			currentSlide = currentSlide == bottomSlideIndicators.length - 1 ? 0 : currentSlide + 1
+			activeSlideByIndex(currentSlide)
+		})
+
+		leftSlideBtn?.addEventListener('click', ()=>{
+			currentSlide = currentSlide == 0 ? bottomSlideIndicators.length - 1 : currentSlide - 1
+			activeSlideByIndex(currentSlide)
+		})
 	
 	   
 	
