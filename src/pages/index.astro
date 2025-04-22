@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Footer from '../layouts/Footer.astro'
 
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-let data = {active: 'hero', links: ['works', 'timeline', 'about-me', 'contact']}
+let data = {active: 'eden', links: ['eden', 'works', 'timeline', 'about-me', 'contact']}
 import '../styles/style.css'
 
 const timeline = [
@@ -80,6 +80,42 @@ const timeline = [
 		url : "bg-[url('/images/timeline/9.jpg')]"
 	}
 ]
+
+const slides = [
+	{
+		tags : ['Sports', 'Interaction Design', 'Creative Website'],
+		heading : 'Pencil <span class="text text-[#336633]">Hoops <br> Website Design</span>',
+		year : '2023',
+		description : 'Pencil Hoops is an interactive, people-friendly website designed for NBA fans who appreciate the art of pencil sketching.<br><br> It blends minimal design, accessibility, and engaging experiences, combining stunning pencil sketches with interactive animations and dynamic sound effects to bring NBA moments to life.',
+		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Tour on the Website <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/mdi_basketball.svg')]"></div></button> <button class="px-4 py-3 rounded-lg border-[1px] border-black">Read the Story <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>`,
+		url : "bg-[url('/images/slides/basketball.png')]"
+	},
+	{
+		tags : ['User Experience', 'Government', 'Mobile App Design'],
+		heading : 'Open<span class="text-gray-200">Policy</span><br>App Design<span class="text-gray-200"> (MVP)</span>',
+		year : '2024',
+		description : 'OpenPolicy is a platform designed to connect citizens with their government like never before. It allows users to track bills, vote on policies, and directly engage with representatives, all in one place. <br><br>As the Product Lead, I redesigned the app from the ground up, transforming a cluttered, unusable experience into a seamless and intuitive platform. ',
+		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Get it on the Appstore <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/ic_baseline-apple.svg')]"></div></button> <button class="px-4 py-3 rounded-lg border-[1px] border-black">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>`,
+		url : "bg-[url('/images/slides/open-policy.png')]"
+	},
+	{
+		tags : ['Artificial Intelligence', 'Finance', 'Dashboard Design'],
+		heading : 'Eden',
+		title : 'Smart, <span class="text-red-500">Stable</span>, Simple',
+		year : '2015',
+		description : 'Eden gives you clarity and confidence with your money. It helps you stay on top of your spending, understand your finances, and grow your wealth without the stress or confusion.',
+		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Request Access <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/multi-arrows.svg')]"></div></button><button class="px-4 py-3 rounded-lg border-[1px] border-black">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>`,
+		url : "bg-[url('/images/slides/eden.png')]"
+	},
+	{
+		tags : ['Product Design', 'Technology', 'User Experience'],
+		heading : 'Crack <span class="text-[#CFB46A]">Headphones</span></h2><p class="mt-4">',
+		year : '2015',
+		description : 'OpenPolicy is a platform designed to connect citizens with their government like never before. It allows users to track bills, vote on policies, and directly engage with representatives, all in one place. <br><br>As the Product Lead, I redesigned the app from the ground up, transforming a cluttered, unusable experience into a seamless and intuitive platform. ',
+		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-black">Blueprint & Specs <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/solar_music-note-2-bold.svg')]"></div></button>`,
+		url : "bg-[url('/images/slides/crack-headphones.png')]"
+	},
+]
 ---
 <Layout title="Welcome to Astro.">
 	<div class="body-cont" x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail"> 
@@ -110,129 +146,82 @@ const timeline = [
 	<a :href="'#' + (links[links.indexOf(active) - 1] || links[0])" @click="setTimeout(()=> {active = (links[links.indexOf(active) - 1] || links[0])}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-0 bottom-5 z-[1] up-arrow hidden"></a>
 
 	<main>
-		<!-- works -->
-		<section id="works" class="h-screen overflow-hidden grid grid-rows-[1fr_1fr] tall short">
-			<!-- top-side -->
-			<div class="pt-4 px-6 lg:px-20 pb-8 flex items-center">
-				<!-- pencil hoops -->
-				<div class="flex justify-between items-center top-side w-full">
-					<!-- project title, tags and date -->
-					<div>
-						<ul class="list-disc list-inside text-xs flex gap-4">
-							<li>[ Sports ]</li>
-							<li>[ Interaction Design ]</li>
-							<li>[ Creative Website ]</li>
-						</ul>
-						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">Pencil <span class="text text-[#336633]">Hoops <br> Website Design</span></h2>
-						<p class="mt-4">2023</p>
-					</div>
-	
-					<!-- project description and actions -->
-					<div class="w-[40%] text-xs">
-						<p class="">
-							Pencil Hoops is an interactive, people-friendly website designed for 
-							NBA fans who appreciate the art of pencil sketching.<br><br>
-							It blends minimal design, accessibility, and engaging experiences, 
-							combining stunning pencil sketches with interactive 
-							animations and dynamic sound effects to bring NBA moments to life.
-						</p>
-	
-						<div class="pt-4 flex gap-2">
-							<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Tour on the Website <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/mdi_basketball.svg')]"></div></button>
-							<button class="px-4 py-3 rounded-lg border-[1px] border-black">Read the Story <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>
-						</div>
-					</div>
-				</div>
-	
-				<!-- open policy -->
-				<div class="justify-between items-center top-side w-full opacity-0 hidden">
-					<!-- project title, tags and date -->
-					<div>
-						<ul class="list-disc list-inside text-xs flex gap-4">
-							<li>[ User Experience ]</li>
-							<li>[ Government ]</li>
-							<li>[ Mobile App Design ]</li>
-						</ul>
-						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">Open<span class="text-gray-200">Policy</span><br>App Design<span class="text-gray-200"> (MVP)</span></h2>
-						<p class="mt-4">2024</p>
-					</div>
-	
-					<!-- project description and actions -->
-					<div class="w-[40%] text-xs">
-						<p class="">
-							OpenPolicy is a platform designed to connect citizens with their government like never before. It allows users to track bills, vote on policies, and directly engage with representatives, all in one place. <br><br>
-							As the Product Lead, I redesigned the app from the ground up, transforming a cluttered, unusable experience into a seamless and intuitive platform. 
-						</p>
-	
-						<div class="pt-4 flex gap-2">
-							<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Get it on the Appstore <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/ic_baseline-apple.svg')]"></div></button>
-							<button class="px-4 py-3 rounded-lg border-[1px] border-black">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>
-							
-						</div>
-					</div>
-				</div>
-
-				<!-- eden -->
-				<div class="justify-between items-center top-side w-full opacity-0 hidden">
-					<!-- project title, tags and date -->
-					<div>
-						<ul class="list-disc list-inside text-xs flex gap-4">
+		<section id="eden" class="h-screen p-6">
+			<div class="bg-gray-200 rounded-lg h-full w-full flex">
+				<div class="justify-between items-center w-full flex gap-4 max-w-[1900px] ml-auto pl-6 xl:pl-20">
+			<!-- project title, tags and date -->
+					<div class="xl:w-[40%] xl:max-w-[500px] w-[90%]">
+						<ul class="list-inside text-xs tags">
 							<li>[ Artificial Intelligence ]</li>
 							<li>[ Finance ]</li>
 							<li>[ Dashboard Design ]</li>
 						</ul>
 						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">Eden</h2>
-						<p class="mt-4">Smart, <span class="text-red-500">Stable</span>, Simple</p>
-						<p class="mt-4">2025</p>
-					</div>
-	
-					<!-- project description and actions -->
-					<div class="w-[40%] text-xs">
-						<p class="">
-							Eden gives you clarity and confidence with your money. It helps you stay on top of your spending, understand your finances, and grow your wealth without the stress or confusion.
-						</p>
-	
+						<p class="mt-4">Eden is a calm, intelligent financial system that helps people track their money, manage investments, and understand their finances through smart, AI-driven insights. It’s built for long-term trust, clarity, and ease without the noise or hype.</p>
 						<div class="pt-4 flex gap-2">
-							<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Request Access <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/multi-arrows.svg')]"></div></button>
-							<button class="px-4 py-3 rounded-lg border-[1px] border-black">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>
-							
+							<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Request Access <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/multi-arrows.svg')]"></div></button><button class="px-4 py-3 rounded-lg border-[1px] border-black">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>
 						</div>
 					</div>
-				</div>
-
-				<!-- crack headphones -->
-				<div class="justify-between items-center top-side w-full opacity-0 hidden">
-					<!-- project title, tags and date -->
-					<div>
-						<ul class="list-disc list-inside text-xs flex gap-4">
-							<li>[ Product Design ]</li>
-							<li>[ Technology ]</li>
-							<li>[ User Experience ]</li>
-						</ul>
-						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">Crack <span class="text-[#CFB46A]">Headphones</span></h2>
-						<p class="mt-4">2015</p>
-					</div>
 	
 					<!-- project description and actions -->
-					<div class="w-[40%] text-xs">
-						<p class="">
-							Crack Headphones are a bold fusion of retro-modern design and everyday sophistication. I first sketched the concept in 2015, which evolved into 3D wireframes and a prototype. <br><br>
-							Key features include Link Up buttons for shared listening, a triangular ear cup design for comfort and style, and an LED battery gauge that spells "CRACK.
-						</p>
-	
-						<div class="pt-4 flex gap-2">
-							<button class="px-4 py-3 rounded-lg text-white bg-black">Blueprint & Specs <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/solar_music-note-2-bold.svg')]"></div></button>
+					<div class="w-full h-full text-xs">
+						<div class="h-full w-full flex items-center">
+							<div class="inline-block relative">
+								<img src="/images/hero/pc.png" class="w-full"/>
+								
+								<div class="absolute bg-black top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/1.png')] bg-center bg-contain bg-no-repeat hero-mockup opacity-0"></div>
+								<div class="absolute bg-black top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/2.png')] bg-center bg-contain bg-no-repeat hero-mockup opacity-0"></div>
+								<div class="absolute bg-black top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/3.png')] bg-center bg-contain bg-no-repeat hero-mockup opacity-0"></div>
+								<div class="absolute bg-black top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/4.png')] bg-center bg-contain bg-no-repeat hero-mockup opacity-0"></div>
+								
+
+								<div class="h-[60%] aspect-[1/2] absolute left-[5%] bottom-[10.7%] bg-[url('/images/hero/phone.png')] bg-cover bg-center bg-no-repeat"></div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</section>
+
+		<!-- works -->
+		<section id="works" class="h-screen overflow-hidden grid grid-rows-[1fr_1fr] tall short">
+			<!-- top-side -->
+			<div class="pt-4 px-6 lg:px-20 pb-8 flex items-center">
+				{
+					slides.map(slide =>
+					<div class="justify-between items-center top-side w-full opacity-0 hidden gap-4">
+					<!-- project title, tags and date -->
+							<div class="w-[40%]">
+								<ul class="list-inside text-xs tags">
+									{
+										slide.tags.map(tag => 
+											<li>[ {tag} ]</li>
+										)
+									}
+								</ul>
+								<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1" set:html={slide.heading}></h2>
+								{slide.title && <p class="mt-4" set:html={slide.title}></p>}
+								<p class="mt-4">{slide.year}</p>
+							</div>
+			
+							<!-- project description and actions -->
+							<div class="w-[60%] text-xs max-w-[600px]">
+								<p class="" set:html={slide.description}></p>
+								<div class="pt-4 flex gap-2" set:html={slide.buttons}></div>
+							</div>
+						</div>
+					)
+				}
+			</div>
 			
 			<!-- bottom side - project slider -->
 			<div class="flex gap-2 p-2 items-end justify-end">
-				<div class="h-full bg-gray-200 max-h-[400px] rounded-md w-[40%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center bg-[url('/images/slides/basketball.png')]"></div>
-				<div class="h-full bg-gray-200 max-h-[400px] rounded-md w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center bg-[url('/images/slides/open-policy.png')]"></div>
-				<div class="h-full bg-gray-200 max-h-[400px] rounded-md w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center bg-[url('/images/slides/eden.png')]"></div>
-				<div class="h-full bg-gray-200 max-h-[400px] rounded-md w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center bg-[url('/images/slides/crack-headphones.png')]"></div>
+				{
+					slides.map(slide => 
+						<div class:list={["h-full bg-gray-200 max-h-[400px] rounded-md w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center", slide.url]}></div>
+					)
+				}
+				
 			</div>
 
 			<div class="flex items-center justify-center gap-2 py-4">
@@ -248,9 +237,9 @@ const timeline = [
 		</section>
 
 		<!-- timeline -->
-		<section id="timeline" class="h-screen grid grid-rows-[minmax(auto,100%)_auto]  px-20 gap-6 tall:bg-green-200 short:bg-red-200">
+		<section id="timeline" class="h-screen grid grid-rows-[minmax(auto,100%)_auto] px-20 gap-6 tall:bg-green-200 short:bg-red-200 pt-20 overflow-hidden">
 			<!-- center box -->
-			<div class="pt-[200px] overflow-auto">
+			<div class="pt-8 overflow-auto">
 			{
 				timeline.map(timeline =>
 					<div class="pb-8 justify-between items-center gap-8 hidden opacity-0 timeline-slide">
@@ -300,11 +289,11 @@ const timeline = [
 
 		<!-- about me -->
 		<section id="about-me" class="h-screen px-20">
-			<div class="pt-[180px] grid grid-cols-[auto_minmax(0,40%)] gap-10">
+			<div class="pt-8 grid grid-cols-[auto_minmax(0,40%)] gap-10">
 				<!--  contents -->
 				<div class="flex flex-col gap-3.5">
 					<div>
-						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px]">Art and Photography</h2>
+						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] heading-1">Art and Photography</h2>
 						<p class="max-w-[744px] mt-2"> 
 							I like to balance logic with instinct,  a mix of planning and going with the flow. I tend 
 							to notice trends before they take off, whether it’s in data, markets, or design. <br><br>
@@ -314,7 +303,7 @@ const timeline = [
 					</div>
 		
 					<div>
-						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px]">Anime and Animals</h2>
+						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] heading-1">Anime and Animals</h2>
 						<p class="max-w-[744px] mt-2"> 
 							I love to unwind with movies and anime, and right now, I’m really into Solo Leveling. 
 							Anime helps me relax, spark my imagination, and enjoy stories from different perspectives. <br><br>
@@ -324,7 +313,7 @@ const timeline = [
 					</div>
 		
 					<div>
-						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px]">Faith</h2>
+						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] heading-1">Faith</h2>
 						<p class="max-w-[744px] mt-2"> 
 							Above all, my faith in Jesus defines who I am. The Gospel reminds me that life isn’t just about achievements or adventures, 
 							but about loving God and loving people. Whether I’m working, exploring, or relaxing, 
@@ -731,8 +720,11 @@ import { CurlyBraces } from 'lucide-react';
 
 		// checking if timelines will fix that glitching shit
 		var tl = gsap.timeline();
+		activeSlideByIndex(currentSlide)
+
 
 		function activeSlideByIndex(i){
+			
 			tl.kill();
 			tl = gsap.timeline();
 			// first we wana collapse everybody thats not element
@@ -812,6 +804,7 @@ import { CurlyBraces } from 'lucide-react';
 		let timelineProgress = Array.from(document.querySelectorAll('.timeline-indicator-progress'))
 		let currentTimelineIndex = 0
 		setActiveTimelineByIndex(currentTimelineIndex)
+		timelineProgressTl.pause()
 
 		function setActiveTimelineByIndex(i){
 			currentTimelineIndex = i
@@ -904,8 +897,42 @@ import { CurlyBraces } from 'lucide-react';
 				setActiveTimelineByIndex(i)
 			})
 		})
+
+		// scroll trigger
+		// move bottom nav when footer shows
+		ScrollTrigger.create({
+			trigger: '#timeline',
+			// start: 'top top',
+			// endTrigger: '#otherID',
+			end: 'bottom 50%+=100px',
+			onEnter : () => {
+				// console.log('we just enter timeline')
+				timelineProgressTl.resume()
+			},
+			onLeave : () => {
+				timelineProgressTl.pause()
+			},
+			onEnterBack : () => {
+				timelineProgressTl.resume()
+			},
+			onLeaveBack : () => {
+				timelineProgressTl.pause()
+			}
+		});
 	
-	   
+	   let mockupTl = gsap.timeline({
+		repeat : -1,
+		repeatDelay : 1,
+		// yoyo : true
+	   })
+
+	   document.querySelectorAll('.hero-mockup').forEach((mockup, i)=> {
+			mockupTl.to(mockup, {
+				opacity : 1,
+				delay :  i != 0 ? 2 : 0,
+				duration : 1
+			})
+	   })
 	
 	
 	

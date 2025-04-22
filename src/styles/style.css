@@ -1,4 +1,6 @@
 /* For screens with a minimum height of 600px */
+
+/* tablets */
 @media (min-height: 500px) {
     .heading-1{
         font-size: 1em; /* Example style */
@@ -6,17 +8,17 @@
     }
 
     .body-cont p{
-        font-size: 0.8em; /* Example style */
+        font-size: 14px; /* Example style */
         line-height: 2; /* Example style */
     }
 
     .body-cont li{
-        font-size: 0.8em; /* Example style */
+        font-size: 14px; /* Example style */
         line-height: 2; /* Example style */
     }
 
     .body-cont button{
-        font-size: 0.8em; /* Example style */
+        font-size: 14px; /* Example style */
         line-height: 2; /* Example style */
         padding: 8px 18px; /* Example style */
         display: flex; /* Example style */
@@ -38,17 +40,82 @@
     }
 
     .nav-text{
-        font-size: 0.8em; /* Example style */
+        font-size: 14px; /* Example style */
     }
 
     .nd{
         font-size: 38px;
     }
+
+    .tags{
+        display : flex;
+        /* flex-direction: column; */
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .tags li{
+        position: relative;
+        padding-left : 15px;
+    }
+
+    .tags li::before{
+        position: absolute;
+        display : inline-flex;
+        justify-content: center;
+        align-items: center;
+        content: '.';
+        font-size: 40px;
+        line-height: 0px;
+        left : 0px;
+        top : 10%;
+        background-color: red;
+    }
+
+    .footer-text{
+        font-size: 1.5em;
+    }
+}
+
+/* larger pcs */
+@media (min-width: 1400px){
+    .heading-1{
+        font-size: 2em;
+    }
+
+    .body-cont p{
+        font-size: 16px; /* Example style */
+        line-height: 2; /* Example style */
+    }
+
+    .body-cont li{
+        font-size: 16px; /* Example style */
+        line-height: 2; /* Example style */
+    }
+
+    .body-cont button{
+        font-size: 16px; /* Example style */
+        line-height: 2; /* Example style */
+        padding: 8px 18px; /* Example style */
+        display: flex; /* Example style */
+        justify-content: center; /* Example style */
+        align-items: center; /* Example style */
+        gap: 10px; /* Example style */
+    }
+
+    .footer-text{
+        font-size: 2em !important;
+    }
+
+    .icon{
+        width: 20px;
+        height: 20px;
+    }
 }
 
 /* For screens with a maximum height of 480px */
-@media (max-height: 480px) {
+@media (min-height: 480px) {
     .short {
-        background-color: red; /* Example style */
+        /* background-color: red;  */
     }
 }
