@@ -126,11 +126,12 @@ const slides = [
 ---
 <Layout title="Welcome to Astro.">
 	<div class="body-cont" x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail"> 
-	<div class="bg-white pre-loader-view h-screen w-full fixed top-0 left-0 right-0 z-[10] flex flex-col items-center justify-center">
-		<div class="w-[10%] min-w-[100px] max-w-[250px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat"></div>
-		<p>There are no rules in arts, only dogma.</p>
-		<div class="w-[50%] max-w-[400px] bg-gray-200 relative h-[4px] mt-4 rounded-full overflow-clip">
-			<div class="bg-black absolute page-loader left-0 top-0 bottom-0"></div>
+	<div class="bg-[#F1F1F3] pre-loader-view h-screen w-full fixed top-0 left-0 right-0 z-[10] flex flex-col items-center justify-center">
+		<div class="absolute bottom-0 right-0 w-[40%] aspect-[2/2] bg-[url('/images/preloader-bg.png')] bg-bottom bg-contain bg-no-repeat opacity-[2%]"></div>
+		<div class="w-[10%] min-w-[100px] max-w-[250px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat border-[8px] border-[#FFFFFF]"></div>
+		<p class="mt-6 mb-10">There are no rules in arts, only dogma.</p>
+		<div class="w-[50%] max-w-[674px] bg-gray-200 relative h-[8px] rounded-full overflow-clip">
+			<div class="bg-black absolute page-loader left-0 top-0 bottom-0 rounded-full"></div>
 		</div>
 		<p class="font-bilal text-[16px] absolute bottom-5 left-5">Kamil Oseni</p>
 	</div>
