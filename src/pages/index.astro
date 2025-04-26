@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Footer from '../layouts/Footer.astro'
+import Footer from '../layouts/Footer.astro';
+import Header from '../layouts/Header.astro';
 
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 let data = {active: 'eden', links: ['eden', 'works', 'timeline', 'about-me', 'contact']}
@@ -11,7 +12,7 @@ const timeline = [
 		date : "October 2016",
 		title : "BSc Medical Physiology",
 		heading : "Exploring How the Human Mind and Body Work",
-		description : "I focused on research methods and real-world applications, which helped me develop a deeper understanding of how psychology shapes our day-to-day experiences.<br><br> This foundation has been invaluable in my design process, allowing me to create user-centered solutions that resonate with people on both cognitive and emotional levels.",
+		description : "<span>I focused on research methods and real-world applications, which helped me develop a deeper understanding of how psychology shapes our day-to-day experiences.</span><span> This foundation has been invaluable in my design process, allowing me to create user-centered solutions that resonate with people on both cognitive and emotional levels.</span>",
 		year : "2016",
 		url : "bg-[url('/images/timeline/1.jpg')]"
 	},
@@ -19,7 +20,7 @@ const timeline = [
 		date : "October 2019 - June 2022",
 		title : "Product Design Internship at Clutch Labs",
 		heading : "Introduction to User Research and Design Basics",
-		description : "I got my first experience of user research and design through hands-on projects. I designed a pair of headphones and even pitched a VR concert idea to Chelsea FC.<br><br> One standout experience was using principles of human psychology to boost Waftop Couture’s lip balm sales where I scaled down the product sizes to reduce costs and make them more appealing to buyers.<br><br> These early projects sparked my passion for creating user-centered designs that are both practical and impactful.",
+		description : "<span>I got my first experience of user research and design through hands-on projects. I designed a pair of headphones and even pitched a VR concert idea to Chelsea FC.</span><span> One standout experience was using principles of human psychology to boost Waftop Couture’s lip balm sales where I scaled down the product sizes to reduce costs and make them more appealing to buyers.</span><span> These early projects sparked my passion for creating user-centered designs that are both practical and impactful.</span>",
 		year : "2019",
 		url : "bg-[url('/images/timeline/2.jpg')]"
 	},
@@ -27,7 +28,7 @@ const timeline = [
 		date : "March 2020",
 		title : "Foundation in Finance & Forex Trading",
 		heading : "Gaining Comprehensive Knowledge of Finance",
-		description : "I developed a solid understanding of finance, focusing on both fundamental and technical analysis for Forex trading. This experience sharpened my analytical thinking and decision-making skills.<br><br> I also gained practical effective risk and money management strategies, which taught me the importance of discipline and strategic planning—skills that have been invaluable in both trading and design.",
+		description : "<span>I developed a solid understanding of finance, focusing on both fundamental and technical analysis for Forex trading. This experience sharpened my analytical thinking and decision-making skills.</span><span> I also gained practical effective risk and money management strategies, which taught me the importance of discipline and strategic planning—skills that have been invaluable in both trading and design.</span>",
 		year : "2020",
 		url : "bg-[url('/images/timeline/3.jpg')]"
 	},
@@ -35,15 +36,15 @@ const timeline = [
 		date : "October 2022 - December 2022",
 		title : "Google & Coursera",
 		heading : "Mastering UX Design Principles",
-		description : "I earned the Google UX Design Certificate, which deepened my understanding of user-centered design principles. I tackled real-world design challenges and learned how to create clean, user-focused apps. <br><br> This journey also allowed me to practice advanced prototyping techniques, helping me bring design concepts to life with greater precision and attention to detail.",
+		description : "<span>I earned the Google UX Design Certificate, which deepened my understanding of user-centered design principles. I tackled real-world design challenges and learned how to create clean, user-focused apps. </span><span> This journey also allowed me to practice advanced prototyping techniques, helping me bring design concepts to life with greater precision and attention to detail.</span>",
 		year : "2022",
 		url : "bg-[url('/images/timeline/4.jpg')]"
 	},
 	{
         date : "May 2022 - December 2022",
         title : "Programming & Data Analysis at Seneca Polytechnic",
-        heading : "Honors Graduate with a Focus on Python<span class='font-source'>,</span> Data Analysis<span class='font-source'>,</span> <span class='font-source nd'>&</span> Software Development",
-        description : "Graduating with honors, I specialized in Python, data analysis, and software development. I gained hands-on experience in advanced data manipulation and explored the fundamentals of machine learning.<br><br> Throughout this journey, I collaborated on various design, software, and data analytics projects, which strengthened my problem-solving skills and ability to work effectively in cross-functional teams.",
+        heading : "Honors Graduate with a Focus on Python<span class='font-source leading-1'>,</span> Data Analysis<span class='font-source leading-1'>,</span> <span class='font-source nd leading-1'>&</span> Software Development",
+        description : "<span>Graduating with honors, I specialized in Python, data analysis, and software development. I gained hands-on experience in advanced data manipulation and explored the fundamentals of machine learning.</span><span> Throughout this journey, I collaborated on various design, software, and data analytics projects, which strengthened my problem-solving skills and ability to work effectively in cross-functional teams.</span>",
         year : "2022",
         url : "bg-[url('/images/timeline/5.jpg')]"
     },
@@ -51,7 +52,7 @@ const timeline = [
         date : "January 2024",
         title : "UX & Data Analysis Instructor",
         heading : "Mastery through Teaching",
-        description : "I deepened my expertise by teaching others about data; how to interpret it and seamlessly combine it with design for impactful solutions. <br><br> I guided intern analysts and designers, developed course materials, and led final projects. This experience not only strengthened my knowledge but also improved my leadership and mentoring skills, reinforcing the idea that teaching is one of the most powerful ways to master a subject.",
+        description : "<span>I deepened my expertise by teaching others about data; how to interpret it and seamlessly combine it with design for impactful solutions. </span><span> I guided intern analysts and designers, developed course materials, and led final projects. This experience not only strengthened my knowledge but also improved my leadership and mentoring skills, reinforcing the idea that teaching is one of the most powerful ways to master a subject.</span>",
         year : "2024",
         url : "bg-[url('/images/timeline/6.jpg')]"
     },
@@ -59,7 +60,7 @@ const timeline = [
 		date : "January 2024",
 		title : "Built Prospera: A Financial Market Automation Tool",
 		heading : "Building Prospera: A Financial Market Automation Tool",
-		description : "Built Prospera, a financial market automation tool using Python and SQL. It achieved 99.9% accuracy across various currency pairs, significantly enhancing trading efficiency. <br><br> Prospera streamlined daily trading tasks, automated risk management processes, and provided data-driven insights, making complex trading decisions faster and more reliable.<br><br> This project sharpened my skills in algorithm development, automation, and financial analytics.",
+		description : "<span>Built Prospera, a financial market automation tool using Python and SQL. It achieved 99.9% accuracy across various currency pairs, significantly enhancing trading efficiency. </span><span> Prospera streamlined daily trading tasks, automated risk management processes, and provided data-driven insights, making complex trading decisions faster and more reliable.<span><span> This project sharpened my skills in algorithm development, automation, and financial analytics.</span>",
 		year : "2024",
 		url : "bg-[url('/images/timeline/7.jpg')]"
 	},
@@ -67,7 +68,7 @@ const timeline = [
 		date : "Feb 2023 - Present",
 		title : "Banking Advisor at the Royal Bank of Canada",
 		heading : "Enhancing Banking Efficiency Through User Research",
-		description : "I conduct user research with over 15,000 Royal Bank clients, gaining valuable insights into everyday banking and future aspirations.<br><br> Using these insights, I created a design proposal that significantly improved customer onboarding efficiency, enhancing data visualization and decision-making processes.<br><br> This experience deepened my understanding of user behavior in the financial sector and highlighted the power of data-driven solutions in enhancing operational performance.",
+		description : "<span>I conduct user research with over 15,000 Royal Bank clients, gaining valuable insights into everyday banking and future aspirations.<span><span> Using these insights, I created a design proposal that significantly improved customer onboarding efficiency, enhancing data visualization and decision-making processes.</span><span> This experience deepened my understanding of user behavior in the financial sector and highlighted the power of data-driven solutions in enhancing operational performance.</span>",
 		year : "2023",
 		url : "bg-[url('/images/timeline/8.jpg')]"
 	},
@@ -75,7 +76,7 @@ const timeline = [
 		date : "Launch March 2025",
 		title : "Product Design Lead for OpenPolicy",
 		heading : "Designing OpenPolicy for the Canadian Government",
-		description : "I designed OpenPolicy, an application developed for the Canadian government.<br><br> My role focused on preparing the app for deployment, ensuring it was scalable and adaptable for global legislative bodies, including the UK’s House of Lords, the Indian Parliament, and the German Bundestag.<br><br> This project strengthened my skills in designing for large-scale, diverse user bases while addressing complex policy and governance needs.",
+		description : "<span>I designed OpenPolicy, an application developed for the Canadian government.</span><span> My role focused on preparing the app for deployment, ensuring it was scalable and adaptable for global legislative bodies, including the UK’s House of Lords, the Indian Parliament, and the German Bundestag.<span><span> This project strengthened my skills in designing for large-scale, diverse user bases while addressing complex policy and governance needs.</span>",
 		year : "2025",
 		url : "bg-[url('/images/timeline/9.jpg')]"
 	}
@@ -83,12 +84,14 @@ const timeline = [
 
 const slides = [
 	{
-		tags : ['Sports', 'Interaction Design', 'Creative Website'],
-		heading : 'Pencil <span class="text text-[#336633]">Hoops <br> Website Design</span>',
-		year : '2023',
-		description : 'Pencil Hoops is an interactive, people-friendly website designed for NBA fans who appreciate the art of pencil sketching.<br><br> It blends minimal design, accessibility, and engaging experiences, combining stunning pencil sketches with interactive animations and dynamic sound effects to bring NBA moments to life.',
-		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Tour on the Website <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/mdi_basketball.svg')]"></div></button> <button class="px-4 py-3 rounded-lg border-[1px] border-black">Read the Story <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>`,
-		url : "bg-[url('/images/slides/basketball.png')]"
+		tags : ['Artificial Intelligence', 'Finance', 'Human'],
+		heading : 'Eden',
+		title : 'Smart, <span class="text-red-500">Stable</span>, Simple',
+		year : '2015',
+		description : 'Eden gives you clarity and confidence with your money. It helps you stay on top of your spending, understand your finances, and grow your wealth without the stress or confusion.',
+		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Request Access <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/multi-arrows.svg')]"></div></button><button class="px-4 py-3 rounded-lg border-[1px] border-black">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>`,
+		url : "bg-[url('/images/slides/eden.png')]",
+		alternate : "bg-[url('/images/slides/eden-gif.gif')]",
 	},
 	{
 		tags : ['User Experience', 'Government', 'Mobile App Design'],
@@ -96,50 +99,45 @@ const slides = [
 		year : '2024',
 		description : 'OpenPolicy is a platform designed to connect citizens with their government like never before. It allows users to track bills, vote on policies, and directly engage with representatives, all in one place. <br><br>As the Product Lead, I redesigned the app from the ground up, transforming a cluttered, unusable experience into a seamless and intuitive platform. ',
 		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Get it on the Appstore <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/ic_baseline-apple.svg')]"></div></button> <button class="px-4 py-3 rounded-lg border-[1px] border-black">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>`,
-		url : "bg-[url('/images/slides/open-policy.png')]"
+		url : "bg-[url('/images/slides/open-policy.png')]",
+		alternate : "bg-[url('/images/slides/open-policy.png')]",
 	},
 	{
-		tags : ['Artificial Intelligence', 'Finance', 'Dashboard Design'],
-		heading : 'Eden',
-		title : 'Smart, <span class="text-red-500">Stable</span>, Simple',
-		year : '2015',
-		description : 'Eden gives you clarity and confidence with your money. It helps you stay on top of your spending, understand your finances, and grow your wealth without the stress or confusion.',
-		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Request Access <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/multi-arrows.svg')]"></div></button><button class="px-4 py-3 rounded-lg border-[1px] border-black">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>`,
-		url : "bg-[url('/images/slides/eden.png')]"
-	},
-	{
-		tags : ['Product Design', 'Technology', 'User Experience'],
+		tags : ['Product Design', 'Industrial', 'User Experience'],
 		heading : 'Crack <span class="text-[#CFB46A]">Headphones</span></h2><p class="mt-4">',
 		year : '2015',
 		description : 'OpenPolicy is a platform designed to connect citizens with their government like never before. It allows users to track bills, vote on policies, and directly engage with representatives, all in one place. <br><br>As the Product Lead, I redesigned the app from the ground up, transforming a cluttered, unusable experience into a seamless and intuitive platform. ',
 		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-black">Blueprint & Specs <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/solar_music-note-2-bold.svg')]"></div></button>`,
-		url : "bg-[url('/images/slides/crack-headphones.png')]"
+		url : "bg-[url('/images/slides/crack-headphones.png')]",
+		alternate : "bg-[url('/images/slides/crack-headphones.png')]",
 	},
+	{
+		tags : ['Sports', 'Interaction Design', 'Creative Website'],
+		heading : 'Pencil <span class="text text-[#336633]">Hoops <br> Website Design</span>',
+		year : '2023',
+		description : 'Pencil Hoops is an interactive, people-friendly website designed for NBA fans who appreciate the art of pencil sketching.<br><br> It blends minimal design, accessibility, and engaging experiences, combining stunning pencil sketches with interactive animations and dynamic sound effects to bring NBA moments to life.',
+		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Tour on the Website <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/mdi_basketball.svg')]"></div></button> <button class="px-4 py-3 rounded-lg border-[1px] border-black">Read the Story <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>`,
+		url : "bg-[url('/images/slides/basketball.png')]",
+		alternate : "bg-[url('/images/slides/hoops-gif.gif')]",
+	},
+	
+	
 ]
 ---
 <Layout title="Welcome to Astro.">
 	<div class="body-cont" x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail"> 
+	<div class="bg-white pre-loader-view h-screen w-full fixed top-0 left-0 right-0 z-[10] flex flex-col items-center justify-center">
+		<div class="w-[10%] min-w-[100px] max-w-[250px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat"></div>
+		<p>There are no rules in arts, only dogma.</p>
+		<div class="w-[50%] max-w-[400px] bg-gray-200 relative h-[4px] mt-4 rounded-full overflow-clip">
+			<div class="bg-black absolute page-loader left-0 top-0 bottom-0"></div>
+		</div>
+		<p class="font-bilal text-[16px] absolute bottom-5 left-5">Kamil Oseni</p>
+	</div>
+
+	
 	<!-- nav -->
-	<header class="fixed top-0 left-0 right-0 bg-white top-nav">
-		<nav class="flex justify-between items-center pt-4 pb-2 px-20 border-b-[1px] border-b-gray-100">
-			<div class="flex items-center gap-4">
-				<div class="w-[78px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat"></div>
-				<p class="font-bilal text-[16px]">Kamil Oseni</p>
-			</div>
-
-			<ul class="flex items-center gap-16 nav-text font-semibold">
-				<li><a href="#works">Works</a></li>
-				<li @click="active = 'timeline'" :class="{'text-black' : ['timeline', 'quick-overview-2'].includes(active)}"><a href="#timeline">Journey</a></li>
-				<li><a href="#about-me">About</a></li>
-				<!-- <li><a href="#contact">Get In Touch</a></li> -->
-			</ul>
-
-			<div class="flex items-center gap-8">
-				<div class="icon bg-no-repeat bg-center bg-contain bg-[url('/icons/dark-in.svg')]"></div>
-				<div class="icon bg-no-repeat bg-center bg-contain bg-[url('/icons/dark-mail.svg')]"></div>
-			</div>
-		</nav>
-	</header>
+	<Header />
 
 	<!-- arrows -->
 	<a :href="'#' + (links[links.indexOf(active) + 1] || links[links.length])" @click="setTimeout(()=> {active = (links[links.indexOf(active) + 1] || links[links.length])}, 1) " class="h-[50px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-5 bottom-2 z-[1] down-arrow"></a>
@@ -154,7 +152,7 @@ const slides = [
 						<ul class="list-inside text-xs tags">
 							<li>[ Artificial Intelligence ]</li>
 							<li>[ Finance ]</li>
-							<li>[ Dashboard Design ]</li>
+							<li>[ Human ]</li>
 						</ul>
 						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">Eden</h2>
 						<p class="mt-4">Eden is a calm, intelligent financial system that helps people track their money, manage investments, and understand their finances through smart, AI-driven insights. It’s built for long-term trust, clarity, and ease without the noise or hype.</p>
@@ -207,7 +205,7 @@ const slides = [
 							<!-- project description and actions -->
 							<div class="w-[60%] text-xs max-w-[600px]">
 								<p class="" set:html={slide.description}></p>
-								<div class="pt-4 flex gap-2" set:html={slide.buttons}></div>
+								<div class="pt-4 flex gap-3" set:html={slide.buttons}></div>
 							</div>
 						</div>
 					)
@@ -218,7 +216,7 @@ const slides = [
 			<div class="flex gap-2 p-2 items-end justify-end">
 				{
 					slides.map(slide => 
-						<div class:list={["h-full bg-gray-200 max-h-[400px] rounded-md w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center", slide.url]}></div>
+						<div data-url={slide.url} data-alternate={slide.alternate} class:list={["h-full bg-gray-200 max-h-[400px] rounded-md w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center", slide.url]}></div>
 					)
 				}
 				
@@ -237,18 +235,18 @@ const slides = [
 		</section>
 
 		<!-- timeline -->
-		<section id="timeline" class="h-screen grid grid-rows-[minmax(auto,100%)_auto] px-20 gap-6 tall:bg-green-200 short:bg-red-200 pt-20 overflow-hidden">
+		<section id="timeline" class="h-screen grid grid-rows-[minmax(auto,100%)_auto] px-20 gap-6 pt-5 overflow-hidden">
 			<!-- center box -->
 			<div class="pt-8 overflow-auto">
 			{
 				timeline.map(timeline =>
-					<div class="pb-8 justify-between items-center gap-8 hidden opacity-0 timeline-slide">
+					<div class="pb-8 justify-between items-center gap-4 hidden opacity-0 timeline-slide">
 						{/* project title, tags and date */}
-						<div>
-							<p class="mt-4">{timeline.date}</p>
-							<p class="mt-4 font-bold">{timeline.title}</p>
-							<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-10 heading-1" set:html={timeline.heading}></h2>
-							<p class="max-w-[677px] mt-6" set:html={timeline.description}></p>
+						<div class="flex flex-col gap-4">
+							<p class="">{timeline.date}</p>
+							<p class="font-bold">{timeline.title}</p>
+							<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] heading-1" set:html={timeline.heading}></h2>
+							<p class="max-w-[677px] flex flex-col gap-2" set:html={timeline.description}></p>
 						</div>
 
 						{/* project description and actions */}
@@ -289,26 +287,26 @@ const slides = [
 
 		<!-- about me -->
 		<section id="about-me" class="h-screen px-20">
-			<div class="pt-8 grid grid-cols-[auto_minmax(0,40%)] gap-10">
+			<div class="pt-8 grid grid-cols-[auto_minmax(0,30%)] gap-10">
 				<!--  contents -->
 				<div class="flex flex-col gap-3.5">
 					<div>
 						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] heading-1">Art and Photography</h2>
-						<p class="max-w-[744px] mt-2"> 
-							I like to balance logic with instinct,  a mix of planning and going with the flow. I tend 
-							to notice trends before they take off, whether it’s in data, markets, or design. <br><br>
-							When I’m not working on numbers or building something like Prospera, I’m probably outside staying active. I enjoy playing chess, 
-							rollerblading, trying out extreme sports, or just exploring and taking pictures along the way
+						<p class="max-w-[744px] mt-2 flex flex-col gap-2"> 
+							<span>I like to balance logic with instinct,  a mix of planning and going with the flow. I tend 
+							to notice trends before they take off, whether it’s in data, markets, or design.</span>
+							<span>When I’m not working on numbers or building something like Prospera, I’m probably outside staying active. I enjoy playing chess, 
+							rollerblading, trying out extreme sports, or just exploring and taking pictures along the way</span>
 						</p>
 					</div>
 		
 					<div>
 						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] heading-1">Anime and Animals</h2>
-						<p class="max-w-[744px] mt-2"> 
-							I love to unwind with movies and anime, and right now, I’m really into Solo Leveling. 
-							Anime helps me relax, spark my imagination, and enjoy stories from different perspectives. <br><br>
-							I also have a soft spot for animals, and at the end of the day, it’s all about enjoying life, finding moments to relax, 
-							and having a good time.
+						<p class="max-w-[744px] mt-2 flex flex-col gap-2"> 
+							<span>I love to unwind with movies and anime, and right now, I’m really into Solo Leveling. 
+							Anime helps me relax, spark my imagination, and enjoy stories from different perspectives.</span>
+							<span>I also have a soft spot for animals, and at the end of the day, it’s all about enjoying life, finding moments to relax, 
+							and having a good time.</span>
 						</p>
 					</div>
 		
@@ -430,16 +428,16 @@ import { CurlyBraces } from 'lucide-react';
 			const direction = e.deltaY > 0 ? 'down' : 'up';
 			lenis.stop()
 	
-			// clearTimeout
-			console.log('here')
-			clearTimeout(intervalId)
-			intervalId = setTimeout(() => {
-				lenis.start()
-				if(direction == 'up') scrollUp()
-				else scrollDown()
+			// // clearTimeout
+			// console.log('here')
+			// clearTimeout(intervalId)
+			// intervalId = setTimeout(() => {
+			lenis.start()
+			// 	if(direction == 'up') scrollUp()
+			// 	else scrollDown()
 	
-				console.log('inside', lenis)
-			}, 50);
+			// 	console.log('inside', lenis)
+			// }, 50);
 	
 	
 			// if(direction == 'up') scrollUp()
@@ -649,30 +647,7 @@ import { CurlyBraces } from 'lucide-react';
 				}
 			}
 		});
-	
-		// dissappear footer on certain pages
-		['#quick-overview', '#research-and-insights', '#design-process', '#collaboration', '#next-steps', '#closing', '#key-features', '#market-strategy', '#conclusion'].forEach(section => {
-			ScrollTrigger.create({
-				trigger: section,
-				// start: 'top top',
-				// endTrigger: '#otherID',
-				// end: 'bottom 50%+=100px',
-				onToggle: (self) => {
-					if(self.isActive) dissappearBottomNav.play()
-					else dissappearBottomNav.reverse()
-				},
-				onUpdate: (self) => {
-					console.log('here2')
-					// if(self.direction == 1){
-					//     footerAnim.duration(2)
-					//     footerAnim.play();
-					// }else{
-					//     footerAnim.duration(0)
-					//     footerAnim.reverse()
-					// }
-				}
-			});
-		})
+
 
 		// hide the top nav
 		// gsap.to('.top-nav', {
@@ -714,6 +689,7 @@ import { CurlyBraces } from 'lucide-react';
 		let bottomSlideIndicators = Array.from(document.querySelectorAll('.bottom-slide-indicator'))
 		let topSides = Array.from(document.querySelectorAll('.top-side'))
 		let bottomSlides = Array.from(document.querySelectorAll('.bottom-slide'))
+		let bottomSlidesAlternate = Array.from(document.querySelectorAll('.bottom-slide-alternate'))
 		let currentSlide = 0
 		let righSlideBtn = document.querySelector('.slide-right-btn')
 		let leftSlideBtn = document.querySelector('.slide-left-btn')
@@ -732,13 +708,28 @@ import { CurlyBraces } from 'lucide-react';
 				width: "20%",
 				duration: 1,
 				ease: "power2.out",
+				onStart: function () {
+					this.targets().forEach(el => {
+					const imageUrl = el.dataset.url;
+					const img = imageUrl.match(/'([^']+)'/);
+					el.style.backgroundImage = `url('${img[1]}')`;
+				});
+				}
 			});
 
 			// then we wana expand this guy
-			gsap.to(bottomSlides[i], {
+			gsap.fromTo(bottomSlides[i], {opacity : 0}, {
 				width: "40%",
+				opacity : 1,
 				duration: 1,
 				ease: "power2.out",
+				onStart: function () {
+					this.targets().forEach(el => {
+					const imageUrl = el.dataset.alternate;
+					const img = imageUrl.match(/'([^']+)'/);
+					el.style.backgroundImage = `url('${img[1]}')`;
+					});
+				}
 			});
 
 			// darken this indicator 
@@ -933,6 +924,58 @@ import { CurlyBraces } from 'lucide-react';
 				duration : 1
 			})
 	   })
+
+	   const loadtl = gsap.timeline();
+
+		loadtl.from(".page-loader", { width : '0%', duration: 1 })     // You want to skip this
+		.addLabel("afterBox")
+		.to('.page-loader', { width : '20%', duration: 100 })
+		.addLabel("dom-loaded")
+		.to('.page-loader', { width : '50%', duration: 100 })
+		.addLabel("loaded")
+		.to('.page-loader', { width : '100%', duration: 10,
+			onComplete : () => {
+				gsap.to('.pre-loader-view',{
+					opacity : 0,
+					duration : 2,
+					onComplete : () => {
+						document.querySelector('.pre-loader-view')?.remove()
+					}
+				})
+			}
+		 })
+
+
+	    
+
+	   setTimeout(()=>{
+	   }, 2000)
+
+	   	document.addEventListener('DOMContentLoaded', () => {
+			loadtl.seek('dom-loaded')
+		});
+
+		window.addEventListener('load', () => {
+			loadtl.seek('loaded')
+		});
+
+		//loader logic
+		// gsap.fromTo('.page-loader', {width : '0%'}, {
+		// 	width : '100%',
+		// 	duration : 10,
+		// 	ease: "power2.out",
+		// 	// onComplete : () => {
+		// 	// 	// remove the loader
+		// 	// 	gsap.to('.page-loader', {
+		// 	// 		duration : 1,
+		// 	// 		width : '0%',
+		// 	// 		ease: "power2.out",
+		// 	// 		onComplete : () => {
+		// 	// 			document.querySelector('.page-loader')?.remove()
+		// 	// 		}
+		// 	// 	})
+		// 	// }
+		// })    
 	
 	
 	
