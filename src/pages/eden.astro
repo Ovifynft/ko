@@ -1,39 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Footer from '../layouts/Footer.astro'
-
+import Footer from '../layouts/Footer.astro';
+import Header from '../layouts/Header.astro';
+import EdenSection from '../layouts/EdenSection.astro';
+import '../styles/style.css'
 // console.log('here ', Astro.url)
 import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
 let links = ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'problem', 'research-and-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'closing']
-let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'research-and-insights', 'problem', 'user-research', 'market-research', 'competitive', 'design-process', 'the-brand', 'navigation', 'ui-systems', 'no-scrolling', 'bento', 'dynamic-island', 'soft-color', 'calender', 'image', 'key-features', 'features-list', 'market-strategy', 'market-focus', 'product-roadmap', 'conclusion', 'conclusion-2', 'contact']}
+let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'research-and-insights', 'problem', 'user-research', 'market-research', 'competitive', 'design-process', 'the-brand', 'navigation', 'ui-systems', 'no-scrolling', 'bento', 'dynamic-island', 'soft-color', 'calender', 'image', 'key-features', 'features-list', 'market-strategy', 'market-focus', 'product-roadmap', 'conclusion', 'conclusion-2', 'contact']}
+
 ---
 
 <Layout title="Welcome to Astro.">
 	<!-- nav -->
-    <div  x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail">
-	<header class="fixed top-0 left-0 right-0 bg-white w-full z-30">
-		<nav class="flex justify-between items-center pt-4 lg:pt-8 pb-2 px-8 gap-4 lg:px-20 border-b-[1px] border-b-gray-100">
-            <button><AlignLeft /></button>
-            <!-- <p x-text="active"></p> -->
+    <div  x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail" class="body-cont">
+    <Header>
 
-            <div class="w-full flex justify-center">
-                <div class="h-2 w-full max-w-[600px] flex gap-3 relative lg:left-[5%]">  
-                    <template x-for='(link, index) in links'>
-                        <a :href="'#' + link" href="link" class="w-[100px] h-full transition-all duration-200 rounded-lg"
-                            @click="active = link"
-                            :class="{'bg-black ' : links.indexOf(link) <= links.indexOf(active), ' hover:hide-bottom-nav bg-gray-200 text-white' : links.indexOf(link) > links.indexOf(active)}"
-                        ></a>
-                    </template>
-                </div>
+        <div class="w-full flex justify-center" slot="timeline">
+            <div class="h-2 w-full max-w-[600px] flex gap-3 relative lg:left-[5%]">  
+                <template x-for='(link, index) in links'>
+                    <a :href="'#' + link" href="link" class="w-[100px] h-full transition-all duration-200 rounded-lg"
+                        @click="active = link"
+                        :class="{'bg-black ' : links.indexOf(link) <= links.indexOf(active), ' hover:hide-bottom-nav bg-gray-200 text-white' : links.indexOf(link) > links.indexOf(active)}"
+                    ></a>
+                </template>
             </div>
-
-			<div class="flex items-center gap-5">
-				<p class="font-bilal hidden lg:block lg:text-[24px] whitespace-nowrap">Kamil Oseni</p>
-				<div class="lg:w-[70px] md:w-[70px] w-[50px] aspect-square bg-gray-500 rounded-full"></div>
-			</div>
-		</nav>
-	</header>
-
+        </div>
+        
+    </Header>
     <!-- bottom-nav -->
     <div class="fixed bottom-0 right-0 z-10 flex bg-white pt-4 pl-4 xl:px-10 lg:pl-10 py-6 xl:py-10 bottom-nav">
         <ul class="flex gap-4 text-[#afafaf] font-semibold text-[10px] lg:text-sm">
@@ -48,37 +42,17 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
     </div>
 
     <!-- arrow -->
-    <a :href="'#' + (links[links.indexOf(active) + 1] || links[links.length])" @click="setTimeout(()=> {active = (links[links.indexOf(active) + 1] || links[links.length])}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-20 bottom-5 z-[1] down-arrow"></a>
+    <a :href="'#' + (links[links.indexOf(active) + 1] || links[links.length])" @click="setTimeout(()=> {active = (links[links.indexOf(active) + 1] || links[links.length])}, 1) " class="h-[50px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-5 bottom-2 z-[1] down-arrow"></a>
     <a :href="'#' + (links[links.indexOf(active) - 1] || links[0])" @click="setTimeout(()=> {active = (links[links.indexOf(active) - 1] || links[0])}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-20 bottom-5 z-[1] up-arrow hidden"></a>
 
 
 	<main>
 		<!-- hero -->
-        <div id="hero" class="hide-bottom-nav">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 max-w-[1700px] mx-auto gap-4 xl:gap-10">
-                <div class="max-w-[700px] flex flex-col justify-center">
-                    <h2 class="heading-up font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4  opacity-0 translate-y-[50%] up">
-                        Eden <span class="text-gray-200">*</span></h2>
-
-                    <p class="heading-up opacity-0">
-                        Eden gives you clarity and confidence with your money. It helps you
-                        stay on top of your spending, understand your finances, and grow
-                        your wealth without the stress or confusion.
-                    </p>
-
-                    <div class="pt-[52px] heading-up opacity-0">
-                        <button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Request Access <img src="/icons/multi-arrows.svg" alt="" srcset=""></button>
-                    </div>
-                </div>
-
-                <div class="flex  opacity-0 hero-img items-center slide justify-end overflow-hidden p-20 w-full bg-[url('dummy_image_link.png')] bg-gray-100 bg-no-repeat bg-contain bg-center h-full relative">
-                </div>
-            </section>
-        </div>
+       <EdenSection />
 		
 
         <!-- hey there -->
-        <section id="hey-there" class="lg:px-20 px-10 h-screen flex items-center justify-center relative pt-[100px] max-w-[1700px] mx-auto">
+        <section id="hey-there" class="lg:px-20 px-10 min-h-screen flex items-center justify-center relative pt-[100px] max-w-[1700px] mx-auto">
             <h2 class="text-sm sm:text-lg md:text-2xl xl:text-5xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">
                 This document is going to be mostly about the <span class="text-black ">design</span>
                 <span class="text-black ">decisions</span> behind some of the <span class="text-black ">features</span> included in <span class="text-black ">Eden</span>
@@ -90,7 +64,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- table of contents -->
-        <section id="table" class="lg:px-20 px-10 h-screen relative pt-[100px] md:pt-[120px] lg:pt-[150px] max-w-[1700px] mx-auto overflow-hidden">
+        <section id="table" class="lg:px-20 px-10 min-h-screen relative pt-[100px] md:pt-[120px] lg:pt-[150px] max-w-[1700px] mx-auto overflow-hidden">
             <h2 class="font-safira lg:text-sm xl:text-2xl heading-up">Content</h2>
             {/* Updated grid-rows to match the 6 content items */}
             <div class="max-w-2xl grid grid-cols-[80%_20%] grid-rows-6 mt-20 mx-auto my-auto gap-4 lg:text-xl xl:text-2xl">
@@ -191,7 +165,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </div>
 
         <!-- the problem -->
-        <section id="problem" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="problem" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">The Problem</h2>
                 <p class="flex flex-col gap-4 text-base ">
@@ -322,7 +296,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- market research -->
-        <section id="market-research" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4  pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="market-research" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4  pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             {/* Main Title */}
             <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Market Research</h2>
 
@@ -447,7 +421,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </div>
 
         <!-- the brand -->
-        <section id="the-brand" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="the-brand" class="min-h-screen flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">The Brand</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -470,13 +444,13 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     </ul>
 
                     {
-                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box bg-[url('/images/eden/the-brand.png')]"></div>)
                     }
                 </div>
             </div>
 
             <!-- image -->
-            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-white rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent bg-[url('/images/eden/the-brand.png')]">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
@@ -484,7 +458,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- navigation -->
-        <section id="navigation" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="navigation" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Navigation and Structure</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -515,7 +489,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </div>
             </div>
 
-            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full rounded-lg bg-center bg-no-repeat bg-contain hidden relative box-parent  bg-[url('/images/eden/navigation.png')]">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
@@ -523,7 +497,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- ui systems -->
-        <section id="ui-systems" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="ui-systems" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">UI System</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -571,7 +545,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- no scrolling -->
-        <section id="no-scrolling" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="no-scrolling" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">No Scrolling</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -610,7 +584,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </div>
             </div>
 
-            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-[url('/images/eden/no-scrolling.jpg')] rounded-lg bg-center bg-no-repeat bg-contain hidden relative box-parent">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
@@ -618,7 +592,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- bento -->
-        <section id="bento" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="bento" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Bento Grid for Widgets</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -657,7 +631,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </div>
             </div>
 
-            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full rounded-lg bg-center bg-no-repeat bg-contain bg-[url('/images/eden/bento.jpg')] hidden relative box-parent">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
@@ -665,7 +639,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- dynamic island -->
-        <section id="dynamic-island" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="dynamic-island" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">AI Dynamic Island</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -704,7 +678,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </div>
             </div>
         
-            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full rounded-lg bg-center bg-no-repeat bg-contain bg-[url('/images/eden/ai-island.jpg')] hidden relative box-parent">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
@@ -712,7 +686,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- soft color -->
-        <section id="soft-color" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="soft-color" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Soft Color Palette and Typography</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -745,7 +719,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </div>
             </div>
 
-            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full rounded-lg bg-center bg-no-repeat bg-contain bg-[url('/images/eden/4-soft-color.jpg')] hidden relative box-parent">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
@@ -753,7 +727,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- calender -->
-        <section id="calender" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="calender" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Calendar-Linked Financial Planning</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -783,7 +757,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </div>
             </div>
 
-            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full rounded-lg bg-center bg-no-repeat bg-contain bg-[url('/images/eden/5-calender-linked.jpg')] hidden relative box-parent">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
@@ -791,8 +765,8 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- image -->
-        <section id="image" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
-            <div class="lg:flex items-center col-span-2 overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+        <section id="image" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <div class="lg:flex items-center col-span-2 overflow-hidden justify-end p-20 w-full rounded-lg bg-center bg-no-repeat bg-contain bg-[url('/images/eden/6-calender-schedule.jpg')] hidden relative box-parent">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
@@ -852,7 +826,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </div>
 
         <!-- market focus -->
-        <section id="market-focus" class="h-auto lg:h-screen overflow-hidden flex items-center gap-8 lg:gap-4 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="market-focus" class="min-h-screen overflow-hidden flex items-center gap-8 lg:gap-4 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <div class="grid grid-cols-2 w-full">
                 <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
                     <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Initial Market Focus</h2>
@@ -892,7 +866,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- product roadmap -->
-        <section id="product-roadmap" class="h-auto lg:h-screen overflow-hidden flex flex-col justify-center gap-8 lg:gap-4 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="product-roadmap" class="min-h-screen overflow-hidden flex flex-col justify-center gap-8 lg:gap-4 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Product Roadmap</h2>
             <div class="grid grid-cols-1 lg:grid-cols-3 grid-rows-[auto] w-full gap-8">
                 <div class="flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
@@ -941,7 +915,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         </div>
 
         <!-- conclusion 2 -->
-        <section id="conclusion-2" class="h-auto lg:h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="conclusion-2" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">What Came Out of It</h2>
                 <p class="flex flex-col gap-4 text-base ">
@@ -1092,18 +1066,18 @@ import Alpine from 'alpinejs';
     window.addEventListener('wheel', (e) => {
         e.preventDefault(); // stop actual scrolling
         const direction = e.deltaY > 0 ? 'down' : 'up';
-        lenis.stop()
+        // lenis.stop()
 
-        // clearTimeout
-        console.log('here')
-        clearTimeout(intervalId)
-        intervalId = setTimeout(() => {
-            lenis.start()
-            if(direction == 'up') scrollUp()
-            else scrollDown()
+        // // clearTimeout
+        // console.log('here')
+        // clearTimeout(intervalId)
+        // intervalId = setTimeout(() => {
+        // lenis.start()
+        // 	if(direction == 'up') scrollUp()
+        // 	else scrollDown()
 
-            console.log('inside', lenis)
-        }, 50);
+        // 	console.log('inside', lenis)
+        // }, 50);
 
 
         // if(direction == 'up') scrollUp()
@@ -1185,8 +1159,8 @@ import Alpine from 'alpinejs';
             stagger: 0.2,
             scrollTrigger: {
                 trigger: section,  // Each element triggers individually
-                start: "top 20%",  // Animation starts when the element is 80% in view
-                end: "bottom 95%",
+                start: "top 30%",  // Animation starts when the element is 80% in view
+                end: "bottom 70%",
                 toggleActions: "play reverse play reset",  // Only plays once
                 // markers : true,
             },
@@ -1200,8 +1174,8 @@ import Alpine from 'alpinejs';
             stagger: 0.2,
             scrollTrigger: {
                 trigger: section,  // Each element triggers individually
-                start: "top 20%",  // Animation starts when the element is 80% in view
-                end: "bottom 95%",
+                start: "top 30%",  // Animation starts when the element is 80% in view
+                end: "bottom 70%",
                 // scrub : true,
                 toggleActions: "play reverse play reset",  // Only plays once
                 // markers : true,
@@ -1216,8 +1190,8 @@ import Alpine from 'alpinejs';
             stagger: 0.2,
             scrollTrigger: {
                 trigger: section,  // Each element triggers individually
-                start: "top 20%",  // Animation starts when the element is 80% in view
-                end: "bottom 95%",
+                start: "top 30%",  // Animation starts when the element is 80% in view
+                end: "bottom 70%",
                 // scrub : true,
                 toggleActions: "play reverse play reset",  // Only plays once
                 // markers : true,
@@ -1231,8 +1205,8 @@ import Alpine from 'alpinejs';
             stagger: 0.2,
             scrollTrigger: {
                 trigger: section,  // Each element triggers individually
-                start: "top 20%",  // Animation starts when the element is 80% in view
-                end: "bottom 99%",
+                start: "top 30%",  // Animation starts when the element is 80% in view
+                end: "bottom 70%",
                 // scrub : true,
                 toggleActions: "play reverse play reset",  // Only plays once
                 // markers : true,
@@ -1253,11 +1227,11 @@ import Alpine from 'alpinejs';
             stagger : 0.08,
             scrollTrigger: {
                 trigger: boxParent,  // Each element triggers individually
-                start: "top 50%",  // Animation starts when the element is 80% in view
-                end: "bottom 92%",
+                start: "top 30%",  // Animation starts when the element is 80% in view
+                end: "bottom 70%",
                 // scrub : true,
                 toggleActions: "play reverse play reset",  // Only plays once
-                // markers : true,
+                markers : true,
             },
         });
     })
@@ -1315,7 +1289,7 @@ import Alpine from 'alpinejs';
     });
 
     // dissappear footer on certain pages
-    ['#quick-overview', '#research-and-insights', '#design-process', '#collaboration', '#next-steps', '#closing', '#key-features', '#market-strategy', '#conclusion'].forEach(section => {
+    ['#hero', '#eden', '#quick-overview', '#research-and-insights', '#design-process', '#collaboration', '#next-steps', '#closing', '#key-features', '#market-strategy', '#conclusion'].forEach(section => {
         ScrollTrigger.create({
             trigger: section,
             // start: 'top top',
@@ -1337,12 +1311,6 @@ import Alpine from 'alpinejs';
             }
         });
     })
-   
-
-   
-
-
-
     // gsap.to(window, { duration: 1, scrollTo: "#hey-there", ease: "bounce.out" });
 
 </script>

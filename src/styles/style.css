@@ -27,6 +27,14 @@
         gap: 10px; /* Example style */
     }
 
+    .body-cont .button{
+        font-size: 14px; /* Example style */
+        display: flex; /* Example style */
+        justify-content: center; /* Example style */
+        align-items: center; /* Example style */
+        gap: 10px; /* Example style */
+    }
+
     button .icon{
         width: 10px; /* Example style */
         height: 10px; /* Example style */

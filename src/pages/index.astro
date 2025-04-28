@@ -6,6 +6,7 @@ import Header from '../layouts/Header.astro';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 let data = {active: 'eden', links: ['eden', 'works', 'timeline', 'about-me', 'contact']}
 import '../styles/style.css'
+import EdenSection from '../layouts/EdenSection.astro';
 
 const timeline = [
 	{
@@ -89,7 +90,7 @@ const slides = [
 		title : 'Smart, <span class="text-red-500">Stable</span>, Simple',
 		year : '2015',
 		description : 'Eden gives you clarity and confidence with your money. It helps you stay on top of your spending, understand your finances, and grow your wealth without the stress or confusion.',
-		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Request Access <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/multi-arrows.svg')]"></div></button><button class="px-4 py-3 rounded-lg border-[1px] border-black">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>`,
+		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Request Access <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/multi-arrows.svg')]"></div></button><a href="/eden" class="px-4 py-3 rounded-lg border-[1px] border-black flex items-center gap-2">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></a>`,
 		url : "bg-[url('/images/slides/eden.png')]",
 		alternate : "bg-[url('/images/slides/eden-gif.gif')]",
 	},
@@ -130,7 +131,7 @@ const slides = [
 		<div class="absolute bottom-0 right-0 w-[40%] aspect-[2/2] bg-[url('/images/preloader-bg.png')] bg-bottom bg-contain bg-no-repeat opacity-[2%]"></div>
 		<div class="w-[10%] min-w-[100px] max-w-[250px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat border-[8px] border-[#F1F1F3] before:absolute before:content-['']  before:inline-block relative before:-right-[9px] before:-left-[9px] before:rounded-full before:-top-[9px] before:-bottom-[9px] before:bg-white before:z-[-1]"></div>
 		<p class="mt-6 mb-10">There are no rules in arts, only dogma.</p>
-		<div class="w-[50%] max-w-[674px] bg-gray-200 relative h-[8px] rounded-full overflow-clip">
+		<div class="w-[50%] max-w-[674px] bg-white relative h-[8px] rounded-full overflow-clip">
 			<div class="bg-black absolute page-loader left-0 top-0 bottom-0 rounded-full"></div>
 		</div>
 		<p class="font-bilal text-[16px] absolute bottom-5 left-5">Kamil Oseni</p>
@@ -145,42 +146,8 @@ const slides = [
 	<a :href="'#' + (links[links.indexOf(active) - 1] || links[0])" @click="setTimeout(()=> {active = (links[links.indexOf(active) - 1] || links[0])}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-0 bottom-5 z-[1] up-arrow hidden"></a>
 
 	<main>
-		<section id="eden" class="h-screen p-6">
-			<div class="bg-gray-200 rounded-lg h-full w-full flex">
-				<div class="justify-between items-center w-full flex gap-4 max-w-[1900px] ml-auto pl-6 xl:pl-20">
-			<!-- project title, tags and date -->
-					<div class="xl:w-[40%] xl:max-w-[500px] w-[90%]">
-						<ul class="list-inside text-xs tags">
-							<li>[ Artificial Intelligence ]</li>
-							<li>[ Finance ]</li>
-							<li>[ Human ]</li>
-						</ul>
-						<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1">Eden</h2>
-						<p class="mt-4">Eden is a calm, intelligent financial system that helps people track their money, manage investments, and understand their finances through smart, AI-driven insights. It’s built for long-term trust, clarity, and ease without the noise or hype.</p>
-						<div class="pt-4 flex gap-2">
-							<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Request Access <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/multi-arrows.svg')]"></div></button><button class="px-4 py-3 rounded-lg border-[1px] border-black">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>
-						</div>
-					</div>
-	
-					<!-- project description and actions -->
-					<div class="w-full h-full text-xs">
-						<div class="h-full w-full flex items-center">
-							<div class="inline-block relative">
-								<img src="/images/hero/pc.png" class="w-full"/>
-								
-								<div class="absolute bg-black top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/1.png')] bg-center bg-contain bg-no-repeat hero-mockup opacity-0"></div>
-								<div class="absolute bg-black top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/2.png')] bg-center bg-contain bg-no-repeat hero-mockup opacity-0"></div>
-								<div class="absolute bg-black top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/3.png')] bg-center bg-contain bg-no-repeat hero-mockup opacity-0"></div>
-								<div class="absolute bg-black top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/4.png')] bg-center bg-contain bg-no-repeat hero-mockup opacity-0"></div>
-								
-
-								<div class="h-[60%] aspect-[1/2] absolute left-[5%] bottom-[10.7%] bg-[url('/images/hero/phone.png')] bg-cover bg-center bg-no-repeat"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+		<!-- eden hero -->
+		<EdenSection />
 
 		<!-- works -->
 		<section id="works" class="h-screen overflow-hidden grid grid-rows-[1fr_1fr] tall short">
@@ -427,13 +394,13 @@ import { CurlyBraces } from 'lucide-react';
 		window.addEventListener('wheel', (e) => {
 			e.preventDefault(); // stop actual scrolling
 			const direction = e.deltaY > 0 ? 'down' : 'up';
-			lenis.stop()
+			// lenis.stop()
 	
 			// // clearTimeout
 			// console.log('here')
 			// clearTimeout(intervalId)
 			// intervalId = setTimeout(() => {
-			lenis.start()
+			// lenis.start()
 			// 	if(direction == 'up') scrollUp()
 			// 	else scrollDown()
 	
@@ -660,32 +627,6 @@ import { CurlyBraces } from 'lucide-react';
 	   
 		let hideNavTimeout: ReturnType<typeof setTimeout>;
 
-			
-
-				
-		
-
-		window.addEventListener('mousemove', (event) => {
-			// Check if the mouse is within the top 100px of the window
-			// console.log(event.clientY)
-			if (event.clientY <=100) {
-				// Show the navigation bar
-				gsap.to('.top-nav', {
-					translateY: "0%",
-					duration: 1,
-					ease: "power2.out",
-				});
-
-				// Clear the previous timeout to reset the timer
-				// clearTimeout(hideNavTimeout);
-			}else{
-				gsap.to('.top-nav', {
-					translateY: "-100%",
-					duration: 1,
-					ease: "power2.out",
-				});
-			}
-		});
 
 		let bottomSlideIndicators = Array.from(document.querySelectorAll('.bottom-slide-indicator'))
 		let topSides = Array.from(document.querySelectorAll('.top-side'))
@@ -911,21 +852,7 @@ import { CurlyBraces } from 'lucide-react';
 				timelineProgressTl.pause()
 			}
 		});
-	
-	   let mockupTl = gsap.timeline({
-		repeat : -1,
-		repeatDelay : 1,
-		// yoyo : true
-	   })
-
-	   document.querySelectorAll('.hero-mockup').forEach((mockup, i)=> {
-			mockupTl.to(mockup, {
-				opacity : 1,
-				delay :  i != 0 ? 2 : 0,
-				duration : 1
-			})
-	   })
-
+		
 	   const loadtl = gsap.timeline();
 
 		loadtl.from(".page-loader", { width : '0%', duration: 1 })     // You want to skip this
