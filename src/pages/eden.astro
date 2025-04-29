@@ -16,15 +16,34 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
     <div  x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail" class="body-cont">
     <Header>
 
-        <div class="w-full flex justify-center" slot="timeline">
-            <div class="h-2 w-full max-w-[600px] flex gap-3 relative lg:left-[5%]">  
+        <!-- <div class="w-auto absolute -top-[1000px] opacity-0 lg:opacity-100 lg:static flex justify-center" slot="timeline">
+            <div class="h-2 w-full flex flex-wrap gap-3 justify-center">  
                 <template x-for='(link, index) in links'>
-                    <a :href="'#' + link" href="link" class="w-[100px] h-full transition-all duration-200 rounded-lg"
+                    <a :href="'#' + link" href="link" class="w-[15px] 2xl:w-[20px] h-full transition-all duration-200 rounded-lg"
                         @click="active = link"
                         :class="{'bg-black ' : links.indexOf(link) <= links.indexOf(active), ' hover:hide-bottom-nav bg-gray-200 text-white' : links.indexOf(link) > links.indexOf(active)}"
                     ></a>
                 </template>
             </div>
+        </div> -->
+
+        <!-- <div class="w-auto absolute -top-[1000px] opacity-0 lg:opacity-100 lg:static flex justify-center" slot="timeline">
+            <div class="h-2 w-full flex flex-wrap gap-3 justify-center desk-timeline">  
+                {
+                    data.links.map(link => 
+                        <a :href="'#' + link" href="link" class="w-[15px] 2xl:w-[20px] h-full transition-all duration-200 rounded-lg desk-timeline-indicators"></a>
+                    )
+                }
+            </div>
+        </div> -->
+
+        <!-- lg:absolute lg:opacity-0 lg:-top-[1000px]  -->
+        <div class="h-2 flex gap-4 max-w-[300px] lg:max-w-[80%] overflow-hidden mob-timeline" slot="timeline">
+            {
+                data.links.map(link => 
+                    <a href={"#"+link}  class="mob-timeline-indicator h-2 min-w-8 lg:min-w-4 bg-gray-200 rounded-full"></a>
+                )
+            }
         </div>
         
     </Header>
@@ -42,8 +61,8 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
     </div>
 
     <!-- arrow -->
-    <a :href="'#' + (links[links.indexOf(active) + 1] || links[links.length])" @click="setTimeout(()=> {active = (links[links.indexOf(active) + 1] || links[links.length])}, 1) " class="h-[50px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-5 bottom-2 z-[1] down-arrow"></a>
-    <a :href="'#' + (links[links.indexOf(active) - 1] || links[0])" @click="setTimeout(()=> {active = (links[links.indexOf(active) - 1] || links[0])}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-20 bottom-5 z-[1] up-arrow hidden"></a>
+    <!-- <a :href="'#' + (links[links.indexOf(active) + 1] || links[links.length])" @click="setTimeout(()=> {active = (links[links.indexOf(active) + 1] || links[links.length])}, 1) " class="h-[50px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-5 bottom-2 z-[1] down-arrow"></a>
+    <a :href="'#' + (links[links.indexOf(active) - 1] || links[0])" @click="setTimeout(()=> {active = (links[links.indexOf(active) - 1] || links[0])}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-20 bottom-5 z-[1] up-arrow hidden"></a> -->
 
 
 	<main>
@@ -148,7 +167,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
 		<!-- 02 -->
-        <div id="research-and-insights" class="hide-bottom-nav bg-black text-white">
+        <section id="research-and-insights" class="hide-bottom-nav bg-black text-white">
             <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10  relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-10">
@@ -1025,42 +1044,104 @@ import Alpine from 'alpinejs';
         }
     });
 
+    // all id sections
+    const sections = Array.from(document.querySelectorAll('section[id], div[id], footer[id]') as NodeListOf<HTMLElement>)
+    const sectionIds = sections.map(section => section.getAttribute('id')).filter(id => id !== null).map(id => '#'+id) as string[]
+    let currHashIndx = null // get current hash index
+    let upIndx =  null
+    let downIndx = null
+    
+
+    // arroes for navigation
     const downArrow = document.querySelector('a.down-arrow') as HTMLAnchorElement;
     const upArrow = document.querySelector('a.up-arrow') as HTMLAnchorElement;
 
+    //header indictors for navigation
+    let scrollTl = gsap.timeline()
+    let mobTimeline = document.querySelector('.mob-timeline')
+    let mobTimelineIndicators = Array.from(document.querySelectorAll('.mob-timeline-indicator') as NodeListOf<HTMLElement>)
 
-    // document.addEventListener('alpine:init', () => {
-    //     Alpine.data('active', () => ({
-    //         open: false,
- 
-    //         toggle() {
-    //             this.open = ! this.open
-    //         }
-    //     }))
-    // })
+    // scroll functions
     function scrollUp(){
-        lenis.scrollTo(downArrow.getAttribute('href'), {duration: 2.5, 
-            easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2
+        let scrollTo = sectionIds[upIndx]
+        lenis.scrollTo(scrollTo, {
+            duration: 0,
+            onStart : () => {
+                location.hash = scrollTo;
+                currHashIndx = sectionIds.indexOf(location.hash)
+                upIndx = currHashIndx != 0 ? currHashIndx - 1 : 0
+            }
         });
-        window.dispatchEvent(new CustomEvent('hash-update', { detail: downArrow.getAttribute('href').slice(1) }));
+        // window.dispatchEvent(new CustomEvent('hash-update', { detail: downArrow.getAttribute('href').slice(1) }));
     }
 
     function scrollDown(){
-        lenis.scrollTo(upArrow.getAttribute('href'), {duration: 0});
-        window.dispatchEvent(new CustomEvent('hash-update', { detail: upArrow.getAttribute('href').slice(1) }));
+        console.log('down clicked')
+        let scrollTo = sectionIds[downIndx]
+        lenis.scrollTo(scrollTo, {duration: 2.5, 
+            easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2,
+            onStart : () => {
+                location.hash = scrollTo;
+                currHashIndx = sectionIds.indexOf(location.hash)
+                downIndx = currHashIndx != sectionIds.length - 1 ? currHashIndx + 1 : sectionIds.length - 1
+            }
+        });
+        // window.dispatchEvent(new CustomEvent('hash-update', { detail: upArrow.getAttribute('href').slice(1) }));
     }
 
+    //scroll rvrnt listener
     document.addEventListener('keydown', function(event) {
         if (event.key === 'ArrowDown') {
-            scrollUp()
+            scrollDown()
         }
     });
 
     document.addEventListener('keydown', function(event) {
         if (event.key === 'ArrowUp') {
-            scrollDown()
+            scrollUp()
         }
     });
+
+
+    // header indicator
+    mobTimelineIndicators.forEach(mobIndicator =>{
+        mobIndicator.addEventListener('click', () => {
+            scrollTl.kill();
+			scrollTl = gsap.timeline();
+
+            let centerPos = mobTimeline.clientWidth / 2 //get center offset of indicator
+            let indicatorPos = mobIndicator.getBoundingClientRect().left - mobTimeline.getBoundingClientRect().left //check if indicator left or right of center
+            let scroll =  indicatorPos - centerPos
+            gsap.to(mobTimelineIndicators,{
+                backgroundColor : '#e5e7eb'
+            })
+            gsap.to(mobIndicator,{
+                backgroundColor : 'black'
+            })
+            scrollTl.to('.mob-timeline',{
+                // opacity : 0,
+                // scrollLeft: '0', 
+                scrollLeft : mobTimeline.scrollLeft + scroll,
+                duration: 1
+            })
+
+            console.log(mobTimeline.scrollLeft)
+        })
+    })
+
+    let lastHash = null;
+    setInterval(() => {
+        if (location.hash !== lastHash) {
+            lastHash = location.hash
+            mobTimelineIndicators.find(mobTimelineIndicator => mobTimelineIndicator.getAttribute('href') === location.hash)?.click()
+            currHashIndx = sectionIds.indexOf(location.hash) // get current hash index
+            upIndx =  currHashIndx != 0? currHashIndx - 1 : 0
+            downIndx = currHashIndx != sectionIds.length - 1 ? currHashIndx + 1 : sectionIds.length - 1
+        }
+        console.log(location.hash)
+    }, 100); 
+
+    ///////////////////////////////////////////////// indicator ends here
 
     let intervalId = null;
     window.addEventListener('wheel', (e) => {
@@ -1121,97 +1202,97 @@ import Alpine from 'alpinejs';
     
 
     document.querySelectorAll('section').forEach((section) => {
-        gsap.fromTo(section.querySelectorAll('.heading-up'),{translateY : '50%', opacity : 0}, {
-            translateY: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out",
-            stagger: 0.4,
-            scrollTrigger: {
-                trigger: section,  // Each element triggers individually
-                start: "top 20%",  // Animation starts when the element is 80% in view
-                end: "bottom 96%",
-                toggleActions: "play reverse play reset", // Only plays once
-                // markers : true,
-            },
-        });
+        // gsap.fromTo(section.querySelectorAll('.heading-up'),{translateY : '50%', opacity : 0}, {
+        //     translateY: 0,
+        //     opacity: 1,
+        //     duration: 1,
+        //     ease: "power2.out",
+        //     stagger: 0.4,
+        //     scrollTrigger: {
+        //         trigger: section,  // Each element triggers individually
+        //         start: "top 20%",  // Animation starts when the element is 80% in view
+        //         end: "bottom 96%",
+        //         toggleActions: "play reverse play reset", // Only plays once
+        //         // markers : true,
+        //     },
+        // });
 
-        gsap.fromTo(section.querySelectorAll('.heading-up-footer'),{translateY : '50%', opacity : 0}, {
-            translateY: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out",
-            stagger: 0.4,
-            scrollTrigger: {
-                trigger: section,  // Each element triggers individually
-                start: "top 20%",  // Animation starts when the element is 80% in view
-                end: "bottom 50%",
-                toggleActions: "play reverse play reset", // Only plays once
-                // markers : true,
-            },
-        });
+        // gsap.fromTo(section.querySelectorAll('.heading-up-footer'),{translateY : '50%', opacity : 0}, {
+        //     translateY: 0,
+        //     opacity: 1,
+        //     duration: 1,
+        //     ease: "power2.out",
+        //     stagger: 0.4,
+        //     scrollTrigger: {
+        //         trigger: section,  // Each element triggers individually
+        //         start: "top 20%",  // Animation starts when the element is 80% in view
+        //         end: "bottom 50%",
+        //         toggleActions: "play reverse play reset", // Only plays once
+        //         // markers : true,
+        //     },
+        // });
 
-        gsap.fromTo(section.querySelectorAll('.quick-right'),{translateX : '50%', opacity : 0}, {
-            translateX: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power2.out",
-            stagger: 0.2,
-            scrollTrigger: {
-                trigger: section,  // Each element triggers individually
-                start: "top 30%",  // Animation starts when the element is 80% in view
-                end: "bottom 70%",
-                toggleActions: "play reverse play reset",  // Only plays once
-                // markers : true,
-            },
-        });
+        // gsap.fromTo(section.querySelectorAll('.quick-right'),{translateX : '50%', opacity : 0}, {
+        //     translateX: 0,
+        //     opacity: 1,
+        //     duration: 0.8,
+        //     ease: "power2.out",
+        //     stagger: 0.2,
+        //     scrollTrigger: {
+        //         trigger: section,  // Each element triggers individually
+        //         start: "top 30%",  // Animation starts when the element is 80% in view
+        //         end: "bottom 70%",
+        //         toggleActions: "play reverse play reset",  // Only plays once
+        //         // markers : true,
+        //     },
+        // });
 
-        gsap.fromTo(section.querySelectorAll('.quick-up'), {opacity : 0, translateY : '50%'}, {
-            translateY: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power2.out",
-            stagger: 0.2,
-            scrollTrigger: {
-                trigger: section,  // Each element triggers individually
-                start: "top 30%",  // Animation starts when the element is 80% in view
-                end: "bottom 70%",
-                // scrub : true,
-                toggleActions: "play reverse play reset",  // Only plays once
-                // markers : true,
-            },
-        });
+        // gsap.fromTo(section.querySelectorAll('.quick-up'), {opacity : 0, translateY : '50%'}, {
+        //     translateY: 0,
+        //     opacity: 1,
+        //     duration: 0.8,
+        //     ease: "power2.out",
+        //     stagger: 0.2,
+        //     scrollTrigger: {
+        //         trigger: section,  // Each element triggers individually
+        //         start: "top 30%",  // Animation starts when the element is 80% in view
+        //         end: "bottom 70%",
+        //         // scrub : true,
+        //         toggleActions: "play reverse play reset",  // Only plays once
+        //         // markers : true,
+        //     },
+        // });
 
-        gsap.fromTo(section.querySelectorAll('.quick-down'), {opacity : 0, translateY : '-50%'}, {
-            translateY: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power2.out",
-            stagger: 0.2,
-            scrollTrigger: {
-                trigger: section,  // Each element triggers individually
-                start: "top 30%",  // Animation starts when the element is 80% in view
-                end: "bottom 70%",
-                // scrub : true,
-                toggleActions: "play reverse play reset",  // Only plays once
-                // markers : true,
-            },
-        });
+        // gsap.fromTo(section.querySelectorAll('.quick-down'), {opacity : 0, translateY : '-50%'}, {
+        //     translateY: 0,
+        //     opacity: 1,
+        //     duration: 0.8,
+        //     ease: "power2.out",
+        //     stagger: 0.2,
+        //     scrollTrigger: {
+        //         trigger: section,  // Each element triggers individually
+        //         start: "top 30%",  // Animation starts when the element is 80% in view
+        //         end: "bottom 70%",
+        //         // scrub : true,
+        //         toggleActions: "play reverse play reset",  // Only plays once
+        //         // markers : true,
+        //     },
+        // });
 
-        gsap.fromTo(section.querySelectorAll('.quick-appear'), {opacity : 0}, {
-            opacity: 1,
-            duration: 0.8,
-            ease: "power2.out",
-            stagger: 0.2,
-            scrollTrigger: {
-                trigger: section,  // Each element triggers individually
-                start: "top 30%",  // Animation starts when the element is 80% in view
-                end: "bottom 70%",
-                // scrub : true,
-                toggleActions: "play reverse play reset",  // Only plays once
-                // markers : true,
-            },
-        });
+        // gsap.fromTo(section.querySelectorAll('.quick-appear'), {opacity : 0}, {
+        //     opacity: 1,
+        //     duration: 0.8,
+        //     ease: "power2.out",
+        //     stagger: 0.2,
+        //     scrollTrigger: {
+        //         trigger: section,  // Each element triggers individually
+        //         start: "top 30%",  // Animation starts when the element is 80% in view
+        //         end: "bottom 70%",
+        //         // scrub : true,
+        //         toggleActions: "play reverse play reset",  // Only plays once
+        //         // markers : true,
+        //     },
+        // });
 
     })
 
@@ -1231,7 +1312,7 @@ import Alpine from 'alpinejs';
                 end: "bottom 70%",
                 // scrub : true,
                 toggleActions: "play reverse play reset",  // Only plays once
-                markers : true,
+                // markers : true,
             },
         });
     })
@@ -1289,28 +1370,36 @@ import Alpine from 'alpinejs';
     });
 
     // dissappear footer on certain pages
-    ['#hero', '#eden', '#quick-overview', '#research-and-insights', '#design-process', '#collaboration', '#next-steps', '#closing', '#key-features', '#market-strategy', '#conclusion'].forEach(section => {
+    ['#eden', '#quick-overview', '#research-and-insights', '#design-process', '#collaboration', '#next-steps', '#closing', '#key-features', '#market-strategy', '#conclusion'].forEach(section => {
         ScrollTrigger.create({
             trigger: section,
             // start: 'top top',
             // endTrigger: '#otherID',
             // end: 'bottom 50%+=100px',
-            onToggle: (self) => {
-                if(self.isActive) dissappearBottomNav.play()
-                else dissappearBottomNav.reverse()
-            },
-            onUpdate: (self) => {
-                console.log('here2')
-                // if(self.direction == 1){
-                //     footerAnim.duration(2)
-                //     footerAnim.play();
-                // }else{
-                //     footerAnim.duration(0)
-                //     footerAnim.reverse()
-                // }
-            }
+            onEnter : () => {
+				// console.log('we just enter timeline')
+				dissappearBottomNav.play()
+                // console.log('enter top')
+			},
+			onLeave : () => {
+				dissappearBottomNav.reverse()
+                // console.log('on leave bottom')
+			},
+			onEnterBack : () => {
+				dissappearBottomNav.play()
+                // console.log('enter bottom')
+			},
+			onLeaveBack : () => {
+				// dissappearBottomNav.play()
+                // console.log('on leave top')
+			}
         });
     })
+
+    
+   
+
+    
     // gsap.to(window, { duration: 1, scrollTo: "#hey-there", ease: "bounce.out" });
 
 </script>
