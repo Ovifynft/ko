@@ -1090,28 +1090,30 @@ import Alpine from 'alpinejs';
     });
 
 
+    function scrollToindicator(indicator){
+        scrollTl.kill();
+		scrollTl = gsap.timeline();
+        let centerPos = mobTimeline.clientWidth / 2 //get center offset of indicator
+        let indicatorPos = indicator.getBoundingClientRect().left - mobTimeline.getBoundingClientRect().left //check if indicator left or right of center
+        let scroll =  indicatorPos - centerPos
+        console.log('scroll', scroll, )
+        gsap.to(mobTimelineIndicators,{
+            backgroundColor : '#e5e7eb'
+        })
+        gsap.to(indicator,{
+            backgroundColor : 'black'
+        })
+        scrollTl.to('.mob-timeline',{
+            // opacity : 0,
+            // scrollLeft: '0', 
+            scrollLeft : mobTimeline.scrollLeft + scroll,
+            duration: 1
+        })
+    }
     // header indicator
     mobTimelineIndicators.forEach(mobIndicator =>{
         mobIndicator.addEventListener('click', () => {
-            scrollTl.kill();
-			scrollTl = gsap.timeline();
-
-            let centerPos = mobTimeline.clientWidth / 2 //get center offset of indicator
-            let indicatorPos = mobIndicator.getBoundingClientRect().left - mobTimeline.getBoundingClientRect().left //check if indicator left or right of center
-            let scroll =  indicatorPos - centerPos
-            gsap.to(mobTimelineIndicators,{
-                backgroundColor : '#e5e7eb'
-            })
-            gsap.to(mobIndicator,{
-                backgroundColor : 'black'
-            })
-            scrollTl.to('.mob-timeline',{
-                // opacity : 0,
-                // scrollLeft: '0', 
-                scrollLeft : mobTimeline.scrollLeft + scroll,
-                duration: 1
-            })
-
+            scrollToindicator(mobIndicator)
             // console.log(mobTimeline.scrollLeft)
         })
     })
@@ -1141,8 +1143,9 @@ import Alpine from 'alpinejs';
     setInterval(() => {
         if (location.hash !== lastHash) {
             lastHash = location.hash
-            mobTimelineIndicators.find(mobTimelineIndicator => mobTimelineIndicator.getAttribute('href') === location.hash)?.click()
             currHashIndx = sectionIds.indexOf(location.hash) // get current hash index
+            scrollToindicator(mobTimelineIndicators[currHashIndx])
+            // mobTimelineIndicators.find(mobTimelineIndicator => mobTimelineIndicator.getAttribute('href') === location.hash)?.click()
             upIndx =  currHashIndx != 0? currHashIndx - 1 : 0
             downIndx = currHashIndx != sectionIds.length - 1 ? currHashIndx + 1 : sectionIds.length - 1
         }
