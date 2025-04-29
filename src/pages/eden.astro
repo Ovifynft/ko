@@ -1176,6 +1176,10 @@ import Alpine from 'alpinejs';
         // else scrollDown()
     }, { passive: false });
 
+    window.addEventListener('scroll', (e) => {
+        pauseManualScroll = false
+    }, { passive: false });
+
     
 
 
