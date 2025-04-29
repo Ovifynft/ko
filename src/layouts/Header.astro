@@ -1,34 +1,54 @@
 ---
 const hasTimelineSlot = Astro.slots.timeline !== undefined;
+import { Menu, X } from "lucide-react";
 ---
 
 
 <header class="fixed top-0 left-0 right-0 bg-white top-nav z-[2]">
-    <nav class:list={["flex justify-between gap-8 items-center pt-4 pb-2 px-20 border-b-[1px] border-b-gray-100", hasTimelineSlot && "pt-8 pb-4"]}>
+    <nav class:list={["flex justify-between gap-8 items-center pt-4 pb-2 px-4 md:px-10 xl:px-20 border-b-[1px] border-b-gray-100", hasTimelineSlot && "pt-8 pb-4"]}>
         {
-            !hasTimelineSlot && 
+            !hasTimelineSlot &&
             <div class="flex items-center gap-4">
                 <div class="xl:w-[78px] w-[40px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat"></div>
                 <p class="font-bilal text-[16px]">Kamil Oseni</p>
             </div>
         }
 
-        <ul class="xl:flex items-center gap-4 xl:gap-8 2xl:gap-16 nav-text font-semibold font-sans hidden">
+        <ul class="lg:flex items-center gap-4 xl:gap-8 2xl:gap-16 nav-text font-semibold font-sans hidden">
             <li><a href="#works">Works</a></li>
             <li @click="active = 'timeline'" :class="{'text-black' : ['timeline', 'quick-overview-2'].includes(active)}"><a href="#timeline">Journey</a></li>
             <li><a href="#about-me">About</a></li>
             <!-- <li><a href="#contact">Get In Touch</a></li> -->
         </ul>
+        <Menu className="min-w-8 lg:hidden relative">
+
+        </Menu>
 
         <slot  name="timeline"/>
         <!-- <slot /> -->
 
-        <div class="flex items-center gap-8">
+        <div class="hidden sm:flex items-center gap-8">
             <a href="https://www.linkedin.com/in/kamiloseni/" target="_blank" class="icon bg-no-repeat bg-center bg-contain bg-[url('/icons/dark-in.svg')]"></a>
             <a href="mailto:Kamilzoseni@gmail.com"  class="icon bg-no-repeat bg-center bg-contain bg-[url('/icons/dark-mail.svg')]"></a>
         </div>
     </nav>
 </header>
+ <!-- mob-nav -->
+ <nav class="fixed top-0 left-0 bg-white font-safira z-10 px-19 py-20 flex flex-col justify-center items-center text-center gap-16">
+    <X className="min-w-8"/>
+    <ul class="space-y-4">
+        <li>Home</li>
+        <li>Pencil Hoops</li>
+        <li>Financial dashboard</li>
+        <li>OpenPolicy</li>
+        <li>Crack Headphones</li>
+    </ul>
+    <div class="hidden sm:flex items-center gap-8">
+        <a href="https://www.linkedin.com/in/kamiloseni/" target="_blank" class="icon bg-no-repeat bg-center bg-contain bg-[url('/icons/dark-in.svg')]"></a>
+        <a href="mailto:Kamilzoseni@gmail.com"  class="icon bg-no-repeat bg-center bg-contain bg-[url('/icons/dark-mail.svg')]"></a>
+    </div>
+</nav>
+
 <script>
 		import gsap from "gsap";
     window.addEventListener('mousemove', (event) => {

@@ -13,35 +13,14 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 
 <Layout title="Welcome to Astro.">
 	<!-- nav -->
-    <div  x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail" class="body-cont">
+    <div  x-data={JSON.stringify(data)} class="body-cont">
     <Header>
 
-        <!-- <div class="w-auto absolute -top-[1000px] opacity-0 lg:opacity-100 lg:static flex justify-center" slot="timeline">
-            <div class="h-2 w-full flex flex-wrap gap-3 justify-center">  
-                <template x-for='(link, index) in links'>
-                    <a :href="'#' + link" href="link" class="w-[15px] 2xl:w-[20px] h-full transition-all duration-200 rounded-lg"
-                        @click="active = link"
-                        :class="{'bg-black ' : links.indexOf(link) <= links.indexOf(active), ' hover:hide-bottom-nav bg-gray-200 text-white' : links.indexOf(link) > links.indexOf(active)}"
-                    ></a>
-                </template>
-            </div>
-        </div> -->
-
-        <!-- <div class="w-auto absolute -top-[1000px] opacity-0 lg:opacity-100 lg:static flex justify-center" slot="timeline">
-            <div class="h-2 w-full flex flex-wrap gap-3 justify-center desk-timeline">  
-                {
-                    data.links.map(link => 
-                        <a :href="'#' + link" href="link" class="w-[15px] 2xl:w-[20px] h-full transition-all duration-200 rounded-lg desk-timeline-indicators"></a>
-                    )
-                }
-            </div>
-        </div> -->
-
         <!-- lg:absolute lg:opacity-0 lg:-top-[1000px]  -->
-        <div class="h-2 flex gap-4 max-w-[300px] lg:max-w-[80%] overflow-hidden mob-timeline" slot="timeline">
+        <div class="h-2 flex gap-4 max-w-[700px] lg:w-[80%] overflow-hidden mob-timeline" slot="timeline">
             {
                 data.links.map(link => 
-                    <a href={"#"+link}  class="mob-timeline-indicator h-2 min-w-8 lg:min-w-4 bg-gray-200 rounded-full"></a>
+                    <a href={"#"+link}  class="mob-timeline-indicator h-2 min-w-3 sm:min-w-5 lg:min-w-4 bg-gray-200 rounded-full"></a>
                 )
             }
         </div>

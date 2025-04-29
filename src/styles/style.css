@@ -12,10 +12,10 @@
         line-height: 2; /* Example style */
     }
 
-    .body-cont li{
-        font-size: 14px; /* Example style */
-        line-height: 2; /* Example style */
-    }
+    /* .body-cont li{
+        font-size: 14px;
+        line-height: 2;
+    } */
 
     .body-cont button{
         font-size: 14px; /* Example style */
