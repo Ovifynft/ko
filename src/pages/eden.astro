@@ -50,7 +50,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- hey there -->
-        <section id="hey-there" class="lg:px-20 px-10 min-h-screen flex items-center justify-center relative pt-[100px] max-w-[1700px] mx-auto">
+        <section id="hey-there" class="lg:px-20 px-10 py-20 min-h-screen flex items-center justify-center relative pt-[100px] max-w-[1700px] mx-auto">
             <h2 class="text-sm sm:text-lg md:text-2xl xl:text-5xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">
                 This document is going to be mostly about the <span class="text-black ">design</span>
                 <span class="text-black ">decisions</span> behind some of the <span class="text-black ">features</span> included in <span class="text-black ">Eden</span>
@@ -62,22 +62,22 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- table of contents -->
-        <section id="table" class="lg:px-20 px-10 min-h-screen relative pt-[100px] md:pt-[120px] lg:pt-[150px] max-w-[1700px] mx-auto overflow-hidden">
+        <section id="table" class="lg:px-20 px-10 py-20 min-h-screen relative pt-[100px] md:pt-[120px] lg:pt-[150px] max-w-[1700px] mx-auto overflow-hidden">
             <h2 class="font-safira lg:text-sm xl:text-2xl heading-up">Content</h2>
             {/* Updated grid-rows to match the 6 content items */}
             <div class="max-w-2xl grid grid-cols-[80%_20%] grid-rows-6 mt-20 mx-auto my-auto gap-4 lg:text-xl xl:text-2xl">
                 {/* Item 1 - Matches image */}
-                <p class="quick-right opacity-0">Quick Overview</p><p class="quick-up opacity-0 translate-y-[50%]">01</p>
+                <p class="quick-right">Quick Overview</p><p class="quick-up">01</p>
                 {/* Item 2 - Matches image */}
-                <p class="quick-right opacity-0">Research and Insights</p><p class="quick-up opacity-0 translate-y-[50%]">02</p>
+                <p class="quick-right">Research and Insights</p><p class="quick-up">02</p>
                 {/* Item 3 - Text updated to match image */}
-                <p class="quick-right opacity-0">Design and Product Decisions</p><p class="quick-up opacity-0 translate-y-[50%]">03</p>
+                <p class="quick-right">Design and Product Decisions</p><p class="quick-up">03</p>
                 {/* Item 4 - Text updated to match image */}
-                <p class="quick-right opacity-0">Key Features</p><p class="quick-up opacity-0 translate-y-[50%]">04</p>
+                <p class="quick-right">Key Features</p><p class="quick-up">04</p>
                 {/* Item 5 - Added from image */}
-                <p class="quick-right opacity-0">Market Strategy</p><p class="quick-up opacity-0 translate-y-[50%]">05</p>
+                <p class="quick-right">Market Strategy</p><p class="quick-up">05</p>
                 {/* Item 6 - Added from image */}
-                <p class="quick-right opacity-0">Conclusion</p><p class="quick-up opacity-0 translate-y-[50%]">06</p>
+                <p class="quick-right">Conclusion</p><p class="quick-up">06</p>
             </div>
             </section>
 
@@ -1032,6 +1032,9 @@ import { p } from 'motion/react-client';
 
     // all id sections
     const sections = Array.from(document.querySelectorAll('section[id], div[id], footer[id]') as NodeListOf<HTMLElement>)
+    sections.forEach(section => {
+        // section.classList.add('my-20') // set scroll margin top for each section
+    })
     const sectionIds = sections.map(section => section.getAttribute('id')).filter(id => id !== null).map(id => '#'+id) as string[]
     let currHashIndx = null // get current hash index
     let upIndx =  null
@@ -1119,6 +1122,8 @@ import { p } from 'motion/react-client';
             // start: 'top top',
             // endTrigger: '#otherID',
             // end: 'bottom 50%+=100px',
+            start: 'top 50%',
+            end: 'bottom 50%',
             onEnter : () => {
                 if(lenis.direction == 1 && !pauseManualScroll) // check if scrolling down and not using the arrows
                 location.hash = section
