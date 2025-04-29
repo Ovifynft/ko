@@ -20,9 +20,7 @@ import { Menu, X } from "lucide-react";
             <li><a href="#about-me">About</a></li>
             <!-- <li><a href="#contact">Get In Touch</a></li> -->
         </ul>
-        <Menu className="min-w-8 lg:hidden relative">
-
-        </Menu>
+        <Menu className="min-w-8 lg:hidden relative open-nav hover:cursor-pointer"/>
 
         <slot  name="timeline"/>
         <!-- <slot /> -->
@@ -34,23 +32,23 @@ import { Menu, X } from "lucide-react";
     </nav>
 </header>
  <!-- mob-nav -->
- <nav class="fixed top-0 left-0 bg-white font-safira z-10 px-19 py-20 flex flex-col justify-center items-center text-center gap-16">
-    <X className="min-w-8"/>
-    <ul class="space-y-4">
+ <nav class="mob-nav z-[20] fixed top-0 left-0 bottom-0 right-0 -translate-y-[100%] lg:hidden bg-white text-[#AFAFAF] font-safira px-19 py-10 flex flex-col justify-between items-center text-center">
+    <X className="min-w-8 close-nav hover:cursor-pointer text-black"/>
+    <ul class="flex flex-col min-h-[60%] justify-between">
         <li>Home</li>
         <li>Pencil Hoops</li>
         <li>Financial dashboard</li>
         <li>OpenPolicy</li>
         <li>Crack Headphones</li>
     </ul>
-    <div class="hidden sm:flex items-center gap-8">
+    <div class="flex items-center gap-8">
         <a href="https://www.linkedin.com/in/kamiloseni/" target="_blank" class="icon bg-no-repeat bg-center bg-contain bg-[url('/icons/dark-in.svg')]"></a>
         <a href="mailto:Kamilzoseni@gmail.com"  class="icon bg-no-repeat bg-center bg-contain bg-[url('/icons/dark-mail.svg')]"></a>
     </div>
 </nav>
 
 <script>
-		import gsap from "gsap";
+	import gsap from "gsap";
     window.addEventListener('mousemove', (event) => {
         // Check if the mouse is within the top 100px of the window
         // console.log(event.clientY)
@@ -72,4 +70,39 @@ import { Menu, X } from "lucide-react";
             });
         }
 	});
+
+    document.querySelector('.close-nav').addEventListener('click', () => {
+        // Hide the navigation bar
+        gsap.to('.mob-nav', {
+            translateY: "-100%",
+            duration: 1,
+            ease: (x) =>  x < 0.5 ? 16 * x * x * x * x * x : 1 - Math.pow(-2 * x + 2, 5) / 2,
+        });
+    });
+
+    document.querySelector('.open-nav').addEventListener('click', () => {
+        // Hide the navigation bar
+        console.log('here')
+        gsap.fromTo('.mob-nav', { y : "-100%"}, {
+            y: "0%",
+            duration: 1,
+            ease: (x) => 
+            {
+                const n1 = 7.5625;
+                const d1 = 2.75;
+
+                if (x < 1 / d1) {
+                    return n1 * x * x;
+                } else if (x < 2 / d1) {
+                    return n1 * (x -= 1.5 / d1) * x + 0.75;
+                } else if (x < 2.5 / d1) {
+                    return n1 * (x -= 2.25 / d1) * x + 0.9375;
+                } else {
+                    return n1 * (x -= 2.625 / d1) * x + 0.984375;
+                }
+            },
+        });
+    });
+
+
 </script>
