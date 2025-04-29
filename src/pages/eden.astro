@@ -50,8 +50,8 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- hey there -->
-        <section id="hey-there" class="lg:px-20 px-10 py-20 min-h-screen flex items-center justify-center relative pt-[100px] max-w-[1700px] mx-auto">
-            <h2 class="text-sm sm:text-lg md:text-2xl xl:text-5xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">
+        <section id="hey-there" class="lg:px-20 px-4 py-20 min-h-screen flex items-center justify-center relative pt-[100px] max-w-[1700px] mx-auto">
+            <h2 class="text-sm sm:text-lg md:text-2xl xl:text-3xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">
                 This document is going to be mostly about the <span class="text-black ">design</span>
                 <span class="text-black ">decisions</span> behind some of the <span class="text-black ">features</span> included in <span class="text-black ">Eden</span>
                 along with the <span class="text-black ">market strategy</span> guiding how it was built
@@ -62,7 +62,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- table of contents -->
-        <section id="table" class="lg:px-20 px-10 py-20 min-h-screen relative pt-[100px] md:pt-[120px] lg:pt-[150px] max-w-[1700px] mx-auto overflow-hidden">
+        <section id="table" class="lg:px-20 px-4 min-h-screen relative py-20 max-w-[1700px] mx-auto overflow-hidden">
             <h2 class="font-safira lg:text-sm xl:text-2xl heading-up">Content</h2>
             {/* Updated grid-rows to match the 6 content items */}
             <div class="max-w-2xl grid grid-cols-[80%_20%] grid-rows-6 mt-20 mx-auto my-auto gap-4 lg:text-xl xl:text-2xl">
@@ -83,10 +83,10 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 
         <!-- 01 -->
         <div id="quick-overview" class="hide-bottom-nav bg-black text-white">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] max-w-[1700px] mx-auto lg:px-20 px-10 relative gap-4 xl:gap-6">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 py-20 max-w-[1700px] mx-auto lg:px-20 px-4 relative gap-4 xl:gap-6">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-4">
-                    <p class="text-4xl font-cookie quick-down">01</p>
+                    <h1 class="text-4xl font-cookie quick-down">01</h1>
                     <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Quick Overview</h2>
                 </div>
     
@@ -99,8 +99,8 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- 01 - Quick overview -->
-        <section id="quick-overview-2" class="h-auto lg:min-h-screen overflow-hidden flex flex-col lg:grid pb-16 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 xl:grid-cols-[auto_auto_auto] lg:grid-cols-[auto_auto_10%] grid-rows-[auto_auto_auto] lg:gap-4 xl:gap-10 relative max-w-[1700px] mx-auto">
-            <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xl:text-2xl pb-2 xl:py-4">Product Overview</h3>
+        <section id="quick-overview-2" class="h-auto lg:min-h-screen overflow-hidden flex flex-col lg:grid pb-16 py-20 lg:px-20 px-4 xl:grid-cols-[auto_auto_auto] lg:grid-cols-[auto_auto_10%] grid-rows-[auto_auto_auto] lg:gap-4 xl:gap-10 relative max-w-[1700px] mx-auto">
+            <h3 class="text-lg mt-8 mb-1 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xl:text-2xl pb-2 xl:py-4">Product Overview</h3>
              {/* Updated parent <p> with flex for spacing, removed <br> tags */}
             <p class="md:w-full max-w-[900px] border-gray-200 col-span-2 text-base  flex flex-col gap-4">
                 {/* Paragraph 1 wrapped in span */}
@@ -116,9 +116,9 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
                     The idea came from my time working at the Royal Bank of Canada, where I saw firsthand how <strong>stressed and unsure many clients felt</strong> when dealing with their money. I wanted to create something that <strong>felt more human, less noisy, and built on real trust</strong>.
                 </span>
             </p>
-            <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xl:text-2xl pb-2 xl:py-4 lg:pt-8">My Role</h3>
+            <h3 class="text-lg mt-8 mb-1 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xl:text-2xl pb-2 xl:py-4 lg:pt-8">My Role</h3>
             {/* My Role section remains unchanged from previous correct version */}
-            <div class="md:w-full max-w-[900px] lg:border-y-[1px] py-4 lg:py-8 border-gray-200 col-span-2 flex flex-col gap-4 text-base ">
+            <div class="md:w-full max-w-[900px] lg:border-y-[1px] lg:py-8 border-gray-200 col-span-2 flex flex-col gap-4 text-base ">
                 <p>
                     I led the design work for Eden and was involved in everything, from early ideas to the final screens. My work included:
                 </p>
@@ -147,10 +147,10 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 
 		<!-- 02 -->
         <section id="research-and-insights" class="hide-bottom-nav bg-black text-white">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10  relative max-w-[1700px] mx-auto">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 py-20 lg:px-20 px-4  relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-10">
-                    <p class="text-4xl font-cookie quick-down">02</p>
+                    <h1 class="text-4xl font-cookie quick-down">02</h1>
                     <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Research and Insights</h2>
                     <!-- <p>Our design process was anchored in extensive user research, employing both primary and secondary research methodologies and incorporating qualitative and quantitative data to capture a wide range of consumer insights.</p> -->
                 </div>
@@ -163,7 +163,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </div>
 
         <!-- the problem -->
-        <section id="problem" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="problem" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">The Problem</h2>
                 <p class="flex flex-col gap-4 text-base ">
@@ -210,7 +210,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
          <!-- user research -->
-         <section id="user-research" class="h-auto lg:min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-16 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+         <section id="user-research" class="h-auto lg:min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-16 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
 
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">User Research</h2>
@@ -294,7 +294,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- market research -->
-        <section id="market-research" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4  pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="market-research" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4  pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             {/* Main Title */}
             <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Market Research</h2>
 
@@ -347,7 +347,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- competitive analysis -->
-        <section id="competitive" class="h-auto min-h-screen flex flex-col gap-6 lg:gap-8 pb-16 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="competitive" class="h-auto min-h-screen flex flex-col gap-6 lg:gap-8 pb-16 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="bg-gray-100 px-4 sm:px-6 lg:px-10 py-6 pt-8 text-sm lg:text-base overflow-x-auto">
                 <p class="py-6">Competitive Analysis</p>
                 {/* Added overflow-x-auto for smaller screens */}
@@ -406,10 +406,10 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 
         <!-- 03 -->
         <div id="design-process" class="hide-bottom-nav bg-black text-white">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 py-20 lg:px-20 px-4 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-10">
-                    <p class="text-4xl font-cookie quick-down">03</p>
+                    <h1 class="text-4xl font-cookie quick-down">03</h1>
                     <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Design and Product Decisions</h2>
                 </div>
     
@@ -419,7 +419,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </div>
 
         <!-- the brand -->
-        <section id="the-brand" class="min-h-screen flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="the-brand" class="min-h-screen flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">The Brand</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -456,7 +456,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- navigation -->
-        <section id="navigation" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="navigation" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Navigation and Structure</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -495,7 +495,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- ui systems -->
-        <section id="ui-systems" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="ui-systems" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">UI System</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -543,7 +543,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- no scrolling -->
-        <section id="no-scrolling" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="no-scrolling" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">No Scrolling</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -590,7 +590,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- bento -->
-        <section id="bento" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="bento" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Bento Grid for Widgets</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -637,7 +637,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- dynamic island -->
-        <section id="dynamic-island" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="dynamic-island" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">AI Dynamic Island</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -684,7 +684,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- soft color -->
-        <section id="soft-color" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="soft-color" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Soft Color Palette and Typography</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -725,7 +725,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- calender -->
-        <section id="calender" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="calender" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Calendar-Linked Financial Planning</h2>
                 <div class="flex flex-col gap-4 text-base ">
@@ -763,7 +763,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- image -->
-        <section id="image" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="image" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:flex items-center col-span-2 overflow-hidden justify-end p-20 w-full rounded-lg bg-center bg-no-repeat bg-contain bg-[url('/images/eden/6-calender-schedule.jpg')] hidden relative box-parent">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
@@ -773,17 +773,17 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 
         <!-- 4 - key features -->
         <div id="key-features" class="hide-bottom-nav bg-black text-white">
-            <section class="h-screen overflow-hidden flex items-center pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <section class="h-screen overflow-hidden flex items-center pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
-                    <p class="text-4xl font-cookie quick-down">04</p>
+                    <h1 class="text-4xl font-cookie quick-down">04</h1>
                     <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Key Features</h2>
                 </div>
             </section>
         </div>
 
         <!-- features list -->
-        <section id="features-list" class="h-screen overflow-hidden flex flex-col pb-20 gap-4 lg:gap-8 xl:gap-16  pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="features-list" class="h-screen overflow-hidden flex flex-col pb-20 gap-4 lg:gap-8 xl:gap-16  py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 text-center w-full">Key Features</h2>
             
 
@@ -814,17 +814,17 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 
         <!-- 4 - market strategy -->
         <div id="market-strategy" class="hide-bottom-nav bg-black text-white">
-            <section class="h-screen overflow-hidden flex items-center pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <section class="h-screen overflow-hidden flex items-center pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
-                    <p class="text-4xl font-cookie quick-down">04</p>
+                    <h1 class="text-4xl font-cookie quick-down">04</h1>
                     <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Market Strategy</h2>
                 </div>
             </section>
         </div>
 
         <!-- market focus -->
-        <section id="market-focus" class="min-h-screen overflow-hidden flex items-center gap-8 lg:gap-4 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="market-focus" class="min-h-screen overflow-hidden flex items-center gap-8 lg:gap-4 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="grid grid-cols-2 w-full">
                 <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
                     <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Initial Market Focus</h2>
@@ -864,7 +864,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- product roadmap -->
-        <section id="product-roadmap" class="min-h-screen overflow-hidden flex flex-col justify-center gap-8 lg:gap-4 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="product-roadmap" class="min-h-screen overflow-hidden flex flex-col justify-center gap-8 lg:gap-4 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Product Roadmap</h2>
             <div class="grid grid-cols-1 lg:grid-cols-3 grid-rows-[auto] w-full gap-8">
                 <div class="flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
@@ -903,17 +903,17 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 
         <!-- conclusion -->
         <div id="conclusion" class="hide-bottom-nav bg-black text-white">
-            <section class="h-screen overflow-hidden flex items-center pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <section class="h-screen overflow-hidden flex items-center pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
-                    <p class="text-4xl font-cookie quick-down">05</p>
+                    <h1 class="text-4xl font-cookie quick-down">05</h1>
                     <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Conclusion</h2>
                 </div>
             </section>
         </div>
 
         <!-- conclusion 2 -->
-        <section id="conclusion-2" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="conclusion-2" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
                 <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">What Came Out of It</h2>
                 <p class="flex flex-col gap-4 text-base ">
@@ -978,7 +978,7 @@ import Alpine from 'alpinejs';
     import gsap from "gsap";
     import Lenis from "lenis";
     import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
-import { p } from 'motion/react-client';
+    import { p } from 'motion/react-client';
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
     gsap.config({
@@ -989,6 +989,8 @@ import { p } from 'motion/react-client';
     const lenis = new Lenis({
         autoRaf: true,
     });
+    
+    lenis.on('scroll', ScrollTrigger.update);
 
     let previousScroll = 0;
     // Listen for the scroll event and log the event data
