@@ -991,8 +991,6 @@ import Alpine from 'alpinejs';
         syncTouch: true,
     });
 
-    lenis.on('scroll', ScrollTrigger.update);
-
     let previousScroll = 0;
     // Listen for the scroll event and log the event data
     // lenis.on('scroll', (e) => {
@@ -1176,7 +1174,7 @@ import Alpine from 'alpinejs';
         // else scrollDown()
     }, { passive: false });
 
-    window.addEventListener('scroll', (e) => {
+    window.addEventListener('touchstart', (e) => {
         pauseManualScroll = false
     }, { passive: false });
 
