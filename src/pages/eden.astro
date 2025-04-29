@@ -999,6 +999,7 @@ import Alpine from 'alpinejs';
     import gsap from "gsap";
     import Lenis from "lenis";
     import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
+import { p } from 'motion/react-client';
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
     gsap.config({
@@ -1020,6 +1021,7 @@ import Alpine from 'alpinejs';
     // gsap.ticker.lagSmoothing(0);
 
     document.addEventListener("click", function (e) {
+        console.log('hit here 1')
         const currentScroll = window.scrollY;
 
         let Etarget = e.target as HTMLElement
@@ -1034,10 +1036,15 @@ import Alpine from 'alpinejs';
             let targetPos = target.offsetTop;
  
             if(targetPos < currentScroll) //scroll up
-                lenis.scrollTo(target, {duration: 0});
+                lenis.scrollTo(target, {duration: 0, onStart : () => {
+                    pauseManualScroll = true
+                }});
             else // scroll down
                 lenis.scrollTo(target, {duration: 2.5, 
-                easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2
+                easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2,
+                onStart : () => {
+                    pauseManualScroll = true
+                },
             });
 
             history.pushState(null, "", targetId);
@@ -1050,11 +1057,7 @@ import Alpine from 'alpinejs';
     let currHashIndx = null // get current hash index
     let upIndx =  null
     let downIndx = null
-    
-
-    // arroes for navigation
-    const downArrow = document.querySelector('a.down-arrow') as HTMLAnchorElement;
-    const upArrow = document.querySelector('a.up-arrow') as HTMLAnchorElement;
+    let pauseManualScroll = false // pause manual scroll when using the arrows
 
     //header indictors for navigation
     let scrollTl = gsap.timeline()
@@ -1063,24 +1066,29 @@ import Alpine from 'alpinejs';
 
     // scroll functions
     function scrollUp(){
+        console.log('hit here 2')
         let scrollTo = sectionIds[upIndx]
         lenis.scrollTo(scrollTo, {
             duration: 0,
             onStart : () => {
+                pauseManualScroll = true // pause manual scroll when using the arrows
                 location.hash = scrollTo;
-            }
+                // console.log('up clicked')
+            },
         });
         // window.dispatchEvent(new CustomEvent('hash-update', { detail: downArrow.getAttribute('href').slice(1) }));
     }
 
     function scrollDown(){
-        console.log('down clicked')
+        console.log('hit here 3')
         let scrollTo = sectionIds[downIndx]
         lenis.scrollTo(scrollTo, {duration: 2.5, 
             easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2,
             onStart : () => {
+                console.log('hello world')
                 location.hash = scrollTo;
-            }
+                pauseManualScroll = true 
+            },
         });
         // window.dispatchEvent(new CustomEvent('hash-update', { detail: upArrow.getAttribute('href').slice(1) }));
     }
@@ -1121,7 +1129,7 @@ import Alpine from 'alpinejs';
                 duration: 1
             })
 
-            console.log(mobTimeline.scrollLeft)
+            // console.log(mobTimeline.scrollLeft)
         })
     })
 
@@ -1133,7 +1141,13 @@ import Alpine from 'alpinejs';
             // endTrigger: '#otherID',
             // end: 'bottom 50%+=100px',
             onEnter : () => {
-				location.hash = section;
+                if(lenis.direction == 1 && !pauseManualScroll) // check if scrolling down and not using the arrows
+                location.hash = section
+			},
+            onEnterBack : () => {
+                console.log('enter back is scrolling =>', lenis.isScrolling, lenis.direction)
+                if(lenis.direction == -1 && !pauseManualScroll) // check if scrolling up and not using the arrows
+                location.hash = section
 			},
         });
     })
@@ -1147,9 +1161,8 @@ import Alpine from 'alpinejs';
             upIndx =  currHashIndx != 0? currHashIndx - 1 : 0
             downIndx = currHashIndx != sectionIds.length - 1 ? currHashIndx + 1 : sectionIds.length - 1
         }
-        console.log(location.hash)
+        // console.log(location.hash)
     }, 100); 
-
 
     ///////////////////////////////////////////////// indicator ends here
 
@@ -1157,6 +1170,7 @@ import Alpine from 'alpinejs';
     window.addEventListener('wheel', (e) => {
         e.preventDefault(); // stop actual scrolling
         const direction = e.deltaY > 0 ? 'down' : 'up';
+        pauseManualScroll = false
         // lenis.stop()
 
         // // clearTimeout
@@ -1366,7 +1380,7 @@ import Alpine from 'alpinejs';
         // start: 'top top',
         // endTrigger: '#otherID',
         end: 'bottom 50%+=100px',
-        onToggle: (self) => console.log('toggled, isActive:', self.isActive),
+        // onToggle: (self) => console.log('toggled, isActive:', self.isActive),
         onUpdate: (self) => {
 
             if(self.direction == 1){
