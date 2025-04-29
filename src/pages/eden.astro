@@ -988,8 +988,9 @@ import Alpine from 'alpinejs';
     // initialise lenis
     const lenis = new Lenis({
         autoRaf: true,
+        syncTouch: true,
     });
-    
+
     lenis.on('scroll', ScrollTrigger.update);
 
     let previousScroll = 0;
