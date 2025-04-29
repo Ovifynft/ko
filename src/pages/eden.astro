@@ -1068,8 +1068,6 @@ import Alpine from 'alpinejs';
             duration: 0,
             onStart : () => {
                 location.hash = scrollTo;
-                currHashIndx = sectionIds.indexOf(location.hash)
-                upIndx = currHashIndx != 0 ? currHashIndx - 1 : 0
             }
         });
         // window.dispatchEvent(new CustomEvent('hash-update', { detail: downArrow.getAttribute('href').slice(1) }));
@@ -1082,8 +1080,6 @@ import Alpine from 'alpinejs';
             easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2,
             onStart : () => {
                 location.hash = scrollTo;
-                currHashIndx = sectionIds.indexOf(location.hash)
-                downIndx = currHashIndx != sectionIds.length - 1 ? currHashIndx + 1 : sectionIds.length - 1
             }
         });
         // window.dispatchEvent(new CustomEvent('hash-update', { detail: upArrow.getAttribute('href').slice(1) }));
@@ -1129,6 +1125,19 @@ import Alpine from 'alpinejs';
         })
     })
 
+    // update location hash with gsap scrolltrigger on enter the setinyerval below will hanfdle the rest
+    sectionIds.forEach(section => {
+        ScrollTrigger.create({
+            trigger: section,
+            // start: 'top top',
+            // endTrigger: '#otherID',
+            // end: 'bottom 50%+=100px',
+            onEnter : () => {
+				location.hash = section;
+			},
+        });
+    })
+
     let lastHash = null;
     setInterval(() => {
         if (location.hash !== lastHash) {
@@ -1140,6 +1149,7 @@ import Alpine from 'alpinejs';
         }
         console.log(location.hash)
     }, 100); 
+
 
     ///////////////////////////////////////////////// indicator ends here
 
