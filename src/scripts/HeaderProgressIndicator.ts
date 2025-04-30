@@ -51,7 +51,4 @@ sections.forEach(section => {
             // markers : true,
         },
     });
-
-
-
 })

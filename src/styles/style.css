@@ -1,5 +1,11 @@
-/* For screens with a minimum height of 600px */
+@media (min-height: 50px) {
+    .tags{
+        display : none;
+    }
+}
 
+
+/* For screens with a minimum height of 600px */
 /* tablets */
 @media (min-height: 500px) {
     .heading-1{
@@ -55,31 +61,6 @@
         font-size: 38px;
     }
 
-    .tags{
-        display : flex;
-        /* flex-direction: column; */
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .tags li{
-        position: relative;
-        padding-left : 15px;
-    }
-
-    .tags li::before{
-        position: absolute;
-        display : inline-flex;
-        justify-content: center;
-        align-items: center;
-        content: '.';
-        font-size: 40px;
-        line-height: 0px;
-        left : 0px;
-        top : 10%;
-        background-color: red;
-    }
-
     .footer-text{
         font-size: 1.5em;
     }
@@ -118,6 +99,31 @@
     .icon{
         width: 20px;
         height: 20px;
+    }
+
+    .tags{
+        display : flex;
+        /* flex-direction: column; */
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .tags li{
+        position: relative;
+        padding-left : 15px;
+    }
+
+    .tags li::before{
+        position: absolute;
+        display : inline-flex;
+        justify-content: center;
+        align-items: center;
+        content: '.';
+        font-size: 40px;
+        line-height: 0px;
+        left : 0px;
+        top : 10%;
+        background-color: red;
     }
 }
 
