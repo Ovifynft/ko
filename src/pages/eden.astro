@@ -29,7 +29,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         
     </Header>
     <!-- bottom-nav -->
-    <div class="fixed bottom-0 right-0 z-10 flex bg-white p-4 xl:px-10 lg:pl-10 py-6 xl:py-10 bottom-nav">
+    <div class="fixed bottom-0 right-0 z-10 flex bg-white/80 p-4 xl:px-10 lg:pl-10 py-6 xl:py-10 bottom-nav">
         <ul class="flex gap-4 text-[#afafaf] font-semibold sm:text-[10px] text-[6px] lg:text-sm">
             <li @click="active = 'quick-overview'" :class="{'text-black' : ['quick-overview', 'quick-overview-2'].includes(active)}"><a href="#quick-overview">Quick Overview</a></li>
             <li @click="active = 'research-and-insights'" :class="{'text-black' : ['research-and-insights', 'problem', 'design-insights', 'competitive', 'user-research', 'market-research'].includes(active)}"><a href="#research-and-insights"> Research and Insights</a></li>

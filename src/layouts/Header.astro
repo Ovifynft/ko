@@ -51,6 +51,7 @@ const {active} = Astro.props;
 <script>
 	import {gsap, lenis} from "../scripts/setup.ts"
     let shouldOpenMainNav = false;
+    let wasOpenedByMouseMove = false
 
     function openMainNav(){
         gsap.to('.top-nav', {
@@ -71,11 +72,26 @@ const {active} = Astro.props;
     window.addEventListener('click', (event) => {
         if (event.clientY <=100) {
            openMainNav()
+           shouldOpenMainNav = false
         }else{
             if(shouldOpenMainNav){
                 shouldOpenMainNav = false
                 openMainNav()
             }else{
+                shouldOpenMainNav = true
+                closeMainNav()
+            }
+        }
+	});
+
+    window.addEventListener('mousemove', (event) => {
+        if (event.clientY <=100) {
+           openMainNav()
+           shouldOpenMainNav = false
+           wasOpenedByMouseMove = true
+        }else{
+            if(wasOpenedByMouseMove){
+                wasOpenedByMouseMove = false
                 shouldOpenMainNav = true
                 closeMainNav()
             }
