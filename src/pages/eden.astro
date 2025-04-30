@@ -35,7 +35,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
             <li @click="active = 'research-and-insights'" :class="{'text-black' : ['research-and-insights', 'problem', 'design-insights', 'competitive', 'user-research', 'market-research'].includes(active)}"><a href="#research-and-insights"> Research and Insights</a></li>
             <li @click="active = 'design-process'" :class="{'text-black' : ['design-process', 'the-brand', 'navigation', 'ui-systems', 'no-scrolling', 'bento', 'dynamic-island', 'soft-color', 'calender', 'image'].includes(active)}"><a href="#design-process"> Design and Product Decisions</a></li>
             <li @click="active = 'key-features'" :class="{'text-black' : ['key-features', 'features-list'].includes(active)}"><a href="#key-features">Key Features</a></li>
-            <li @click="active = 'market-strategy'" :class="{'text-black' : ['market-strategy', 'market-focus', 'product-roadmap'].includes(active)}"><a href="#market-strategy">Markey Strategy</a></li>
+            <li @click="active = 'market-strategy'" :class="{'text-black' : ['market-strategy', 'market-focus', 'product-roadmap'].includes(active)}"><a href="#market-strategy">Market Strategy</a></li>
             <li @click="active = 'conclusion'" :class="{'text-black' : ['conclusion', 'conclusion-2'].includes(active)}"><a href="#conclusion">Conclusion</a></li>
 
         </ul>
@@ -1455,7 +1455,7 @@ import Alpine from 'alpinejs';
     // })
 
     // // dissappear footer on certain pages
-    ['#eden', '#quick-overview', '#research-and-insights', '#design-process', '#collaboration', '#next-steps', '#closing', '#key-features', '#market-strategy', '#conclusion'].forEach(section => {
+    ['#eden', '#quick-overview', '#research-and-insights', '#design-process', '#collaboration', '#next-steps', '#closing', '#key-features', '#market-strategy', '#conclusion', '#contact'].forEach(section => {
         ScrollTrigger.create({
             trigger: section,
             // start: 'top top',
