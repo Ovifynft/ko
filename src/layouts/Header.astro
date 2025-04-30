@@ -76,7 +76,6 @@ const {active} = Astro.props;
     }
 
     window.addEventListener('click', (event) => {
-        clearTimeout(hideTimeoutID)
         if (event.clientY <=100) {
            openMainNav()
            shouldOpenMainNav = false
@@ -93,13 +92,11 @@ const {active} = Astro.props;
 
     window.addEventListener('mousemove', (event) => {
         if (event.clientY <=100) {
-            clearTimeout(hideTimeoutID)
            openMainNav()
            shouldOpenMainNav = false
            wasOpenedByMouseMove = true
         }else{
             if(wasOpenedByMouseMove){
-                clearTimeout(hideTimeoutID)
                 wasOpenedByMouseMove = false
                 shouldOpenMainNav = true
                 closeMainNav()
@@ -108,13 +105,22 @@ const {active} = Astro.props;
 	});
 
 
-    let hideTimeoutID = null
+    let offset = 50;
     lenis.on('scroll', (e) => {
-        clearTimeout(hideTimeoutID)
-        hideTimeoutID = setTimeout(() => {
-            closeMainNav()
-            shouldOpenMainNav = true
-        }, 2000);
+        if(e.direction == 1){
+            if(offset < 100) offset+=1;
+            if (offset == 100){
+                shouldOpenMainNav = true
+                closeMainNav()
+            }
+            console.log(offset)
+        }else{
+            if(offset > 0) offset-=1;
+            if (offset == 0){
+                shouldOpenMainNav = false
+                openMainNav()
+            }
+        }
     });
 
     document.querySelector('.close-nav').addEventListener('click', () => {
