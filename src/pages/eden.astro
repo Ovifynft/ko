@@ -349,7 +349,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- competitive analysis -->
-        <section id="competitive" class="h-auto min-h-screen flex flex-col gap-6 lg:gap-8 pb-16 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="competitive" class="h-auto min-h-screen flex flex-col gap-6 lg:gap-8 pb-16 pt-20 pb-28 lg:px-20 relative max-w-[1700px] mx-auto">
             <div class="bg-gray-100 px-4 sm:px-6 lg:px-10 py-6 pt-8 text-sm lg:text-base overflow-x-auto">
                 <p class="py-6">Competitive Analysis</p>
                 {/* Added overflow-x-auto for smaller screens */}
@@ -357,49 +357,49 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
                     <thead>
                         <tr class="text-left">
                             {/* Updated table headers */}
-                            <th class="bg-gray-100 py-4 px-4 max-w-[40px] font-semibold">Platform</th> {/* Made first column sticky */}
-                            <th class="bg-gray-100 py-4 px-4 max-w-[40px] font-semibold">Core Focus</th>
-                            <th class="bg-gray-100 py-4 px-4 max-w-[40px] font-semibold">Strengths</th>
-                            <th class="bg-gray-100 py-4 px-4 max-w-[40px] font-semibold">Gaps/Challenges</th>
+                            <th class="bg-gray-100 py-4 px-4 max-w-[40px] min-w-[200px] font-semibold">Platform</th> {/* Made first column sticky */}
+                            <th class="bg-gray-100 py-4 px-4 max-w-[40px] min-w-[200px] font-semibold">Core Focus</th>
+                            <th class="bg-gray-100 py-4 px-4 max-w-[40px] min-w-[200px] font-semibold">Strengths</th>
+                            <th class="bg-gray-100 py-4 px-4 max-w-[40px] min-w-[200px] font-semibold">Gaps/Challenges</th>
                         </tr>
                     </thead>
                     <tbody>
                         {/* Updated table rows with data from the image */}
                         <tr class="bg-white"> {/* Use white/gray-100 for alternating */}
-                            <td class="py-4 px-4 max-w-[40px] bg-white z-10">Fey</td> {/* Match sticky bg */}
-                            <td class="py-4 px-4 max-w-[40px]">AI-driven investment research</td>
-                            <td class="py-4 px-4 max-w-[40px]">Real-time stock data, AI summaries, sleek design</td>
-                            <td class="py-4 px-4 max-w-[40px]">No budgeting tools, assumes financial literacy, desktop-first</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px] bg-white z-10">Fey</td> {/* Match sticky bg */}
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">AI-driven investment research</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">Real-time stock data, AI summaries, sleek design</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">No budgeting tools, assumes financial literacy, desktop-first</td>
                         </tr>
                         <tr class="bg-gray-100">
-                            <td class="py-4 px-4 max-w-[40px] bg-gray-100 z-10">Monarch Money</td> {/* Match sticky bg */}
-                            <td class="py-4 px-4 max-w-[40px]">Budgeting, planning, advisor collaboration</td>
-                            <td class="py-4 px-4 max-w-[40px]">All-in-one dashboard, customizable views, professional use supported</td>
-                            <td class="py-4 px-4 max-w-[40px]">High subscription cost (~$99/year), may feel overwhelming to casual users</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px] bg-gray-100 z-10">Monarch Money</td> {/* Match sticky bg */}
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">Budgeting, planning, advisor collaboration</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">All-in-one dashboard, customizable views, professional use supported</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">High subscription cost (~$99/year), may feel overwhelming to casual users</td>
                         </tr>
                         <tr class="bg-white">
-                            <td class="py-4 px-4 max-w-[40px] bg-white z-10">Perplexity Finance</td> {/* Match sticky bg */}
-                            <td class="py-4 px-4 max-w-[40px]">Conversational finance research</td>
-                            <td class="py-4 px-4 max-w-[40px]">Natural language Q&A, live stock data, helpful explanations</td>
-                            <td class="py-4 px-4 max-w-[40px]">No portfolio management, desktop-only, early-stage product</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px] bg-white z-10">Perplexity Finance</td> {/* Match sticky bg */}
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">Conversational finance research</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">Natural language Q&A, live stock data, helpful explanations</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">No portfolio management, desktop-only, early-stage product</td>
                         </tr>
                         <tr class="bg-gray-100">
-                            <td class="py-4 px-4 max-w-[40px] bg-gray-100 z-10">Mint (Closed)</td> {/* Match sticky bg */}
-                            <td class="py-4 px-4 max-w-[40px]">Budget tracking & aggregation</td>
-                            <td class="py-4 px-4 max-w-[40px]">Longtime free tool, simple UI, popular among general users</td>
-                            <td class="py-4 px-4 max-w-[40px]">Shut down in March 2024 due to low engagement, lack of innovation</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px] bg-gray-100 z-10">Mint (Closed)</td> {/* Match sticky bg */}
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">Budget tracking & aggregation</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">Longtime free tool, simple UI, popular among general users</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">Shut down in March 2024 due to low engagement, lack of innovation</td>
                         </tr>
                         <tr class="bg-white">
-                            <td class="py-4 px-4 max-w-[40px] bg-white z-10">Cleo</td> {/* Match sticky bg */}
-                            <td class="py-4 px-4 max-w-[40px]">Budgeting via AI chatbot</td>
-                            <td class="py-4 px-4 max-w-[40px]">Fun, conversational UX for Gen Z, behavioral nudges</td>
-                            <td class="py-4 px-4 max-w-[40px]">Limited planning features, lacks depth, not suited for older users</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px] bg-white z-10">Cleo</td> {/* Match sticky bg */}
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">Budgeting via AI chatbot</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">Fun, conversational UX for Gen Z, behavioral nudges</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">Limited planning features, lacks depth, not suited for older users</td>
                         </tr>
                         <tr class="bg-gray-100">
-                            <td class="py-4 px-4 max-w-[40px] bg-gray-100 z-10">Empower</td> {/* Match sticky bg */}
-                            <td class="py-4 px-4 max-w-[40px]">Retirement/investment planning</td>
-                            <td class="py-4 px-4 max-w-[40px]">Net worth tracking, retirement simulators, wealth dashboards</td>
-                            <td class="py-4 px-4 max-w-[40px]">Budgeting is weak, appeals mostly to higher-net-worth users</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px] bg-gray-100 z-10">Empower</td> {/* Match sticky bg */}
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">Retirement/investment planning</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">Net worth tracking, retirement simulators, wealth dashboards</td>
+                            <td class="py-4 px-4 max-w-[40px] min-w-[200px]">Budgeting is weak, appeals mostly to higher-net-worth users</td>
                         </tr>
                     </tbody>
                 </table>
@@ -421,9 +421,15 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </div>
 
         <!-- the brand -->
-        <section id="the-brand" class="min-h-screen flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 py-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="the-brand" class="min-h-screen overflow-x-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 py-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">The Brand</h2>
+                <!-- image -->
+                <div class="lg:hidden items-center overflow-hidden justify-end p-20 w-full bg-white rounded-lg bg-center bg-no-repeat bg-contain flex relative box-parent bg-[url('/images/eden/the-brand.png')]">
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
                 <div class="flex flex-col gap-4 text-base ">
                     <p class="quick-up">
                         <strong>Empowering Users</strong>
@@ -458,9 +464,14 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- navigation -->
-        <section id="navigation" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="navigation" class="min-h-screen overflow-x-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">Navigation and Structure</h2>
+                <div class="lg:hidden items-center overflow-hidden justify-end p-20 w-full rounded-lg bg-top bg-no-repeat bg-contain aspect-[2/2] flex relative box-parent  bg-[url('/images/eden/navigation.png')]">
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
                 <div class="flex flex-col gap-4 text-base ">
                     <p class="quick-up">
                         The app is built around five main areas:
@@ -497,10 +508,15 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- ui systems -->
-        <section id="ui-systems" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="ui-systems" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pt-20 pb-28 lg:px-20 md:px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
-                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">UI System</h2>
-                <div class="flex flex-col gap-4 text-base ">
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up px-4 md:px-0">UI System</h2>
+                <div class="lg:hidden items-center overflow-hidden justify-end p-20 aspect-[2/2] w-full rounded-lg bg-center bg-no-repeat bg-contain bg-[url('/images/eden/ui-designs.png')] flex relative box-parent">
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
+                <div class="flex flex-col gap-4 text-base px-4 md:px-0">
                     <p class="quick-up">
                         I built a modular design system using a <strong>4-point grid</strong>, focusing on <strong>clarity and flexibility</strong>. Every component, from buttons to charts to cards—was created to scale well across desktop and tablet without <strong>overwhelming the user</strong>.
                     </p>
@@ -545,10 +561,15 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- no scrolling -->
-        <section id="no-scrolling" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="no-scrolling" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pt-20 pb-28 lg:px-20 px-0 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
-                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">No Scrolling</h2>
-                <div class="flex flex-col gap-4 text-base ">
+                <div class="lg:hidden items-center overflow-hidden justify-end p-20 w-full bg-[url('/images/eden/no-scrolling.jpg')] rounded-lg bg-left-top bg-no-repeat bg-cover flex aspect-[7/4] relative box-parent">
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up px-4 md:px-0">No Scrolling</h2>
+                <div class="flex flex-col gap-4 text-base px-4 md:px-0">
                     <p class="quick-up">
                         <strong>The Glanceable Principle</strong>
                     </p>
@@ -592,10 +613,15 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- bento -->
-        <section id="bento" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="bento" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pt-20 pb-28 lg:px-20 px-0 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
-                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">Bento Grid for Widgets</h2>
-                <div class="flex flex-col gap-4 text-base ">
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up px-4 lg:px-0">Bento Grid for Widgets</h2>
+                <div class="lg:hidden items-center overflow-hidden justify-end p-20 w-full rounded-lg bg-center aspect-[7/4] bg-no-repeat bg-contain bg-[url('/images/eden/bento.jpg')] flex relative box-parent">
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
+                <div class="flex flex-col gap-4 text-base px-4 lg:px-0">
                     <p class="quick-up">
                         <strong>Design Decision:</strong> We chose a bento grid layout for displaying content modules.
                     </p>
@@ -642,6 +668,11 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         <section id="dynamic-island" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">AI Dynamic Island</h2>
+                <div class="lg:hidden items-center overflow-hidden justify-end p-20 w-full rounded-lg bg-center bg-no-repeat bg-cover bg-[url('/images/eden/ai-island.jpg')] flex relative box-parent aspect-[4/1]">
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
                 <div class="flex flex-col gap-4 text-base ">
                     <p class="quick-up">
                         <strong>Design Decision:</strong> Inspired by Apple’s dynamic island, An AI-powered floating insight center.
@@ -689,6 +720,11 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         <section id="soft-color" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
                 <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">Soft Color Palette and Typography</h2>
+                <div class="lg:hidden items-center overflow-hidden justify-end p-20 w-full rounded-lg bg-center bg-no-repeat bg-contain bg-[url('/images/eden/4-soft-color.jpg')] flex aspect-[1/1] relative box-parent">
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
                 <div class="flex flex-col gap-4 text-base ">
                     <p class="quick-up">
                         <strong>Design Decision:</strong> Use of muted blues, warm neutrals, and soft gradients.
@@ -727,10 +763,15 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- calender -->
-        <section id="calender" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="calender" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pt-20 pb-28 lg:px-20 px-0 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
-                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">Calendar-Linked Financial Planning</h2>
-                <div class="flex flex-col gap-4 text-base ">
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up px-4 lg:px-0">Calendar-Linked Financial Planning</h2>
+                <div class="lg:hidden items-center overflow-hidden justify-end p-20 w-full rounded-lg bg-center aspect-[7/4] bg-no-repeat bg-contain bg-[url('/images/eden/5-calender-linked.jpg')] flex relative box-parent">
+                    {
+                        [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                    }
+                </div>
+                <div class="flex flex-col gap-4 text-base px-4 lg:px-0">
                     <p class="quick-up">
                         <strong>Design Decision:</strong> Financial goals and budgets are visually integrated with a monthly view calendar.
                     </p>
@@ -765,8 +806,14 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- image -->
-        <section id="image" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
-            <div class="lg:flex items-center col-span-2 overflow-hidden justify-end p-20 w-full rounded-lg bg-center bg-no-repeat bg-contain bg-[url('/images/eden/6-calender-schedule.jpg')] hidden relative box-parent">
+        <section id="image" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] lg:px-20 px-0 relative max-w-[1700px] mx-auto box-parent">
+            <div class="lg:flex items-center col-span-2 overflow-hidden justify-end p-20 w-full rounded-lg bg-center bg-no-repeat bg-contain bg-[url('/images/eden/6-calender-schedule.jpg')] hidden relative">
+                {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                }
+            </div>
+
+            <div class="lg:hidden items-center col-span-2 overflow-hidden justify-end p-20 w-full rounded-lg bg-center bg-no-repeat bg-contain bg-[url('/images/eden/6-calender-schedule.jpg')] flex aspect-[1/1] relative box-parent py-20">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
@@ -789,7 +836,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
             <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 text-center w-full">Key Features</h2>
             
 
-            <ul class="grid grid-cols-2 grid-rows-2 gap-8 justify-center items-start">
+            <ul class="grid grid-rows-[auto_auto_auto_auto] sm:grid-cols-2 sm:grid-rows-2 gap-8 justify-center items-start">
                 <li class="flex flex-col items-start">
                     <span class="bg-black text-center flex justify-center items-center rounded-full w-[44px] xl:w-[44px] overflow-clip text-bold aspect-square text-white font-bold">1</span>
                     <strong class="text-base self-start mt-6 mb-2 font-bold">AI-Powered Financial Assistant with Voice Support</strong>
