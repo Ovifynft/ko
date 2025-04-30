@@ -26,6 +26,12 @@ const {active} = Astro.props;
         <slot  name="timeline"/>
         <!-- <slot /> -->
 
+        <!-- brand -->
+        <div class="flex items-center  gap-4 md:hidden">
+            <!-- <div class="xl:w-[78px] w-[40px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat"></div> -->
+            <p class="font-bilal text-[16px]">KO✨</p>
+        </div>
+        <!-- socials -->
         <div class="hidden sm:flex items-center gap-8">
             <a href="https://www.linkedin.com/in/kamiloseni/" target="_blank" class="icon bg-no-repeat bg-center bg-contain bg-[url('/icons/dark-in.svg')]"></a>
             <a href="mailto:Kamilzoseni@gmail.com"  class="icon bg-no-repeat bg-center bg-contain bg-[url('/icons/dark-mail.svg')]"></a>
@@ -70,6 +76,7 @@ const {active} = Astro.props;
     }
 
     window.addEventListener('click', (event) => {
+        clearTimeout(hideTimeoutID)
         if (event.clientY <=100) {
            openMainNav()
            shouldOpenMainNav = false
@@ -86,11 +93,13 @@ const {active} = Astro.props;
 
     window.addEventListener('mousemove', (event) => {
         if (event.clientY <=100) {
+            clearTimeout(hideTimeoutID)
            openMainNav()
            shouldOpenMainNav = false
            wasOpenedByMouseMove = true
         }else{
             if(wasOpenedByMouseMove){
+                clearTimeout(hideTimeoutID)
                 wasOpenedByMouseMove = false
                 shouldOpenMainNav = true
                 closeMainNav()
@@ -99,14 +108,13 @@ const {active} = Astro.props;
 	});
 
 
+    let hideTimeoutID = null
     lenis.on('scroll', (e) => {
-        if(e.direction === 1){
+        clearTimeout(hideTimeoutID)
+        hideTimeoutID = setTimeout(() => {
             closeMainNav()
             shouldOpenMainNav = true
-        }else{
-            openMainNav()
-            shouldOpenMainNav = false
-        }   
+        }, 2000);
     });
 
     document.querySelector('.close-nav').addEventListener('click', () => {
