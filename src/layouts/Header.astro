@@ -5,7 +5,7 @@ const {active} = Astro.props;
 ---
 
 
-<header class="fixed top-0 left-0 right-0 bg-white top-nav z-[2]">
+<header class="fixed top-0 left-0 right-0 bg-white top-nav z-10">
     <nav class:list={["flex justify-between gap-8 items-center pt-4 pb-2 px-4 md:px-10 xl:px-20 border-b-[1px] border-b-gray-100", hasTimelineSlot && "pt-8 pb-4"]}>
         {
             !hasTimelineSlot &&
@@ -49,28 +49,49 @@ const {active} = Astro.props;
 </nav>
 
 <script>
-	import gsap from "gsap";
-    window.addEventListener('mousemove', (event) => {
-        // Check if the mouse is within the top 100px of the window
-        // console.log(event.clientY)
-        if (event.clientY <=100) {
-            // Show the navigation bar
-            gsap.to('.top-nav', {
-                translateY: "0%",
-                duration: 1,
-                ease: "power2.out",
-            });
+	import {gsap, lenis} from "../scripts/setup.ts"
+    let shouldOpenMainNav = false;
 
-            // Clear the previous timeout to reset the timer
-            // clearTimeout(hideNavTimeout);
+    function openMainNav(){
+        gsap.to('.top-nav', {
+            translateY: "0%",
+            duration: 1,
+            ease: "power2.out",
+        });
+    }
+
+    function closeMainNav(){
+        gsap.to('.top-nav', {
+            translateY: "-100%",
+            duration: 1,
+            ease: "power2.out",
+        });
+    }
+
+    window.addEventListener('click', (event) => {
+        if (event.clientY <=100) {
+           openMainNav()
         }else{
-            gsap.to('.top-nav', {
-                translateY: "-100%",
-                duration: 1,
-                ease: "power2.out",
-            });
+            if(shouldOpenMainNav){
+                shouldOpenMainNav = false
+                openMainNav()
+            }else{
+                shouldOpenMainNav = true
+                closeMainNav()
+            }
         }
 	});
+
+
+    lenis.on('scroll', (e) => {
+        if(e.direction === 1){
+            closeMainNav()
+            shouldOpenMainNav = true
+        }else{
+            openMainNav()
+            shouldOpenMainNav = false
+        }   
+    });
 
     document.querySelector('.close-nav').addEventListener('click', () => {
         // Hide the navigation bar

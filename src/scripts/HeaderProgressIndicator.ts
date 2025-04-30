@@ -47,7 +47,7 @@ sections.forEach(section => {
             start: "top 50%",  // Animation starts when the element is 80% in view
             end: "bottom 50%",
             // scrub : true,
-            toggleActions: "play reverse play reset",  // Only plays once
+            toggleActions: "play pause play pause",  // Only plays once
             // markers : true,
         },
     });
