@@ -14,7 +14,9 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 <Layout title="Welcome to Astro.">
 	<!-- nav -->
     <div  x-data={JSON.stringify(data)} class="body-cont">
-    <Header>
+    <Header
+        active="Eden"
+    >
 
         <!-- lg:absolute lg:opacity-0 lg:-top-[1000px]  -->
         <div class="h-2 flex gap-4 max-w-[700px] lg:w-[80%] overflow-hidden mob-timeline" slot="timeline">
@@ -27,8 +29,8 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         
     </Header>
     <!-- bottom-nav -->
-    <div class="fixed bottom-0 right-0 z-10 flex bg-white pt-4 pl-4 xl:px-10 lg:pl-10 py-6 xl:py-10 bottom-nav">
-        <ul class="flex gap-4 text-[#afafaf] font-semibold text-[10px] lg:text-sm">
+    <div class="fixed bottom-0 right-0 z-10 flex bg-white p-4 xl:px-10 lg:pl-10 py-6 xl:py-10 bottom-nav">
+        <ul class="flex gap-4 text-[#afafaf] font-semibold sm:text-[10px] text-[6px] lg:text-sm">
             <li @click="active = 'quick-overview'" :class="{'text-black' : ['quick-overview', 'quick-overview-2'].includes(active)}"><a href="#quick-overview">Quick Overview</a></li>
             <li @click="active = 'research-and-insights'" :class="{'text-black' : ['research-and-insights', 'problem', 'design-insights', 'competitive', 'user-research', 'market-research'].includes(active)}"><a href="#research-and-insights"> Research and Insights</a></li>
             <li @click="active = 'design-process'" :class="{'text-black' : ['design-process', 'the-brand', 'navigation', 'ui-systems', 'no-scrolling', 'bento', 'dynamic-island', 'soft-color', 'calender', 'image'].includes(active)}"><a href="#design-process"> Design and Product Decisions</a></li>
@@ -50,7 +52,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- hey there -->
-        <section id="hey-there" class="lg:px-20 px-4 py-20 min-h-screen flex items-center justify-center relative pt-[100px] max-w-[1700px] mx-auto">
+        <section id="hey-there" class="lg:px-20 px-4 pt-20 pb-28 min-h-screen flex items-center justify-center relative pt-[100px] max-w-[1700px] mx-auto">
             <h2 class="text-sm sm:text-lg md:text-2xl xl:text-3xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">
                 This document is going to be mostly about the <span class="text-black ">design</span>
                 <span class="text-black ">decisions</span> behind some of the <span class="text-black ">features</span> included in <span class="text-black ">Eden</span>
@@ -62,7 +64,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- table of contents -->
-        <section id="table" class="lg:px-20 px-4 min-h-screen relative py-20 max-w-[1700px] mx-auto overflow-hidden">
+        <section id="table" class="lg:px-20 px-4 min-h-screen relative pt-20 pb-28 max-w-[1700px] mx-auto overflow-hidden">
             <h2 class="font-safira lg:text-sm xl:text-2xl heading-up">Content</h2>
             {/* Updated grid-rows to match the 6 content items */}
             <div class="max-w-2xl grid grid-cols-[80%_20%] grid-rows-6 mt-20 mx-auto my-auto gap-4 lg:text-xl xl:text-2xl">
@@ -83,11 +85,11 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 
         <!-- 01 -->
         <div id="quick-overview" class="hide-bottom-nav bg-black text-white">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 py-20 max-w-[1700px] mx-auto lg:px-20 px-4 relative gap-4 xl:gap-6">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pt-20 pb-28 max-w-[1700px] mx-auto lg:px-20 px-4 relative gap-4 xl:gap-6">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-4">
                     <h1 class="text-4xl font-cookie quick-down">01</h1>
-                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Quick Overview</h2>
+                    <h2 class="font-safira text-sm  md:text-xl 2xl:text-5xl leading-[30px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Quick Overview</h2>
                 </div>
     
                 <!-- image -->
@@ -99,7 +101,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- 01 - Quick overview -->
-        <section id="quick-overview-2" class="h-auto lg:min-h-screen overflow-hidden flex flex-col lg:grid pb-16 py-20 lg:px-20 px-4 xl:grid-cols-[auto_auto_auto] lg:grid-cols-[auto_auto_10%] grid-rows-[auto_auto_auto] lg:gap-4 xl:gap-10 relative max-w-[1700px] mx-auto">
+        <section id="quick-overview-2" class="h-auto lg:min-h-screen overflow-hidden flex flex-col lg:grid pb-16 pt-20 pb-28 lg:px-20 px-4 xl:grid-cols-[auto_auto_auto] lg:grid-cols-[auto_auto_10%] grid-rows-[auto_auto_auto] lg:gap-4 xl:gap-10 relative max-w-[1700px] mx-auto">
             <h3 class="text-lg mt-8 mb-1 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xl:text-2xl pb-2 xl:py-4">Product Overview</h3>
              {/* Updated parent <p> with flex for spacing, removed <br> tags */}
             <p class="md:w-full max-w-[900px] border-gray-200 col-span-2 text-base  flex flex-col gap-4">
@@ -147,11 +149,11 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 
 		<!-- 02 -->
         <section id="research-and-insights" class="hide-bottom-nav bg-black text-white">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 py-20 lg:px-20 px-4  relative max-w-[1700px] mx-auto">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pt-20 pb-28 lg:px-20 px-4  relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-10">
                     <h1 class="text-4xl font-cookie quick-down">02</h1>
-                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Research and Insights</h2>
+                    <h2 class="font-safira text-sm  md:text-xl 2xl:text-5xl leading-[30px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Research and Insights</h2>
                     <!-- <p>Our design process was anchored in extensive user research, employing both primary and secondary research methodologies and incorporating qualitative and quantitative data to capture a wide range of consumer insights.</p> -->
                 </div>
     
@@ -163,9 +165,9 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </div>
 
         <!-- the problem -->
-        <section id="problem" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="problem" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">The Problem</h2>
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4">The Problem</h2>
                 <p class="flex flex-col gap-4 text-base ">
                     {/* Content updated from image with bold tags */}
                     <span>
@@ -181,7 +183,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
             </div>
         
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">The Goal</h2>
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4">The Goal</h2>
                 <div class="flex flex-col gap-4 text-base ">
                      {/* Content updated from image with bold tags */}
                     <p>
@@ -210,10 +212,10 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
          <!-- user research -->
-         <section id="user-research" class="h-auto lg:min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-16 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+         <section id="user-research" class="h-auto lg:min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-16 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
 
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">User Research</h2>
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4">User Research</h2>
                  {/* Container div for spacing paragraphs and lists */}
                 <div class="flex flex-col gap-4 text-base ">
                     <p>
@@ -247,7 +249,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
             </div>
         
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Funding Research</h2>
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4">Funding Research</h2>
                  {/* Container div for spacing paragraphs and lists */}
                 <div class="flex flex-col gap-4 text-base ">
                     <p>
@@ -294,9 +296,9 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- market research -->
-        <section id="market-research" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4  pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="market-research" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4  pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             {/* Main Title */}
-            <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Market Research</h2>
+            <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4">Market Research</h2>
 
             {/* Introductory Paragraph */}
             <p class="mx-auto lg:mx-0">
@@ -347,7 +349,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- competitive analysis -->
-        <section id="competitive" class="h-auto min-h-screen flex flex-col gap-6 lg:gap-8 pb-16 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="competitive" class="h-auto min-h-screen flex flex-col gap-6 lg:gap-8 pb-16 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="bg-gray-100 px-4 sm:px-6 lg:px-10 py-6 pt-8 text-sm lg:text-base overflow-x-auto">
                 <p class="py-6">Competitive Analysis</p>
                 {/* Added overflow-x-auto for smaller screens */}
@@ -406,11 +408,11 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 
         <!-- 03 -->
         <div id="design-process" class="hide-bottom-nav bg-black text-white">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 py-20 lg:px-20 px-4 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+            <section class="h-screen overflow-hidden grid grid-cols-2 pt-20 pb-28 lg:px-20 px-4 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-10">
                     <h1 class="text-4xl font-cookie quick-down">03</h1>
-                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Design and Product Decisions</h2>
+                    <h2 class="font-safira text-sm  md:text-xl 2xl:text-5xl leading-[30px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Design and Product Decisions</h2>
                 </div>
     
                 <!-- image -->
@@ -419,9 +421,9 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </div>
 
         <!-- the brand -->
-        <section id="the-brand" class="min-h-screen flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="the-brand" class="min-h-screen flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 py-[100px] md:pt-[120px] lg:pt-[150px] lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
-                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">The Brand</h2>
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">The Brand</h2>
                 <div class="flex flex-col gap-4 text-base ">
                     <p class="quick-up">
                         <strong>Empowering Users</strong>
@@ -456,9 +458,9 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- navigation -->
-        <section id="navigation" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="navigation" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
-                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Navigation and Structure</h2>
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">Navigation and Structure</h2>
                 <div class="flex flex-col gap-4 text-base ">
                     <p class="quick-up">
                         The app is built around five main areas:
@@ -495,9 +497,9 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- ui systems -->
-        <section id="ui-systems" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="ui-systems" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
-                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">UI System</h2>
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">UI System</h2>
                 <div class="flex flex-col gap-4 text-base ">
                     <p class="quick-up">
                         I built a modular design system using a <strong>4-point grid</strong>, focusing on <strong>clarity and flexibility</strong>. Every component, from buttons to charts to cards—was created to scale well across desktop and tablet without <strong>overwhelming the user</strong>.
@@ -535,7 +537,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
                 </div>
             </div>
 
-            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full rounded-lg bg-center bg-no-repeat bg-contain bg-[url('/images/eden/ui-designs.png')] hidden relative box-parent">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 }
@@ -543,9 +545,9 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- no scrolling -->
-        <section id="no-scrolling" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="no-scrolling" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
-                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">No Scrolling</h2>
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">No Scrolling</h2>
                 <div class="flex flex-col gap-4 text-base ">
                     <p class="quick-up">
                         <strong>The Glanceable Principle</strong>
@@ -590,9 +592,9 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- bento -->
-        <section id="bento" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="bento" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:grid-cols-[1fr_2fr] xl:gap-20 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
-                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Bento Grid for Widgets</h2>
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">Bento Grid for Widgets</h2>
                 <div class="flex flex-col gap-4 text-base ">
                     <p class="quick-up">
                         <strong>Design Decision:</strong> We chose a bento grid layout for displaying content modules.
@@ -637,9 +639,9 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- dynamic island -->
-        <section id="dynamic-island" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="dynamic-island" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
-                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">AI Dynamic Island</h2>
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">AI Dynamic Island</h2>
                 <div class="flex flex-col gap-4 text-base ">
                     <p class="quick-up">
                         <strong>Design Decision:</strong> Inspired by Apple’s dynamic island, An AI-powered floating insight center.
@@ -684,9 +686,9 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- soft color -->
-        <section id="soft-color" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="soft-color" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
-                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Soft Color Palette and Typography</h2>
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">Soft Color Palette and Typography</h2>
                 <div class="flex flex-col gap-4 text-base ">
                     <p class="quick-up">
                         <strong>Design Decision:</strong> Use of muted blues, warm neutrals, and soft gradients.
@@ -725,9 +727,9 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- calender -->
-        <section id="calender" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="calender" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col gap-2 md:gap-4 xl:gap-6 relative box-parent">
-                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4 quick-up">Calendar-Linked Financial Planning</h2>
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4 quick-up">Calendar-Linked Financial Planning</h2>
                 <div class="flex flex-col gap-4 text-base ">
                     <p class="quick-up">
                         <strong>Design Decision:</strong> Financial goals and budgets are visually integrated with a monthly view calendar.
@@ -763,7 +765,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- image -->
-        <section id="image" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="image" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 xl:gap-20 xl:grid-cols-[1fr_2fr] pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:flex items-center col-span-2 overflow-hidden justify-end p-20 w-full rounded-lg bg-center bg-no-repeat bg-contain bg-[url('/images/eden/6-calender-schedule.jpg')] hidden relative box-parent">
                 {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
@@ -773,17 +775,17 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 
         <!-- 4 - key features -->
         <div id="key-features" class="hide-bottom-nav bg-black text-white">
-            <section class="h-screen overflow-hidden flex items-center pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+            <section class="h-screen overflow-hidden flex items-center pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
                     <h1 class="text-4xl font-cookie quick-down">04</h1>
-                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Key Features</h2>
+                    <h2 class="font-safira text-sm  md:text-xl 2xl:text-5xl leading-[30px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Key Features</h2>
                 </div>
             </section>
         </div>
 
         <!-- features list -->
-        <section id="features-list" class="h-screen overflow-hidden flex flex-col pb-20 gap-4 lg:gap-8 xl:gap-16  py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="features-list" class="min-h-screen flex flex-col gap-4 lg:gap-8 xl:gap-16 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 text-center w-full">Key Features</h2>
             
 
@@ -814,20 +816,20 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 
         <!-- 4 - market strategy -->
         <div id="market-strategy" class="hide-bottom-nav bg-black text-white">
-            <section class="h-screen overflow-hidden flex items-center pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+            <section class="h-screen overflow-hidden flex items-center pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
                     <h1 class="text-4xl font-cookie quick-down">04</h1>
-                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Market Strategy</h2>
+                    <h2 class="font-safira text-sm  md:text-xl 2xl:text-5xl leading-[30px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Market Strategy</h2>
                 </div>
             </section>
         </div>
 
         <!-- market focus -->
-        <section id="market-focus" class="min-h-screen overflow-hidden flex items-center gap-8 lg:gap-4 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
-            <div class="grid grid-cols-2 w-full">
+        <section id="market-focus" class="min-h-screen overflow-hidden flex items-center gap-8 lg:gap-4 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full">
                 <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
-                    <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Initial Market Focus</h2>
+                    <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4">Initial Market Focus</h2>
                     <p class="flex flex-col gap-4 text-base ">
                         <span>
                             Eden is built for <strong>steady, meaningful growth, not short-term hype.</strong> The focus is on earning user trust through secure, responsible AI tools and growing the product gradually. It starts with strong foundations like <strong>privacy, transparency, and user-friendly design.</strong> Over time, Eden expands its features, partnerships, and compliance efforts to serve <strong>both individuals and institutions.</strong>
@@ -842,7 +844,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
                 </div>
     
                 <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
-                    <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Core Long-Term Goals</h2>
+                    <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4">Core Long-Term Goals</h2>
                     <div class="flex flex-col gap-4 text-base ">
                          <ul class="list-disc pl-5 space-y-1 font-semibold flex flex-col gap-4">
                                 <li>
@@ -864,8 +866,8 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
         </section>
 
         <!-- product roadmap -->
-        <section id="product-roadmap" class="min-h-screen overflow-hidden flex flex-col justify-center gap-8 lg:gap-4 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
-            <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">Product Roadmap</h2>
+        <section id="product-roadmap" class="min-h-screen overflow-hidden flex flex-col justify-center gap-8 lg:gap-4 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+            <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4">Product Roadmap</h2>
             <div class="grid grid-cols-1 lg:grid-cols-3 grid-rows-[auto] w-full gap-8">
                 <div class="flex flex-col justify-start gap-2 md:gap-4 xl:gap-6">
                     <h3 class="font-semibold">Phase 1 (0-12 Months): Foundation & Trust Building</h3>
@@ -903,19 +905,19 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 
         <!-- conclusion -->
         <div id="conclusion" class="hide-bottom-nav bg-black text-white">
-            <section class="h-screen overflow-hidden flex items-center pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+            <section class="h-screen overflow-hidden flex items-center pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
                     <h1 class="text-4xl font-cookie quick-down">05</h1>
-                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[20px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Conclusion</h2>
+                    <h2 class="font-safira text-sm  md:text-xl 2xl:text-5xl leading-[30px] xl:leading-[80px] 2xl:leading-[80px] my-2 quick-down">Conclusion</h2>
                 </div>
             </section>
         </div>
 
         <!-- conclusion 2 -->
-        <section id="conclusion-2" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pb-8 py-20 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
+        <section id="conclusion-2" class="min-h-screen overflow-hidden flex flex-col gap-8 lg:gap-4 lg:grid lg:grid-cols-2 pt-20 pb-28 lg:px-20 px-4 relative max-w-[1700px] mx-auto">
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">What Came Out of It</h2>
+                <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4">What Came Out of It</h2>
                 <p class="flex flex-col gap-4 text-base ">
                     <span>
                         Eden is <strong>still in its design stage,</strong> but what’s been built already sets a strong foundation for the future. I designed a full product experience that feels calm, modern, and genuinely useful. The design system is complete, modular, and easy to scale or hand off to developers. From thoughtful UX to a detailed brand, Eden brings together visual design, research, and systems thinking in one clear product.
@@ -928,7 +930,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 
             <div class="lg:max-w-[500px] xl:max-w-[600px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-10">
                 <div class="flex flex-col gap-4">
-                    <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">What I Learned</h2>
+                    <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4">What I Learned</h2>
                     <div class="flex flex-col gap-4 text-base ">
                          <p>
                             Working on Eden reminded me that <strong>money is emotional.</strong> At the bank, <strong>I saw how overwhelmed people felt</strong> and how much they just wanted something that felt safe and clear. That’s what Eden tries to offer.
@@ -940,7 +942,7 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
                     </div>
                 </div>
                 <div class="flex flex-col gap-4">
-                    <h2 class="font-safira text-xl lg:text-2xl xl:text-3xl leading-tight my-2 xl:my-4">What’s Next</h2>
+                    <h2 class="font-safira text-xl leading-[50px] lg:text-2xl xl:text-3xl my-2 xl:my-4">What’s Next</h2>
                     <ul class="list-disc pl-5 space-y-1 flex flex-col gap-4">
                         <li>
                             Build a working prototype to test how users feel using Eden in real life
@@ -972,384 +974,377 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
 <style>
 
 </style>
-
+<script src="../scripts/HeaderProgressIndicator.ts"></script>
+<script src="../scripts/events.ts"></script>
 <script>
 import Alpine from 'alpinejs';
-    import gsap from "gsap";
-    import Lenis from "lenis";
-    import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
-    import { p } from 'motion/react-client';
-    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+    // import gsap from "gsap";
+    // import Lenis from "lenis";
+    import {gsap, ScrollTrigger} from '../scripts/setup.ts'
+    // import { p } from 'motion/react-client';
+    // gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
-    gsap.config({
-        nullTargetWarn: false,
-    })
+    // gsap.config({
+    //     nullTargetWarn: false,
+    // })
 
-    // initialise lenis
-    const lenis = new Lenis({
-        autoRaf: true,
-        syncTouch: true,
-    });
-
-    let previousScroll = 0;
-    // Listen for the scroll event and log the event data
-    // lenis.on('scroll', (e) => {
-    //     // console.log(e);
+    // // initialise lenis
+    // const lenis = new Lenis({
+    //     autoRaf: true,
+    //     syncTouch: true,
     // });
 
-    // lenis.on('scroll', ScrollTrigger.update);
-    // gsap.ticker.lagSmoothing(0);
+    // let previousScroll = 0;
+    // // Listen for the scroll event and log the event data
+    // // lenis.on('scroll', (e) => {
+    // //     // console.log(e);
+    // // });
 
-    document.addEventListener("click", function (e) {
-        console.log('hit here 1')
-        const currentScroll = window.scrollY;
+    // // lenis.on('scroll', ScrollTrigger.update);
+    // // gsap.ticker.lagSmoothing(0);
 
-        let Etarget = e.target as HTMLElement
-        const anchor = Etarget.closest("a[href^='#']");
-        if (!anchor) return;
+    // document.addEventListener("click", function (e) {
+    //     console.log('hit here 1')
+    //     const currentScroll = window.scrollY;
 
-        e.preventDefault();
-        const targetId = anchor.getAttribute("href");
-        const target = document.querySelector(targetId) as HTMLElement;
+    //     let Etarget = e.target as HTMLElement
+    //     const anchor = Etarget.closest("a[href^='#']");
+    //     if (!anchor) return;
 
-        if (target) {
-            let targetPos = target.offsetTop;
+    //     e.preventDefault();
+    //     const targetId = anchor.getAttribute("href");
+    //     const target = document.querySelector(targetId) as HTMLElement;
+
+    //     if (target) {
+    //         let targetPos = target.offsetTop;
  
-            if(targetPos < currentScroll) //scroll up
-                lenis.scrollTo(target, {duration: 0, onStart : () => {
-                    pauseManualScroll = true
-                }});
-            else // scroll down
-                lenis.scrollTo(target, {duration: 2.5, 
-                easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2,
-                onStart : () => {
-                    pauseManualScroll = true
-                },
-            });
+    //         if(targetPos < currentScroll) //scroll up
+    //             lenis.scrollTo(target, {duration: 0, onStart : () => {
+    //                 pauseManualScroll = true
+    //             }});
+    //         else // scroll down
+    //             lenis.scrollTo(target, {duration: 2.5, 
+    //             easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2,
+    //             onStart : () => {
+    //                 pauseManualScroll = true
+    //             },
+    //         });
 
-            history.pushState(null, "", targetId);
-        }
-    });
+    //         history.pushState(null, "", targetId);
+    //     }
+    // });
 
-    // all id sections
-    const sections = Array.from(document.querySelectorAll('section[id], div[id], footer[id]') as NodeListOf<HTMLElement>)
-    sections.forEach(section => {
-        // section.classList.add('my-20') // set scroll margin top for each section
-    })
-    const sectionIds = sections.map(section => section.getAttribute('id')).filter(id => id !== null).map(id => '#'+id) as string[]
-    let currHashIndx = null // get current hash index
-    let upIndx =  null
-    let downIndx = null
-    let pauseManualScroll = false // pause manual scroll when using the arrows
+    // // all id sections
+    // const sections = Array.from(document.querySelectorAll('section[id], div[id], footer[id]') as NodeListOf<HTMLElement>)
+    // const sectionIds = sections.map(section => section.getAttribute('id')).filter(id => id !== null).map(id => '#'+id) as string[]
+    // let currHashIndx = null // get current hash index
+    // let upIndx =  null
+    // let downIndx = null
+    // let pauseManualScroll = false // pause manual scroll when using the arrows
 
-    //header indictors for navigation
-    let scrollTl = gsap.timeline()
-    let mobTimeline = document.querySelector('.mob-timeline')
-    let mobTimelineIndicators = Array.from(document.querySelectorAll('.mob-timeline-indicator') as NodeListOf<HTMLElement>)
+    // //header indictors for navigation
+    // let scrollTl = gsap.timeline()
+    // let mobTimeline = document.querySelector('.mob-timeline')
+    // let mobTimelineIndicators = Array.from(document.querySelectorAll('.mob-timeline-indicator') as NodeListOf<HTMLElement>)
 
-    // scroll functions
-    function scrollUp(){
-        console.log('hit here 2')
-        let scrollTo = sectionIds[upIndx]
-        lenis.scrollTo(scrollTo, {
-            duration: 0,
-            onStart : () => {
-                pauseManualScroll = true // pause manual scroll when using the arrows
-                location.hash = scrollTo;
-                // console.log('up clicked')
-            },
-        });
-        // window.dispatchEvent(new CustomEvent('hash-update', { detail: downArrow.getAttribute('href').slice(1) }));
-    }
+    // // scroll functions
+    // function scrollUp(){
+    //     console.log('hit here 2')
+    //     let scrollTo = sectionIds[upIndx]
+    //     lenis.scrollTo(scrollTo, {
+    //         duration: 0,
+    //         onStart : () => {
+    //             pauseManualScroll = true // pause manual scroll when using the arrows
+    //             location.hash = scrollTo;
+    //             // console.log('up clicked')
+    //         },
+    //     });
+    //     // window.dispatchEvent(new CustomEvent('hash-update', { detail: downArrow.getAttribute('href').slice(1) }));
+    // }
 
-    function scrollDown(){
-        console.log('hit here 3')
-        let scrollTo = sectionIds[downIndx]
-        lenis.scrollTo(scrollTo, {duration: 2.5, 
-            easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2,
-            onStart : () => {
-                console.log('hello world')
-                location.hash = scrollTo;
-                pauseManualScroll = true 
-            },
-        });
-        // window.dispatchEvent(new CustomEvent('hash-update', { detail: upArrow.getAttribute('href').slice(1) }));
-    }
+    // function scrollDown(){
+    //     console.log('hit here 3')
+    //     let scrollTo = sectionIds[downIndx]
+    //     lenis.scrollTo(scrollTo, {duration: 2.5, 
+    //         easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2,
+    //         onStart : () => {
+    //             console.log('hello world')
+    //             location.hash = scrollTo;
+    //             pauseManualScroll = true 
+    //         },
+    //     });
+    //     // window.dispatchEvent(new CustomEvent('hash-update', { detail: upArrow.getAttribute('href').slice(1) }));
+    // }
 
-    //scroll rvrnt listener
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'ArrowDown') {
-            scrollDown()
-        }
-    });
+    // //scroll rvrnt listener
+    // document.addEventListener('keydown', function(event) {
+    //     if (event.key === 'ArrowDown') {
+    //         scrollDown()
+    //     }
+    // });
 
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'ArrowUp') {
-            scrollUp()
-        }
-    });
+    // document.addEventListener('keydown', function(event) {
+    //     if (event.key === 'ArrowUp') {
+    //         scrollUp()
+    //     }
+    // });
 
 
-    function scrollToindicator(indicator){
-        scrollTl.kill();
-		scrollTl = gsap.timeline();
-        let centerPos = mobTimeline.clientWidth / 2 //get center offset of indicator
-        let indicatorPos = indicator.getBoundingClientRect().left - mobTimeline.getBoundingClientRect().left //check if indicator left or right of center
-        let scroll =  indicatorPos - centerPos
-        console.log('scroll', scroll, )
-        gsap.to(mobTimelineIndicators,{
-            backgroundColor : '#e5e7eb'
-        })
-        gsap.to(indicator,{
-            backgroundColor : 'black'
-        })
-        scrollTl.to('.mob-timeline',{
-            // opacity : 0,
-            // scrollLeft: '0', 
-            scrollLeft : mobTimeline.scrollLeft + scroll,
-            duration: 1
-        })
-    }
-    // header indicator
-    mobTimelineIndicators.forEach(mobIndicator =>{
-        mobIndicator.addEventListener('click', () => {
-            scrollToindicator(mobIndicator)
-            // console.log(mobTimeline.scrollLeft)
-        })
-    })
+    // function scrollToindicator(indicator){
+    //     scrollTl.kill();
+	// 	scrollTl = gsap.timeline();
+    //     let centerPos = mobTimeline.clientWidth / 2 //get center offset of indicator
+    //     let indicatorPos = indicator.getBoundingClientRect().left - mobTimeline.getBoundingClientRect().left //check if indicator left or right of center
+    //     let scroll =  indicatorPos - centerPos
+    //     gsap.to(mobTimelineIndicators,{
+    //         backgroundColor : '#e5e7eb'
+    //     })
+    //     gsap.to(indicator,{
+    //         backgroundColor : 'black'
+    //     })
+    //     scrollTl.to('.mob-timeline',{
+    //         // opacity : 0,
+    //         // scrollLeft: '0', 
+    //         scrollLeft : mobTimeline.scrollLeft + scroll,
+    //         duration: 1
+    //     })
+    // }
+    // // header indicator
+    // mobTimelineIndicators.forEach(mobIndicator =>{
+    //     mobIndicator.addEventListener('click', () => {
+    //         scrollToindicator(mobIndicator)
+    //         // console.log(mobTimeline.scrollLeft)
+    //     })
+    // })
 
-    // update location hash with gsap scrolltrigger on enter the setinyerval below will hanfdle the rest
-    sectionIds.forEach(section => {
-        ScrollTrigger.create({
-            trigger: section,
-            // start: 'top top',
-            // endTrigger: '#otherID',
-            // end: 'bottom 50%+=100px',
-            start: 'top 50%',
-            end: 'bottom 50%',
-            onEnter : () => {
-                if(lenis.direction == 1 && !pauseManualScroll) // check if scrolling down and not using the arrows
-                location.hash = section
-			},
-            onEnterBack : () => {
-                console.log('enter back is scrolling =>', lenis.isScrolling, lenis.direction)
-                if(lenis.direction == -1 && !pauseManualScroll) // check if scrolling up and not using the arrows
-                location.hash = section
-			},
-        });
-    })
+    // // update location hash with gsap scrolltrigger on enter the setinyerval below will hanfdle the rest
+    // sectionIds.forEach(section => {
+    //     ScrollTrigger.create({
+    //         trigger: section,
+    //         // start: 'top top',
+    //         // endTrigger: '#otherID',
+    //         // end: 'bottom 50%+=100px',
+    //         start: 'top 50%',
+    //         end: 'bottom 50%',
+    //         onEnter : () => {
+    //             if(lenis.direction == 1 && !pauseManualScroll) // check if scrolling down and not using the arrows
+    //             location.hash = section
+	// 		},
+    //         onEnterBack : () => {
+    //             if(lenis.direction == -1 && !pauseManualScroll) // check if scrolling up and not using the arrows
+    //             location.hash = section
+	// 		},
+    //     });
+    // })
 
-    let lastHash = null;
-    setInterval(() => {
-        if (location.hash !== lastHash) {
-            lastHash = location.hash
-            currHashIndx = sectionIds.indexOf(location.hash) // get current hash index
-            scrollToindicator(mobTimelineIndicators[currHashIndx])
-            // mobTimelineIndicators.find(mobTimelineIndicator => mobTimelineIndicator.getAttribute('href') === location.hash)?.click()
-            upIndx =  currHashIndx != 0? currHashIndx - 1 : 0
-            downIndx = currHashIndx != sectionIds.length - 1 ? currHashIndx + 1 : sectionIds.length - 1
-        }
-        // console.log(location.hash)
-    }, 100); 
+    // let lastHash = null;
+    // setInterval(() => {
+    //     if (location.hash !== lastHash) {
+    //         lastHash = location.hash
+    //         currHashIndx = sectionIds.indexOf(location.hash) // get current hash index
+    //         scrollToindicator(mobTimelineIndicators[currHashIndx])
+    //         // mobTimelineIndicators.find(mobTimelineIndicator => mobTimelineIndicator.getAttribute('href') === location.hash)?.click()
+    //         upIndx =  currHashIndx != 0? currHashIndx - 1 : 0
+    //         downIndx = currHashIndx != sectionIds.length - 1 ? currHashIndx + 1 : sectionIds.length - 1
+    //     }
+    //     // console.log(location.hash)
+    // }, 100); 
 
-    ///////////////////////////////////////////////// indicator ends here
+    // ///////////////////////////////////////////////// indicator ends here
 
-    let intervalId = null;
-    window.addEventListener('wheel', (e) => {
-        e.preventDefault(); // stop actual scrolling
-        const direction = e.deltaY > 0 ? 'down' : 'up';
-        pauseManualScroll = false
-        // lenis.stop()
+    // let intervalId = null;
+    // window.addEventListener('wheel', (e) => {
+    //     e.preventDefault(); // stop actual scrolling
+    //     const direction = e.deltaY > 0 ? 'down' : 'up';
+    //     pauseManualScroll = false
+    //     // lenis.stop()
 
-        // // clearTimeout
-        // console.log('here')
-        // clearTimeout(intervalId)
-        // intervalId = setTimeout(() => {
-        // lenis.start()
-        // 	if(direction == 'up') scrollUp()
-        // 	else scrollDown()
+    //     // // clearTimeout
+    //     // console.log('here')
+    //     // clearTimeout(intervalId)
+    //     // intervalId = setTimeout(() => {
+    //     // lenis.start()
+    //     // 	if(direction == 'up') scrollUp()
+    //     // 	else scrollDown()
 
-        // 	console.log('inside', lenis)
-        // }, 50);
+    //     // 	console.log('inside', lenis)
+    //     // }, 50);
 
 
-        // if(direction == 'up') scrollUp()
-        // else scrollDown()
-    }, { passive: false });
+    //     // if(direction == 'up') scrollUp()
+    //     // else scrollDown()
+    // }, { passive: false });
 
-    window.addEventListener('touchstart', (e) => {
-        pauseManualScroll = false
-    }, { passive: false });
+    // window.addEventListener('touchstart', (e) => {
+    //     pauseManualScroll = false
+    // }, { passive: false });
 
-    
+    // gsap.fromTo(".hero-img",{
+    //     translateX : '-50%'
+    // }, {
+    //     translateX : '0%',
+    //     opacity : 1,
+    //     duration : 2,
+    //     scrollTrigger: {
+    //         trigger: '.hero-img',  // Each element triggers individually
+    //         // start: "top 80%",  // Animation starts when the element is 80% in view
+    //         end: "bottom 92%",
+    //         toggleActions: "play reverse play reset",  // Only plays once
+    //         // markers : true,
+    //     },
+    // })
 
-
-    gsap.fromTo(".hero-img",{
-        translateX : '-50%'
-    }, {
-        translateX : '0%',
-        opacity : 1,
-        duration : 2,
-        scrollTrigger: {
-            trigger: '.hero-img',  // Each element triggers individually
-            // start: "top 80%",  // Animation starts when the element is 80% in view
-            end: "bottom 92%",
-            toggleActions: "play reverse play reset",  // Only plays once
-            // markers : true,
-        },
-    })
-
-    gsap.fromTo(".closing-img",{
-        translateY : '20%',
-        opacity : 0
-    }, {
-        translateY : '0%',
-        opacity : 1,
-        duration : 2,
-        scrollTrigger: {
-            trigger: '.closing-img',  // Each element triggers individually
-            // start: "top 80%",  // Animation starts when the element is 80% in view
-            end: "bottom 50%",
-            toggleActions: "play reverse play reset",  // Only plays once
-            // markers : true,
-        },
-    })
+    // gsap.fromTo(".closing-img",{
+    //     translateY : '20%',
+    //     opacity : 0
+    // }, {
+    //     translateY : '0%',
+    //     opacity : 1,
+    //     duration : 2,
+    //     scrollTrigger: {
+    //         trigger: '.closing-img',  // Each element triggers individually
+    //         // start: "top 80%",  // Animation starts when the element is 80% in view
+    //         end: "bottom 50%",
+    //         toggleActions: "play reverse play reset",  // Only plays once
+    //         // markers : true,
+    //     },
+    // })
 
     
 
-    document.querySelectorAll('section').forEach((section) => {
-        // gsap.fromTo(section.querySelectorAll('.heading-up'),{translateY : '50%', opacity : 0}, {
-        //     translateY: 0,
-        //     opacity: 1,
-        //     duration: 1,
-        //     ease: "power2.out",
-        //     stagger: 0.4,
-        //     scrollTrigger: {
-        //         trigger: section,  // Each element triggers individually
-        //         start: "top 20%",  // Animation starts when the element is 80% in view
-        //         end: "bottom 96%",
-        //         toggleActions: "play reverse play reset", // Only plays once
-        //         // markers : true,
-        //     },
-        // });
+    // document.querySelectorAll('section').forEach((section) => {
+    //     // gsap.fromTo(section.querySelectorAll('.heading-up'),{translateY : '50%', opacity : 0}, {
+    //     //     translateY: 0,
+    //     //     opacity: 1,
+    //     //     duration: 1,
+    //     //     ease: "power2.out",
+    //     //     stagger: 0.4,
+    //     //     scrollTrigger: {
+    //     //         trigger: section,  // Each element triggers individually
+    //     //         start: "top 20%",  // Animation starts when the element is 80% in view
+    //     //         end: "bottom 96%",
+    //     //         toggleActions: "play reverse play reset", // Only plays once
+    //     //         // markers : true,
+    //     //     },
+    //     // });
 
-        // gsap.fromTo(section.querySelectorAll('.heading-up-footer'),{translateY : '50%', opacity : 0}, {
-        //     translateY: 0,
-        //     opacity: 1,
-        //     duration: 1,
-        //     ease: "power2.out",
-        //     stagger: 0.4,
-        //     scrollTrigger: {
-        //         trigger: section,  // Each element triggers individually
-        //         start: "top 20%",  // Animation starts when the element is 80% in view
-        //         end: "bottom 50%",
-        //         toggleActions: "play reverse play reset", // Only plays once
-        //         // markers : true,
-        //     },
-        // });
+    //     // gsap.fromTo(section.querySelectorAll('.heading-up-footer'),{translateY : '50%', opacity : 0}, {
+    //     //     translateY: 0,
+    //     //     opacity: 1,
+    //     //     duration: 1,
+    //     //     ease: "power2.out",
+    //     //     stagger: 0.4,
+    //     //     scrollTrigger: {
+    //     //         trigger: section,  // Each element triggers individually
+    //     //         start: "top 20%",  // Animation starts when the element is 80% in view
+    //     //         end: "bottom 50%",
+    //     //         toggleActions: "play reverse play reset", // Only plays once
+    //     //         // markers : true,
+    //     //     },
+    //     // });
 
-        // gsap.fromTo(section.querySelectorAll('.quick-right'),{translateX : '50%', opacity : 0}, {
-        //     translateX: 0,
-        //     opacity: 1,
-        //     duration: 0.8,
-        //     ease: "power2.out",
-        //     stagger: 0.2,
-        //     scrollTrigger: {
-        //         trigger: section,  // Each element triggers individually
-        //         start: "top 30%",  // Animation starts when the element is 80% in view
-        //         end: "bottom 70%",
-        //         toggleActions: "play reverse play reset",  // Only plays once
-        //         // markers : true,
-        //     },
-        // });
+    //     // gsap.fromTo(section.querySelectorAll('.quick-right'),{translateX : '50%', opacity : 0}, {
+    //     //     translateX: 0,
+    //     //     opacity: 1,
+    //     //     duration: 0.8,
+    //     //     ease: "power2.out",
+    //     //     stagger: 0.2,
+    //     //     scrollTrigger: {
+    //     //         trigger: section,  // Each element triggers individually
+    //     //         start: "top 30%",  // Animation starts when the element is 80% in view
+    //     //         end: "bottom 70%",
+    //     //         toggleActions: "play reverse play reset",  // Only plays once
+    //     //         // markers : true,
+    //     //     },
+    //     // });
 
-        // gsap.fromTo(section.querySelectorAll('.quick-up'), {opacity : 0, translateY : '50%'}, {
-        //     translateY: 0,
-        //     opacity: 1,
-        //     duration: 0.8,
-        //     ease: "power2.out",
-        //     stagger: 0.2,
-        //     scrollTrigger: {
-        //         trigger: section,  // Each element triggers individually
-        //         start: "top 30%",  // Animation starts when the element is 80% in view
-        //         end: "bottom 70%",
-        //         // scrub : true,
-        //         toggleActions: "play reverse play reset",  // Only plays once
-        //         // markers : true,
-        //     },
-        // });
+    //     // gsap.fromTo(section.querySelectorAll('.quick-up'), {opacity : 0, translateY : '50%'}, {
+    //     //     translateY: 0,
+    //     //     opacity: 1,
+    //     //     duration: 0.8,
+    //     //     ease: "power2.out",
+    //     //     stagger: 0.2,
+    //     //     scrollTrigger: {
+    //     //         trigger: section,  // Each element triggers individually
+    //     //         start: "top 30%",  // Animation starts when the element is 80% in view
+    //     //         end: "bottom 70%",
+    //     //         // scrub : true,
+    //     //         toggleActions: "play reverse play reset",  // Only plays once
+    //     //         // markers : true,
+    //     //     },
+    //     // });
 
-        // gsap.fromTo(section.querySelectorAll('.quick-down'), {opacity : 0, translateY : '-50%'}, {
-        //     translateY: 0,
-        //     opacity: 1,
-        //     duration: 0.8,
-        //     ease: "power2.out",
-        //     stagger: 0.2,
-        //     scrollTrigger: {
-        //         trigger: section,  // Each element triggers individually
-        //         start: "top 30%",  // Animation starts when the element is 80% in view
-        //         end: "bottom 70%",
-        //         // scrub : true,
-        //         toggleActions: "play reverse play reset",  // Only plays once
-        //         // markers : true,
-        //     },
-        // });
+    //     // gsap.fromTo(section.querySelectorAll('.quick-down'), {opacity : 0, translateY : '-50%'}, {
+    //     //     translateY: 0,
+    //     //     opacity: 1,
+    //     //     duration: 0.8,
+    //     //     ease: "power2.out",
+    //     //     stagger: 0.2,
+    //     //     scrollTrigger: {
+    //     //         trigger: section,  // Each element triggers individually
+    //     //         start: "top 30%",  // Animation starts when the element is 80% in view
+    //     //         end: "bottom 70%",
+    //     //         // scrub : true,
+    //     //         toggleActions: "play reverse play reset",  // Only plays once
+    //     //         // markers : true,
+    //     //     },
+    //     // });
 
-        // gsap.fromTo(section.querySelectorAll('.quick-appear'), {opacity : 0}, {
-        //     opacity: 1,
-        //     duration: 0.8,
-        //     ease: "power2.out",
-        //     stagger: 0.2,
-        //     scrollTrigger: {
-        //         trigger: section,  // Each element triggers individually
-        //         start: "top 30%",  // Animation starts when the element is 80% in view
-        //         end: "bottom 70%",
-        //         // scrub : true,
-        //         toggleActions: "play reverse play reset",  // Only plays once
-        //         // markers : true,
-        //     },
-        // });
+    //     // gsap.fromTo(section.querySelectorAll('.quick-appear'), {opacity : 0}, {
+    //     //     opacity: 1,
+    //     //     duration: 0.8,
+    //     //     ease: "power2.out",
+    //     //     stagger: 0.2,
+    //     //     scrollTrigger: {
+    //     //         trigger: section,  // Each element triggers individually
+    //     //         start: "top 30%",  // Animation starts when the element is 80% in view
+    //     //         end: "bottom 70%",
+    //     //         // scrub : true,
+    //     //         toggleActions: "play reverse play reset",  // Only plays once
+    //     //         // markers : true,
+    //     //     },
+    //     // });
 
-    })
-
-
-
-    document.querySelectorAll('.box-parent').forEach((boxParent) => {
-        gsap.fromTo(boxParent.querySelectorAll('.box'),{
-            xPercent : 0
-        }, { 
-            xPercent : 100,
-            duration : 0.6,
-            ease : "power1.out",
-            stagger : 0.08,
-            scrollTrigger: {
-                trigger: boxParent,  // Each element triggers individually
-                start: "top 30%",  // Animation starts when the element is 80% in view
-                end: "bottom 70%",
-                // scrub : true,
-                toggleActions: "play reverse play reset",  // Only plays once
-                // markers : true,
-            },
-        });
-    })
+    // })
 
 
-    // for the footer
-    let footer = document.querySelector('#contact') as HTMLElement
-    let footerAnim = gsap.fromTo('.bottom-nav', { bottom : 0}, {
-        bottom : footer.clientHeight,
-        duration: 2,
-        paused : true,
-        ease: "circ.inOut",
-        // scrollTrigger: {
-        //     // trigger: '#contact',  // Each element triggers individually
-        //     // start: "top 20%",  // Animation starts when the element is 80% in view
-        //     // end: "bottom 95%",
-        //     // scrub : true,
-        //     // toggleActions: "play reverse play reverse",  // Only plays once
-        //     // markers : true,
-        // },
-    });
+
+    // document.querySelectorAll('.box-parent').forEach((boxParent) => {
+    //     gsap.fromTo(boxParent.querySelectorAll('.box'),{
+    //         xPercent : 0
+    //     }, { 
+    //         xPercent : 100,
+    //         duration : 0.6,
+    //         ease : "power1.out",
+    //         stagger : 0.08,
+    //         scrollTrigger: {
+    //             trigger: boxParent,  // Each element triggers individually
+    //             start: "top 30%",  // Animation starts when the element is 80% in view
+    //             end: "bottom 70%",
+    //             // scrub : true,
+    //             toggleActions: "play reverse play reset",  // Only plays once
+    //             // markers : true,
+    //         },
+    //     });
+    // })
+
+
+    // // for the footer
+    // let footer = document.querySelector('#contact') as HTMLElement
+    // let footerAnim = gsap.fromTo('.bottom-nav', { bottom : 0}, {
+    //     bottom : footer.clientHeight,
+    //     duration: 2,
+    //     paused : true,
+    //     ease: "circ.inOut",
+    //     // scrollTrigger: {
+    //     //     // trigger: '#contact',  // Each element triggers individually
+    //     //     // start: "top 20%",  // Animation starts when the element is 80% in view
+    //     //     // end: "bottom 95%",
+    //     //     // scrub : true,
+    //     //     // toggleActions: "play reverse play reverse",  // Only plays once
+    //     //     // markers : true,
+    //     // },
+    // });
 
     let dissappearBottomNav = gsap.fromTo('.bottom-nav', { opacity : 1}, {
         opacity : 0,
@@ -1366,26 +1361,53 @@ import Alpine from 'alpinejs';
         // },
     });
 
-    // move bottom nav when footer shows
-    ScrollTrigger.create({
-        trigger: '#contact',
-        // start: 'top top',
-        // endTrigger: '#otherID',
-        end: 'bottom 50%+=100px',
-        // onToggle: (self) => console.log('toggled, isActive:', self.isActive),
-        onUpdate: (self) => {
+    // // move bottom nav when footer shows
+    // ScrollTrigger.create({
+    //     trigger: '#contact',
+    //     // start: 'top top',
+    //     // endTrigger: '#otherID',
+    //     end: 'bottom 50%+=100px',
+    //     // onToggle: (self) => console.log('toggled, isActive:', self.isActive),
+    //     onUpdate: (self) => {
 
-            if(self.direction == 1){
-                footerAnim.duration(2)
-                footerAnim.play();
-            }else{
-                footerAnim.duration(0)
-                footerAnim.reverse()
-            }
-        }
-    });
+    //         if(self.direction == 1){
+    //             footerAnim.duration(2)
+    //             footerAnim.play();
+    //         }else{
+    //             footerAnim.duration(0)
+    //             footerAnim.reverse()
+    //         }
+    //     }
+    // });
 
-    // dissappear footer on certain pages
+    // // dissappear footer on certain pages
+    // ['#eden', '#quick-overview', '#research-and-insights', '#design-process', '#collaboration', '#next-steps', '#closing', '#key-features', '#market-strategy', '#conclusion'].forEach(section => {
+    //     ScrollTrigger.create({
+    //         trigger: section,
+    //         // start: 'top top',
+    //         // endTrigger: '#otherID',
+    //         // end: 'bottom 50%+=100px',
+    //         onEnter : () => {
+	// 			// console.log('we just enter timeline')
+	// 			dissappearBottomNav.play()
+    //             // console.log('enter top')
+	// 		},
+	// 		onLeave : () => {
+	// 			dissappearBottomNav.reverse()
+    //             // console.log('on leave bottom')
+	// 		},
+	// 		onEnterBack : () => {
+	// 			dissappearBottomNav.play()
+    //             // console.log('enter bottom')
+	// 		},
+	// 		onLeaveBack : () => {
+	// 			// dissappearBottomNav.play()
+    //             // console.log('on leave top')
+	// 		}
+    //     });
+    // })
+
+    // // dissappear footer on certain pages
     ['#eden', '#quick-overview', '#research-and-insights', '#design-process', '#collaboration', '#next-steps', '#closing', '#key-features', '#market-strategy', '#conclusion'].forEach(section => {
         ScrollTrigger.create({
             trigger: section,
@@ -1411,7 +1433,6 @@ import Alpine from 'alpinejs';
 			}
         });
     })
-
     
    
 

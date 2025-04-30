@@ -1,6 +1,7 @@
 ---
 const hasTimelineSlot = Astro.slots.timeline !== undefined;
 import { Menu, X } from "lucide-react";
+const {active} = Astro.props;
 ---
 
 
@@ -35,11 +36,11 @@ import { Menu, X } from "lucide-react";
  <nav class="mob-nav z-[20] fixed top-0 left-0 bottom-0 right-0 -translate-y-[100%] lg:hidden bg-white text-[#AFAFAF] font-safira px-19 py-10 flex flex-col justify-between items-center text-center">
     <X className="min-w-8 close-nav hover:cursor-pointer text-black"/>
     <ul class="flex flex-col min-h-[60%] justify-between">
-        <li class="nav-item opacity-0">Home</li>
-        <li class="nav-item opacity-0">Pencil Hoops</li>
-        <li class="nav-item opacity-0">Financial dashboard</li>
-        <li class="nav-item opacity-0">OpenPolicy</li>
-        <li class="nav-item opacity-0">Crack Headphones</li>
+        <li class="nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300"><a href="#">Home</a></li>
+        <li class="nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300"><a href="#">Pencil Hoops</a></li>
+        <li class:list={["nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300", active == 'Eden' && "text-black" ]}><a href="#">Financial dashboard</a></li>
+        <li class="nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300"><a href="#">OpenPolicy</a></li>
+        <li class="nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300"><a href="#">Crack Headphones</a></li>
     </ul>
     <div class="flex items-center gap-8">
         <a href="https://www.linkedin.com/in/kamiloseni/" target="_blank" class="icon bg-no-repeat bg-center bg-contain bg-[url('/icons/dark-in.svg')]"></a>
