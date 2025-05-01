@@ -8,7 +8,7 @@ const lenis = new Lenis({
     // anchors: true,
     autoRaf: true,
     syncTouch: true,
-    syncTouchLerp : 0.1,
+    syncTouchLerp : 0.04,
 });
 
 gsap.config({
