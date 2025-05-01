@@ -54,24 +54,25 @@ let mobTimelineIndicators = Array.from(document.querySelectorAll('.mob-timeline-
 
 // function that scrolls active mobile timeline into view
 function scrollToindicator(indicator){
-    console.log(indicator)
-    scrollTl.kill();
-    scrollTl = gsap.timeline();
-    let centerPos = mobTimeline.clientWidth / 2 //get center offset of indicator
-    let indicatorPos = indicator.getBoundingClientRect().left - mobTimeline.getBoundingClientRect().left //check if indicator left or right of center
-    let scroll =  indicatorPos - centerPos
-    gsap.to(mobTimelineIndicators,{
-        backgroundColor : '#e5e7eb'
-    })
-    gsap.to(indicator,{
-        backgroundColor : 'black'
-    })
-    scrollTl.to('.mob-timeline',{
-        // opacity : 0,
-        // scrollLeft: '0', 
-        scrollLeft : mobTimeline.scrollLeft + scroll,
-        duration: 1
-    })
+    if(mobTimeline && indicator){
+        scrollTl.kill();
+        scrollTl = gsap.timeline();
+        let centerPos = mobTimeline.clientWidth / 2 //get center offset of indicator
+        let indicatorPos = indicator.getBoundingClientRect().left - mobTimeline.getBoundingClientRect().left //check if indicator left or right of center
+        let scroll =  indicatorPos - centerPos
+        gsap.to(mobTimelineIndicators,{
+            backgroundColor : '#e5e7eb'
+        })
+        gsap.to(indicator,{
+            backgroundColor : 'black'
+        })
+        scrollTl.to('.mob-timeline',{
+            // opacity : 0,
+            // scrollLeft: '0', 
+            scrollLeft : mobTimeline.scrollLeft + scroll,
+            duration: 1
+        })
+    }
 }
 
 export {lenis, gsap, ScrollTrigger, sections, sectionIds, scrollToindicator, mobTimeline, mobTimelineIndicators}

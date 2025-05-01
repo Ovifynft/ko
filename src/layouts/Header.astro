@@ -9,7 +9,7 @@ const {active} = Astro.props;
     <nav class:list={["flex justify-between gap-8 items-center pt-4 pb-2 px-4 md:px-10 xl:px-20 border-b-[1px] border-b-gray-100", hasTimelineSlot && "pt-8 pb-4"]}>
         {
             !hasTimelineSlot &&
-            <div class="flex items-center gap-4">
+            <div class="items-center gap-4 hidden"> <!-- flex -->
                 <div class="xl:w-[78px] w-[40px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat"></div>
                 <p class="font-bilal text-[16px]">Kamil Oseni</p>
             </div>
@@ -29,7 +29,15 @@ const {active} = Astro.props;
         <!-- brand -->
         <div class="flex items-center  gap-4 md:hidden">
             <!-- <div class="xl:w-[78px] w-[40px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat"></div> -->
-            <p class="font-bilal text-[16px]">KO✨</p>
+             {
+                hasTimelineSlot ? 
+                <p class="font-bilal text-[16px]">KO✨</p>
+                :
+                <div class="flex items-center gap-4">
+                    <p class="font-bilal text-[16px]">Kamil Oseni</p>
+                    <div class="xl:w-[78px] w-[40px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat"></div>
+                </div>
+             }
         </div>
         <!-- socials -->
         <div class="hidden sm:flex items-center gap-8">
@@ -42,7 +50,7 @@ const {active} = Astro.props;
  <nav class="mob-nav z-[20] fixed top-0 left-0 bottom-0 right-0 -translate-y-[100%] lg:hidden bg-white text-[#AFAFAF] font-safira px-19 py-10 flex flex-col justify-between items-center text-center">
     <X className="min-w-8 close-nav hover:cursor-pointer text-black"/>
     <ul class="flex flex-col min-h-[60%] justify-between">
-        <li class="nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300"><a href="#">Home</a></li>
+        <li class:list={["nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300", active == 'Home' && "text-black"]}><a href="#">Home</a></li>
         <li class="nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300"><a href="#">Pencil Hoops</a></li>
         <li class:list={["nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300", active == 'Eden' && "text-black" ]}><a href="#">Eden</a></li>
         <li class="nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300"><a href="#">OpenPolicy</a></li>
@@ -113,7 +121,6 @@ const {active} = Astro.props;
                 shouldOpenMainNav = true
                 closeMainNav()
             }
-            console.log(offset)
         }else{
             if(offset > 0) offset-=1;
             if (offset == 0){

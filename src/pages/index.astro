@@ -98,7 +98,7 @@ const slides = [
 		tags : ['User Experience', 'Government', 'Mobile App Design'],
 		heading : 'Open<span class="text-gray-200">Policy</span><br>App Design<span class="text-gray-200"> (MVP)</span>',
 		year : '2024',
-		description : 'OpenPolicy is a platform designed to connect citizens with their government like never before. It allows users to track bills, vote on policies, and directly engage with representatives, all in one place. <br><br>As the Product Lead, I redesigned the app from the ground up, transforming a cluttered, unusable experience into a seamless and intuitive platform. ',
+		description : '<span>OpenPolicy is a platform designed to connect citizens with their government like never before. It allows users to track bills, vote on policies, and directly engage with representatives, all in one place.</span><span>As the Product Lead, I redesigned the app from the ground up, transforming a cluttered, unusable experience into a seamless and intuitive platform.</span>',
 		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Get it on the Appstore <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/ic_baseline-apple.svg')]"></div></button> <button class="px-4 py-3 rounded-lg border-[1px] border-black">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>`,
 		url : "bg-[url('/images/slides/open-policy.png')]",
 		alternate : "bg-[url('/images/slides/open-policy.png')]",
@@ -107,7 +107,7 @@ const slides = [
 		tags : ['Product Design', 'Industrial', 'User Experience'],
 		heading : 'Crack <span class="text-[#CFB46A]">Headphones</span></h2><p class="mt-4">',
 		year : '2015',
-		description : 'OpenPolicy is a platform designed to connect citizens with their government like never before. It allows users to track bills, vote on policies, and directly engage with representatives, all in one place. <br><br>As the Product Lead, I redesigned the app from the ground up, transforming a cluttered, unusable experience into a seamless and intuitive platform. ',
+		description : '<span>OpenPolicy is a platform designed to connect citizens with their government like never before. It allows users to track bills, vote on policies, and directly engage with representatives, all in one place.</span><span>As the Product Lead, I redesigned the app from the ground up, transforming a cluttered, unusable experience into a seamless and intuitive platform.</span>',
 		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-black">Blueprint & Specs <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/solar_music-note-2-bold.svg')]"></div></button>`,
 		url : "bg-[url('/images/slides/crack-headphones.png')]",
 		alternate : "bg-[url('/images/slides/crack-headphones.png')]",
@@ -116,7 +116,7 @@ const slides = [
 		tags : ['Sports', 'Interaction Design', 'Creative Website'],
 		heading : 'Pencil <span class="text text-[#336633]">Hoops <br> Website Design</span>',
 		year : '2023',
-		description : 'Pencil Hoops is an interactive, people-friendly website designed for NBA fans who appreciate the art of pencil sketching.<br><br> It blends minimal design, accessibility, and engaging experiences, combining stunning pencil sketches with interactive animations and dynamic sound effects to bring NBA moments to life.',
+		description : '<span>Pencil Hoops is an interactive, people-friendly website designed for NBA fans who appreciate the art of pencil sketching.</span><span>It blends minimal design, accessibility, and engaging experiences, combining stunning pencil sketches with interactive animations and dynamic sound effects to bring NBA moments to life.</span>',
 		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Tour on the Website <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/mdi_basketball.svg')]"></div></button> <button class="px-4 py-3 rounded-lg border-[1px] border-black">Read the Story <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>`,
 		url : "bg-[url('/images/slides/basketball.png')]",
 		alternate : "bg-[url('/images/slides/hoops-gif.gif')]",
@@ -127,7 +127,7 @@ const slides = [
 ---
 <Layout title="Welcome to Astro.">
 	<div class="body-cont" x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail"> 
-	<div class="bg-[#F1F1F3] pre-loader-view h-screen w-full fixed top-0 left-0 right-0 z-[10] flex flex-col items-center justify-center">
+	<div class="bg-[#F1F1F3] pre-loader-view h-screen w-full fixed top-0 left-0 right-0 z-20 flex flex-col items-center justify-center">
 		<div class="absolute bottom-0 right-0 w-[40%] aspect-[2/2] bg-[url('/images/preloader-bg.png')] bg-bottom bg-contain bg-no-repeat opacity-[2%]"></div>
 		<div class="w-[10%] min-w-[100px] max-w-[250px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat border-[8px] border-[#F1F1F3] before:absolute before:content-['']  before:inline-block relative before:-right-[9px] before:-left-[9px] before:rounded-full before:-top-[9px] before:-bottom-[9px] before:bg-white before:z-[-1]"></div>
 		<p class="mt-6 mb-10">There are no rules in arts, only dogma.</p>
@@ -139,7 +139,7 @@ const slides = [
 
 	
 	<!-- nav -->
-	<Header />
+	<Header active="Home"/>
 
 	<!-- arrows -->
 	<a :href="'#' + (links[links.indexOf(active) + 1] || links[links.length])" @click="setTimeout(()=> {active = (links[links.indexOf(active) + 1] || links[links.length])}, 1) " class="h-[50px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-5 bottom-2 z-[1] down-arrow"></a>
@@ -155,9 +155,9 @@ const slides = [
 			<div class="pt-4 px-6 lg:px-20 pb-8 flex items-center">
 				{
 					slides.map(slide =>
-					<div class="justify-between items-center top-side w-full opacity-0 hidden gap-4">
+					<div class="justify-between flex-col md:flex-row items-center top-side w-full opacity-0 hidden gap-4">
 					<!-- project title, tags and date -->
-							<div class="w-[40%]">
+							<div class="w-full md:w-[40%]">
 								<ul class="list-inside text-xs tags">
 									{
 										slide.tags.map(tag => 
@@ -171,9 +171,9 @@ const slides = [
 							</div>
 			
 							<!-- project description and actions -->
-							<div class="w-[60%] text-xs max-w-[600px]">
-								<p class="" set:html={slide.description}></p>
-								<div class="pt-4 flex gap-3" set:html={slide.buttons}></div>
+							<div class="w-full md:w-[60%] text-xs max-w-[600px]">
+								<p class="flex flex-col gap-2 md:gap-4 lg:gap-5" set:html={slide.description}></p>
+								<div class="pt-4 flex gap-3 flex-wrap" set:html={slide.buttons}></div>
 							</div>
 						</div>
 					)
@@ -184,7 +184,7 @@ const slides = [
 			<div class="flex gap-2 p-2 items-end justify-end">
 				{
 					slides.map(slide => 
-						<div data-url={slide.url} data-alternate={slide.alternate} class:list={["h-full bg-gray-200 max-h-[400px] rounded-md w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center", slide.url]}></div>
+						<div data-url={slide.url} data-alternate={slide.alternate} class:list={["h-full bg-gray-200 rounded-md max-h-[400px] w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center", slide.url]}></div>
 					)
 				}
 				
@@ -193,32 +193,33 @@ const slides = [
 			<div class="flex items-center justify-center gap-2 py-4">
 				<ArrowLeft className="p-2 rounded-full bg-gray-100 slide-left-btn" size={28}/>
 				<ul class="flex gap-2">
-					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-100 bottom-slide-indicator hover:cursor-pointer"></li>
-					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-30 bottom-slide-indicator hover:cursor-pointer"></li>
-					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-30 bottom-slide-indicator hover:cursor-pointer"></li>
-					<li class="w-[10vw] max-w-[100px] h-1 rounded-lg bg-gray-300 opacity-30 bottom-slide-indicator hover:cursor-pointer"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-full bg-gray-300 bottom-slide-indicator hover:cursor-pointer"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-full bg-gray-300 bottom-slide-indicator hover:cursor-pointer"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-full bg-gray-300 bottom-slide-indicator hover:cursor-pointer"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-full bg-gray-300 bottom-slide-indicator hover:cursor-pointer"></li>
 				</ul>
 				<ArrowRight className="p-2 rounded-full bg-gray-100 slide-right-btn" size={28}/>
 			</div>
 		</section>
 
 		<!-- timeline -->
-		<section id="timeline" class="h-screen grid grid-rows-[minmax(auto,100%)_auto] px-20 gap-6 pt-5 overflow-hidden">
+		<section id="timeline" class="h-screen grid grid-rows-[minmax(auto,100%)_auto] px-4 md:px-20 gap-6 pt-5 overflow-hidden">
 			<!-- center box -->
 			<div class="pt-8 overflow-auto">
 			{
 				timeline.map(timeline =>
 					<div class="pb-8 justify-between items-center gap-4 hidden opacity-0 timeline-slide">
 						{/* project title, tags and date */}
-						<div class="flex flex-col gap-4">
+						<div class="flex flex-col gap-4 pb-10 md:pb-0">
 							<p class="">{timeline.date}</p>
 							<p class="font-bold">{timeline.title}</p>
+							<div class:list={["aspect-video bg-gray-200 rounded-lg bg-cover bg-no-repeat lg:hidden", timeline.url]}></div>
 							<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] heading-1" set:html={timeline.heading}></h2>
 							<p class="max-w-[677px] flex flex-col gap-2" set:html={timeline.description}></p>
 						</div>
 
 						{/* project description and actions */}
-						<div class:list={["w-[45%] aspect-video bg-gray-200 rounded-lg bg-cover bg-no-repeat", timeline.url]}></div>
+						<div class:list={["w-[45%] aspect-video hidden lg:block bg-gray-200 rounded-lg bg-cover bg-no-repeat", timeline.url]}></div>
 					</div>
 				)
 			}
@@ -233,7 +234,7 @@ const slides = [
 							<div class="w-full h-full bg-gray-200 relative timeline-indicator hover:cursor-pointer">
 								<div class="absolute w-0 h-full bg-black left-0 top-0 timeline-indicator-progress"></div>
 								<div class="absolute right-0 left-0 bottom-[100%] lg:h-20 h-12 flex flex-col items-center translate-y-[100%] timeline-year">
-									<p class="py-1 lg:px-6 lg:text-sm text-xs px-3 bg-gray-200 rounded-full inline-block timeline-year-pill opacity-0">{timeline.year}</p>
+									<span class="py-1 lg:px-6 lg:text-sm sm:text-xs text-[10px] px-3 bg-gray-200 rounded-full inline-block timeline-year-pill opacity-0">{timeline.year}</span>
 									<div data-svg-wrapper>
 										<svg class="lg:h-12 h-6 lg:w-[12px]" viewBox="0 0 12 46" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path d="M6 11.3333C8.94552 11.3333 11.3333 8.94552 11.3333 6C11.3333 3.05448 8.94552 0.666668 6 0.666668C3.05448 0.666668 0.666667 3.05448 0.666667 6C0.666667 8.94552 3.05448 11.3333 6 11.3333ZM7 46V44H5V46H7ZM7 40L7 36H5V40H7ZM7 32V28H5V32H7ZM7 24L7 20H5L5 24H7ZM7 16L7 12H5L5 16H7ZM7 8L7 6H5L5 8H7Z" fill="#222222"/>
@@ -254,8 +255,8 @@ const slides = [
 		</section>
 
 		<!-- about me -->
-		<section id="about-me" class="h-screen px-20">
-			<div class="pt-8 grid grid-cols-[auto_minmax(0,30%)] gap-10">
+		<section id="about-me" class="min-h-screen px-4 md:px-20">
+			<div class="pt-8 grid grid-rows-[auto_auto] md:grid-cols-[auto_minmax(0,30%)] gap-10">
 				<!--  contents -->
 				<div class="flex flex-col gap-3.5">
 					<div>
@@ -289,7 +290,7 @@ const slides = [
 				</div>
 
 				<!-- images -->
-				<div class="w-full h-full grid grid-cols-3 grid-rows-[2fr_1fr_2fr] gap-1 p-1">
+				<div class="w-full h-[400px] md:h-full grid grid-cols-3 grid-rows-[2fr_1fr_2fr] gap-1 p-1">
 					<div class="bg-[url('/images/images1.jpg')] rounded-lg bg-cover bg-center bg-no-repeat row-span-2"></div>
 					<div class="bg-[url('/images/images2.jpg')] rounded-lg bg-cover bg-center bg-no-repeat"></div>
 					<div class="bg-[url('/images/images3.jpg')] rounded-lg bg-cover bg-center bg-no-repeat row-span-2"></div>
@@ -309,24 +310,10 @@ const slides = [
 
 </style>
 
+<script src="../scripts/HeaderProgressIndicator.ts"></script>
+<script src="../scripts/events.ts"></script>
 <script>
-		import Alpine from 'alpinejs';
-		import gsap from "gsap";
-		import Lenis from "lenis";
-		import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
-import { CurlyBraces } from 'lucide-react';
-		gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
-	
-		gsap.config({
-			nullTargetWarn: false,
-		})
-	
-		// initialise lenis
-		const lenis = new Lenis({
-			autoRaf: true,
-		});
-	
-		let previousScroll = 0;
+		import {lenis, gsap, ScrollTrigger} from '../scripts/setup.ts'
 	
 		document.addEventListener("click", function (e) {
 			const currentScroll = window.scrollY;
@@ -352,66 +339,6 @@ import { CurlyBraces } from 'lucide-react';
 				history.pushState(null, "", targetId);
 			}
 		});
-	
-		const downArrow = document.querySelector('a.down-arrow') as HTMLAnchorElement;
-		const upArrow = document.querySelector('a.up-arrow') as HTMLAnchorElement;
-	
-	
-		// document.addEventListener('alpine:init', () => {
-		//     Alpine.data('active', () => ({
-		//         open: false,
-	 
-		//         toggle() {
-		//             this.open = ! this.open
-		//         }
-		//     }))
-		// })
-		function scrollUp(){
-			lenis.scrollTo(downArrow.getAttribute('href'), {duration: 2.5, 
-				easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2
-			});
-			window.dispatchEvent(new CustomEvent('hash-update', { detail: downArrow.getAttribute('href').slice(1) }));
-		}
-	
-		function scrollDown(){
-			lenis.scrollTo(upArrow.getAttribute('href'), {duration: 0});
-			window.dispatchEvent(new CustomEvent('hash-update', { detail: upArrow.getAttribute('href').slice(1) }));
-		}
-	
-		document.addEventListener('keydown', function(event) {
-			if (event.key === 'ArrowDown') {
-				scrollUp()
-			}
-		});
-	
-		document.addEventListener('keydown', function(event) {
-			if (event.key === 'ArrowUp') {
-				scrollDown()
-			}
-		});
-	
-		let intervalId = null;
-		window.addEventListener('wheel', (e) => {
-			e.preventDefault(); // stop actual scrolling
-			const direction = e.deltaY > 0 ? 'down' : 'up';
-			// lenis.stop()
-	
-			// // clearTimeout
-			// console.log('here')
-			// clearTimeout(intervalId)
-			// intervalId = setTimeout(() => {
-			// lenis.start()
-			// 	if(direction == 'up') scrollUp()
-			// 	else scrollDown()
-	
-			// 	console.log('inside', lenis)
-			// }, 50);
-	
-	
-			// if(direction == 'up') scrollUp()
-			// else scrollDown()
-		}, { passive: false });
-	
 		
 	
 	
@@ -445,187 +372,6 @@ import { CurlyBraces } from 'lucide-react';
 				// markers : true,
 			},
 		})
-	
-		
-	
-		document.querySelectorAll('section').forEach((section) => {
-			gsap.fromTo(section.querySelectorAll('.heading-up'),{translateY : '50%', opacity : 0}, {
-				translateY: 0,
-				opacity: 1,
-				duration: 1,
-				ease: "power2.out",
-				stagger: 0.4,
-				scrollTrigger: {
-					trigger: section,  // Each element triggers individually
-					start: "top 20%",  // Animation starts when the element is 80% in view
-					end: "bottom 96%",
-					toggleActions: "play reverse play reset", // Only plays once
-					// markers : true,
-				},
-			});
-	
-			gsap.fromTo(section.querySelectorAll('.heading-up-footer'),{translateY : '50%', opacity : 0}, {
-				translateY: 0,
-				opacity: 1,
-				duration: 1,
-				ease: "power2.out",
-				stagger: 0.4,
-				scrollTrigger: {
-					trigger: section,  // Each element triggers individually
-					start: "top 20%",  // Animation starts when the element is 80% in view
-					end: "bottom 50%",
-					toggleActions: "play reverse play reset", // Only plays once
-					// markers : true,
-				},
-			});
-	
-			gsap.fromTo(section.querySelectorAll('.quick-right'),{translateX : '50%', opacity : 0}, {
-				translateX: 0,
-				opacity: 1,
-				duration: 0.8,
-				ease: "power2.out",
-				stagger: 0.2,
-				scrollTrigger: {
-					trigger: section,  // Each element triggers individually
-					start: "top 20%",  // Animation starts when the element is 80% in view
-					end: "bottom 95%",
-					toggleActions: "play reverse play reset",  // Only plays once
-					// markers : true,
-				},
-			});
-	
-			gsap.fromTo(section.querySelectorAll('.quick-up'), {opacity : 0, translateY : '50%'}, {
-				translateY: 0,
-				opacity: 1,
-				duration: 0.8,
-				ease: "power2.out",
-				stagger: 0.2,
-				scrollTrigger: {
-					trigger: section,  // Each element triggers individually
-					start: "top 20%",  // Animation starts when the element is 80% in view
-					end: "bottom 95%",
-					// scrub : true,
-					toggleActions: "play reverse play reset",  // Only plays once
-					// markers : true,
-				},
-			});
-	
-			gsap.fromTo(section.querySelectorAll('.quick-down'), {opacity : 0, translateY : '-50%'}, {
-				translateY: 0,
-				opacity: 1,
-				duration: 0.8,
-				ease: "power2.out",
-				stagger: 0.2,
-				scrollTrigger: {
-					trigger: section,  // Each element triggers individually
-					start: "top 20%",  // Animation starts when the element is 80% in view
-					end: "bottom 95%",
-					// scrub : true,
-					toggleActions: "play reverse play reset",  // Only plays once
-					// markers : true,
-				},
-			});
-	
-			gsap.fromTo(section.querySelectorAll('.quick-appear'), {opacity : 0}, {
-				opacity: 1,
-				duration: 0.8,
-				ease: "power2.out",
-				stagger: 0.2,
-				scrollTrigger: {
-					trigger: section,  // Each element triggers individually
-					start: "top 20%",  // Animation starts when the element is 80% in view
-					end: "bottom 99%",
-					// scrub : true,
-					toggleActions: "play reverse play reset",  // Only plays once
-					// markers : true,
-				},
-			});
-	
-		})
-	
-	
-	
-		document.querySelectorAll('.box-parent').forEach((boxParent) => {
-			gsap.fromTo(boxParent.querySelectorAll('.box'),{
-				xPercent : 0
-			}, { 
-				xPercent : 100,
-				duration : 0.6,
-				ease : "power1.out",
-				stagger : 0.08,
-				scrollTrigger: {
-					trigger: boxParent,  // Each element triggers individually
-					start: "top 50%",  // Animation starts when the element is 80% in view
-					end: "bottom 92%",
-					// scrub : true,
-					toggleActions: "play reverse play reset",  // Only plays once
-					// markers : true,
-				},
-			});
-		})
-	
-	
-		// for the footer
-		let footer = document.querySelector('#contact') as HTMLElement
-		let footerAnim = gsap.fromTo('.bottom-nav', { bottom : 0}, {
-			bottom : footer.clientHeight,
-			duration: 2,
-			paused : true,
-			ease: "circ.inOut",
-			// scrollTrigger: {
-			//     // trigger: '#contact',  // Each element triggers individually
-			//     // start: "top 20%",  // Animation starts when the element is 80% in view
-			//     // end: "bottom 95%",
-			//     // scrub : true,
-			//     // toggleActions: "play reverse play reverse",  // Only plays once
-			//     // markers : true,
-			// },
-		});
-	
-		let dissappearBottomNav = gsap.fromTo('.bottom-nav', { opacity : 1}, {
-			opacity : 0,
-			duration: 2,
-			paused : true,
-			ease: "circ.inOut",
-			// scrollTrigger: {
-			//     // trigger: '#contact',  // Each element triggers individually
-			//     // start: "top 20%",  // Animation starts when the element is 80% in view
-			//     // end: "bottom 95%",
-			//     // scrub : true,
-			//     // toggleActions: "play reverse play reverse",  // Only plays once
-			//     // markers : true,
-			// },
-		});
-	
-		// move bottom nav when footer shows
-		ScrollTrigger.create({
-			trigger: '#contact',
-			// start: 'top top',
-			// endTrigger: '#otherID',
-			end: 'bottom 50%+=100px',
-			onToggle: (self) => console.log('toggled, isActive:', self.isActive),
-			onUpdate: (self) => {
-	
-				if(self.direction == 1){
-					footerAnim.duration(2)
-					footerAnim.play();
-				}else{
-					footerAnim.duration(0)
-					footerAnim.reverse()
-				}
-			}
-		});
-
-
-		// hide the top nav
-		// gsap.to('.top-nav', {
-		// 	translateY: "-100%",
-		// 	opacity: 1,
-		// 	duration: 1,
-		// 	ease: "power2.out",
-		// });
-	   
-		let hideNavTimeout: ReturnType<typeof setTimeout>;
 
 
 		let bottomSlideIndicators = Array.from(document.querySelectorAll('.bottom-slide-indicator'))
@@ -676,14 +422,14 @@ import { CurlyBraces } from 'lucide-react';
 
 			// darken this indicator 
 			gsap.to(bottomSlideIndicators[i], {
-				opacity: 1,
+				backgroundColor: 'black',
 				duration: 1,
 				ease: "power2.out",
 			});
 
 			// and lighten the rest
 			gsap.to(bottomSlideIndicators.filter((el, j) => j != i), {
-				opacity: 0.3,
+				backgroundColor: '#e5e7eb',
 				duration: 1,
 				ease: "power2.out",
 			});
@@ -707,23 +453,27 @@ import { CurlyBraces } from 'lucide-react';
 		}
 
 		bottomSlides.forEach((element, i) => {
-			element.addEventListener('click', () => {
+			element.addEventListener('click', (e) => {
+				e.stopPropagation()
 				activeSlideByIndex(i)
 			});
 		});
 
 		bottomSlideIndicators.forEach((element, i) => {
-			element.addEventListener('click', () => {
+			element.addEventListener('click', (e) => {
+				e.stopPropagation()
 				activeSlideByIndex(i)
 			});
 		});
 
-		righSlideBtn?.addEventListener('click', ()=>{
+		righSlideBtn?.addEventListener('click', (e)=>{
+			e.stopPropagation()
 			currentSlide = currentSlide == bottomSlideIndicators.length - 1 ? 0 : currentSlide + 1
 			activeSlideByIndex(currentSlide)
 		})
 
-		leftSlideBtn?.addEventListener('click', ()=>{
+		leftSlideBtn?.addEventListener('click', (e)=>{
+			e.stopPropagation()
 			currentSlide = currentSlide == 0 ? bottomSlideIndicators.length - 1 : currentSlide - 1
 			activeSlideByIndex(currentSlide)
 		})
@@ -817,16 +567,19 @@ import { CurlyBraces } from 'lucide-react';
 			setActiveTimelineByIndex(currentTimelineIndex)
 		}
 
-		document.querySelector('.timeline-left-btn')?.addEventListener('click', ()=>{
+		document.querySelector('.timeline-left-btn')?.addEventListener('click', (e)=>{
+			e.stopPropagation()
 			prevTimeline()
 		})
 
-		document.querySelector('.timeline-right-btn')?.addEventListener('click', ()=>{
+		document.querySelector('.timeline-right-btn')?.addEventListener('click', (e)=>{
+			e.stopPropagation()
 			nxtTimeline()
 		})
 
 		document.querySelectorAll('.timeline-indicator').forEach((el, i)=>{
-			el.addEventListener('click', () => {
+			el.addEventListener('click', (e) => {
+				e.stopPropagation()
 				setActiveTimelineByIndex(i)
 			})
 		})
@@ -873,12 +626,6 @@ import { CurlyBraces } from 'lucide-react';
 			}
 		 })
 
-
-	    
-
-	   setTimeout(()=>{
-	   }, 2000)
-
 	   	document.addEventListener('DOMContentLoaded', () => {
 			loadtl.seek('dom-loaded')
 		});
@@ -886,28 +633,6 @@ import { CurlyBraces } from 'lucide-react';
 		window.addEventListener('load', () => {
 			loadtl.seek('loaded')
 		});
-
-		//loader logic
-		// gsap.fromTo('.page-loader', {width : '0%'}, {
-		// 	width : '100%',
-		// 	duration : 10,
-		// 	ease: "power2.out",
-		// 	// onComplete : () => {
-		// 	// 	// remove the loader
-		// 	// 	gsap.to('.page-loader', {
-		// 	// 		duration : 1,
-		// 	// 		width : '0%',
-		// 	// 		ease: "power2.out",
-		// 	// 		onComplete : () => {
-		// 	// 			document.querySelector('.page-loader')?.remove()
-		// 	// 		}
-		// 	// 	})
-		// 	// }
-		// })    
-	
-	
-	
-		// gsap.to(window, { duration: 1, scrollTo: "#hey-there", ease: "bounce.out" });
 	
 </script>
 	
