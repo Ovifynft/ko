@@ -231,8 +231,8 @@ const slides = [
 				<div class="h-1 flex gap-3">  
 					{
 						timeline.map(timeline =>
-							<div class="w-full h-full bg-gray-200 relative timeline-indicator hover:cursor-pointer">
-								<div class="absolute w-0 h-full bg-black left-0 top-0 timeline-indicator-progress"></div>
+							<div class="w-full h-full rounded-full bg-gray-200 relative timeline-indicator hover:cursor-pointer">
+								<div class="absolute rounded-full w-0 h-full bg-black left-0 top-0 timeline-indicator-progress"></div>
 								<div class="absolute right-0 left-0 bottom-[100%] lg:h-20 h-12 flex flex-col items-center translate-y-[100%] timeline-year">
 									<span class="py-1 lg:px-6 lg:text-sm sm:text-xs text-[10px] px-3 bg-gray-200 rounded-full inline-block timeline-year-pill opacity-0">{timeline.year}</span>
 									<div data-svg-wrapper>
