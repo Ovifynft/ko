@@ -2,11 +2,13 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+gsap.ticker.lagSmoothing(0);
 
 const lenis = new Lenis({
     // anchors: true,
     autoRaf: true,
     syncTouch: true,
+    syncTouchLerp : 0.1,
 });
 
 gsap.config({
