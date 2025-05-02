@@ -8,12 +8,19 @@ const lenis = new Lenis({
     // anchors: true,
     autoRaf: true,
     syncTouch: true,
-    syncTouchLerp : 0.04,
+    // syncTouchLerp : 0.03,
 });
+
+console.log(lenis)
 
 gsap.config({
     nullTargetWarn: false,
 })
+
+// lenis.on('scroll', ScrollTrigger.update)
+// gsap.ticker.add((time) => {
+//  lenis.raf(time * 1000)
+// })
 
 document.addEventListener("click", function (e) {
     const currentScroll = window.scrollY;
@@ -31,7 +38,6 @@ document.addEventListener("click", function (e) {
 
         if(targetPos < currentScroll) //scroll up
             lenis.scrollTo(target, {duration: 0, onStart : () => {
-                // pauseManualScroll = true
             }});
         else // scroll down
             lenis.scrollTo(target, {duration: 2.5, 

@@ -127,7 +127,7 @@ const slides = [
 ---
 <Layout title="Welcome to Astro.">
 	<div class="body-cont" x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail"> 
-	<div class="bg-[#F1F1F3] pre-loader-view h-screen w-full fixed top-0 left-0 right-0 z-20 flex flex-col items-center justify-center">
+	<!-- <div class="bg-[#F1F1F3] pre-loader-view h-screen w-full fixed top-0 left-0 right-0 z-20 flex flex-col items-center justify-center">
 		<div class="absolute bottom-0 right-0 w-[40%] aspect-[2/2] bg-[url('/images/preloader-bg.png')] bg-bottom bg-contain bg-no-repeat opacity-[2%]"></div>
 		<div class="w-[10%] min-w-[100px] max-w-[250px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat border-[8px] border-[#F1F1F3] before:absolute before:content-['']  before:inline-block relative before:-right-[9px] before:-left-[9px] before:rounded-full before:-top-[9px] before:-bottom-[9px] before:bg-white before:z-[-1]"></div>
 		<p class="mt-6 mb-10">There are no rules in arts, only dogma.</p>
@@ -135,7 +135,7 @@ const slides = [
 			<div class="bg-black absolute page-loader left-0 top-0 bottom-0 rounded-full"></div>
 		</div>
 		<p class="font-bilal text-[16px] absolute bottom-5 left-5">Kamil Oseni</p>
-	</div>
+	</div> -->
 
 	
 	<!-- nav -->
@@ -184,7 +184,7 @@ const slides = [
 			<div class="flex gap-2 p-2 items-end justify-end">
 				{
 					slides.map(slide => 
-						<div data-url={slide.url} data-alternate={slide.alternate} class:list={["h-full bg-gray-200 rounded-md max-h-[400px] w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center", slide.url]}></div>
+						<div data-url={slide.url} data-alternate={slide.alternate} class:list={["h-full bg-gray-200 rounded-md max-h-[100px] md:max-h-[400px] w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center", slide.url]}></div>
 					)
 				}
 				
@@ -193,10 +193,10 @@ const slides = [
 			<div class="flex items-center justify-center gap-2 py-4">
 				<ArrowLeft className="p-2 rounded-full bg-gray-100 slide-left-btn" size={28}/>
 				<ul class="flex gap-2">
-					<li class="w-[10vw] max-w-[100px] h-1 max-h-[150px] md:max-h-[5000px] rounded-full bg-gray-300 bottom-slide-indicator hover:cursor-pointer"></li>
-					<li class="w-[10vw] max-w-[100px] h-1 max-h-[150px] md:max-h-[5000px] rounded-full bg-gray-300 bottom-slide-indicator hover:cursor-pointer"></li>
-					<li class="w-[10vw] max-w-[100px] h-1 max-h-[150px] md:max-h-[5000px] rounded-full bg-gray-300 bottom-slide-indicator hover:cursor-pointer"></li>
-					<li class="w-[10vw] max-w-[100px] h-1 max-h-[150px] md:max-h-[5000px] rounded-full bg-gray-300 bottom-slide-indicator hover:cursor-pointer"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-full bg-gray-300 bottom-slide-indicator hover:cursor-pointer"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-full bg-gray-300 bottom-slide-indicator hover:cursor-pointer"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-full bg-gray-300 bottom-slide-indicator hover:cursor-pointer"></li>
+					<li class="w-[10vw] max-w-[100px] h-1 rounded-full bg-gray-300 bottom-slide-indicator hover:cursor-pointer"></li>
 				</ul>
 				<ArrowRight className="p-2 rounded-full bg-gray-100 slide-right-btn" size={28}/>
 			</div>
@@ -205,7 +205,7 @@ const slides = [
 		<!-- timeline -->
 		<section id="timeline" class="h-screen grid grid-rows-[minmax(auto,100%)_auto] px-4 md:px-20 gap-6 pt-5 overflow-hidden my-20">
 			<!-- center box -->
-			<div class="pt-8 overflow-auto" data-lenis-prevent>
+			<div class="pt-8 overflow-auto overscroll-auto timeline-scroll" data-lenis-prevent>
 			{
 				timeline.map(timeline =>
 					<div class="pb-8 justify-between items-center gap-4 hidden opacity-0 timeline-slide">
@@ -633,6 +633,30 @@ const slides = [
 		window.addEventListener('load', () => {
 			loadtl.seek('loaded')
 		});
+
+		let prevScrollPos = -20
+		document.querySelector('.timeline-scroll').addEventListener('scroll', (e : WheelEvent) => {
+			let ele = e.target as HTMLDivElement
+			// ele.setAttribute( )
+			// ele.removeAttribute('data-lenis-prevent')
+			// turns out scrollTop + offSetHeight == scrollHeight when fully scrolled
+			let value = ele.scrollTop + ele.offsetHeight
+			let match = ele.scrollHeight
+
+			if(value == match){
+				ele.removeAttribute('data-lenis-prevent')
+				setTimeout(()=> ele.setAttribute('data-lenis-prevent',""),200)
+			}else{
+				ele.setAttribute('data-lenis-prevent',"")
+			}
+			
+
+			console.log(ele.scrollTop, ele.offsetHeight, ele.scrollHeight)
+		})
+
+		document.querySelector('.timeline-scroll').addEventListener('scrollend', (e : WheelEvent) => {
+			// console.log('hello world')
+		})
 	
 </script>
 	

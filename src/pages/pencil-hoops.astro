@@ -1,52 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Footer from '../layouts/Footer.astro'
+import Footer from '../layouts/Footer.astro';
+import '../styles/style.css'
 
 // console.log('here ', Astro.url)
 import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
+import Header from '../layouts/Header.astro';
 let links = ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'problem', 'research-and-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'closing']
 let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'research-and-insights', 'problem', 'design-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'learnings', 'closing', 'contact']}
 ---
 
 <Layout title="Welcome to Astro.">
 	<!-- nav -->
-    <div  x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail"}>
-	<header class="fixed top-0 left-0 right-0 bg-white w-full z-30">
-		<nav class="flex justify-between items-center pt-4 lg:pt-8 pb-2 px-8 gap-4 lg:px-20 border-b-[1px] border-b-gray-100">
-            <button><AlignLeft /></button>
-            <!-- <p x-text="active"></p> -->
-
-            <div class="w-full flex justify-center">
-                <div class="h-2 w-full max-w-[600px] flex gap-3 relative lg:left-[5%]">  
-                    <template x-for='(link, index) in links'>
-                        <a :href="'#' + link" href="link" class="w-[100px] h-full transition-all duration-200 rounded-lg"
-                            @click="active = link"
-                            :class="{'bg-black' : links.indexOf(link) <= links.indexOf(active), 'bg-gray-200 hover:bg-gray-400' : links.indexOf(link) > links.indexOf(active)}"
-                        ></a>
-                    </template>
-                    <!-- <a class="w-full h-full bg-gray-200 relative after:content-[''] after:absolute after:w-[40%] lg:after:w-[50%] after:bottom-0 after:bg-black after:left-0 after:top-0"></a>
-                    <a class="w-full h-full bg-gray-200 relative"></a>
-                    <a class="w-full h-full bg-gray-200"></a>
-                    <a class="w-full h-full bg-gray-200"></a>
-                    <a class="w-full h-full bg-gray-200"></a>
-                    <a class="w-full h-full bg-gray-200"></a>
-                    <a class="w-full h-full bg-gray-200"></a>
-                    <a class="w-full h-full bg-gray-200"></a>
-                    <a class="w-full h-full bg-gray-200"></a>
-                    <a class="w-full h-full bg-gray-200"></a>
-                    <a class="w-full h-full bg-gray-200"></a>
-                    <a class="w-full h-full bg-gray-200"></a>
-                    <a class="w-full h-full bg-gray-200"></a>
-                    <a class="w-full h-full bg-gray-200"></a> -->
-                </div>
-            </div>
-
-			<div class="flex items-center gap-5">
-				<p class="font-bilal hidden lg:block lg:text-[24px] whitespace-nowrap">Kamil Oseni</p>
-				<div class="lg:w-[70px] md:w-[70px] w-[50px] aspect-square bg-gray-500 rounded-full"></div>
-			</div>
-		</nav>
-	</header>
+    <div  x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail"} class="body-cont">
+    <Header
+        active="Hoops"
+    >
+        <!-- lg:absolute lg lg:-top-[1000px]  -->
+        <div class="h-2 flex gap-4 max-w-[700px] w-[40%] md:w-60% lg:w-[80%] overflow-hidden mob-timeline" slot="timeline">
+            {
+                data.links.map(link => 
+                    <a href={"#"+link}  class="mob-timeline-indicator h-2 min-w-5 sm:min-w-5 lg:min-w-4 bg-gray-200 rounded-full"></a>
+                )
+            }
+        </div>
+        
+    </Header>
 
     <!-- bottom-nav -->
     <div class="fixed bottom-0 right-0 z-10 flex bg-white pt-4 pl-4 xl:px-10 lg:pl-10 py-6 xl:py-10 bottom-nav">
@@ -61,16 +40,16 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
     </div>
 
     <!-- arrow -->
-    <a :href="'#' + (links[links.indexOf(active) + 1] || links[links.length])" @click="setTimeout(()=> {active = (links[links.indexOf(active) + 1] || links[links.length])}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-20 bottom-5 z-[1] down-arrow"></a>
+    <a :href="'#' + (links[links.indexOf(active) + 1] || links[links.length])" @click="setTimeout(()=> {active = (links[links.indexOf(active) + 1] || links[links.length])}, 1) " class="h-[50px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-10 bottom-5 z-[1] down-arrow"></a>
     <a :href="'#' + (links[links.indexOf(active) - 1] || links[0])" @click="setTimeout(()=> {active = (links[links.indexOf(active) - 1] || links[0])}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-20 bottom-5 z-[1] up-arrow hidden"></a>
 
 
 	<main>
 		<!-- hero -->
         <div id="hero" class="bg-[#ececec]">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 max-w-[1700px] mx-auto">
+            <section class="min-h-screen grid grid-cols-2 py-20 lg:px-20 px-10 max-w-[1700px] mx-auto">
                 <!-- image -->
-                <div class="flex  opacity-0 hero-img items-center slide justify-end overflow-hidden p-20 w-full bg-[url('/images/pencil_hoops/sections/1.jpg')] bg-blend-darken bg-[#ececec] bg-no-repeat bg-contain bg-left h-full relative">
+                <div class="flex hero-img items-center slide justify-end overflow-hidden p-20 w-full bg-[url('/images/pencil_hoops/sections/1.jpg')] bg-blend-darken bg-[#ececec] bg-no-repeat bg-contain bg-left h-full relative">
                     <!-- {
                         [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-gray-100 left-0 right-0 absolute h-[20%] slide-2 box"></div>)
                     } -->
@@ -83,16 +62,16 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
     
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center">
-                    <h2 class="heading-up font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4  opacity-0 translate-y-[50%] up">Creating an Immersive Experience with Pencil Hoops</h2>
+                    <h2 class="heading-up font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4  up">Creating an Immersive Experience with Pencil Hoops</h2>
     
-                    <p class="heading-up opacity-0">
-                        Pencil Hoops is an interactive, people-friendly website designed for NBA fans 
-                        who appreciate the art of pencil sketching.<br><br>
+                    <p class="heading-up flex flex-col gap-4">
+                        <span>Pencil Hoops is an interactive, people-friendly website designed for NBA fans 
+                        who appreciate the art of pencil sketching.</span><span>
                         It blends minimal design, accessibility, and engaging experiences, combining stunning pencil sketches with 
-                        interactive animations and dynamic sound effects to bring NBA moments to life.
+                        interactive animations and dynamic sound effects to bring NBA moments to life.</span>
                     </p>
     
-                    <div class="pt-[52px] heading-up opacity-0">
+                    <div class="pt-4 heading-up">
                         <button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button>
                     </div>
                 </div>
@@ -103,37 +82,37 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- hey there -->
-        <section id="hey-there" class="lg:px-20 px-10 h-screen flex items-center justify-center relative pt-[100px] md:pt-[120px] lg:pt-[200px] max-w-[1700px] mx-auto">
-            <h2 class="text-sm sm:text-lg md:text-2xl xl:text-5xl leading-[35px] lg:leading-[48px] xl:leading-[72px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">Hey there! This isn’t just a case study; it’s a story of the work, the process, and the thoughts behind it. My goal is to keep things fun and straightforward, enjoy!</h2>
+        <section id="hey-there" class="lg:px-20 px-10 h-screen flex items-center justify-center relative py-20 max-w-[1700px] mx-auto">
+            <h2 class="text-sm sm:text-lg md:text-2xl xl:text-4xl leading-[35px] lg:leading-[48px] xl:leading-[55px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">Hey there! This isn’t just a case study; it’s a story of the work, the process, and the thoughts behind it. My goal is to keep things fun and straightforward, enjoy!</h2>
 			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div> -->
             <p class="absolute right-20 bottom-[20%] w-[70%] text-right quick-appear">“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun & easy to use.” - Tunde</p>
         </section>
 
         <!-- table of contents -->
-        <section id="table" class="lg:px-20 px-10 h-screen relative pt-[100px] md:pt-[120px] lg:pt-[200px] max-w-[1700px] mx-auto overflow-hidden">
+        <section id="table" class="lg:px-20 px-10 min-h-screen relative py-20 max-w-[1700px] mx-auto">
             <h2 class="font-safira lg:text-sm xl:text-2xl heading-up">Content</h2>
             <div class="max-w-2xl grid grid-cols-[80%_20%] grid-rows-6 mt-20 mx-auto my-auto gap-4 lg:text-xl xl:text-2xl">
-                <p class="quick-right opacity-0">Quick Overview</p><p class="quick-up opacity-0 translate-y-[50%]">01</p>
-                <p class="quick-right opacity-0">Research and Insights</p><p class="quick-up opacity-0 translate-y-[50%]">02</p>
-                <p class="quick-right opacity-0">Design Process</p><p class="quick-up opacity-0 translate-y-[50%]">03</p>
-                <p class="quick-right opacity-0">Impact and Feedback</p><p class="quick-up opacity-0 translate-y-[50%]">04</p>
-                <p class="quick-right opacity-0">Collaboration</p><p class="quick-up opacity-0 translate-y-[50%]">05</p>
-                <p class="quick-right opacity-0">Reflections and Learnings</p><p class="quick-up opacity-0 translate-y-[50%]">06</p>
+                <p class="quick-right">Quick Overview</p><p class="quick-up">01</p>
+                <p class="quick-right">Research and Insights</p><p class="quick-up">02</p>
+                <p class="quick-right">Design Process</p><p class="quick-up">03</p>
+                <p class="quick-right">Impact and Feedback</p><p class="quick-up">04</p>
+                <p class="quick-right">Collaboration</p><p class="quick-up">05</p>
+                <p class="quick-right">Reflections and Learnings</p><p class="quick-up">06</p>
             </div>
 			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div> -->
         </section>
 
         <!-- 01 -->
-        <div id="quick-overview" class="bg-gray-100">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] max-w-[1700px] mx-auto lg:px-20 px-10 relative gap-4 xl:gap-6">
+        <div id="quick-overview" class="bg-[#ececec]">
+            <section class="min-h-screen grid grid-cols-2 py-20 max-w-[1700px] mx-auto lg:px-20 px-10 relative gap-4 xl:gap-6">
                 <!-- project description and actions -->
-                <div class="max-w-[700px] flex flex-col justify-center gap-4">
+                <div class="max-w-[700px] flex flex-col justify-center gap-4 justify-self-center">
                     <p class="text-4xl font-cookie quick-down">01</p>
                     <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Quick Overview</h2>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/2.jpg')] bg-blend-color-burn bg-gray-200/5 bg-center bg-no-repeat bg-cover h-full"></div>
+                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/2.jpg')] bg-blend-darken bg-[#ececec] bg-center bg-no-repeat bg-contain h-full"></div>
     
                 <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
             </section>
@@ -141,13 +120,13 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- 01 - Quick overview -->
-        <section id="quick-overview-2" class="h-screen overflow-hidden flex flex-col lg:grid pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 xl:grid-cols-[auto_auto_40%] lg:grid-cols-[auto_auto_10%]  grid-rows-[auto_auto_auto] lg:gap-4 relative max-w-[1700px] mx-auto">
+        <section id="quick-overview-2" class="min-h-screen flex flex-col lg:grid py-20 lg:px-20 px-10 xl:grid-cols-[auto_auto_40%] lg:grid-cols-[auto_auto_10%]  grid-rows-[auto_auto_auto] lg:gap-4 relative max-w-[1700px] mx-auto">
             <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xltext-2xl pb-2 xl:py-4">Product Overview</h3>
             <p class="md:w-full xl:max-w-[500px] pb-2 xl:py-4 border-gray-200">Pencil Hoops is a concept website created to give NBA fans a fresh, fun way to enjoy the game through pencil art. 
                 We used Figma and Adobe Illustrator to design a clean, simple interface with interactive features. <br><br>
                 People who tested it said it was fun, easy to use, and really cool to look at.
             </p>
-            <div class="row-span-3 bg-gray-200 w-full rounded-lg"></div>
+            <div class="row-span-3 bg-gray-200 bg-[url('/images/pencil_hoops/product-overview.jpg')] bg-contain bg-no-repeat bg-center w-full rounded-lg"></div>
 
             <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xltext-2xl pb-2 xl:py-4 lg:pt-8">My Role</h3>
             <p class="md:w-full xl:max-w-[500px] lg:border-y-[1px] pb-2 xl:py-4 lg:pt-8 border-gray-200">I came up with the idea for Pencil Hoops and led the design from start to finish. I designed the website, 
@@ -162,13 +141,13 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 with many highlighting how enjoyable and intuitive it felt.
             </p>
 
-            <div class="row-span-3 bg-gray-200 w-full rounded-lg h-full lg:hidden"></div>
+            <div class="row-span-3 bg-gray-200 w-full rounded-lg h-full lg:hidden bg-[url('/images/pencil_hoops/product-overview.jpg')] bg-contain bg-no-repeat bg-center"></div>
 
 		</section>
 
 		<!-- 02 -->
-        <div id="research-and-insights" class="bg-gray-100">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10  relative max-w-[1700px] mx-auto">
+        <div id="research-and-insights" class="bg-[#ececec]">
+            <section class="min-h-screen grid grid-cols-2 py-20 lg:px-20 px-10  relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-10">
                     <p class="text-4xl font-cookie quick-down">02</p>
@@ -176,14 +155,14 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/gif1.gif')] bg-gray-200/60 bg-center bg-no-repeat bg-cover bg-blend-color-burn"></div>
+                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/gif1.gif')] bg-[#ececec] bg-center bg-no-repeat bg-cover bg-blend-darken"></div>
     
                 <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
             </section>
         </div>
 
         <!-- the problem -->
-        <section id='problem' class="h-screen overflow-hidden grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id='problem' class="min-h-screen grid lg:grid-cols-2 py-20 lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col lg:justify-center gap-4 xl:gap-6 relative box-parent overflow-hidden">
                 
@@ -192,23 +171,23 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     NBA fans needed something fun and refreshing, something that showcased the beauty of NBA moments through a unique artistic lens. 
                     Most NBA-related websites were cluttered, hard to navigate, and lacked the engaging experience fans really wanted.
                 </p>
-                <div class="flex items-center justify-end p-20 w-full quick-up h-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div>
+                <div class="flex items-center justify-end p-20 w-full quick-up h-full rounded-lg bg-[url('/images/pencil_hoops/the-problem.png')] bg-contain bg-no-repeat bg-center lg:hidden "></div>
 
-                {
+                <!-- {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
-                }
+                } -->
             </div>
 
             <!-- image -->
-            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent">
-                {
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full rounded-lg bg-[url('/images/pencil_hoops/the-problem.png')] bg-contain bg-no-repeat bg-center hidden relative box-parent">
+                <!-- {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
-                }
+                } -->
             </div>
 		</section>
 
         <!-- research and design insights -->
-        <section id="design-insights" class="h-screen overflow-hidden flex flex-col gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="design-insights" class="min-h-screen flex flex-col gap-4 lg:grid lg:grid-cols-2 py-20 lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Research and Design Insights</h2>
@@ -231,15 +210,15 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
         <!-- 03 -->
         <div id="design-process" class="bg-gray-100">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+            <section class="min-h-screen flex justify-center items-center py-20 lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
-                <div class="max-w-[700px] flex flex-col justify-center gap-10">
-                    <p class="text-4xl font-cookie quick-down">03</p>
+                <div class="flex flex-col gap-10">
+                    <p class="text-4xl font-cookie quick-down text-left">03</p>
                     <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Design Process</h2>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
+                <!-- <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div> -->
     
     
             </section>
@@ -247,7 +226,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 	
 
         <!-- laying the foundation -->
-        <section id="foundation" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="foundation" class="min-h-screen lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 py-20 lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 relative box-parent">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Laying the Foundation – Sketches and Structure</h2>
@@ -265,23 +244,23 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     like the basketball net-inspired cards for the "Did You Know" section and basketball-shaped icons for the 
                     next and previous buttons, which were initially sketched by our pencil artist.
                 </p>
-                {
+                <!-- {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
-                }
+                } -->
             </div>
 
            <!-- image -->
-            <div class="flex relative items-center justify-end p-20 w-full box-parent bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full">
-                {
+            <div class="flex relative items-center justify-end p-20 w-full box-parent bg-[url('/images/pencil_hoops/laying-foundation.png')] bg-center bg-no-repeat bg-contain h-full">
+                <!-- {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white hidden lg:block left-0 right-0 absolute h-[10%] slide-2 box"></div>)
-                }
+                } -->
             </div>
 
 
 		</section>
 
         <!-- bringing designs to life -->
-        <section id="life" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="life" class="min-h-screen lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 py-20 lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 box-parent relative">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Bringing Designs to Life</h2>
@@ -295,23 +274,24 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     with the NBA’s energetic vibe. 
                     Smooth transitions and micro-interactions tied everything together, making the interface feel seamless and responsive.
                 </p>
-                {
+                <!-- {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
-                }
+                } -->
             </div>
 
             <!-- image -->
-            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full box-parent relative">
-                {
-                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
-                }
+            <div class="w-full bg-gray-200 grid grid-cols-2 grid-rows-2 gap-2 h-full box-parent relative">
+                <div class="bg-[url('/images/pencil_hoops/designs/1.png')] bg-gray-200 bg-center w-full h-full bg-no-repeat bg-cover"></div>
+                <div class="bg-[url('/images/pencil_hoops/designs/2.png')] bg-gray-200 bg-center w-full h-full bg-no-repeat bg-cover"></div>
+                <div class="bg-[url('/images/pencil_hoops/designs/3.png')] bg-gray-200 bg-center w-full h-full bg-no-repeat bg-cover"></div>
+                <div class="bg-[url('/images/pencil_hoops/designs/4.png')] bg-gray-200 bg-center w-full h-full bg-no-repeat bg-cover"></div>
             </div>
 
 
 		</section>
 
         <!-- visual aesthetics -->
-        <section id="visual" class="h-screen overflow-hidden flex flex-col md:grid md:grid-cols-[40%_60%] gap-8 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative @container max-w-[1700px] mx-auto">
+        <section id="visual" class="min-h-screen flex flex-col md:grid md:grid-cols-[40%_60%] gap-8 py-20 lg:px-20 px-10 relative @container max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 box-parent relative overflow-hidden">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Visual Aesthetics and Style</h2>
@@ -324,60 +304,20 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     Typography was carefully selected to resonate with the NBA audience, bold, sleek, and contemporary. 
                     The navigation remained minimal and user-friendly, allowing the content to shine without distractions.
                 </p>
-                {
+                <!-- {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
-                }
+                } -->
             </div>
 
-            <!-- colors -->
-            <div class="w-full bg-center bg-no-repeat bg-cover hidden sm:grid grid-rows-2 grid-cols-4 md:grid-cols-2 md:grid-rows-3 xl:flex xl:items-center quick-up">
-                <div class="bg-gray-200 px-4 py-8 flex flex-col justify-between items-start gap-2 lg:w-full xl:min-h-[400px]">
-                    <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">01</p>
-                    <div class="text-black">
-                        <p class="md:text-lg text-sm">Primary</p>
-                        <p class="sm:text-xs text-[9px]">#333333</p>
-                    </div>
-                </div>
-                <div class="bg-gray-200 px-4 py-8 flex flex-col justify-between items-start gap-2 lg:w-full xl:min-h-[400px]">
-                    <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">02</p>
-                    <div class="text-black">
-                        <p class="md:text-lg text-sm">Accent</p>
-                        <p class="sm:text-xs text-[9px]">#333333</p>
-                    </div>
-                </div>
-                <div class="bg-gray-200 px-4 py-8 flex flex-col justify-between items-start gap-2 lg:w-full xl:min-h-[400px]">
-                    <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">03</p>
-                    <div class="text-black">
-                        <p class="md:text-lg text-sm">Complementary</p>
-                        <p class="sm:text-xs text-[9px]">#333333</p>
-                    </div>
-                </div>
-                <div class="bg-gray-200 px-4 py-8 flex flex-col justify-between items-start gap-2 lg:w-full xl:min-h-[400px]">
-                    <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">04</p>
-                    <div class="text-black">
-                        <p class="md:text-lg text-sm">Primary</p>
-                        <p class="sm:text-xs text-[9px]">#333333</p>
-                    </div>
-                </div>
-                <div class="bg-gray-200 px-4 py-8 flex flex-col justify-between items-start gap-2 lg:w-full xl:min-h-[400px]">
-                    <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">05</p>
-                    <div class="text-black">
-                        <p class="md:text-lg text-sm">Primary</p>
-                        <p class="sm:text-xs text-[9px]">#333333</p>
-                    </div>
-                </div>
-                <div class="bg-gray-200 px-4 py-8 flex flex-col justify-between items-start gap-2 lg:w-full xl:min-h-[400px]">
-                    <p class="inline-block border-[1px] px-8 py-1 border-white rounded-xl text-[9.22px]">06</p>
-                    <div class="text-black">
-                        <p class="md:text-lg text-sm">Primary</p>
-                        <p class="sm:text-xs text-[9px]">#333333</p>
-                    </div>
-                </div>
+            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/visual.jpg')] bg-center bg-no-repeat bg-contain h-full box-parent relative">
+                <!-- {
+                    [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
+                } -->
             </div>
 		</section>
 
         <!-- high fidelity designs -->
-        <section id="fidelity" class="h-screen overflow-hidden lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="fidelity" class="min-h-screen lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 py-20 lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 box-parent relative">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">High-Fidelity Designs and Final Touches</h2>
@@ -389,16 +329,16 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     Throughout the process, I maintained clear communication with the developer, 
                     ensuring a smooth handoff with detailed documentation and well-organized design assets.
                 </p>
-                {
+                <!-- {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
-                }
+                } -->
             </div>
 
             <!-- image -->
-            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full box-parent relative">
-                {
+            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/high-fidelity.jpg')] bg-center bg-no-repeat bg-contain h-full box-parent relative">
+                <!-- {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
-                }
+                } -->
             </div>
 
 
@@ -406,7 +346,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
         <!-- 04 -->
         <div id="impact-and-feedback" class="bg-gray-100">
-            <section class="h-screen overflow-hidden flex flex-col lg:grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+            <section class="min-h-screen flex flex-col lg:grid grid-cols-2 py-20 lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
                     <p class="text-4xl font-cookie quick-down">04</p>
@@ -424,15 +364,13 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
-    
-    
+                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/laying-foundation.png')] bg-center bg-no-repeat bg-contain bg-gray-200 h-full"></div>
             </section>
         </div>
 
         <!-- 05 Collabrations-->
         <div id="collaboration" class="bg-gray-100">
-            <section class="h-screen overflow-hidden pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <section class="min-h-screen py-20 lg:px-20 px-10 relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
                     <p class="text-4xl font-cookie quick-down">05</p>
@@ -482,7 +420,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
         <!-- 06 reflections and learnings -->
         <div id="reflections" class="bg-gray-100">
-            <section class="h-screen overflow-hidden flex flex-col lg:grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+            <section class="min-h-screen flex flex-col lg:grid grid-cols-2 py-20 lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
                     <p class="text-4xl font-cookie quick-down">06</p>
@@ -490,7 +428,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k.jpg')] bg-gray-200 bg-center bg-no-repeat bg-cover h-full"></div>
+                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/product-overview.jpg')] bg-center bg-no-repeat bg-contain h-full"></div>
     
     
             </section>
@@ -498,7 +436,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- Reflections and learnings -->
-        <section id="learnings" class="h-screen overflow-hidden flex flex-col gap-4 lg:grid lg:grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="learnings" class="min-h-screen flex flex-col gap-4 lg:grid lg:grid-cols-2 py-20 lg:px-20 px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Reflections and Learnings</h2>
@@ -538,8 +476,8 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		</section>
 
 		<!-- closing statement -->
-        <div id='closing' class="bg-gray-100">
-            <section class="h-screen overflow-hidden grid grid-cols-2 pb-8 pt-[100px] md:pt-[120px] lg:pt-[200px] lg:px-20 px-10 max-w-[1700px] mx-auto">
+        <div id='closing' class="bg-[#ececec]">
+            <section class="min-h-screen grid grid-cols-2 py-20 lg:px-20 px-10 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center">
                     <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 heading-up-footer">Closing Statement</h2>
@@ -556,7 +494,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full closing-img bg-[url('/images/pencil_hoops/sections/1.jpg')] bg-blend-color-burn bg-gray-100/70 bg-center bg-no-repeat bg-cover h-full"></div>
+                <div class="flex items-center justify-end p-20 w-full closing-img bg-[url('/images/pencil_hoops/closing.gif')] bg-blend-darken bg-[#ececec] bg-center bg-no-repeat bg-cover h-full"></div>
             </section>
         </div>
 		
@@ -569,307 +507,36 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
 </style>
 
+<script src="../scripts/HeaderProgressIndicator.ts"></script>
+<script src="../scripts/events.ts"></script>
 <script>
-    import Alpine from 'alpinejs';
-    import gsap from "gsap";
-    import Lenis from "lenis";
-    import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
-    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
-
-    gsap.config({
-        nullTargetWarn: false,
-    })
-
-    // initialise lenis
-    const lenis = new Lenis({
-        autoRaf: true,
-    });
-
-    let previousScroll = 0;
-    // Listen for the scroll event and log the event data
-    // lenis.on('scroll', (e) => {
-    //     // console.log(e);
-    // });
-
-    // lenis.on('scroll', ScrollTrigger.update);
-    // gsap.ticker.lagSmoothing(0);
-
-    document.addEventListener("click", function (e) {
-        const currentScroll = window.scrollY;
-
-        let Etarget = e.target as HTMLElement
-        const anchor = Etarget.closest("a[href^='#']");
-        if (!anchor) return;
-
-        e.preventDefault();
-        const targetId = anchor.getAttribute("href");
-        const target = document.querySelector(targetId) as HTMLElement;
-
-        if (target) {
-            let targetPos = target.offsetTop;
- 
-            if(targetPos < currentScroll) //scroll up
-                lenis.scrollTo(target, {duration: 0});
-            else // scroll down
-                lenis.scrollTo(target, {duration: 2.5, 
-                easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2
-            });
-
-            history.pushState(null, "", targetId);
-        }
-    });
-
-    const downArrow = document.querySelector('a.down-arrow') as HTMLAnchorElement;
-    const upArrow = document.querySelector('a.up-arrow') as HTMLAnchorElement;
-
-
-    // document.addEventListener('alpine:init', () => {
-    //     Alpine.data('active', () => ({
-    //         open: false,
- 
-    //         toggle() {
-    //             this.open = ! this.open
-    //         }
-    //     }))
-    // })
-    function scrollUp(){
-        lenis.scrollTo(downArrow.getAttribute('href'), {duration: 2.5, 
-            easing : (x) => x < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2
-        });
-        window.dispatchEvent(new CustomEvent('hash-update', { detail: downArrow.getAttribute('href').slice(1) }));
-    }
-
-    function scrollDown(){
-        lenis.scrollTo(upArrow.getAttribute('href'), {duration: 0});
-        window.dispatchEvent(new CustomEvent('hash-update', { detail: upArrow.getAttribute('href').slice(1) }));
-    }
-
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'ArrowDown') {
-            scrollUp()
-        }
-    });
-
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'ArrowUp') {
-            scrollDown()
-        }
-    });
-
-    let intervalId = null;
-    window.addEventListener('wheel', (e) => {
-        e.preventDefault(); // stop actual scrolling
-        const direction = e.deltaY > 0 ? 'down' : 'up';
-        lenis.stop()
-
-        // clearTimeout
-        console.log('here')
-        clearTimeout(intervalId)
-        intervalId = setTimeout(() => {
-            lenis.start()
-            if(direction == 'up') scrollUp()
-            else scrollDown()
-
-            console.log('inside', lenis)
-        }, 50);
-
-
-        // if(direction == 'up') scrollUp()
-        // else scrollDown()
-    }, { passive: false });
-
+    import {gsap, ScrollTrigger} from '../scripts/setup.ts'
+    import {dissappearBottomNav} from '../scripts/animations.ts'
     
-
-
-    gsap.fromTo(".hero-img",{
-        translateX : '-50%'
-    }, {
-        translateX : '0%',
-        opacity : 1,
-        duration : 2,
-        scrollTrigger: {
-            trigger: '.hero-img',  // Each element triggers individually
-            // start: "top 80%",  // Animation starts when the element is 80% in view
-            end: "bottom 92%",
-            toggleActions: "play reverse play reset",  // Only plays once
-            // markers : true,
-        },
-    })
-
-    gsap.fromTo(".closing-img",{
-        translateY : '20%',
-        opacity : 0
-    }, {
-        translateY : '0%',
-        opacity : 1,
-        duration : 2,
-        scrollTrigger: {
-            trigger: '.closing-img',  // Each element triggers individually
-            // start: "top 80%",  // Animation starts when the element is 80% in view
-            end: "bottom 50%",
-            toggleActions: "play reverse play reset",  // Only plays once
-            // markers : true,
-        },
-    })
-
-    
-
-    document.querySelectorAll('section').forEach((section) => {
-        gsap.fromTo(section.querySelectorAll('.heading-up'),{translateY : '50%', opacity : 0}, {
-            translateY: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out",
-            stagger: 0.4,
-            scrollTrigger: {
-                trigger: section,  // Each element triggers individually
-                start: "top 20%",  // Animation starts when the element is 80% in view
-                end: "bottom 96%",
-                toggleActions: "play reverse play reset", // Only plays once
-                // markers : true,
-            },
-        });
-
-        gsap.fromTo(section.querySelectorAll('.heading-up-footer'),{translateY : '50%', opacity : 0}, {
-            translateY: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out",
-            stagger: 0.4,
-            scrollTrigger: {
-                trigger: section,  // Each element triggers individually
-                start: "top 20%",  // Animation starts when the element is 80% in view
-                end: "bottom 50%",
-                toggleActions: "play reverse play reset", // Only plays once
-                // markers : true,
-            },
-        });
-
-        gsap.fromTo(section.querySelectorAll('.quick-right'),{translateX : '50%', opacity : 0}, {
-            translateX: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power2.out",
-            stagger: 0.2,
-            scrollTrigger: {
-                trigger: section,  // Each element triggers individually
-                start: "top 20%",  // Animation starts when the element is 80% in view
-                end: "bottom 95%",
-                toggleActions: "play reverse play reset",  // Only plays once
-                // markers : true,
-            },
-        });
-
-        gsap.fromTo(section.querySelectorAll('.quick-up'), {opacity : 0, translateY : '50%'}, {
-            translateY: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power2.out",
-            stagger: 0.2,
-            scrollTrigger: {
-                trigger: section,  // Each element triggers individually
-                start: "top 20%",  // Animation starts when the element is 80% in view
-                end: "bottom 95%",
-                // scrub : true,
-                toggleActions: "play reverse play reset",  // Only plays once
-                // markers : true,
-            },
-        });
-
-        gsap.fromTo(section.querySelectorAll('.quick-down'), {opacity : 0, translateY : '-50%'}, {
-            translateY: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power2.out",
-            stagger: 0.2,
-            scrollTrigger: {
-                trigger: section,  // Each element triggers individually
-                start: "top 20%",  // Animation starts when the element is 80% in view
-                end: "bottom 95%",
-                // scrub : true,
-                toggleActions: "play reverse play reset",  // Only plays once
-                // markers : true,
-            },
-        });
-
-        gsap.fromTo(section.querySelectorAll('.quick-appear'), {opacity : 0}, {
-            opacity: 1,
-            duration: 0.8,
-            ease: "power2.out",
-            stagger: 0.2,
-            scrollTrigger: {
-                trigger: section,  // Each element triggers individually
-                start: "top 20%",  // Animation starts when the element is 80% in view
-                end: "bottom 99%",
-                // scrub : true,
-                toggleActions: "play reverse play reset",  // Only plays once
-                // markers : true,
-            },
-        });
-
-    })
-
-
-
-    document.querySelectorAll('.box-parent').forEach((boxParent) => {
-        gsap.fromTo(boxParent.querySelectorAll('.box'),{
-            xPercent : 0
-        }, { 
-            xPercent : 100,
-            duration : 0.6,
-            ease : "power1.out",
-            stagger : 0.08,
-            scrollTrigger: {
-                trigger: boxParent,  // Each element triggers individually
-                start: "top 50%",  // Animation starts when the element is 80% in view
-                end: "bottom 92%",
-                // scrub : true,
-                toggleActions: "play reverse play reset",  // Only plays once
-                // markers : true,
-            },
+     // // dissappear footer on certain pages
+     ['#hero', '#hey-there', '#quick-overview', '#research-and-insights', '#design-process', '#collaboration', '#next-steps', '#closing', '#key-features', '#market-strategy', '#conclusion', '#contact'].forEach(section => {
+        ScrollTrigger.create({
+            trigger: section,
+            // start: 'top top',
+            // endTrigger: '#otherID',
+            // end: 'bottom 50%+=100px',
+            onEnter : () => {
+				// console.log('we just enter timeline')
+				dissappearBottomNav.play()
+                // console.log('enter top')
+			},
+			onLeave : () => {
+				dissappearBottomNav.reverse()
+                // console.log('on leave bottom')
+			},
+			onEnterBack : () => {
+				dissappearBottomNav.play()
+                // console.log('enter bottom')
+			},
+			onLeaveBack : () => {
+				// dissappearBottomNav.play()
+                // console.log('on leave top')
+			}
         });
     })
-
-
-    // for the footer
-    let footer = document.querySelector('#contact') as HTMLElement
-    let footerAnim = gsap.fromTo('.bottom-nav', { bottom : 0}, {
-        bottom : footer.clientHeight,
-        duration: 2,
-        paused : true,
-        ease: "circ.inOut",
-        // scrollTrigger: {
-        //     // trigger: '#contact',  // Each element triggers individually
-        //     // start: "top 20%",  // Animation starts when the element is 80% in view
-        //     // end: "bottom 95%",
-        //     // scrub : true,
-        //     // toggleActions: "play reverse play reverse",  // Only plays once
-        //     // markers : true,
-        // },
-    });
-
-    ScrollTrigger.create({
-        trigger: '#contact',
-        // start: 'top top',
-        // endTrigger: '#otherID',
-        end: 'bottom 50%+=100px',
-        onToggle: (self) => console.log('toggled, isActive:', self.isActive),
-        onUpdate: (self) => {
-
-            if(self.direction == 1){
-                footerAnim.duration(2)
-                footerAnim.play();
-            }else{
-                footerAnim.duration(0)
-                footerAnim.reverse()
-            }
-        }
-    });
-
-   
-
-
-
-    // gsap.to(window, { duration: 1, scrollTo: "#hey-there", ease: "bounce.out" });
-
 </script>
