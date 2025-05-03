@@ -30,7 +30,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
     <!-- bottom-nav -->
     <div class="fixed bottom-0 right-0 z-10 flex bg-white pt-4 pl-4 xl:px-4 md:px-10 lg:pl-10 py-6 xl:py-10 bottom-nav">
-        <ul class="flex gap-4 text-[#afafaf] font-semibold text-[10px] lg:text-sm">
+        <ul class="flex gap-4 text-[#afafaf] font-semibold text-[6px] sm:text-[10px] lg:text-sm">
             <li @click="active = 'quick-overview'" :class="{'text-black' : active == 'quick-overview'}"><a href="#quick-overview">Quick Overview</a></li>
             <li @click="active = 'research-and-insights'" :class="{'text-black' : active == 'research-and-insights'}"><a href="#research-and-insights"> Research and Insights</a></li>
             <li @click="active = 'design-process'" :class="{'text-black' : active == 'design-process'}"><a href="#design-process"> Design Process</a></li>
@@ -73,7 +73,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     </p>
     
                     <div class="pt-4">
-                        <a href="/test" class="inline-block"><button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button></a>
+                        <a href="https://pencil-hoops.netlify.app/" target="_blank" class="inline-block"><button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button></a>
                     </div>
                 </div>
                 <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
@@ -84,7 +84,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
         <!-- hey there -->
         <section id="hey-there" class="lg:px-20 px-4 md:px-10 h-screen flex items-center justify-center relative py-20 max-w-[1700px] mx-auto">
-            <h2 class="text-sm sm:text-lg md:text-2xl xl:text-4xl leading-[35px] lg:leading-[48px] xl:leading-[55px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">Hey there! This isn’t just a case study; it’s a story of the work, the process, and the thoughts behind it. My goal is to keep things fun and straightforward, enjoy!</h2>
+            <h2 class="text-sm sm:text-lg md:text-2xl xl:text-4xl leading-[35px] lg:leading-[48px] xl:leading-[55px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">Hey there! This isn’t just a case study; it’s a story of the <span class="text-black">work</span>, the <span class="text-black">process</span>, and the <span class="text-black">thoughts</span> behind it. My goal is to keep things fun and straightforward, enjoy!</h2>
 			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div> -->
             <p class="absolute right-20 bottom-[20%] w-[70%] text-right quick-appear">“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun & easy to use.” - Tunde</p>
         </section>
@@ -528,12 +528,12 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     </p>
     
                     <div class="pt-[52px] heading-up-footer">
-                        <button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button>
+                        <a href="https://pencil-hoops.netlify.app/" target="_blank"><button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button></a>
                     </div>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full closing-img bg-[url('/images/pencil_hoops/closing.gif')] bg-blend-darken bg-[#ececec] bg-center bg-no-repeat bg-cover h-full"></div>
+                <div class="flex items-center justify-end p-20 w-full closing-img bg-[url('/images/pencil_hoops/closing.gif')] bg-blend-darken bg-[#ececec] bg-center bg-no-repeat bg-contain h-full"></div>
             </section>
         </div>
 		
@@ -553,7 +553,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
     import {dissappearBottomNav} from '../scripts/animations.ts'
     
      // // dissappear footer on certain pages
-     ['#hero', '#hey-there', '#quick-overview', '#research-and-insights', '#design-process', '#collaboration', '#next-steps', '#closing', '#key-features', '#market-strategy', '#conclusion', '#contact'].forEach(section => {
+     ['#hero', '#hey-there', '#table', '#quick-overview', '#research-and-insights', '#design-process', '#collaboration', '#next-steps', '#closing', '#key-features', '#market-strategy', '#conclusion', '#contact'].forEach(section => {
         ScrollTrigger.create({
             trigger: section,
             // start: 'top top',

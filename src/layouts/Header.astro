@@ -31,7 +31,7 @@ const {active} = Astro.props;
             <!-- <div class="xl:w-[78px] w-[40px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat"></div> -->
              {
                 hasTimelineSlot ? 
-                <p class="font-bilal text-[16px]">KO✨</p>
+                <p class="font-bilal text-[16px] sm:hidden">KO✨</p>
                 :
                 <div class="flex items-center gap-4">
                     <p class="font-bilal text-[16px]">Kamil Oseni</p>
@@ -50,9 +50,9 @@ const {active} = Astro.props;
  <nav class="mob-nav z-[20] fixed top-0 left-0 bottom-0 right-0 -translate-y-[100%] lg:hidden bg-white text-[#AFAFAF] font-safira px-19 py-10 flex flex-col justify-between items-center text-center">
     <X className="min-w-8 close-nav hover:cursor-pointer text-black"/>
     <ul class="flex flex-col min-h-[60%] justify-between">
-        <li class:list={["nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300", active == 'Home' && "text-black"]}><a href="#">Home</a></li>
-        <li class="nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300"><a href="#">Pencil Hoops</a></li>
-        <li class:list={["nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300", active == 'Eden' && "text-black" ]}><a href="#">Eden</a></li>
+        <li class:list={["nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300", active == 'Home' && "text-black"]}><a href="/">Home</a></li>
+        <li class:list={["nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300", active == 'Hoops' && "text-black" ]}><a href="/pencil-hoops">Pencil Hoops</a></li>
+        <li class:list={["nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300", active == 'Eden' && "text-black" ]}><a href="/eden">Eden</a></li>
         <li class="nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300"><a href="#">OpenPolicy</a></li>
         <li class="nav-item opacity-0 leading-[40px] hover:bg-black transition-all duration-300"><a href="#">Crack Headphones</a></li>
     </ul>
