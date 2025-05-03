@@ -1028,6 +1028,7 @@ import Alpine from 'alpinejs';
     // import gsap from "gsap";
     // import Lenis from "lenis";
     import {gsap, ScrollTrigger} from '../scripts/setup.ts'
+    import {dissappearBottomNav} from '../scripts/animations.ts'
     // import { p } from 'motion/react-client';
     // gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
@@ -1392,21 +1393,6 @@ import Alpine from 'alpinejs';
     //     //     // markers : true,
     //     // },
     // });
-
-    let dissappearBottomNav = gsap.fromTo('.bottom-nav', { opacity : 1}, {
-        opacity : 0,
-        duration: 2,
-        paused : true,
-        ease: "circ.inOut",
-        // scrollTrigger: {
-        //     // trigger: '#contact',  // Each element triggers individually
-        //     // start: "top 20%",  // Animation starts when the element is 80% in view
-        //     // end: "bottom 95%",
-        //     // scrub : true,
-        //     // toggleActions: "play reverse play reverse",  // Only plays once
-        //     // markers : true,
-        // },
-    });
 
     // // move bottom nav when footer shows
     // ScrollTrigger.create({

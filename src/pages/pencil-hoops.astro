@@ -4,7 +4,8 @@ import Footer from '../layouts/Footer.astro';
 import '../styles/style.css'
 
 // console.log('here ', Astro.url)
-import { AlignLeft, ArrowLeft, ArrowRight } from 'lucide-react';
+import {range} from '../scripts/app.ts'
+import { AlignLeft, ArrowLeft, ArrowRight, Play, Pause } from 'lucide-react';
 import Header from '../layouts/Header.astro';
 let links = ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'problem', 'research-and-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'closing']
 let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overview', 'quick-overview-2', 'research-and-insights', 'problem', 'design-insights', 'design-process', 'foundation', 'life', 'visual', 'fidelity', 'impact-and-feedback', 'collaboration', 'reflections', 'learnings', 'closing', 'contact']}
@@ -28,7 +29,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
     </Header>
 
     <!-- bottom-nav -->
-    <div class="fixed bottom-0 right-0 z-10 flex bg-white pt-4 pl-4 xl:px-10 lg:pl-10 py-6 xl:py-10 bottom-nav">
+    <div class="fixed bottom-0 right-0 z-10 flex bg-white pt-4 pl-4 xl:px-4 md:px-10 lg:pl-10 py-6 xl:py-10 bottom-nav">
         <ul class="flex gap-4 text-[#afafaf] font-semibold text-[10px] lg:text-sm">
             <li @click="active = 'quick-overview'" :class="{'text-black' : active == 'quick-overview'}"><a href="#quick-overview">Quick Overview</a></li>
             <li @click="active = 'research-and-insights'" :class="{'text-black' : active == 'research-and-insights'}"><a href="#research-and-insights"> Research and Insights</a></li>
@@ -47,9 +48,9 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 	<main>
 		<!-- hero -->
         <div id="hero" class="bg-[#ececec]">
-            <section class="min-h-screen grid grid-cols-2 py-20 lg:px-20 px-10 max-w-[1700px] mx-auto">
+            <section class="min-h-screen flex flex-col justify-center items-center md:grid md:grid-cols-2 py-20 lg:px-20 px-4 md:px-10 max-w-[1700px] mx-auto">
                 <!-- image -->
-                <div class="flex hero-img items-center slide justify-end overflow-hidden p-20 w-full bg-[url('/images/pencil_hoops/sections/1.jpg')] bg-blend-darken bg-[#ececec] bg-no-repeat bg-contain bg-left h-full relative">
+                <div class="flex hero-img bg-center items-center slide justify-end overflow-hidden p-20 w-full bg-[url('/images/pencil_hoops/sections/1.jpg')] bg-blend-darken bg-[#ececec] bg-no-repeat bg-contain md:bg-left h-full relative">
                     <!-- {
                         [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-gray-100 left-0 right-0 absolute h-[20%] slide-2 box"></div>)
                     } -->
@@ -61,7 +62,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </div>
     
                 <!-- project description and actions -->
-                <div class="max-w-[700px] flex flex-col justify-center">
+                <div class="max-w-[700px] flex flex-col justify-center text-center md:text-left">
                     <h2 class="heading-up font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4  up">Creating an Immersive Experience with Pencil Hoops</h2>
     
                     <p class="heading-up flex flex-col gap-4">
@@ -71,8 +72,8 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                         interactive animations and dynamic sound effects to bring NBA moments to life.</span>
                     </p>
     
-                    <div class="pt-4 heading-up">
-                        <button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button>
+                    <div class="pt-4">
+                        <a href="/test" class="bg-red-500 inline-block"><button class="px-4 py-3 rounded-lg text-white bg-[#222222] flex gap-2 items-center">Tour on the Website <img src="/icons/mdi_basketball.svg" alt="" srcset=""></button></a>
                     </div>
                 </div>
                 <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
@@ -82,14 +83,14 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- hey there -->
-        <section id="hey-there" class="lg:px-20 px-10 h-screen flex items-center justify-center relative py-20 max-w-[1700px] mx-auto">
+        <section id="hey-there" class="lg:px-20 px-4 md:px-10 h-screen flex items-center justify-center relative py-20 max-w-[1700px] mx-auto">
             <h2 class="text-sm sm:text-lg md:text-2xl xl:text-4xl leading-[35px] lg:leading-[48px] xl:leading-[55px] max-w-[1116px] w-[80%] text-[#AFAFAF] quick-appear">Hey there! This isn’t just a case study; it’s a story of the work, the process, and the thoughts behind it. My goal is to keep things fun and straightforward, enjoy!</h2>
 			<!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute left-20 bottom-15"></div> -->
             <p class="absolute right-20 bottom-[20%] w-[70%] text-right quick-appear">“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun & easy to use.” - Tunde</p>
         </section>
 
         <!-- table of contents -->
-        <section id="table" class="lg:px-20 px-10 min-h-screen relative py-20 max-w-[1700px] mx-auto">
+        <section id="table" class="lg:px-20 px-4 md:px-10 min-h-screen relative py-20 max-w-[1700px] mx-auto">
             <h2 class="font-safira lg:text-sm xl:text-2xl heading-up">Content</h2>
             <div class="max-w-2xl grid grid-cols-[80%_20%] grid-rows-6 mt-20 mx-auto my-auto gap-4 lg:text-xl xl:text-2xl">
                 <p class="quick-right">Quick Overview</p><p class="quick-up">01</p>
@@ -104,10 +105,10 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
         <!-- 01 -->
         <div id="quick-overview" class="bg-[#ececec]">
-            <section class="min-h-screen grid grid-cols-2 py-20 max-w-[1700px] mx-auto lg:px-20 px-10 relative gap-4 xl:gap-6">
+            <section class="min-h-screen grid md:grid-cols-2 py-20 max-w-[1700px] mx-auto lg:px-20 px-4 md:px-10 relative gap-4">
                 <!-- project description and actions -->
-                <div class="max-w-[700px] flex flex-col justify-center gap-4 justify-self-center">
-                    <p class="text-4xl font-cookie quick-down">01</p>
+                <div class="max-w-[700px] flex flex-col justify-center gap-1 justify-self-center">
+                    <h2 class="text-4xl font-cookie quick-down">01</h2>
                     <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Quick Overview</h2>
                 </div>
     
@@ -120,13 +121,13 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- 01 - Quick overview -->
-        <section id="quick-overview-2" class="min-h-screen flex flex-col lg:grid py-20 lg:px-20 px-10 xl:grid-cols-[auto_auto_40%] lg:grid-cols-[auto_auto_10%]  grid-rows-[auto_auto_auto] lg:gap-4 relative max-w-[1700px] mx-auto">
+        <section id="quick-overview-2" class="min-h-screen flex flex-col lg:grid py-20 lg:px-20 px-4 md:px-10 xl:grid-cols-[auto_auto_40%] lg:grid-cols-[auto_auto_10%]  grid-rows-[auto_auto_auto] lg:gap-4 relative max-w-[1700px] mx-auto">
             <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xltext-2xl pb-2 xl:py-4">Product Overview</h3>
             <p class="md:w-full xl:max-w-[500px] pb-2 xl:py-4 border-gray-200">Pencil Hoops is a concept website created to give NBA fans a fresh, fun way to enjoy the game through pencil art. 
                 We used Figma and Adobe Illustrator to design a clean, simple interface with interactive features. <br><br>
                 People who tested it said it was fun, easy to use, and really cool to look at.
             </p>
-            <div class="row-span-3 bg-gray-200 bg-[url('/images/pencil_hoops/product-overview.jpg')] bg-contain bg-no-repeat bg-center w-full rounded-lg"></div>
+            <div class="min-h-[400px] lg:row-span-3 bg-[url('/images/pencil_hoops/product-overview.jpg')] bg-contain bg-no-repeat bg-center w-full rounded-lg"></div>
 
             <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xltext-2xl pb-2 xl:py-4 lg:pt-8">My Role</h3>
             <p class="md:w-full xl:max-w-[500px] lg:border-y-[1px] pb-2 xl:py-4 lg:pt-8 border-gray-200">I came up with the idea for Pencil Hoops and led the design from start to finish. I designed the website, 
@@ -147,24 +148,24 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
 		<!-- 02 -->
         <div id="research-and-insights" class="bg-[#ececec]">
-            <section class="min-h-screen grid grid-cols-2 py-20 lg:px-20 px-10  relative max-w-[1700px] mx-auto">
+            <section class="min-h-screen grid md:grid-cols-2 py-20 lg:px-20 px-4 md:px-10  relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
-                <div class="max-w-[700px] flex flex-col justify-center gap-10">
-                    <p class="text-4xl font-cookie quick-down">02</p>
-                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Research and Insights</h2>
+                <div class="max-w-[700px] flex flex-col justify-center gap-1 justify-self-center">
+                    <h2 class="text-4xl font-cookie quick-down">02</h2>
+                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down ">Research and Insights</h2>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/gif1.gif')] bg-[#ececec] bg-center bg-no-repeat bg-cover bg-blend-darken"></div>
+                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/gif1.gif')] bg-[#ececec] bg-center bg-no-repeat bg-contain bg-blend-darken"></div>
     
                 <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
             </section>
         </div>
 
         <!-- the problem -->
-        <section id='problem' class="min-h-screen grid lg:grid-cols-2 py-20 lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id='problem' class="min-h-screen grid lg:grid-cols-2 py-20 lg:px-20 px-4 md:px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col lg:justify-center gap-4 xl:gap-6 relative box-parent overflow-hidden">
+            <div class="lg:max-w-[500px] flex flex-col lg:justify-center gap-1 relative box-parent overflow-hidden">
                 
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">The Problem</h2>
                 <p class="quick-up"> 
@@ -187,9 +188,9 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		</section>
 
         <!-- research and design insights -->
-        <section id="design-insights" class="min-h-screen flex flex-col gap-4 lg:grid lg:grid-cols-2 py-20 lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="design-insights" class="min-h-screen flex flex-col gap-4 lg:grid lg:grid-cols-2 py-20 lg:px-20 px-4 md:px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Research and Design Insights</h2>
                 <p> 
                     I explored other NBA websites to see what worked and what didn’t. <br><br> 
@@ -200,9 +201,9 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
             <!-- points --> 
             <ul class="xl:text-2xl lg:max-w-[500px] flex flex-col gap-8 justify-center pl-4 pt-4">
-                <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">1</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
-                <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">2</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
-                <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] aspect-square text-white">3</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
+                <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full min-w-[60px] aspect-square text-white">1</span> Most sites were cluttered, filled with ads, and difficult to navigate.</li>
+                <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full min-w-[60px] aspect-square text-white">2</span> Fans preferred simple, easy-to-use platforms.</li>
+                <li class="flex items-center gap-8"><span class="bg-black text-center flex justify-center items-center rounded-full min-w-[60px] aspect-square text-white">3</span> Clean designs with engaging visuals kept users interested.</li>
             </ul>
 
 
@@ -210,10 +211,10 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
         <!-- 03 -->
         <div id="design-process" class="bg-gray-100">
-            <section class="min-h-screen flex justify-center items-center py-20 lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+            <section class="min-h-screen flex justify-center items-center py-20 lg:px-20 px-4 md:px-10 relative gap-4 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="flex flex-col gap-10">
-                    <p class="text-4xl font-cookie quick-down text-left">03</p>
+                    <h2 class="text-4xl font-cookie quick-down text-left">03</h2>
                     <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Design Process</h2>
                 </div>
     
@@ -226,18 +227,20 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 	
 
         <!-- laying the foundation -->
-        <section id="foundation" class="min-h-screen lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 py-20 lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="foundation" class="min-h-screen lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 py-20 lg:px-20 px-4 md:px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 relative box-parent">
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 relative box-parent">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Laying the Foundation – Sketches and Structure</h2>
                 <p class="quick-up"> 
                     I kicked off the design process with paper sketches to map out the structure and focus on intuitive navigation. 
                     My goal was to answer key questions:
-                    <ul class="list-disc list-inside px-4 leading-[40px]">
-                        <li>Where am I?</li>
-                        <li>Where can I go?</li>
-                        <li>How do I get there? </li>
-                    </ul>
+                </p>
+                <ul class="list-disc list-inside px-4 leading-[40px]">
+                    <li>Where am I?</li>
+                    <li>Where can I go?</li>
+                    <li>How do I get there? </li>
+                </ul>
+                <p>
                     These sketches helped me visualize the user journey and identify potential pain points early on.
                     Once the structure felt right, I moved into Figma and Adobe Illustrator to create digital wireframes. 
                     During this phase, I collaborated with the team to ideate on unique elements, 
@@ -250,7 +253,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             </div>
 
            <!-- image -->
-            <div class="flex relative items-center justify-end p-20 w-full box-parent bg-[url('/images/pencil_hoops/laying-foundation.png')] bg-center bg-no-repeat bg-contain h-full">
+            <div class="flex relative items-center justify-end p-20 w-full box-parent min-h-[300px] bg-[url('/images/pencil_hoops/laying-foundation.png')] bg-center bg-no-repeat bg-contain h-full">
                 <!-- {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white hidden lg:block left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 } -->
@@ -260,10 +263,16 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		</section>
 
         <!-- bringing designs to life -->
-        <section id="life" class="min-h-screen lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 py-20 lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="life" class="min-h-screen lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 py-20 lg:px-20 px-4 md:px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 box-parent relative">
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 box-parent relative">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Bringing Designs to Life</h2>
+                <div class="w-full flex gap-2 h-full box-parent relative md:hidden">
+                    <div tabindex="0" class="bg-[url('/images/pencil_hoops/designs/1.png')] bg-[#ececec] bg-blend-luminosity hover:bg-blend-normal focus:bg-blend-normal bg-center w-[50%] aspect-square bg-no-repeat bg-cover hover:bg-[url('/images/pencil_hoops/designs/1.gif')] focus:bg-[url('/images/pencil_hoops/designs/1.gif')] transition-all duration-750"></div>
+                    <div tabindex="0" class="bg-[url('/images/pencil_hoops/designs/2.png')] bg-[#ececec] bg-blend-luminosity hover:bg-blend-normal focus:bg-blend-normal bg-center w-[50%] aspect-square bg-no-repeat bg-cover hover:bg-[url('/images/pencil_hoops/designs/2.gif')] focus:bg-[url('/images/pencil_hoops/designs/2.gif')] transition-all duration-750"></div>
+                    <div tabindex="0" class="bg-[url('/images/pencil_hoops/designs/3.png')] bg-[#ececec] bg-blend-luminosity hover:bg-blend-normal focus:bg-blend-normal bg-center w-[50%] aspect-square bg-no-repeat bg-cover hover:bg-[url('/images/pencil_hoops/designs/3.gif')] focus:bg-[url('/images/pencil_hoops/designs/3.gif')] transition-all duration-750"></div>
+                    <div tabindex="0" class="bg-[url('/images/pencil_hoops/designs/4.png')] bg-[#ececec] bg-blend-luminosity hover:bg-blend-normal focus:bg-blend-normal bg-center w-[50%] aspect-square bg-no-repeat bg-cover hover:bg-[url('/images/pencil_hoops/designs/4.gif')] focus:bg-[url('/images/pencil_hoops/designs/4.gif')] transition-all duration-750"></div>
+                </div>
                 <p class="quick-up"> 
                     With the wireframes in place, I focused on interactivity and user engagement. I integrated progressive disclosure to minimize clutter, 
                     especially for mobile users, ensuring a clean and focused experience. <br><br>
@@ -280,20 +289,19 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             </div>
 
             <!-- image -->
-            <div class="w-full bg-gray-200 grid grid-cols-2 grid-rows-2 gap-2 h-full box-parent relative">
-                <div class="bg-[url('/images/pencil_hoops/designs/1.png')] bg-gray-200 bg-center w-full h-full bg-no-repeat bg-cover"></div>
-                <div class="bg-[url('/images/pencil_hoops/designs/2.png')] bg-gray-200 bg-center w-full h-full bg-no-repeat bg-cover"></div>
-                <div class="bg-[url('/images/pencil_hoops/designs/3.png')] bg-gray-200 bg-center w-full h-full bg-no-repeat bg-cover"></div>
-                <div class="bg-[url('/images/pencil_hoops/designs/4.png')] bg-gray-200 bg-center w-full h-full bg-no-repeat bg-cover"></div>
+            <div class="w-full md:grid grid-cols-2 grid-rows-2 gap-2 h-full box-parent relative hidden">
+                <div class="bg-[url('/images/pencil_hoops/designs/1.png')] bg-[#ececec] bg-blend-luminosity hover:bg-blend-normal bg-center w-full h-full bg-no-repeat bg-cover hover:bg-[url('/images/pencil_hoops/designs/1.gif')] transition-all duration-750"></div>
+                <div class="bg-[url('/images/pencil_hoops/designs/2.png')] bg-[#ececec] bg-blend-luminosity hover:bg-blend-normal bg-center w-full h-full bg-no-repeat bg-cover hover:bg-[url('/images/pencil_hoops/designs/2.gif')] transition-all duration-750"></div>
+                <div class="bg-[url('/images/pencil_hoops/designs/3.png')] bg-[#ececec] bg-blend-luminosity hover:bg-blend-normal bg-center w-full h-full bg-no-repeat bg-cover hover:bg-[url('/images/pencil_hoops/designs/3.gif')] transition-all duration-750"></div>
+                <div class="bg-[url('/images/pencil_hoops/designs/4.png')] bg-[#ececec] bg-blend-luminosity hover:bg-blend-normal bg-center w-full h-full bg-no-repeat bg-cover hover:bg-[url('/images/pencil_hoops/designs/4.gif')] transition-all duration-750"></div>
             </div>
-
 
 		</section>
 
         <!-- visual aesthetics -->
-        <section id="visual" class="min-h-screen flex flex-col md:grid md:grid-cols-[40%_60%] gap-8 py-20 lg:px-20 px-10 relative @container max-w-[1700px] mx-auto">
+        <section id="visual" class="min-h-screen flex flex-col md:grid md:grid-cols-[40%_60%] gap-8 py-20 lg:px-20 px-4 md:px-10 relative @container max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 box-parent relative overflow-hidden">
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 box-parent relative overflow-hidden">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Visual Aesthetics and Style</h2>
                 <p class="quick-up"> 
                     The NBA isn’t just a sport, it’s a culture, and I wanted the design to reflect that. During my research, 
@@ -317,10 +325,12 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		</section>
 
         <!-- high fidelity designs -->
-        <section id="fidelity" class="min-h-screen lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 py-20 lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="fidelity" class="min-h-screen lg:grid lg:grid-cols-2 flex flex-col gap-5 lg:gap-6 py-20 lg:px-20 px-4 md:px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 xl:gap-6 box-parent relative">
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 box-parent relative">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">High-Fidelity Designs and Final Touches</h2>
+                <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/high-fidelity.jpg')] bg-center bg-no-repeat bg-contain min-h-[300px] h-full box-parent relative md:hidden">
+                </div>
                 <p class="quick-up"> 
                     After refining the visual style, I transitioned from low-fidelity sketches to high-fidelity designs. The pencil artist’s sketches, 
                     like the basketball-shaped next and previous buttons and the board-and-net concept 
@@ -335,7 +345,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             </div>
 
             <!-- image -->
-            <div class="flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/high-fidelity.jpg')] bg-center bg-no-repeat bg-contain h-full box-parent relative">
+            <div class="hidden md:flex items-center justify-end p-20 w-full bg-[url('/images/pencil_hoops/high-fidelity.jpg')] bg-center bg-no-repeat bg-contain min-h-[300px] h-full box-parent relative">
                 <!-- {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 } -->
@@ -346,39 +356,68 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
         <!-- 04 -->
         <div id="impact-and-feedback" class="bg-gray-100">
-            <section class="min-h-screen flex flex-col lg:grid grid-cols-2 py-20 lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+            <section class="min-h-screen flex flex-col lg:grid grid-cols-2 py-20 lg:px-20 px-4 md:px-10 relative gap-4 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
-                <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
-                    <p class="text-4xl font-cookie quick-down">04</p>
+                <div class="max-w-[600px] flex flex-col justify-center justify-self-center gap-1">
+                    <h2 class="text-4xl font-cookie quick-down">04</h2>
                     <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 xl:whitespace-nowrap">Impact and Feedback</h2>
+                    <div class="flex lg:hidden items-center justify-center p-10 w-full quick-up h-full">
+                        <div class="bg-[url('/images/pencil_hoops/icon-chat.svg')] bg-center flex items-center justify-center bg-no-repeat bg-contain px-20 w-full max-h-[300px] aspect-[1/6]">
+                            <div class="flex gap-2 w-full max-w-[200px] items-center justify-center relative bottom-[20px]">
+                                <Play className='play-audio'/>
+                                <Pause className='pause-audio hidden hover:cursor-pointer'/>
+                                
+                                <div class="h-10 w-[80%] flex gap-[2px]">
+                                    {range(0,50,1).map(() => 
+                                        <div class="h-full w-[2%] bg-black synth"></div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <p>
                         Since Pencil Hoops is a concept project, there are no concrete analytics. However, user feedback has been overwhelmingly positive, 
                         highlighting the website’s simplicity, immersive design, and engaging user experience.
-                        <ul>
-                            <li>“You really tried in the design as a lot of things are really modular and reusable” - Ovi.</li>
-                            <li>“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun and easy to use” - Tunde</li>
-                        </ul>
+                    </p>
+                    <ul class="flex flex-col gap-2">
+                        <li>“You really tried in the design as a lot of things are really modular and reusable” - Ovi.</li>
+                        <li>“Wow! Just Wow!! I don’t even know what I’ll change. It’s so fun and easy to use” - Tunde</li>
+                    </ul>
+                    <p>
                         These insights reinforced that the design decisions—focusing on simplicity, interactivity, 
                         and a ‘cool’ NBA vibe—resonated well with the target audience.
                     </p>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/laying-foundation.png')] bg-center bg-no-repeat bg-contain bg-gray-200 h-full"></div>
+                <div class="hidden lg:flex items-center justify-center p-20 w-full quick-up h-full">
+                    <div class="bg-[url('/images/pencil_hoops/icon-chat.svg')] bg-center flex items-center justify-center bg-no-repeat bg-contain xl:px-20 w-full max-h-[300px] aspect-[1/6]">
+                        <div class="flex gap-2 w-full max-w-[200px] items-center justify-center relative bottom-[20px]">
+                            <Play className='play-audio'/>
+                            <Pause className='pause-audio hidden'/>
+                            
+                            <div class="h-10 w-[80%] flex gap-[2px]">
+                                {range(0,50,1).map(() => 
+                                    <div class="h-full w-[2%] bg-black synth"></div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
 
         <!-- 05 Collabrations-->
         <div id="collaboration" class="bg-gray-100">
-            <section class="min-h-screen py-20 lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+            <section class="min-h-screen py-20 lg:px-20 px-4 md:px-10 relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
-                <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
-                    <p class="text-4xl font-cookie quick-down">05</p>
+                <div class="max-w-[600px] flex flex-col justify-center gap-1 justify-self-center">
+                    <h2 class="text-4xl font-cookie quick-down">05</h2>
                     <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Collabration</h2>
                 </div>
     
                 <!-- image -->
-                <div class="flex flex-col lg:flex-row items-start justify-between lg:gap-12 gap-6 lg:p-20 p-10 w-full">
+                <div class="flex flex-col lg:flex-row items-start justify-between lg:gap-12 gap-6 lg:p-20 px-4 md:p-10 w-full">
                     <div class="flex flex-col gap-4">
                         <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Animations and illustrations by</h2>
                         <div class="flex flex-wrap gap-4">
@@ -420,15 +459,15 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
         <!-- 06 reflections and learnings -->
         <div id="reflections" class="bg-gray-100">
-            <section class="min-h-screen flex flex-col lg:grid grid-cols-2 py-20 lg:px-20 px-10 relative gap-4 xl:gap-6 max-w-[1700px] mx-auto">
+            <section class="min-h-screen flex flex-col lg:grid grid-cols-2 py-20 lg:px-20 px-4 md:px-10 relative gap-4 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
-                <div class="max-w-[600px] flex flex-col justify-center gap-4 xl:gap-10">
-                    <p class="text-4xl font-cookie quick-down">06</p>
-                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[40px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Reflections and Learnings</h2>
+                <div class="max-w-[600px] flex flex-col justify-center gap-1 justify-self-center">
+                    <h2 class="text-4xl font-cookie quick-down">06</h2>
+                    <h2 class="font-bilal text-5xl 2xl:text-8xl leading-[70px] xl:leading-[80px] 2xl:leading-[140px] my-2 xl:my-4 quick-down">Reflections and Learnings</h2>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/product-overview.jpg')] bg-center bg-no-repeat bg-contain h-full"></div>
+                <div class="flex items-center justify-end p-20 min-h-[300px] w-full quick-up bg-[url('/images/pencil_hoops/product-overview.jpg')] bg-center bg-no-repeat bg-contain h-full"></div>
     
     
             </section>
@@ -436,9 +475,9 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 		
 
         <!-- Reflections and learnings -->
-        <section id="learnings" class="min-h-screen flex flex-col gap-4 lg:grid lg:grid-cols-2 py-20 lg:px-20 px-10 relative max-w-[1700px] mx-auto">
+        <section id="learnings" class="min-h-screen flex flex-col gap-4 lg:grid lg:grid-cols-2 py-20 lg:px-20 px-4 md:px-10 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
+            <div class="lg:max-w-[500px] flex flex-col justify-center md:gap-4 max-w-[700px] gap-1 justify-self-center">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Reflections and Learnings</h2>
                 <p class="flex flex-col gap-6"> 
                     <span>
@@ -460,7 +499,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             </div>
 
             <!-- points --> 
-            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
+            <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4">
                 <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Personal Story</h2>
                 <p class="flex flex-col gap-6"> 
                     One of the biggest challenges I faced was figuring out how to make the website creative, simple, and unique. 
@@ -477,7 +516,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
 		<!-- closing statement -->
         <div id='closing' class="bg-[#ececec]">
-            <section class="min-h-screen grid grid-cols-2 py-20 lg:px-20 px-10 max-w-[1700px] mx-auto">
+            <section class="min-h-screen grid md:grid-cols-2 py-20 lg:px-20 px-4 md:px-10 max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center">
                     <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 heading-up-footer">Closing Statement</h2>
@@ -539,4 +578,78 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 			}
         });
     })
+
+
+    // syncth
+    const playBtn = document.querySelectorAll('.play-audio')
+    const pauseBtn = document.querySelectorAll('.pause-audio')
+    const synth = document.querySelectorAll('.synth') as NodeListOf<HTMLDivElement>
+    const audio = new Audio('/audio/petra.mp3')
+    let synthTimeline = gsap.timeline({paused: true})
+    gsap.to(synth, {scaleY : () => gsap.utils.random(0, 1)} )
+    synthTimeline.to(synth, {
+        scaleY : () => gsap.utils.random(0, 1),
+        duration : 0.1,
+        yoyo : true,
+        repeat : -1,
+        // stagger: 0.1
+    })
+    // setInterval(()=>{
+    //     synthTimeline.to(synth, {
+    //         scaleY : () => gsap.utils.random(0, 1),
+    //         duration : 0.1,
+    //         yoyo : true,
+    //         repeat : -1,
+    //         // stagger: 0.1
+    //     })
+    // }, 1000)
+    // synthTimeline.fromTo(synth, {scaleY : 0.5}, {duration: 0.5, scaleY: 1.5, ease: 'power2.inOut', repeat: -1, yoyo: true, stagger: 0.5})
+   
+    playBtn.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            btn.classList.add('hidden')
+            pauseBtn.forEach((btn) => {
+                btn.classList.remove('hidden')
+            })
+            audio.play()
+            
+            synthTimeline.play()
+        })
+    })
+
+    pauseBtn.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            btn.classList.add('hidden')
+            playBtn.forEach((btn) => {
+                btn.classList.remove('hidden')
+            })
+            audio.pause()
+            synthTimeline.pause()
+        })
+    })
+    // playBtn.addEventListener('click', () => {
+    //     playBtn.classList.add('hidden')
+    //     pauseBtn.classList.remove('hidden')
+    //     audio.play()
+        
+    //     synthTimeline.play()
+    // })
+    // pauseBtn.addEventListener('click', () => {
+    //     pauseBtn.classList.add('hidden')
+    //     playBtn.classList.remove('hidden')
+    //     audio.pause()
+    //     synthTimeline.pause()
+    // })
+
+    audio.onended = () => {
+        pauseBtn.forEach((btn) => {
+            btn.classList.add('hidden')
+        })
+        playBtn.forEach((btn) => {
+            btn.classList.remove('hidden')
+        })
+        // pauseBtn.classList.add('hidden')
+        // playBtn.classList.remove('hidden')
+        synthTimeline.pause()
+    }
 </script>
