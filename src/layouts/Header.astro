@@ -6,7 +6,7 @@ const {active} = Astro.props;
 
 
 <header class="fixed top-0 left-0 right-0 bg-white top-nav z-10">
-    <nav class:list={["flex justify-between gap-8 items-center pt-4 pb-2 px-4 md:px-10 xl:px-20 border-b-[1px] border-b-gray-100", hasTimelineSlot && "pt-8 pb-4"]}>
+    <nav class:list={["flex justify-between gap-8 items-center pt-4 pb-2 px-4 md:px-10 lg:px-20 lg:pt-10 lg:pb-6 border-b-[1px] border-b-gray-100", hasTimelineSlot && "pt-8 pb-4"]}>
         {
             !hasTimelineSlot &&
             <div class="items-center gap-4 hidden"> <!-- flex -->
@@ -15,8 +15,16 @@ const {active} = Astro.props;
             </div>
         }
 
-        <ul class="lg:flex items-center gap-4 xl:gap-8 2xl:gap-16 nav-text font-semibold font-sans hidden">
-            <li><a href="#works">Works</a></li>
+        <ul class="lg:flex items-center gap-4 xl:gap-8 2xl:gap-16 nav-text font-semibold font-sans hidden nav-dropdown">
+            <li class="relative group">
+                <a href="#works">Works</a>
+                <ul class="absolute group-hover:flex gap-20 bg-white text-[#AFAFAF] py-10 px-20 rounded-b-md top-[100%] z-10 border-b-gray-200 border-b-[1px] -left-[100%] group-hover:opacity-100 opacity-0 hidden transition-all duration-300">
+                    <li class:list={["whitespace-nowrap hover:cursor-pointer", active == "Eden" && "text-black"]}><a href="/eden">Eden</a></li>
+                    <li class:list={["whitespace-nowrap hover:cursor-pointer", active == "Hoops" && "text-black"]}><a href="/pencil-hoops">Pencil Hoops</a></li>
+                    <li class:list={["whitespace-nowrap hover:cursor-pointer", active == "Crack" && "text-black"]}><a href="/crack-headphones">Crack Headphones</a></li>
+                    <li class:list={["whitespace-nowrap hover:cursor-pointer", active == "Open" && "text-black"]}><a href="/open-policy">Open Policy</a></li>
+                </ul>
+            </li>
             <li @click="active = 'timeline'" :class="{'text-black' : ['timeline', 'quick-overview-2'].includes(active)}"><a href="#timeline">Journey</a></li>
             <li><a href="#about-me">About</a></li>
             <!-- <li><a href="#contact">Get In Touch</a></li> -->
@@ -99,7 +107,7 @@ const {active} = Astro.props;
 	});
 
     window.addEventListener('mousemove', (event) => {
-        if (event.clientY <=100) {
+        if (event.clientY <=150) {
            openMainNav()
            shouldOpenMainNav = false
            wasOpenedByMouseMove = true
@@ -154,6 +162,10 @@ const {active} = Astro.props;
             duration: 1,
             // ease: (x) =>  x < 0.5 ? 16 * x * x * x * x * x : 1 - Math.pow(-2 * x + 2, 5) / 2,
         });
+    });
+
+    document.querySelector('.nav-dropdown').addEventListener('click', (e) => {
+        e.stopPropagation()
     });
 
 

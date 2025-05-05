@@ -90,7 +90,7 @@ const slides = [
 		title : 'Smart, <span class="text-red-500">Stable</span>, Simple',
 		year : '2015',
 		description : 'Eden gives you clarity and confidence with your money. It helps you stay on top of your spending, understand your finances, and grow your wealth without the stress or confusion.',
-		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Request Access <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/multi-arrows.svg')]"></div></button><a href="/eden" class="px-4 py-3 rounded-lg border-[1px] border-black flex items-center gap-2">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></a>`,
+		buttons : `<a href="mailto:kamilzoseni@gmail.com" class="px-4 py-3 rounded-lg text-white bg-[#222222] button">Request Access <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/multi-arrows.svg')]"></div></a><a href="/eden" class="px-4 py-3 rounded-lg border-[1px] border-black flex items-center gap-2">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></a>`,
 		url : "bg-[url('/images/slides/eden.png')]",
 		alternate : "bg-[url('/images/slides/eden-gif.gif')]",
 	},
@@ -99,7 +99,7 @@ const slides = [
 		heading : 'Open<span class="text-gray-200">Policy</span><br>App Design<span class="text-gray-200"> (MVP)</span>',
 		year : '2024',
 		description : '<span>OpenPolicy is a platform designed to connect citizens with their government like never before. It allows users to track bills, vote on policies, and directly engage with representatives, all in one place.</span><span>As the Product Lead, I redesigned the app from the ground up, transforming a cluttered, unusable experience into a seamless and intuitive platform.</span>',
-		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Get it on the Appstore <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/ic_baseline-apple.svg')]"></div></button> <button class="px-4 py-3 rounded-lg border-[1px] border-black">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></button>`,
+		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Get it on the Appstore <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/ic_baseline-apple.svg')]"></div></button> <a href="/open-policy" class="px-4 py-3 rounded-lg border-[1px] border-black flex items-center gap-2">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></a> `,
 		url : "bg-[url('/images/slides/open-policy.png')]",
 		alternate : "bg-[url('/images/slides/open-policy.png')]",
 	},
@@ -117,7 +117,7 @@ const slides = [
 		heading : 'Pencil <span class="text text-[#336633]">Hoops <br> Website Design</span>',
 		year : '2023',
 		description : '<span>Pencil Hoops is an interactive, people-friendly website designed for NBA fans who appreciate the art of pencil sketching.</span><span>It blends minimal design, accessibility, and engaging experiences, combining stunning pencil sketches with interactive animations and dynamic sound effects to bring NBA moments to life.</span>',
-		buttons : `<a class="px-4 py-3 rounded-lg text-white bg-[#222222]" href="https://pencil-hoops.netlify.app/" target="_blank">Tour on the Website <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/mdi_basketball.svg')]"></div></a> <a href="/pencil-hoops" class="px-4 py-3 rounded-lg border-[1px] border-black">Read the Story <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></a>`,
+		buttons : `<a class="px-4 py-3 rounded-lg text-white bg-[#222222] flex items-center gap-2" href="https://pencil-hoops.netlify.app/" target="_blank">Tour on the Website <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/mdi_basketball.svg')]"></div></a> <a href="/pencil-hoops" class="px-4 py-3 rounded-lg border-[1px] border-black flex items-center gap-2">Read the Story <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></a>`,
 		url : "bg-[url('/images/slides/basketball.png')]",
 		alternate : "bg-[url('/images/slides/hoops-gif.gif')]",
 	},
@@ -127,7 +127,7 @@ const slides = [
 ---
 <Layout title="Welcome to Astro.">
 	<div class="body-cont" x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail"> 
-	<!-- <div class="bg-[#F1F1F3] pre-loader-view h-screen w-full fixed top-0 left-0 right-0 z-20 flex flex-col items-center justify-center">
+	<div class="bg-[#F1F1F3] pre-loader-view h-screen w-full fixed top-0 left-0 right-0 z-20 flex flex-col items-center justify-center">
 		<div class="absolute bottom-0 right-0 w-[40%] aspect-[2/2] bg-[url('/images/preloader-bg.png')] bg-bottom bg-contain bg-no-repeat opacity-[2%]"></div>
 		<div class="w-[10%] min-w-[100px] max-w-[250px] aspect-square bg-gray-500 rounded-full bg-[url('/images/profile-pic.png')] bg-center bg-cover bg-no-repeat border-[8px] border-[#F1F1F3] before:absolute before:content-['']  before:inline-block relative before:-right-[9px] before:-left-[9px] before:rounded-full before:-top-[9px] before:-bottom-[9px] before:bg-white before:z-[-1]"></div>
 		<p class="mt-6 mb-10">There are no rules in arts, only dogma.</p>
@@ -135,7 +135,7 @@ const slides = [
 			<div class="bg-black absolute page-loader left-0 top-0 bottom-0 rounded-full"></div>
 		</div>
 		<p class="font-bilal text-[16px] absolute bottom-5 left-5">Kamil Oseni</p>
-	</div> -->
+	</div>
 
 	
 	<!-- nav -->
@@ -205,7 +205,7 @@ const slides = [
 		<!-- timeline -->
 		<section id="timeline" class="h-screen grid grid-rows-[minmax(auto,100%)_auto] px-4 md:px-20 gap-6 pt-5 overflow-hidden my-20">
 			<!-- center box -->
-			<div class="pt-8 overflow-auto overscroll-auto timeline-scroll" data-lenis-prevent>
+			<div class="pt-8 overflow-auto overscroll-auto timeline-scroll">
 			{
 				timeline.map(timeline =>
 					<div class="pb-8 justify-between items-center gap-4 hidden opacity-0 timeline-slide">
@@ -614,7 +614,7 @@ const slides = [
 		.addLabel("dom-loaded")
 		.to('.page-loader', { width : '50%', duration: 100 })
 		.addLabel("loaded")
-		.to('.page-loader', { width : '100%', duration: 10,
+		.to('.page-loader', { width : '100%', duration: 1,
 			onComplete : () => {
 				gsap.to('.pre-loader-view',{
 					opacity : 0,
@@ -635,7 +635,8 @@ const slides = [
 		});
 
 		let prevScrollPos = -20
-		document.querySelector('.timeline-scroll').addEventListener('scroll', (e : WheelEvent) => {
+		let timeLineSection = document.querySelector('.timeline-scroll')
+		timeLineSection.addEventListener('scroll', (e : WheelEvent) => {
 			let ele = e.target as HTMLDivElement
 			// ele.setAttribute( )
 			// ele.removeAttribute('data-lenis-prevent')
@@ -643,16 +644,33 @@ const slides = [
 			let value = ele.scrollTop + ele.offsetHeight
 			let match = ele.scrollHeight
 
-			if(value == match){
+			if(value + 1 >= match){
 				ele.removeAttribute('data-lenis-prevent')
-				setTimeout(()=> ele.setAttribute('data-lenis-prevent',""),200)
+				// setTimeout(()=> ele.setAttribute('data-lenis-prevent',""),200)
+				console.log("match")
 			}else{
-				ele.setAttribute('data-lenis-prevent',"")
+				// ele.setAttribute('data-lenis-prevent',"")
 			}
 			
 
-			console.log(ele.scrollTop, ele.offsetHeight, ele.scrollHeight)
+			console.log(value, match)
 		})
+
+		ScrollTrigger.create({
+			trigger: timeLineSection,
+			// start: 'top top',
+			// endTrigger: '#otherID',
+			// end: 'bottom 50%+=100px',
+			start: 'center 50%',
+			end: 'center 50%',
+			onEnter : () => {
+				// if(lenis.direction == 1) timeLineSection.setAttribute('data-lenis-prevent',"")
+			},
+			onEnterBack : () => {
+				// if(lenis.direction == -1) timeLineSection.setAttribute('data-lenis-prevent',"")
+			},
+			// markers : true
+		});
 
 		document.querySelector('.timeline-scroll').addEventListener('scrollend', (e : WheelEvent) => {
 			// console.log('hello world')
