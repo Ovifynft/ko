@@ -449,14 +449,14 @@ let data = {active: 'hero', links: ['eden', 'hey-there', 'table', 'quick-overvie
                         </li>
                     </ul>
 
-                    {
+                    <!-- {
                         [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box bg-[url('/images/eden/the-brand.png')]"></div>)
-                    }
+                    } -->
                 </div>
             </div>
 
             <!-- image -->
-            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-white rounded-lg bg-center bg-no-repeat bg-cover hidden relative box-parent bg-[url('/images/eden/the-brand.png')]">
+            <div class="lg:flex items-center overflow-hidden justify-end p-20 w-full bg-white rounded-lg bg-center bg-no-repeat bg-contain aspect-square hidden relative box-parent bg-[url('/images/eden/the-brand.png')]">
                 <!-- {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
                 } -->
