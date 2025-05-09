@@ -16,7 +16,6 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
     <Header
         active="Crack"
     >
-
         <!-- lg:absolute lg:opacity-0 lg:-top-[1000px]  -->
         <div class="h-2 flex gap-4 max-w-[700px] w-[40%] md:w-60% lg:w-[80%] overflow-hidden mob-timeline" slot="timeline">
             {
@@ -29,7 +28,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
     </Header>
 
     <!-- bottom-nav -->
-    <div class="fixed bottom-0 right-0 z-10 flex bg-white pt-4 pl-4 xl:px-10 lg:pl-10 py-6 xl:py-10 bottom-nav">
+    <div class="fixed sm:text-[10px] text-[6px] lg:text-sm bottom-0 right-0 z-10 flex bg-white pt-4 pl-4 xl:px-10 lg:pl-10 py-6 xl:py-10 bottom-nav">
         <ul class="flex gap-4 text-[#afafaf] font-semibold text-[10px] lg:text-sm">
             <li @click="active = 'quick-overview'" :class="{'text-[#9C784B]' : ['quick-overview', 'quick-overview-2'].includes(active)}"><a href="#quick-overview">Quick Overview</a></li>
             <li @click="active = 'research-and-insights'" :class="{'text-[#9C784B]' : ['research-and-insights', 'problem', 'design-insights', 'competitive', ''].includes(active)}"><a href="#research-and-insights"> Research and Insights</a></li>
@@ -49,9 +48,9 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 	<main>
 		<!-- hero -->
         <div id="hero" class="bg-[#f2ebe2]">
-            <section class="min-h-screen grid grid-cols-2 py-20 px-4 md:pl-0 md:pr-10 lg:pr-20 max-w-[1700px] mx-auto gap-4 xl:gap-10">
+            <section class="min-h-screen grid items-center text-center md:text-left  md:grid-cols-2 py-20 px-4 md:pl-0 md:pr-10 lg:pr-20 max-w-[1700px] mx-auto gap-4 xl:gap-10">
                 <!-- image -->
-                <div class="flex hero-img items-center slide justify-end overflow-hidden p-20 w-full bg-[url('/images/crack/hero.png')] bg-no-repeat bg-contain bg-left h-full relative">
+                <div class="flex hero-img items-center slide justify-end overflow-hidden p-20 w-full bg-[url('/images/crack/hero.png')] bg-no-repeat bg-contain bg-center md:bg-left h-full relative">
                     <!-- {
                         [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-gray-100 left-0 right-0 absolute h-[20%] slide-2 box"></div>)
                     } -->
@@ -64,7 +63,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
     
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center">
-                    <h2 class="heading-up font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Crack HeadPhones<span class="font-bilal text-[60px]">,</span> Where Style Meets Sound</h2>
+                    <h2 class="heading-up font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[50px] my-2 xl:my-4">Crack HeadPhones<span class="font-bilal text-[60px]">,</span> Where Style Meets Sound</h2>
     
                     <p class="heading-up">
                         Crack Headphones are a bold fusion of retro-modern design and everyday sophistication. I first sketched the concept in 2015, 
@@ -133,7 +132,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 Using user-centered research, we identified key needs and crafted a product that addresses real pain points while standing out in the market.
             </p>
             <div class="row-span-3 bg-[#F2EBE2] w-full rounded-lg flex items-center justify-center overflow-hidden">
-                <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[40px] my-2 quick-down">Interactive Hifi Model</h2>
+                <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[40px] xl:leading-[80px] my-2 quick-down p-10">Interactive Hifi Model</h2>
             </div>
 
             <h3 class="text-lg mt-4 mb-2 border-gray-200 border-b-[1px] lg:border-b-[0px] lg:mt-0 lg:text-xl xltext-2xl pb-2 xl:py-4 lg:pt-8">My Role</h3>
@@ -155,27 +154,27 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
 		<!-- 02 -->
         <div id="research-and-insights" class="bg-[#F2EBE2]">
-            <section class="min-h-screen grid grid-cols-2 py-20 px-4 md:px-10 lg:px-20  relative max-w-[1700px] mx-auto">
+            <section class="min-h-screen grid md:grid-cols-2 py-20 px-4 md:px-10 lg:px-20  relative max-w-[1700px] mx-auto">
                 <!-- project description and actions -->
                 <div class="max-w-[700px] flex flex-col justify-center gap-10">
                     <p class="text-2xl font-cookie quick-down">02</p>
-                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[40px] my-2 quick-down">Research and Insights</h2>
+                    <h2 class="font-safira text-sm md:text-xl 2xl:text-5xl leading-[40px] xl:leading-[80px] my-2 quick-down">Research and Insights</h2>
                     <p>Our design process was anchored in extensive user research, employing both primary and secondary research methodologies and incorporating qualitative and quantitative data to capture a wide range of consumer insights.</p>
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full quick-up bg-[url('/images/pencil_hoops/sections/k')] bg-center bg-no-repeat bg-cover bg-blend-color-burn"></div>
+                <div class="md:flex items-center justify-end p-20 w-full quick-up bg-center bg-no-repeat bg-cover hidden"></div>
     
                 <!-- <div class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] absolute right-20 bottom-15"></div> -->
             </section>
         </div>
 
         <!-- the problem -->
-        <section id='problem' class="min-h-screen xl:gap-20 flex flex-col lg:flex-row justify-center py-20 px-4 md:px-10 lg:px-20 relative max-w-[1700px] mx-auto box-parent">
+        <section id='problem' class="min-h-screen xl:gap-20 flex flex-col items-center lg:flex-row justify-center py-20 px-4 md:px-10 lg:px-20 relative max-w-[1700px] mx-auto box-parent">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col lg:justify-start gap-4 xl:gap-6 relative overflow-hidden">
                 
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">The Problem</h2>
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[50px] my-2 xl:my-4 quick-up">The Problem</h2>
                 <p class="quick-up"> 
                     At the time, most headphones in the market focused heavily on sound quality but neglected usability, 
                     design flexibility, and user-friendly features. Users often struggled with issues like difficult earpad replacements, 
@@ -191,7 +190,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             <!-- image -->
             <div class="lg:max-w-[500px] flex flex-col lg:justify-start gap-4 xl:gap-6 relative overflow-hidden">
                 
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Methods</h2>
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[50px] my-2 xl:my-4 quick-up">Methods</h2>
                 <ul class="flex flex-col gap-6">
                     <li><b>User Interviews and Surveys:</b> Direct engagements provided us with valuable feedback on common pain points and preferences.</li>
                     <li><b>Market Analysis:</b> Secondary research helped us understand competitive offerings and identify opportunities for innovation.</li>
@@ -208,7 +207,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         <section id="design-insights" class="min-h-screen flex flex-col gap-4 lg:gap-8 xl:gap-16 lg:grid lg:grid-cols-[auto_auto] py-20 px-4 md:px-10 lg:px-20 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Understanding People</h2>
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[50px] my-2 xl:my-4">Understanding People</h2>
                 <ul class="flex flex-col gap-6"> 
                     <li> We conducted interviews, surveys, and competitive analysis to identify key user pain points: </li>
                     <li> <strong>Music Sharing:</strong> Users wanted an easier way to share what they’re listening to. </li>
@@ -219,8 +218,8 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             </div>
 
             <!-- points --> 
-            <div class="flex items-center mt-20 lg:mt-0">
-                <ul class="flex gap-8">
+            <div class="flex items-center mt-10 md:mt-20 lg:mt-0">
+                <ul class="flex flex-col md:flex-row gap-8 pl-4 md:pl-0">
                     <li class="flex flex-col items-start"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] xl:w-[100px] xl:text-4xl text-bold aspect-square text-white font-bold ">1</span> <strong class="text-base self-start mt-6 mb-2 font-bold">Music Sharing</strong> <span>I need to be able to share a song I’m listening to with someone else easily.</span></li>
                     <li class="flex flex-col items-start"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] xl:w-[100px] xl:text-4xl text-bold aspect-square text-white font-bold ">2</span> <strong class="text-base self-start mt-6 mb-2 font-bold">Easy Pause</strong> <span>I need an easy way to pause and play music while using my headphones.</span></li>
                     <li class="flex flex-col items-start"><span class="bg-black text-center flex justify-center items-center rounded-full w-[60px] xl:w-[100px] xl:text-4xl text-bold aspect-square text-white font-bold ">3</span> <strong class="text-base self-start mt-6 mb-2 font-bold">EarPad Replacement</strong> <span>It’s too much work replacing the ear pads of my headphone when they need to be replaced</span></li>
@@ -241,14 +240,14 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </ul>
             </div>
 
-            <div class="bg-gray-100 px-10 py-6 xl:text-sm text-xs">
+            <div class="bg-gray-100 px-10 py-6 xl:text-sm text-xs overflow-auto">
             <table class="">
                 <thead class="">
                     <tr class="text-left">
-                        <th class="bg-gray-200 py-4 px-2 pl-8">Competitors </th>
-                        <th class="bg-gray-200 py-4 px-2 "> Top Products </th>
-                        <th class="bg-gray-200 py-4 px-2 "> Product Strength </th>
-                        <th class="bg-gray-200 py-4 px-2 pr-8">Product Weaknesses </th>
+                        <th class="bg-gray-200 min-w-[200px] py-4 px-2 pl-8">Competitors </th>
+                        <th class="bg-gray-200 min-w-[200px] py-4 px-2 "> Top Products </th>
+                        <th class="bg-gray-200 min-w-[200px] py-4 px-2 "> Product Strength </th>
+                        <th class="bg-gray-200 min-w-[200px] py-4 px-2 pr-8">Product Weaknesses </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -326,7 +325,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         <section id="sketching" class="min-h-screen flex flex-col gap-4 lg:gap-8 xl:gap-16 lg:grid lg:grid-cols-[auto_minmax(auto,70%)] py-20 px-4 md:px-10 lg:px-20 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Sketching The Concept</h2>
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[50px] my-2 xl:my-4">Sketching The Concept</h2>
                 <p> began by sketching ideas based on user feedback. The goal was to balance aesthetics with functionalitycreating something stylish yet highly practical. Early sketches explored shapes, button placements, and material textures.</p>
             </div>
 
@@ -344,11 +343,11 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
         <section id="wireframes" class="min-h-screen flex flex-col gap-4 lg:gap-8 py-20 px-4 md:px-10 lg:px-20 relative max-w-[1700px] mx-auto">
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">WireFrames</h2>
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[50px] my-2 xl:my-4">WireFrames</h2>
             </div>
 
             <!-- pics --> 
-            <div class="grid-cols-4 grid gap-2 w-full min-h-[80vh]">
+            <div class="grid-cols-2 grid-rows-2 lg:grid-cols-4 grid gap-2 w-full min-h-[80vh]">
                 <div class="w-full h-full bg-[url('/images/crack/wireframes/1.jpg')] bg-contain bg-center bg-no-repeat"></div>
                 <div class="w-full h-full bg-[url('/images/crack/wireframes/2.jpg')] bg-contain bg-center bg-no-repeat"></div>
                 <div class="w-full h-full bg-[url('/images/crack/wireframes/3.jpg')] bg-contain bg-center bg-no-repeat"></div>
@@ -361,7 +360,11 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             <!-- project description and actions -->
             <div class="lg:max-w-[500px] flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
                 <div class="flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                    <h2 class="font-safira text-base sm:text-lg lg:text-sm xl:text-2xl leading-[28px] sm:leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Feature Selection</h2>
+                    <h2 class="font-safira text-base sm:text-lg lg:text-sm xl:text-2xl leading-[28px] sm:leading-[38px] lg:leading-[40px] xl:leading-[50px] my-2 xl:my-4">Feature Selection</h2>
+                    <div class="flex md:hidden gap-2">
+                        <div class="bg-[url('/images/crack/features/1.jpg')] bg-contain bg-center bg-no-repeat w-full aspect-square"></div>
+                        <div class="bg-[url('/images/crack/features/2.jpg')] bg-contain bg-center bg-no-repeat w-full aspect-square"></div>
+                    </div>
                     <ul class="flex flex-col gap-4 sm:gap-6">
                         <li>Based on user research, we prioritized features that enhance usability:</li>
                         <li><strong>Music Sharing (Link-Up):</strong> Seamless sharing with friends.</li>
@@ -370,8 +373,12 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                     </ul>
                 </div>
         
-                <div class="flex flex-col justify-center gap-2 md:gap-4 xl:gap-6">
-                    <h2 class="font-safira text-base sm:text-lg lg:text-sm xl:text-2xl leading-[28px] sm:leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4">Aesthetic and Functional Refinement</h2>
+                <div class="flex flex-col justify-center gap-2 md:gap-4 xl:gap-6 mt-8 md:mt-0">
+                    <h2 class="font-safira text-base sm:text-lg lg:text-sm xl:text-2xl leading-[28px] sm:leading-[38px] lg:leading-[40px] xl:leading-[50px] my-2 xl:my-4">Aesthetic and Functional Refinement</h2>
+                    <div class="flex md:hidden gap-2">
+                        <div class="bg-[url('/images/crack/features/3.jpg')] bg-contain bg-center bg-no-repeat w-full aspect-square"></div>
+                        <div class="bg-[url('/images/crack/features/4.jpg')] bg-contain bg-center bg-no-repeat w-full aspect-square"></div>
+                    </div>
                     <ul class="flex flex-col gap-4 sm:gap-6">
                         <li><strong>Triangular Cups:</strong> Designed for style and customizable fit.</li>
                         <li><strong>Telescopic Arms:</strong> Effortlessly adjustable for a secure, comfortable hold.</li>
@@ -382,7 +389,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             </div>
         
             <!-- pics -->
-            <div class="grid grid-cols-2 grid-rows-2 gap-2 w-full h-full">
+            <div class="md:grid grid-cols-2 grid-rows-2 gap-2 w-full h-full min-h-[400px] hidden">
                 <div class="bg-[url('/images/crack/features/1.jpg')] bg-contain bg-bottom bg-no-repeat w-full h-full"></div>
                 <div class="bg-[url('/images/crack/features/2.jpg')] bg-contain bg-bottom bg-no-repeat w-full h-full"></div>
                 <div class="bg-[url('/images/crack/features/3.jpg')] bg-contain bg-top bg-no-repeat w-full h-full"></div>
@@ -395,11 +402,11 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             <!-- project description and actions -->
             <div class="lg:max-w-[600px] flex flex-col lg:justify-center gap-4 xl:gap-6 relative box-parent overflow-hidden">
                 
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Branding and Logo Design</h2>
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[50px] my-2 xl:my-4 quick-up">Branding and Logo Design</h2>
+                <div class="flex items-center justify-end p-20 w-full aspect-video rounded-lg bg-center bg-no-repeat bg-contain lg:hidden bg-[url('/images/crack/branding.png')]"></div>
                 <p class="quick-up"> 
                     The name "CRACK" came from a spontaneous moment of inspiration, symbolizing boldness and breaking design norms. The logo features an embossed, cracked effect, with a clean, mobile-friendly version for digital platforms.
                 </p>
-                <div class="flex items-center justify-end p-20 w-full quick-up h-full bg-gray-200 rounded-lg bg-center bg-no-repeat bg-cover lg:hidden"></div>
 
                 <!-- {
                     [0,1,2,3,4,5,6,7,8,9].map(i => <div style={`top : ${i * 10}%`} class="bg-white left-0 right-0 absolute h-[10%] slide-2 box"></div>)
@@ -448,7 +455,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             <!-- project description and actions -->
             <div class="lg:max-w-[600px] flex flex-col lg:justify-start gap-4 xl:gap-6 relative overflow-hidden">
                 
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Current Status and Next Steps</h2>
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[50px] my-2 xl:my-4 quick-up">Current Status and Next Steps</h2>
                 <ul class="flex flex-col gap-4 sm:gap-6 quick-up list-inside">
                     <li>Having completed the design phase, CRACK Headphones are ready for the next stages:</li>
                     <li>
@@ -469,7 +476,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
             <!-- image -->
             <div class="lg:max-w-[600px] flex flex-col lg:justify-start gap-4 xl:gap-6 relative overflow-hidden">
                 
-                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 quick-up">Personal Story</h2>
+                <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[50px] my-2 xl:my-4 quick-up">Personal Story</h2>
                 <p>
                     Naming the headphones "CRACK" was a fun moment. After struggling to find the right name, inspiration struck when I noticed a <strong>crack on the wall.</strong> It felt bold, edgy, and perfect. That spontaneous idea shaped the entire brand identity, from the logo to the design language.
                 </p>
@@ -483,11 +490,11 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
 
 		<!-- closing statement -->
         <div id='closing' class="bg-[#F2EBE2]">
-            <section class="min-h-screen grid grid-cols-2 py-20 px-4 md:px-10 lg:px-20 max-w-[1700px] mx-auto gap-4 xl:gap-10">
+            <section class="min-h-screen grid lg:grid-cols-2 py-20 px-4 md:px-10 lg:px-20 max-w-[1700px] mx-auto gap-4 xl:gap-10">
                 <!-- project description and actions -->
-                <div class="max-w-[500px] flex flex-col justify-center">
-                    <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[58.25px] my-2 xl:my-4 heading-up-footer">Closing Statement</h2>
-    
+                <div class="lg:max-w-[500px] flex flex-col justify-center">
+                    <h2 class="font-safira lg:text-sm xl:text-2xl leading-[38px] lg:leading-[40px] xl:leading-[50px] my-2 xl:my-4 heading-up-footer">Closing Statement</h2>
+                    <div class="flex items-center justify-end p-20 w-full closing-img bg-[url('/images/crack/closing.png')] bg-center bg-no-repeat bg-contain aspect-video my-8 lg:hidden"></div>
                     <p class="heading-up-footer">
                         The design phase of CRACK Headphones has set a <strong>new standard</strong> for what users can expect from high-end audio equipment. <br><br>
                         As we move forward, the insights and foundations laid during this phase will guide our efforts to realize a product that not only meets but <strong>exceeds user expectations</strong>.
@@ -495,7 +502,7 @@ let data = {active: 'hero', links: ['hero', 'hey-there', 'table', 'quick-overvie
                 </div>
     
                 <!-- image -->
-                <div class="flex items-center justify-end p-20 w-full closing-img bg-[url('/images/crack/closing.png')] bg-center bg-no-repeat bg-contain h-full"></div>
+                <div class="lg:flex items-center justify-end p-20 w-full closing-img bg-[url('/images/crack/closing.png')] bg-center bg-no-repeat bg-contain h-full hidden"></div>
             </section>
         </div>
 		

@@ -44,10 +44,10 @@ const { hide } = Astro.props;
                     <div class="inline-block relative">
                         <img src="/images/hero/pc.png" class="w-full"/>
                         <div class="absolute top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-center bg-contain bg-no-repeat"></div>
-                        <div class="absolute top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/1.png')] bg-center bg-contain bg-no-repeat hero-mockup opacity-0"></div>
-                        <div class="absolute top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/2.png')] bg-center bg-contain bg-no-repeat hero-mockup opacity-0"></div>
-                        <div class="absolute top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/3.png')] bg-center bg-contain bg-no-repeat hero-mockup opacity-0"></div>
-                        <div class="absolute top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/4.png')] bg-center bg-contain bg-no-repeat hero-mockup opacity-0"></div>
+                        <div class="absolute top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/1.png')] bg-center bg-contain bg-no-repeat hero-mockup-desktop opacity-0"></div>
+                        <div class="absolute top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/2.png')] bg-center bg-contain bg-no-repeat hero-mockup-desktop opacity-0"></div>
+                        <div class="absolute top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/3.png')] bg-center bg-contain bg-no-repeat hero-mockup-desktop opacity-0"></div>
+                        <div class="absolute top-[12%] right-[7.5%] left-[17.2%] bottom-[19%] bg-white bg-[url('/images/hero/4.png')] bg-center bg-contain bg-no-repeat hero-mockup-desktop opacity-0"></div>
                         
 
                         <div class="h-[60%] aspect-[1/2] absolute left-[5%] bottom-[10.7%] bg-[url('/images/hero/phone.png')] bg-cover bg-center bg-no-repeat"></div>
@@ -66,9 +66,23 @@ const { hide } = Astro.props;
     // yoyo : true
     })
 
+    let mockupTlDesktop = gsap.timeline({
+        repeat : -1,
+        repeatDelay : 1,
+        // yoyo : true
+    })
+
     // mockuo
     document.querySelectorAll('.hero-mockup').forEach((mockup, i)=> {
         mockupTl.to(mockup, {
+            opacity : 1,
+            delay :  i != 0 ? 2 : 0,
+            duration : 1
+        })
+    })
+
+    document.querySelectorAll('.hero-mockup-desktop').forEach((mockup, i)=> {
+        mockupTlDesktop.to(mockup, {
             opacity : 1,
             delay :  i != 0 ? 2 : 0,
             duration : 1
