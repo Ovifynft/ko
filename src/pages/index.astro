@@ -3,9 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Footer from '../layouts/Footer.astro';
 import Header from '../layouts/Header.astro';
 
+import '../styles/style.css'
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 let data = {active: 'eden', links: ['eden', 'works', 'timeline', 'about-me', 'contact']}
-import '../styles/style.css'
 import EdenSection from '../layouts/EdenSection.astro';
 
 const timeline = [
@@ -90,7 +90,7 @@ const slides = [
 		title : 'Smart, <span class="text-red-500">Stable</span>, Simple',
 		year : '2015',
 		description : 'Eden gives you clarity and confidence with your money. It helps you stay on top of your spending, understand your finances, and grow your wealth without the stress or confusion.',
-		buttons : `<a href="mailto:kamilzoseni@gmail.com" class="px-4 py-3 rounded-lg text-white bg-[#222222] button">Request Access <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/multi-arrows.svg')]"></div></a><a href="/eden" class="px-4 py-3 rounded-lg border-[1px] border-black flex items-center gap-2">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></a>`,
+		buttons : `<a href="mailto:kamilzoseni@gmail.com" class="px-4 py-3 rounded-lg text-white bg-[#222222] button flex items-center gap-2">Request Access <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/multi-arrows.svg')]"></div></a><a href="/eden" class="px-4 py-3 rounded-lg border-[1px] border-black flex items-center gap-2">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></a>`,
 		url : "bg-[url('/images/slides/eden.png')]",
 		alternate : "bg-[url('/images/slides/eden-gif.gif')]",
 	},
@@ -99,7 +99,7 @@ const slides = [
 		heading : 'Open<span class="text-gray-200">Policy</span><br>App Design<span class="text-gray-200"> (MVP)</span>',
 		year : '2024',
 		description : '<span>OpenPolicy is a platform designed to connect citizens with their government like never before. It allows users to track bills, vote on policies, and directly engage with representatives, all in one place.</span><span>As the Product Lead, I redesigned the app from the ground up, transforming a cluttered, unusable experience into a seamless and intuitive platform.</span>',
-		buttons : `<button class="px-4 py-3 rounded-lg text-white bg-[#222222]">Get it on the Appstore <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/ic_baseline-apple.svg')]"></div></button> <a href="/open-policy" class="px-4 py-3 rounded-lg border-[1px] border-black flex items-center gap-2">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></a> `,
+		buttons : `<a class="px-4 py-3 rounded-lg text-white bg-[#222222] flex items-center gap-2">Get it on the Appstore <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/ic_baseline-apple.svg')]"></div></a> <a href="/open-policy" class="px-4 py-3 rounded-lg border-[1px] border-black flex items-center gap-2">How we built it <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/right-dark.svg')]"></div></a> `,
 		url : "bg-[url('/images/slides/open-policy.png')]",
 		alternate : "bg-[url('/images/slides/open-policy.png')]",
 	},
@@ -108,7 +108,7 @@ const slides = [
 		heading : 'Crack <span class="text-[#CFB46A]">Headphones</span></h2><p class="mt-4">',
 		year : '2015',
 		description : '<span>OpenPolicy is a platform designed to connect citizens with their government like never before. It allows users to track bills, vote on policies, and directly engage with representatives, all in one place.</span><span>As the Product Lead, I redesigned the app from the ground up, transforming a cluttered, unusable experience into a seamless and intuitive platform.</span>',
-		buttons : `<a href="/crack-headphones" class="px-4 py-3 rounded-lg text-white bg-black">Blueprint & Specs <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/solar_music-note-2-bold.svg')]"></div></a>`,
+		buttons : `<a href="/crack-headphones" class="px-4 py-3 rounded-lg text-white bg-black flex items-center gap-2">Blueprint & Specs <div class="icon bg-no-repeat bg-center bg-cover bg-[url('/icons/solar_music-note-2-bold.svg')]"></div></a>`,
 		url : "bg-[url('/images/slides/crack-headphones.png')]",
 		alternate : "bg-[url('/images/slides/crack-headphones.png')]",
 	},
@@ -125,7 +125,8 @@ const slides = [
 	
 ]
 ---
-<Layout title="Welcome to Astro.">
+<Layout title="Kamil Oseni - Portfolio">
+	<h1 class="sr-only"> Kamil Oseni, also known online as kamiloseni, KO, Kamz, oseni, Oseni or KamilOseni.</h1>
 	<div class="body-cont" x-data={JSON.stringify(data)} x-effect="active = window.location.hash?.slice(1) || 'hero'"  @hash-update.window="active = $event.detail"> 
 	<div class="bg-[#F1F1F3] pre-loader-view h-screen w-full fixed top-0 left-0 right-0 z-20 flex flex-col items-center justify-center">
 		<div class="absolute bottom-0 right-0 w-[40%] aspect-[2/2] bg-[url('/images/preloader-bg.png')] bg-bottom bg-contain bg-no-repeat opacity-[2%]"></div>
@@ -142,55 +143,57 @@ const slides = [
 	<Header active="Home"/>
 
 	<!-- arrows -->
-	<a :href="'#' + (links[links.indexOf(active) + 1] || links[links.length])" @click="setTimeout(()=> {active = (links[links.indexOf(active) + 1] || links[links.length])}, 1) " class="h-[50px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-5 bottom-2 z-[1] down-arrow"></a>
-	<a :href="'#' + (links[links.indexOf(active) - 1] || links[0])" @click="setTimeout(()=> {active = (links[links.indexOf(active) - 1] || links[0])}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-0 bottom-5 z-[1] up-arrow hidden"></a>
+	<!-- <a :href="'#' + (links[links.indexOf(active) + 1] || links[links.length])" @click="setTimeout(()=> {active = (links[links.indexOf(active) + 1] || links[links.length])}, 1) " class="h-[50px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-5 bottom-2 z-[1] down-arrow"></a>
+	<a :href="'#' + (links[links.indexOf(active) - 1] || links[0])" @click="setTimeout(()=> {active = (links[links.indexOf(active) - 1] || links[0])}, 1) " class="h-[100px] aspect-[2/4] bg-center bg-contain bg-no-repeat bg-[url('/icons/down_arrow.svg')] fixed left-0 bottom-5 z-[1] up-arrow hidden"></a> -->
 
 	<main>
 		<!-- eden hero -->
 		<EdenSection />
 
 		<!-- works -->
-		<section id="works" class="h-screen overflow-hidden grid grid-rows-[1fr_1fr] my-20">
+		<section id="works" class="min-h-screen flex justify-center flex-col my-20">
 			<!-- top-side -->
-			<div class="pt-4 px-6 lg:px-20 pb-8 flex items-center">
-				{
-					slides.map(slide =>
-					<div class="justify-between flex-col md:flex-row items-center top-side w-full opacity-0 hidden gap-4">
-					<!-- project title, tags and date -->
-							<div class="w-full md:w-[40%]">
-								<ul class="list-inside text-xs tags">
-									{
-										slide.tags.map(tag => 
-											<li>[ {tag} ]</li>
-										)
-									}
-								</ul>
-								<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1" set:html={slide.heading}></h2>
-								{slide.title && <p class="mt-4" set:html={slide.title}></p>}
-								<p class="mt-4">{slide.year}</p>
+			<div class="overflow-hidden h-[20vh] works-cont">
+				<div class="pt-4 px-6 lg:px-20 pb-8 flex items-center works-parent min-h-[20%]">
+					{
+						slides.map(slide =>
+						<div class="justify-between flex-col md:flex-row items-center top-side w-full opacity-0 hidden gap-4">
+						<!-- project title, tags and date -->
+								<div class="w-full md:w-[40%]">
+									<ul class="list-inside text-xs tags">
+										{
+											slide.tags.map(tag => 
+												<li>[ {tag} ]</li>
+											)
+										}
+									</ul>
+									<h2 class="font-safira lg:text-2xl leading-[40px] lg:leading-[58.25px] mt-4 heading-1" set:html={slide.heading}></h2>
+									{slide.title && <p class="mt-4" set:html={slide.title}></p>}
+									<p class="mt-4">{slide.year}</p>
+								</div>
+				
+								<!-- project description and actions -->
+								<div class="w-full md:w-[60%] text-xs max-w-[600px]">
+									<p class="flex flex-col gap-2 md:gap-4 lg:gap-5" set:html={slide.description}></p>
+									<div class="pt-4 flex gap-3 flex-wrap" set:html={slide.buttons}></div>
+								</div>
 							</div>
-			
-							<!-- project description and actions -->
-							<div class="w-full md:w-[60%] text-xs max-w-[600px]">
-								<p class="flex flex-col gap-2 md:gap-4 lg:gap-5" set:html={slide.description}></p>
-								<div class="pt-4 flex gap-3 flex-wrap" set:html={slide.buttons}></div>
-							</div>
-						</div>
-					)
-				}
+						)
+					}
+				</div>
 			</div>
 			
 			<!-- bottom side - project slider -->
-			<div class="flex gap-2 p-2 items-end justify-end">
+			<div class="flex gap-2 p-2 h-[40vh] max-h-[100px] md:max-h-[400px]">
 				{
 					slides.map(slide => 
-						<div data-url={slide.url} data-alternate={slide.alternate} class:list={["h-full bg-gray-200 rounded-md max-h-[100px] md:max-h-[400px] w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center", slide.url]}></div>
+						<div data-url={slide.url} data-alternate={slide.alternate} class:list={["h-full bg-gray-200 rounded-md  w-[20%] bottom-slide hover:cursor-pointer bg-cover bg-no-repeat bg-center", slide.url]}></div>
 					)
 				}
 				
 			</div>
 
-			<div class="flex items-center justify-center gap-2 py-4">
+			<div class="flex justify-center gap-2 items-center">
 				<ArrowLeft className="p-2 rounded-full bg-gray-100 slide-left-btn" size={28}/>
 				<ul class="flex gap-2">
 					<li class="w-[10vw] max-w-[100px] h-1 rounded-full bg-gray-300 bottom-slide-indicator hover:cursor-pointer"></li>
@@ -205,7 +208,7 @@ const slides = [
 		<!-- timeline -->
 		<section id="timeline" class="h-screen grid grid-rows-[minmax(auto,100%)_auto] px-4 md:px-20 gap-6 pt-5 overflow-hidden my-20">
 			<!-- center box -->
-			<div class="pt-8 overflow-auto overscroll-auto timeline-scroll">
+			<div class="pt-8 overflow-auto overscroll-auto timeline-scroll" data-lenis-prevent data-lenis-prevent-touch>
 			{
 				timeline.map(timeline =>
 					<div class="pb-8 justify-between items-center gap-4 hidden opacity-0 timeline-slide">
@@ -302,8 +305,8 @@ const slides = [
 			</div>
 		</section>
 	</main>
-	<Footer />
 	</div>
+	<Footer />
 </Layout>
 
 <style>
@@ -375,22 +378,33 @@ const slides = [
 
 
 		let bottomSlideIndicators = Array.from(document.querySelectorAll('.bottom-slide-indicator'))
-		let topSides = Array.from(document.querySelectorAll('.top-side'))
+		let topSides = Array.from(document.querySelectorAll('.top-side') as NodeListOf<HTMLElement>)
 		let bottomSlides = Array.from(document.querySelectorAll('.bottom-slide'))
 		let bottomSlidesAlternate = Array.from(document.querySelectorAll('.bottom-slide-alternate'))
 		let currentSlide = 0
 		let righSlideBtn = document.querySelector('.slide-right-btn')
 		let leftSlideBtn = document.querySelector('.slide-left-btn')
 
+		let worksParent = document.querySelector('.works-cont') as HTMLElement
 		// checking if timelines will fix that glitching shit
 		var tl = gsap.timeline();
+		var slidesHide = gsap.timeline();
+		var worksParentTl = gsap.timeline();
+
 		activeSlideByIndex(currentSlide)
+
 
 
 		function activeSlideByIndex(i){
 			
 			tl.kill();
 			tl = gsap.timeline();
+
+			worksParentTl.kill()
+			worksParentTl = gsap.timeline();
+
+			slidesHide.kill()
+			slidesHide = gsap.timeline()
 			// first we wana collapse everybody thats not element
 			gsap.to(bottomSlides.filter((el) => el != bottomSlides[i]), {
 				width: "20%",
@@ -438,19 +452,47 @@ const slides = [
 			tl.to(topSides.filter((el, j) => j != i), {
 				opacity: 0,
 				display: "none",
-				duration: 0.5,
-				ease: "power2.out",
+				duration: 0.2,
+				// ease: "power2.out",
 			});
 
 			// change top side from hidden to visible and fade in
 			tl.to(topSides[i], {
-				opacity: 1,
+				opacity: 0,
 				display: "flex",
-				duration: 1,
-				ease: "power2.out",
+				duration : 0
+				// duration: 0.1,
+				// ease: "power2.out",
 			});
+
+			tl.to(worksParent, {
+				onComplete : () => {
+					console.log(topSides[i].clientHeight, topSides[i].offsetHeight, getComputedStyle(topSides[i]).height)
+					worksParentTl.to(worksParent, {
+						height : topSides[i].parentElement.clientHeight,
+						duration : 0.6,
+						ease: "power2.out",
+					})
+					tl.to(topSides[i], {
+						opacity: 1,
+						duration: 1,
+						ease: "power2.out",
+					});
+				}
+			});
+
+			// setTimeout(()=> {
+			// 	console.log(topSides[i].offsetHeight)
+			// }, 200)
 			currentSlide = i
 		}
+
+		window.addEventListener('resize', ()=>{
+			gsap.to(worksParent, {
+				height : 'auto',
+				duration : 0,
+			})
+		})
 
 		bottomSlides.forEach((element, i) => {
 			element.addEventListener('click', (e) => {
@@ -635,26 +677,26 @@ const slides = [
 		});
 
 		let prevScrollPos = -20
-		let timeLineSection = document.querySelector('.timeline-scroll')
-		timeLineSection.addEventListener('scroll', (e : WheelEvent) => {
-			let ele = e.target as HTMLDivElement
-			// ele.setAttribute( )
-			// ele.removeAttribute('data-lenis-prevent')
-			// turns out scrollTop + offSetHeight == scrollHeight when fully scrolled
-			let value = ele.scrollTop + ele.offsetHeight
-			let match = ele.scrollHeight
+		let timeLineSection = document.querySelector('.timeline-scroll') as HTMLDivElement
+		// timeLineSection.addEventListener('scroll', (e : WheelEvent) => {
+		// 	let ele = e.target as HTMLDivElement
+		// 	// ele.setAttribute( )
+		// 	// ele.removeAttribute('data-lenis-prevent')
+		// 	// turns out scrollTop + offSetHeight == scrollHeight when fully scrolled
+		// 	let value = ele.scrollTop + ele.offsetHeight
+		// 	let match = ele.scrollHeight
 
-			if(value + 1 >= match){
-				ele.removeAttribute('data-lenis-prevent')
-				// setTimeout(()=> ele.setAttribute('data-lenis-prevent',""),200)
-				console.log("match")
-			}else{
-				// ele.setAttribute('data-lenis-prevent',"")
-			}
+		// 	if(value + 1 >= match){
+		// 		ele.removeAttribute('data-lenis-prevent')
+		// 		// setTimeout(()=> ele.setAttribute('data-lenis-prevent',""),200)
+		// 		console.log("match")
+		// 	}else{
+		// 		// ele.setAttribute('data-lenis-prevent',"")
+		// 	}
 			
 
-			console.log(value, match)
-		})
+		// 	console.log(value, match)
+		// })
 
 		ScrollTrigger.create({
 			trigger: timeLineSection,
@@ -675,6 +717,61 @@ const slides = [
 		document.querySelector('.timeline-scroll').addEventListener('scrollend', (e : WheelEvent) => {
 			// console.log('hello world')
 		})
+
+		timeLineSection.addEventListener('wheel', (e : WheelEvent) => {
+			const delta = e.deltaY;
+			const scrollTop = timeLineSection.scrollTop;
+			const scrollHeight = timeLineSection.scrollHeight;
+			const offsetHeight = timeLineSection.offsetHeight;
+
+			const buffer = 1;
+			const isAtTop = scrollTop <= 0 && delta < 0;
+			const isAtBottom = scrollTop + offsetHeight >= scrollHeight - buffer && delta > 0;
+
+			if (isAtTop || isAtBottom) {
+				e.preventDefault();
+				lenis.scrollTo(window.scrollY + delta, { immediate: true });
+			}
+		}, { passive: false });
+
+		let startY = 0;
+		let isTouching = false; // To track if a touch is in progress
+
+		// For touchstart event (capture starting touch position)
+		timeLineSection.addEventListener('touchstart', (e) => {
+			if (isTouching) return; // If touch is already in progress, ignore the new one
+
+			isTouching = true;
+			startY = e.touches[0].clientY; // Track the starting touch position
+		}, { passive: true });
+
+		// For touchmove event (detect downward scrolling)
+		timeLineSection.addEventListener('touchmove', (e) => {
+			const delta = startY - e.touches[0].clientY; // Calculate vertical movement of touch
+			const scrollTop = timeLineSection.scrollTop;
+			const scrollHeight = timeLineSection.scrollHeight;
+			const offsetHeight = timeLineSection.offsetHeight;
+
+			const buffer = 1; // Small buffer to trigger the handoff
+			const isAtTop = scrollTop <= 0 && delta < 0;
+			const isAtBottom = scrollTop + offsetHeight >= scrollHeight - buffer && delta > 0;
+
+			// Handle downward scroll at the bottom of the nested element
+			console.log('touch scrolling', scrollTop + offsetHeight, scrollHeight - buffer, delta)
+			if (isAtBottom || isAtTop) {
+				console.log('At bottom, scrolling down');
+				e.preventDefault(); // Prevent native touch scrolling
+				// Forward the scroll to the parent (Lenis smooth scroll)
+				lenis.scrollTo(window.scrollY + delta, { immediate: true });
+			}
+
+			startY = e.touches[0].clientY; // Update the touch position
+		}, { passive: false });
+
+		// For touchend event (reset touch flag)
+		timeLineSection.addEventListener('touchend', () => {
+			isTouching = false; // Reset touch flag
+		}, { passive: true });
 	
 </script>
 	

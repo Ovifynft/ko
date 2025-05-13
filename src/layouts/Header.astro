@@ -99,23 +99,28 @@ const {active} = Astro.props;
             if(shouldOpenMainNav){
                 shouldOpenMainNav = false
                 openMainNav()
+                offset = 50
             }else{
                 shouldOpenMainNav = true
                 closeMainNav()
+                offset = 50
             }
         }
 	});
 
+    let onmouseMoveOffset  =  40;
     window.addEventListener('mousemove', (event) => {
-        if (event.clientY <=150) {
+        if (event.clientY <=onmouseMoveOffset) {
            openMainNav()
            shouldOpenMainNav = false
            wasOpenedByMouseMove = true
+           onmouseMoveOffset = 150;
         }else{
             if(wasOpenedByMouseMove){
                 wasOpenedByMouseMove = false
                 shouldOpenMainNav = true
                 closeMainNav()
+                onmouseMoveOffset  =  40;
             }
         }
 	});
@@ -136,7 +141,13 @@ const {active} = Astro.props;
                 openMainNav()
             }
         }
+
+        // console.log(offset)
     });
+
+    window.addEventListener('scrollend', ()=>{
+        offset = 50
+    })
 
     document.querySelector('.close-nav').addEventListener('click', () => {
         // Hide the navigation bar

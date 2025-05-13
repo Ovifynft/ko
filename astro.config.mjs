@@ -10,9 +10,12 @@ import vercel from '@astrojs/vercel';
 
 import alpinejs from '@astrojs/alpinejs';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [svelte(), react(), alpinejs()],
+  site: 'https://kamiloseni.com',
+  integrations: [svelte(), react(), alpinejs(), sitemap()],
 
   vite: {
     plugins: [tailwindcss()]

@@ -16,6 +16,47 @@ import "../styles/global.css";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<meta name="description" content="Official website of Kamil Oseni, also known as KO. Explore his work, projects, and more." />
+		<meta name="keywords" content="Kamil Oseni, KO, kamiloseni, Kamil O, developer, portfolio, blog, oseni, kamz" />
+		<meta name="author" content="Kamil Oseni" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Open Graph for social previews -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content="Discover Kamil Oseni - explore his work and projects." />
+		<meta property="og:image" content="/og-image.png" />
+		<meta property="og:url" content="https://kamiloseni.com" />
+		<meta property="og:type" content="website" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content="Learn about Kamil Oseni (KO) – projects, blog, and personal brand." />
+		<meta name="twitter:image" content="/images/profile-pic.png" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<!-- JSON-LD Structured Data -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Kamil Oseni",
+				"alternateName": [
+					"KO",
+					"KamilOseni",
+					"Kamz",
+					"kamil_oseni"
+				],
+				"url": "https://kamiloseni.com", 
+				"sameAs": [
+					// "https://twitter.com/yourhandle",  <!-- Replace with your actual handles -->
+					// "https://github.com/yourhandle",
+					"https://www.linkedin.com/in/kamiloseni/"
+				],
+				"jobTitle": "Software Developer",
+				"description": "Official website of Kamil Oseni (KO), showcasing his work, projects, and ideas."
+			}
+		</script>
 	</head>
 	<body class="font-source h-screen overflow-hidden">
 		<slot />
